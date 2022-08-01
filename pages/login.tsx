@@ -2,8 +2,6 @@ import type { NextPage } from 'next'
 import { useRecoilState } from 'recoil'
 import { counterState } from '@store/counterState'
 import AsyncBtn from '@components/AsynBtn'
-import LoginCard from '@components/LoginCard'
-import { FcGoogle } from 'react-icons/fc'
 import { useState } from 'react'
 import { createTheme, TextField, ThemeProvider } from '@mui/material'
 
@@ -57,6 +55,9 @@ const Login: NextPage = () => {
                             placeholder="รหัสผ่านบัญชีผู้ใช้เครือข่ายนนทรี"
                         />
                     </ThemeProvider>
+                    <AsyncBtn isLoading={false} onClick={() => {}}>
+                        เข้าสู่ระบบ
+                    </AsyncBtn>
                 </div>
             </div>
         </div>

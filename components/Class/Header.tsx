@@ -1,11 +1,11 @@
-import { IoIosCalendar } from 'react-icons/io'
-import { HiOutlineClock } from 'react-icons/hi'
 import { BiFlag } from 'react-icons/bi'
-import Link from 'next/link'
-function Index() {
+import { HiOutlineClock } from 'react-icons/hi'
+import { IoIosCalendar } from 'react-icons/io'
+
+function Header() {
     return (
-        <Link href="class/cs112">
-            <div className="w-full pt-4 bg-white rounded-lg p-4 shadow-md cursor-pointer col-span-7 md:col-span-2">
+        <div className="absolute -top-10 left-6">
+            <div className="w-full pt-4 bg-white rounded-lg p-4 shadow-md col-span-7 md:col-span-2">
                 <span className="px-2 bg-gray-200 w-fit rounded-full text-md">
                     CS112
                 </span>
@@ -29,8 +29,8 @@ function Index() {
                     </div>
                 </div>
             </div>
-        </Link>
+        </div>
     )
 }
 
-export default Index
+export default Header
