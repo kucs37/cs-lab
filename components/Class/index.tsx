@@ -5,7 +5,7 @@ import Link from 'next/link'
 function Index() {
     return (
         <Link href="class/cs112">
-            <div className="w-full pt-4 bg-white rounded-lg p-4 shadow-md cursor-pointer col-span-7 md:col-span-2">
+            <div className=" pt-4 bg-white rounded-lg p-4 shadow-md cursor-pointer w-full md:w-[26rem]">
                 <span className="px-2 bg-gray-200 w-fit rounded-full text-md">
                     CS112
                 </span>

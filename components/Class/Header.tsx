@@ -4,8 +4,8 @@ import { IoIosCalendar } from 'react-icons/io'
 
 function Header() {
     return (
-        <div className="absolute -top-10 left-6">
-            <div className="w-full pt-4 bg-white rounded-lg p-4 shadow-md col-span-7 md:col-span-2">
+        <>
+        
                 <span className="px-2 bg-gray-200 w-fit rounded-full text-md">
                     CS112
                 </span>
@@ -28,8 +28,9 @@ function Header() {
                         <p className="">หมู่ 11</p>
                     </div>
                 </div>
-            </div>
-        </div>
+        </>
+        // <div className="absolute -top-10 left-6">
+        // </div>
     )
 }
 
