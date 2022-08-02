@@ -1,11 +1,11 @@
-import { NextComponentType } from 'next'
+import { NextPage } from 'next'
 import React from 'react'
 import { FaGraduationCap } from 'react-icons/fa'
 import ProfileImage from './ProfileImage'
 
 interface Props {}
 
-const Navbar: NextComponentType<Props> = () => {
+const Navbar: NextPage<Props> = () => {
     return (
         <>
             <div className="w-full bg-lime-500">
