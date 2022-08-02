@@ -8,11 +8,14 @@ import { createTheme, TextField, ThemeProvider } from '@mui/material'
 const textFieldTheme = createTheme({
     palette: {
         primary: {
-            main: '#111827',
+            main: '#84CC16',
         },
     },
     shape: {
         borderRadius: '8px',
+    },
+    typography: {
+        fontFamily: 'Noto Sans Thai',
     },
 })
 
@@ -41,15 +44,20 @@ const Login: NextPage = () => {
                             label="บัญชีผู้ใช้เครือข่ายนนทรี"
                             variant="outlined"
                             InputLabelProps={{
-                                shrink: true,
+                                style: {
+                                    fontWeight: 'bold',
+                                },
                             }}
+                            sx={{ fontWeight: 'bold' }}
                             placeholder="เช่น b63xxxxxxxx หรือ regxxx"
                         />
                         <TextField
                             label="รหัสผ่าน"
                             type="password"
                             InputLabelProps={{
-                                shrink: true,
+                                style: {
+                                    fontWeight: 'bold',
+                                },
                             }}
                             variant="outlined"
                             placeholder="รหัสผ่านบัญชีผู้ใช้เครือข่ายนนทรี"
