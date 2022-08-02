@@ -2,12 +2,12 @@ import React from 'react'
 import Card from '@components/Class/Lab'
 import Header from '@components/Class/Header'
 import Navbar from '@components/Navbar'
+import WithNavbar from '@layouts/WithNavbar'
 
 function Class() {
     return (
         <>
-            <Navbar />
-            <div className="container mx-auto bg-white h-screen rounded-t-lg shadow-lg relative mt-24">
+            <WithNavbar>
                 <Header />
                 <div className="pt-32 px-6">
                     <h3 className="text-2xl font-medium">แลป</h3>
@@ -15,7 +15,7 @@ function Class() {
                         <Card />
                     </div>
                 </div>
-            </div>
+            </WithNavbar>
         </>
     )
 }
