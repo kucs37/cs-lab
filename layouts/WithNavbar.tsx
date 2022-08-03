@@ -9,7 +9,7 @@ const WithNavbar: React.FC<Props> = ({ children }) => {
     return (
         <>
             <Navbar />
-            <div style={{ maxWidth: '90rem' }} className="mx-auto mt-4">
+            <div style={{ maxWidth: '90rem' }} className="mx-auto">
                 {children}
             </div>
         </>

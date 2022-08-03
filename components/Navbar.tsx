@@ -2,13 +2,14 @@ import { NextPage } from 'next'
 import React from 'react'
 import { FaGraduationCap } from 'react-icons/fa'
 import ProfileImage from './ProfileImage'
+import { FiMoon } from 'react-icons/fi'
 
 interface Props {}
 
 const Navbar: NextPage<Props> = () => {
     return (
         <>
-            <div className="w-full bg-lime-500">
+            <div className="w-full bg-white border-b-[1px]">
                 <div className="container mx-auto max-w-5xl px-2 py-3 flex justify-between items-center ">
                     <h1 className="text-xl font-bold">CS Lab</h1>
                     <div>
