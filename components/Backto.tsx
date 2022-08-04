@@ -1,19 +1,18 @@
-import type { NextComponentType } from 'next'
 import Link from 'next/link'
-import { BsArrowLeft } from 'react-icons/bs'
+import { FaChevronLeft } from 'react-icons/fa'
+import { useRouter } from 'next/router'
 
 interface Props {
-    href: string
-    text: string
     className?: string
 }
-const Backto = ({ href, text, className }: Props) => {
+const Backto = ({ className }: Props) => {
     return (
-        <Link href={href}>
+        <Link href="../">
             <a>
-                <div className={`inline-flex items-center gap-2 ${className}`}>
-                    <BsArrowLeft />
-                    <p>{text}</p>
+                <div
+                    className={`inline-flex items-center gap-2 ${className} bg-white rounded-lg p-4 shadow-sm`}
+                >
+                    <FaChevronLeft />
                 </div>
             </a>
         </Link>
