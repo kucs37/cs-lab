@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Class from '@components/Class'
-
+import Labs from '../fakeData'
 import WithNavbar from '@layouts/WithNavbar'
 
 const Home: NextPage = () => {
@@ -12,9 +12,12 @@ const Home: NextPage = () => {
                     <div>
                         <h2 className="text-2xl font-bold">คลาสเรียน</h2>
                         <div className="mt-4 grid grid-cols-12 gap-4 w-full">
-                            <Class />
-                            <Class />
-                            <Class />
+                            <Class
+                                title="Fundamental Programming Concepts"
+                                code="CS112"
+                                section={11}
+                                labs={Labs}
+                            />
                         </div>
                     </div>
                 </div>

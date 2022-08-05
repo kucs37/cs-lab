@@ -1,5 +1,27 @@
 import Link from 'next/link'
-function Index() {
+
+interface Problem {
+    name: string
+    status: 'success' | 'failed' | 'not-attempted'
+}
+
+interface Lab {
+    title: string
+    problems: Problem[]
+    end: string
+}
+interface Props {
+    title: string
+    code: string
+    section: number
+    labs: Lab[]
+}
+
+function Class({ title, code, section, labs }: Props) {
+    const successLab = labs.filter((lab) =>
+        lab.problems.every(({ status }) => status == 'success')
+    ).length
+    const allLab = labs.length
     return (
         <Link href="class/cs112">
             <a className="col-span-12 md:col-span-6 xl:col-span-4">
@@ -7,28 +29,38 @@ function Index() {
                     <div className="flex flex-wrap items-center gap-2">
                         <div className="rounded-full px-2 py-1 bg-gray-200 w-fit">
                             <p className="text-sm text-gray-500 font-bold">
-                                CS112
+                                {code}
                             </p>
                         </div>
                         <div className="rounded-full px-2 py-1 bg-gray-200 w-fit">
                             <p className="text-sm text-gray-500 font-bold">
-                                หมู่ 11
+                                หมู่ {section}
                             </p>
                         </div>
                     </div>
-                    <h3 className="font-bold text-lg text-gray-900">
-                        Fundamental Programming Concepts
-                    </h3>
+                    <h3 className="font-bold text-lg text-gray-900">{title}</h3>
 
                     <div className="flex flex-col gap-2">
                         <div className="w-full grid grid-cols-7 gap-1 place-items-stretch">
-                            <div className="h-2 bg-lime-500 rounded-full"></div>
-                            <div className="h-2 bg-lime-500 rounded-full"></div>
-                            <div className="h-2 bg-lime-500 rounded-full"></div>
-                            <div className="h-2 bg-lime-500 rounded-full"></div>
-                            <div className="h-2 bg-gray-200 rounded-full"></div>
+                            {labs.map(({ problems }) => {
+                                const isSuccess = problems.every(
+                                    ({ status }) => status == 'success'
+                                )
+
+                                return (
+                                    <div
+                                        className={`h-2 ${
+                                            isSuccess
+                                                ? 'bg-lime-500'
+                                                : 'bg-gray-200'
+                                        } rounded-full`}
+                                    ></div>
+                                )
+                            })}
                         </div>
-                        <h6 className="font-bold text-md">4/5</h6>
+                        <h6 className="font-bold text-md">
+                            {successLab}/{allLab}
+                        </h6>
                     </div>
                 </div>
             </a>
@@ -36,4 +68,4 @@ function Index() {
     )
 }
 
-export default Index
+export default Class
