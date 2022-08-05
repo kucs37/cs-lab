@@ -40,7 +40,7 @@ function Class({ title, code, section, labs }: Props) {
                     </div>
                     <h3 className="font-bold text-lg text-gray-900">{title}</h3>
 
-                    <div className="flex flex-col gap-2">
+                    {/* <div className="flex flex-col gap-2">
                         <div className="w-full grid grid-cols-7 gap-1 place-items-stretch">
                             {labs.map(({ problems }) => {
                                 const isSuccess = problems.every(
@@ -61,7 +61,7 @@ function Class({ title, code, section, labs }: Props) {
                         <h6 className="font-bold text-md">
                             {successLab}/{allLab}
                         </h6>
-                    </div>
+                    </div> */}
                 </div>
             </a>
         </Link>
