@@ -3,7 +3,7 @@ import Card from '@components/Lab/Card'
 import Header from '@components/Class/Header'
 import Backto from '@components/Common/Backto'
 import WithNavbar from '@layouts/WithNavbar'
-import Labs from '../../fakeData'
+import Labs from '../../../fakeData'
 
 type showType = 'all' | 'open' | 'close'
 
@@ -16,7 +16,7 @@ function Class() {
     return (
         <WithNavbar>
             <div className="px-3 container mx-auto mt-2 my-10">
-                <Backto className="my-6" />
+                <Backto href="../" className="my-6" />
                 <div className="bg-white  p-6 rounded-lg shadow-sm">
                     <Header />
 

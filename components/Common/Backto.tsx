@@ -1,21 +1,19 @@
 import { FaChevronLeft } from 'react-icons/fa'
-import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 interface Props {
     className?: string
+    href: string
 }
-const Backto = ({ className }: Props) => {
-    const router = useRouter()
-    const handleOnClick = () => {
-        router.back()
-    }
+const Backto = ({ className, href }: Props) => {
     return (
-        <button
-            onClick={handleOnClick}
-            className={`inline-flex items-center gap-2 ${className} bg-white rounded-lg p-4 shadow-sm`}
-        >
-            <FaChevronLeft />
-        </button>
+        <Link href={href}>
+            <a
+                className={`inline-flex items-center gap-2 ${className} bg-white rounded-lg p-4 shadow-sm`}
+            >
+                <FaChevronLeft />
+            </a>
+        </Link>
     )
 }
 

@@ -3,6 +3,7 @@ import Header from '@components/Lab/Header'
 import Backto from '@components/Common/Backto'
 import Problem from '@components/Lab/Problem'
 import Breadcrumb from '@components/Common/Breadcrumb'
+import { useRouter } from 'next/router'
 
 type Result = 'success' | 'failed' | 'not-attempted'
 
@@ -86,6 +87,8 @@ const mock: Lab = {
 }
 
 function Lab() {
+    const router = useRouter()
+
     const result: Result[] = mock.problems.map(({ result }: Problem) => {
         if (result.every((status) => status == 'success')) return 'success'
         return 'failed'
@@ -95,7 +98,7 @@ function Lab() {
         <WithNavbar>
             <div className="px-3 container mx-auto mt-2 my-10">
                 <div className="my-6">
-                    <Backto />
+                    <Backto href="#" />
                     <Breadcrumb />
                 </div>
                 <div className="bg-white p-6 rounded-lg shadow-sm">
