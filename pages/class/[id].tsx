@@ -4,6 +4,7 @@ import Header from '@components/Class/Header'
 import Backto from '@components/Backto'
 import WithNavbar from '@layouts/WithNavbar'
 import Labs from '../../fakeData'
+
 type showType = 'all' | 'open' | 'close'
 
 function Class() {

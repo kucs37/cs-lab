@@ -1,30 +1,11 @@
 import Link from 'next/link'
+import { Result } from '@interface/Result'
 
-type Result = 'success' | 'failed' | 'not-attempted'
-
-interface ProblemI {
-    name: string
-    status: 'success' | 'failed' | 'not-attempted'
-}
 interface Props {
     title: string
     id: number
     result: Result[]
 }
-
-const testCase = [
-    {
-        id: 1,
-        result: [
-            'success',
-            'failed',
-            'failed',
-            'success',
-            'success',
-            'success',
-        ],
-    },
-]
 
 function Problem({ title, id, result }: Props) {
     const success = result.filter((status) => status == 'success').length

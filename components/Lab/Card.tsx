@@ -1,9 +1,5 @@
 import Link from 'next/link'
-
-interface Problem {
-    name: string
-    status: 'success' | 'failed' | 'not-attempted'
-}
+import Problem from '@interface/Problem'
 interface Props {
     title: string
     end: string

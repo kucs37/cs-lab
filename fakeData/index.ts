@@ -1,12 +1,9 @@
-interface Problem {
-    name: string
-    status: 'success' | 'failed' | 'not-attempted'
-}
+import ProblemI from '@interface/Problem'
 
 interface Lab {
     title: string
     id: number
-    problems: Problem[]
+    problems: ProblemI[]
     end: string
 }
 

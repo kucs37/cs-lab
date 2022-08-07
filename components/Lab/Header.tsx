@@ -1,9 +1,5 @@
-type Result = 'success' | 'failed' | 'not-attempted'
+import { Result } from '@interface/Result'
 
-interface Problem {
-    name: string
-    status: 'success' | 'failed' | 'not-attempted'
-}
 interface Props {
     title: string
     end: string

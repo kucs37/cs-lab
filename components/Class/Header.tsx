@@ -1,7 +1,3 @@
-import { BiFlag } from 'react-icons/bi'
-import { HiOutlineClock } from 'react-icons/hi'
-import { IoIosCalendar } from 'react-icons/io'
-
 function Header() {
     return (
         <div className="my-6">

@@ -1,15 +1,7 @@
 import Link from 'next/link'
+import ProblemI from '@interface/Problem'
+import Lab from '@interface/Lab'
 
-interface Problem {
-    name: string
-    status: 'success' | 'failed' | 'not-attempted'
-}
-
-interface Lab {
-    title: string
-    problems: Problem[]
-    end: string
-}
 interface Props {
     title: string
     code: string

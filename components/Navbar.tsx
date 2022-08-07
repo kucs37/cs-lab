@@ -2,7 +2,6 @@ import { NextPage } from 'next'
 import React from 'react'
 import { FaGraduationCap } from 'react-icons/fa'
 import ProfileImage from './ProfileImage'
-import { FiMoon } from 'react-icons/fi'
 
 interface Props {}
 
