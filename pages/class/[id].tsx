@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Card from '@components/Lab/Card'
 import Header from '@components/Class/Header'
-import Backto from '@components/Backto'
+import Backto from '@components/Common/Backto'
 import WithNavbar from '@layouts/WithNavbar'
 import Labs from '../../fakeData'
 

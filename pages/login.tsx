@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import { useRecoilState } from 'recoil'
 import { counterState } from '@store/counterState'
-import AsyncBtn from '@components/AsynBtn'
+import AsyncBtn from '@components/Common/AsynBtn'
 import { useState } from 'react'
 import { createTheme, TextField, ThemeProvider } from '@mui/material'
 

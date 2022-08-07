@@ -1,7 +1,8 @@
 import WithNavbar from '@layouts/WithNavbar'
 import Header from '@components/Lab/Header'
-import Backto from '@components/Backto'
+import Backto from '@components/Common/Backto'
 import Problem from '@components/Lab/Problem'
+import Breadcrumb from '@components/Common/Breadcrumb'
 
 type Result = 'success' | 'failed' | 'not-attempted'
 
@@ -93,7 +94,10 @@ function Lab() {
     return (
         <WithNavbar>
             <div className="px-3 container mx-auto mt-2 my-10">
-                <Backto className="my-6" />
+                <div className="my-6">
+                    <Backto />
+                    <Breadcrumb />
+                </div>
                 <div className="bg-white p-6 rounded-lg shadow-sm">
                     <Header
                         title={mock.title}
