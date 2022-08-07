@@ -1,3 +1,5 @@
+type Result = 'success' | 'failed' | 'not-attempted'
+
 interface Problem {
     name: string
     status: 'success' | 'failed' | 'not-attempted'
@@ -5,12 +7,12 @@ interface Problem {
 interface Props {
     title: string
     end: string
-    problems: Problem[]
+    result: Result[]
     id: number
 }
 
-function Card({ title, end, problems, id }: Props) {
-    const success = problems.filter(({ status }) => status == 'success').length
+function Card({ title, end, result, id }: Props) {
+    const success = result.filter((status) => status == 'success').length
     const isEnd = new Date(end) < new Date()
     return (
         <div className="flex flex-col gap-4 my-6">
@@ -27,9 +29,9 @@ function Card({ title, end, problems, id }: Props) {
 
             <div className="flex flex-col gap-2">
                 <div className="w-full md:w-1/3 grid grid-cols-8 gap-1 place-items-stretch">
-                    {problems.map(({ name, status }) => (
+                    {result.map((status, index) => (
                         <div
-                            key={name}
+                            key={index}
                             className={`h-2 ${
                                 status == 'success'
                                     ? 'bg-lime-500'
@@ -41,7 +43,7 @@ function Card({ title, end, problems, id }: Props) {
                     ))}
                 </div>
                 <h6 className="font-bold text-md">
-                    {success}/{problems.length}
+                    {success}/{result.length}
                 </h6>
             </div>
         </div>
