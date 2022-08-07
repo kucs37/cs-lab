@@ -98,7 +98,7 @@ function Lab() {
         <WithNavbar>
             <div className="px-3 container mx-auto mt-2 my-10">
                 <div className="my-6">
-                    <Backto href="#" />
+                    <Backto href={`${router.asPath}/`} />
                     <Breadcrumb />
                 </div>
                 <div className="bg-white p-6 rounded-lg shadow-sm">

@@ -7,12 +7,11 @@ interface Props {
 
 const WithNavbar: React.FC<Props> = ({ children }) => {
     return (
-        <>
+        <div className="flex flex-col w-full h-screen">
             <Navbar />
-            <div style={{ maxWidth: '90rem' }} className="mx-auto">
-                {children}
-            </div>
-        </>
+
+            {children}
+        </div>
     )
 }
 

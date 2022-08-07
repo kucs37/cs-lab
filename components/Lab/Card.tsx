@@ -14,7 +14,7 @@ function Card({ title, end, problems, id }: Props) {
     const isEnd = new Date(end) < new Date()
 
     return (
-        <Link href={`${router.asPath}/labs/${id}`}>
+        <Link href={`${router.asPath}/lab/${id}`}>
             <a className="col-span-12 md:col-span-6 xl:col-span-4">
                 <div className="rounded-lg border-[1px] bg-white border-gray-50 w-full h-full px-6 py-4 shadow-sm flex flex-col gap-3">
                     <div className="flex flex-wrap items-center gap-2">

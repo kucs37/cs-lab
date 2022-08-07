@@ -7,7 +7,7 @@ function Breadcrumb({}: Props) {
 
     return (
         <div className="flex flex-wrap items-center gap-4 my-4 text-sm">
-            <Link href="/class/112">
+            <Link href="/cs112">
                 <a>
                     <p>Fundamental Programming Concepts</p>
                 </a>
