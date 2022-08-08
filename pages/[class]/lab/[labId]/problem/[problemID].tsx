@@ -1,4 +1,4 @@
-import { createRef, useEffect } from 'react'
+import { createRef, MouseEvent, useEffect } from 'react'
 import WithNavbar from '@layouts/WithNavbar'
 import Description from '@components/Problem/Description'
 import Editor from '@components/Problem/Editor'
@@ -20,29 +20,25 @@ function Problem() {
     }
 
     useEffect(() => {
-        document.addEventListener('mousemove', handleOnMouseMove)
         document.addEventListener('mouseup', handleOnMouseUp)
 
         return () => {
-            document.removeEventListener('mousemove', handleOnMouseMove)
             document.removeEventListener('mouseup', handleOnMouseUp)
         }
     }, [])
 
-    if (typeof window !== undefined) {
-        return (
-            <WithNavbar ref={body}>
-                <div
-                    className="flex min-h-0 h-full"
-                    onMouseMove={handleOnMouseMove}
-                >
-                    <Description />
-                    <Scroll />
-                    <Editor />
-                </div>
-            </WithNavbar>
-        )
-    }
+    return (
+        <WithNavbar ref={body}>
+            <div
+                className="flex flex-wrap md:flex-nowrap min-h-0 h-full"
+                onMouseMove={handleOnMouseMove}
+            >
+                <Description />
+                <Scroll />
+                <Editor />
+            </div>
+        </WithNavbar>
+    )
 }
 
 export default Problem

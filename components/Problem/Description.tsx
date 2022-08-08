@@ -32,10 +32,10 @@ $$
 
 function Description() {
     const [scrollSize, setScrollSize] = useRecoilState(scrollState)
-    
+
     return (
         <div
-            className="bg-white rounded-lg  h-full overflow-y-scroll p-4"
+            className="bg-white rounded-lg  h-full overflow-y-scroll p-4 min-w-[300px]"
             style={{ width: `${scrollSize}px` }}
         >
             <a className="flex items-center gap-2 w-fit" href="">

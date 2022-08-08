@@ -50,7 +50,7 @@
     core-js-pure "^3.20.2"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.10.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.17.2", "@babel/runtime@^7.18.3", "@babel/runtime@^7.18.9", "@babel/runtime@^7.5.5", "@babel/runtime@^7.8.7":
+"@babel/runtime@^7.10.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.17.2", "@babel/runtime@^7.18.3", "@babel/runtime@^7.18.6", "@babel/runtime@^7.18.9", "@babel/runtime@^7.5.5", "@babel/runtime@^7.8.7":
   version "7.18.9"
   resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.18.9.tgz"
   integrity sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==
@@ -123,10 +123,20 @@
     "@codemirror/view" "^6.0.0"
     crelt "^1.0.5"
 
-"@codemirror/state@^6.0.0", "@codemirror/state@^6.1.1":
+"@codemirror/state@^6.0.0":
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/@codemirror/state/-/state-6.1.1.tgz#4f512e5e34ea23a5e10b2c1fe43f6195e90417bb"
   integrity sha512-2s+aXsxmAwnR3Rd+JDHPG/1lw0YsA9PEwl7Re88gHJHGfxyfEzKBmsN4rr53RyPIR4lzbbhJX0DCq0WlqlBIRw==
+
+"@codemirror/theme-one-dark@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@codemirror/theme-one-dark/-/theme-one-dark-6.0.0.tgz#81a999a568217f68522bd8846cbf7210ca2a59df"
+  integrity sha512-jTCfi1I8QT++3m21Ui6sU8qwu3F/hLv161KLxfvkV1cYWSBwyUanmQFs89ChobQjBHi2x7s2k71wF9WYvE8fdw==
+  dependencies:
+    "@codemirror/language" "^6.0.0"
+    "@codemirror/state" "^6.0.0"
+    "@codemirror/view" "^6.0.0"
+    "@lezer/highlight" "^1.0.0"
 
 "@codemirror/view@^6.0.0":
   version "6.2.0"
@@ -643,6 +653,115 @@
     "@typescript-eslint/types" "5.31.0"
     eslint-visitor-keys "^3.3.0"
 
+"@uiw/codemirror-extensions-basic-setup@4.11.4":
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/@uiw/codemirror-extensions-basic-setup/-/codemirror-extensions-basic-setup-4.11.4.tgz#c749a66980e18ca6651488712ea3239c82a31cdd"
+  integrity sha512-pc9pQtCQFmAH5nV9UmX37VB0+yzSFQ2kbSvLHBFST9siYnacaR6HxmkBBBbYYXwVK/n9pGZ6A8ZefAUNTFfo/A==
+  dependencies:
+    "@codemirror/autocomplete" "^6.0.0"
+    "@codemirror/commands" "^6.0.0"
+    "@codemirror/language" "^6.0.0"
+    "@codemirror/lint" "^6.0.0"
+    "@codemirror/search" "^6.0.0"
+    "@codemirror/state" "^6.0.0"
+    "@codemirror/view" "^6.0.0"
+
+"@uiw/codemirror-theme-abcdef@^4.11.4":
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/@uiw/codemirror-theme-abcdef/-/codemirror-theme-abcdef-4.11.4.tgz#aebce568eaaada7d3d3d5432a7fc4965bf04f262"
+  integrity sha512-XefG4v7BqBtExtsg10um0QOjAl8qqJXJqbz7JWDefVSIH/sBMPMViYo0pPnuvkJerazMbYE53hWgKLuBx+/j9w==
+  dependencies:
+    "@uiw/codemirror-themes" "4.11.4"
+
+"@uiw/codemirror-theme-androidstudio@^4.11.4":
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/@uiw/codemirror-theme-androidstudio/-/codemirror-theme-androidstudio-4.11.4.tgz#63f0016005c637c9c1917a1008d6c0b0c74075dc"
+  integrity sha512-akQiaz+UDXtgqRkdeCcvnK0MiFJJhkDa7FWZ89p5kBIcLpLhdQN5BzkTRissLHkfjTZWmAhykgf6Y9CiGAFQiw==
+  dependencies:
+    "@uiw/codemirror-themes" "4.11.4"
+
+"@uiw/codemirror-theme-atomone@^4.11.5":
+  version "4.11.5"
+  resolved "https://registry.yarnpkg.com/@uiw/codemirror-theme-atomone/-/codemirror-theme-atomone-4.11.5.tgz#e1c771f049ac07387454d168aa965e942a4e514a"
+  integrity sha512-40+t5jyVXgv1KRrCVJCbG0iz5tmCZk9M+Zhj9akEVralmtgbYCj4punGhIJA2FxQDEBF82tlOC6z9XNTjjXIrA==
+  dependencies:
+    "@uiw/codemirror-themes" "4.11.4"
+
+"@uiw/codemirror-theme-bespin@^4.11.4":
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/@uiw/codemirror-theme-bespin/-/codemirror-theme-bespin-4.11.4.tgz#7789c0feb1ecec55aa580e0f5dc711984a792797"
+  integrity sha512-pEYk3eAriJzg6Twy/aJlHw9TwcploVsdA04t1bjOLy/89EOoQdVTC6N8n/CfqTK5rq5lVICh7p8hByYIcUBalQ==
+  dependencies:
+    "@uiw/codemirror-themes" "4.11.4"
+
+"@uiw/codemirror-theme-darcula@^4.11.4":
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/@uiw/codemirror-theme-darcula/-/codemirror-theme-darcula-4.11.4.tgz#195229526ec31f6d4c4feae82df3c964a6642c7a"
+  integrity sha512-9bLls3ATy9ik0ZaXVStahgwGVYud5VcRLhoq5UCgIIG1UBpS1pc0Sxo3SzE1m+kfdjTLzqqXpZkNFGGPXLJSlQ==
+  dependencies:
+    "@uiw/codemirror-themes" "4.11.4"
+
+"@uiw/codemirror-theme-dracula@^4.11.4":
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/@uiw/codemirror-theme-dracula/-/codemirror-theme-dracula-4.11.4.tgz#3d7418d9dfeb90c98a59a159702f003127c7cd64"
+  integrity sha512-sJUk1jsKtS+higisFLJWE+F78IEohg+pRBKjfVeCwvxOwIKr8lPfwboVeoR9q6LwoeftG0PaWkdio1X8Kk2XWw==
+  dependencies:
+    "@uiw/codemirror-themes" "4.11.4"
+
+"@uiw/codemirror-theme-duotone@^4.11.4":
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/@uiw/codemirror-theme-duotone/-/codemirror-theme-duotone-4.11.4.tgz#b5f77090a6c8b09912e376ecaf37bfd0096bf4f2"
+  integrity sha512-3e5f+O+n9ROssjMQJQE5xqPmG+UsEZZqjP8jGaadf16tQ8iauwKqO+f66zADZ+nqcLHXsmHOaRQawKiGUsZjTQ==
+  dependencies:
+    "@uiw/codemirror-themes" "4.11.4"
+
+"@uiw/codemirror-theme-eclipse@^4.11.4":
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/@uiw/codemirror-theme-eclipse/-/codemirror-theme-eclipse-4.11.4.tgz#d6eab0ba48dc59a4e251a403ed7c24ad0a768f3d"
+  integrity sha512-F34ZfLZaKw/K24a79YUkTEjfbGih9QdT4LNSU9HiobB4SfQQimmGlCf0M9/XUb+iuR3uNCtaWFzchG160XZKzw==
+  dependencies:
+    "@uiw/codemirror-themes" "4.11.4"
+
+"@uiw/codemirror-theme-github@^4.11.4":
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/@uiw/codemirror-theme-github/-/codemirror-theme-github-4.11.4.tgz#95e97ec7825fab279e2bcb095344c80206c23370"
+  integrity sha512-NHmSQjZPLGcEnMxcAbg1K+0MUjByrax4drepjlrXEqN8QSpGvTMVkVMwHhn3VZdsaAY/4zoL7JmLc6nAykW+5A==
+  dependencies:
+    "@uiw/codemirror-themes" "4.11.4"
+
+"@uiw/codemirror-theme-okaidia@^4.11.4":
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/@uiw/codemirror-theme-okaidia/-/codemirror-theme-okaidia-4.11.4.tgz#22651680000d01484569768d5c58b92ac8b8f1b3"
+  integrity sha512-eKiqXlWMBGyiauMTfyTAytA7OB2r/fPfXDODbbc7TlL0PRInTLbQuJB9CuS2Dvmc0c3ITpvcUzdlVzbAXyBuVQ==
+  dependencies:
+    "@uiw/codemirror-themes" "4.11.4"
+
+"@uiw/codemirror-theme-sublime@^4.11.4":
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/@uiw/codemirror-theme-sublime/-/codemirror-theme-sublime-4.11.4.tgz#f3b905e1c2d26f715e4d198a942528d67a395e39"
+  integrity sha512-c/flm9REn0hrtTI/++F25NXUbuJYcprG2KN5bG7ranr0E/QNgECOTF/HRQv3hXcCq5rwc7HYBCU3vNWvbLraEQ==
+  dependencies:
+    "@uiw/codemirror-themes" "4.11.4"
+
+"@uiw/codemirror-themes@4.11.4":
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/@uiw/codemirror-themes/-/codemirror-themes-4.11.4.tgz#52a25f04756bfb388a2c1cbdbf980bffc781cc73"
+  integrity sha512-tp4wahAuGRhMoKNMk/6lt8nNr21UZ4zhFqdDTZZ4jLc2w4BKTQ23AkublXAM8vMSuYt/LpE+cajuq4/aSYn01w==
+  dependencies:
+    "@codemirror/language" "^6.0.0"
+    "@codemirror/state" "^6.0.0"
+    "@codemirror/view" "^6.0.0"
+
+"@uiw/react-codemirror@^4.11.4":
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-4.11.4.tgz#76adc757baa0b8b1a9bd30d7081f5622b896d607"
+  integrity sha512-p7DNBI6kj+DUzTe7MjBJwZ3qo0nSOav7T0MEGRpRNZA9ZO3RnzhPMie6swDA8e3dz1s59l9UdFB1fgyam1vFhQ==
+  dependencies:
+    "@babel/runtime" "^7.18.6"
+    "@codemirror/theme-one-dark" "^6.0.0"
+    "@uiw/codemirror-extensions-basic-setup" "4.11.4"
+    codemirror "^6.0.0"
+
 acorn-jsx@^5.3.2:
   version "5.3.2"
   resolved "https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz"
@@ -904,12 +1023,17 @@ chokidar@^3.5.3:
   optionalDependencies:
     fsevents "~2.3.2"
 
+classnames@^2.2.3:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
+  integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
+
 clsx@^1.2.1:
   version "1.2.1"
   resolved "https://registry.npmjs.org/clsx/-/clsx-1.2.1.tgz"
   integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
 
-codemirror@^6.0.1:
+codemirror@^6.0.0:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-6.0.1.tgz#62b91142d45904547ee3e0e0e4c1a79158035a29"
   integrity sha512-J8j+nZ+CdWmIeFIGXEFbFPtpiYacFMDR8GlHK3IyHQJMCaVRfGx9NT+Hxivv1ckLWPvNdZqndbr/7lVhrf/Svg==
@@ -2791,6 +2915,13 @@ react-dom@18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
+react-dropdown@^1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/react-dropdown/-/react-dropdown-1.10.0.tgz#c566e5de5212dc4bf2041c20d755e667760b8fab"
+  integrity sha512-jvlPVB5KU1tuacx9+igu5c+Xtpzjos5ZRXhMxHiVmdEM0SR2vabeAoL9QfN3p4e1CjgdjYsM8gCXbFNSyT25EQ==
+  dependencies:
+    classnames "^2.2.3"
+
 react-icons@^4.4.0:
   version "4.4.0"
   resolved "https://registry.npmjs.org/react-icons/-/react-icons-4.4.0.tgz"
@@ -3356,6 +3487,11 @@ use-sync-external-store@1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz"
   integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
+
+usehooks-ts@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/usehooks-ts/-/usehooks-ts-2.6.0.tgz#aebab367da2350a0bee1c3749bc6dd4bcce3eaae"
+  integrity sha512-Kj/4oc2nOxRDGTDb2v1ZulF7+tpeXFuqI6cUesM0Vic7TPPDlFORxKh4ivsYg+NTvX/YbM+lhqqkfFTiIt23eg==
 
 util-deprecate@^1.0.2:
   version "1.0.2"
