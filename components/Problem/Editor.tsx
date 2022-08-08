@@ -2,7 +2,7 @@ import { useState, useEffect, ChangeEvent } from 'react'
 import { scrollState } from '@store/ScrollSize'
 import { useRecoilState } from 'recoil'
 import useWindowSize from 'hooks/useWindowSize'
-import { BsFillPlayFill } from 'react-icons/bs'
+import { BsFillPlayFill, BsCheck } from 'react-icons/bs'
 import CodeMirror from '@uiw/react-codemirror'
 import { python } from '@codemirror/lang-python'
 import Theme, { themes } from './theme'
@@ -19,7 +19,7 @@ function Editor() {
 
     return (
         <div
-            className={`bg-white flex flex-col w-full md:ml-2 mt-10 md:mt-0`}
+            className={`bg-white flex flex-col w-full  mt-10 md:mt-0 h-full`}
             style={{ width: `${width! - scrollSize}px` }}
         >
             <div className="flex justify-between items-center gap-2 p-2">
@@ -28,11 +28,16 @@ function Editor() {
                     select={theme}
                     options={themes.map(({ name }) => name)}
                 />
-
-                <button className="m-2 self-end flex items-center gap-2 bg-lime-400 w-fit p-2 rounded-md text-white shadow-md">
-                    <BsFillPlayFill />
-                    Run
-                </button>
+                <div className="flex items-center gap-2">
+                    <button className="self-end flex items-center gap-2 bg-lime-400 w-fit p-2 rounded-md text-white shadow-md">
+                        <BsFillPlayFill />
+                        Run
+                    </button>
+                    <button className="self-end flex items-center gap-2 bg-yellow-400 w-fit p-2 rounded-md text-white shadow-md">
+                        <BsCheck size="1.5rem" />
+                        Submit
+                    </button>
+                </div>
             </div>
 
             <CodeMirror
@@ -40,10 +45,8 @@ function Editor() {
                 minHeight="345px"
                 height="100%"
                 extensions={[python()]}
-                className="w-full h-full overflow-scroll"
+                className="h-full overflow-y-scroll md:pl-2"
             />
-
-            {/* <div className="w-full h-24 bg-gray-500"></div> */}
         </div>
     )
 }

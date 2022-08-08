@@ -12,6 +12,7 @@
     "@codemirror/lang-python": "^6.0.1",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
+    "@lottiefiles/react-lottie-player": "^3.4.7",
     "@mui/material": "^5.9.2",
     "@tailwindcss/typography": "^0.5.4",
     "@uiw/codemirror-theme-abcdef": "^4.11.4",
