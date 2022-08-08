@@ -9,8 +9,6 @@ import Theme, { themes } from './theme'
 import { themesI } from '@interface/Themes'
 import dynamic from 'next/dynamic'
 
-import 'react-dropdown/style.css'
-
 import { useLocalStorage } from 'usehooks-ts'
 const ThemeSelect = dynamic(() => import('./ThemeSelect'), { ssr: false })
 
@@ -21,7 +19,7 @@ function Editor() {
 
     return (
         <div
-            className="bg-white flex flex-col w-full ml-2"
+            className={`bg-white flex flex-col w-full md:ml-2 mt-10 md:mt-0`}
             style={{ width: `${width! - scrollSize}px` }}
         >
             <div className="flex justify-between items-center gap-2 p-2">
@@ -39,12 +37,13 @@ function Editor() {
 
             <CodeMirror
                 theme={Theme(theme)}
+                minHeight="345px"
                 height="100%"
                 extensions={[python()]}
                 className="w-full h-full overflow-scroll"
             />
 
-            <div className="w-full h-24 bg-gray-500"></div>
+            {/* <div className="w-full h-24 bg-gray-500"></div> */}
         </div>
     )
 }

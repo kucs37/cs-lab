@@ -13,6 +13,7 @@ function Scroll() {
             ref={scroll}
             className="hidden md:flex w-4 h-full border-x-2 bg-gray-50  flex-col justify-center items-center cursor-ew-resize"
             onMouseDown={handleOnMouseDown}
+            onTouchStart={handleOnMouseDown}
         >
             <BsThreeDotsVertical />
         </div>

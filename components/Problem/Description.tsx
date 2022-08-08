@@ -35,7 +35,7 @@ function Description() {
 
     return (
         <div
-            className="bg-white rounded-lg  h-full overflow-y-scroll p-4 min-w-[300px]"
+            className="bg-white rounded-lg  h-full md:overflow-y-scroll p-4 min-w-[400px]"
             style={{ width: `${scrollSize}px` }}
         >
             <a className="flex items-center gap-2 w-fit" href="">
