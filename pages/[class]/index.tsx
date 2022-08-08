@@ -64,6 +64,7 @@ function Class() {
                             }
                         }).map(({ title, problems, end, id }) => (
                             <Card
+                                key={id}
                                 id={id}
                                 title={title}
                                 problems={problems}

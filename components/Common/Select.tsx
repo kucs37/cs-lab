@@ -1,16 +1,16 @@
-import { themesI } from '@interface/Themes'
 import { useState } from 'react'
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
-interface ThemeSelectI {
-    select: themesI
-    options: themesI[]
-    onSelect: (value: themesI) => void
+
+interface SelectI {
+    selected: any
+    options: any[]
+    onSelect: (value: any) => void
 }
-function ThemeSelect({ select, options, onSelect }: ThemeSelectI) {
+function ThemeSelect({ selected, options, onSelect }: SelectI) {
     const [isSelect, setIsSelect] = useState<boolean>(false)
     const handleOnClick = () => setIsSelect(!isSelect)
 
-    const handleSelectTheme = (name: themesI) => {
+    const handleSelectTheme = (name: any) => {
         setIsSelect(false)
         onSelect(name)
     }
@@ -20,7 +20,7 @@ function ThemeSelect({ select, options, onSelect }: ThemeSelectI) {
                 onClick={handleOnClick}
                 className="border-2 border-gray-200 rounded-lg py-2 px-3 flex items-center gap-2"
             >
-                <p>{select}</p>
+                <p>{selected}</p>
                 {isSelect ? <BsChevronUp /> : <BsChevronDown />}
             </button>
             {isSelect && (
