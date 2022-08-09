@@ -48,10 +48,6 @@ export const themes: ThemesI[] = [
         theme: duotoneDark,
     },
     {
-        name: 'duotoneDark',
-        theme: duotoneDark,
-    },
-    {
         name: 'duotoneLight',
         theme: duotoneLight,
     },
