@@ -10,7 +10,9 @@ import { themesI } from '@interface/Themes'
 import dynamic from 'next/dynamic'
 
 import { useLocalStorage } from 'usehooks-ts'
+
 const Select = dynamic(() => import('../Common/Select'), { ssr: false })
+const Console = dynamic(() => import('./Console'), { ssr: false })
 
 function Editor() {
     const [scrollSize, setScrollSize] = useRecoilState(scrollState)
@@ -63,15 +65,17 @@ function Editor() {
                     </button>
                 </div>
             </div>
-
-            <CodeMirror
-                theme={Theme(theme)}
-                minHeight="345px"
-                height="100%"
-                extensions={[python()]}
-                style={{ fontSize }}
-                className="h-full overflow-y-scroll md:pl-2"
-            />
+            <div className="relative h-full flex flex-col">
+                <CodeMirror
+                    theme={Theme(theme)}
+                    minHeight="345px"
+                    height="100%"
+                    extensions={[python()]}
+                    style={{ fontSize }}
+                    className="h-full overflow-y-scroll"
+                />
+                {/* <Console /> */}
+            </div>
         </div>
     )
 }
