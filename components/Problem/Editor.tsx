@@ -8,9 +8,9 @@ import { python } from '@codemirror/lang-python'
 import Theme, { themes } from './theme'
 import { themesI } from '@interface/Themes'
 import dynamic from 'next/dynamic'
-
 import { useLocalStorage } from 'usehooks-ts'
 import { MenuItem } from '@mui/material'
+const Console = dynamic(() => import('./Console'), { ssr: false })
 const Select = dynamic(() => import('@mui/material/Select'), { ssr: false })
 
 function Editor() {
@@ -101,7 +101,7 @@ function Editor() {
                     style={{ fontSize }}
                     className="h-full overflow-y-scroll"
                 />
-                {/* <Console /> */}
+                <Console />
             </div>
         </div>
     )
