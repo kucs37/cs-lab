@@ -8,6 +8,7 @@ import { useRecoilState } from 'recoil'
 import { scrollState } from '@store/ScrollSize'
 
 import 'katex/dist/katex.min.css'
+import { useRouter } from 'next/router'
 
 const markdown = `
 ### แปลงอุณหภูมิ
@@ -32,16 +33,24 @@ $$
 
 function Description() {
     const [scrollSize, setScrollSize] = useRecoilState(scrollState)
+    const router = useRouter()
+
+    const goBack = () => {
+        router.push(`/${router.query.class}/lab/${router.query.labId}/`)
+    }
 
     return (
         <div
             className="bg-white rounded-lg  h-full md:overflow-y-scroll p-4 min-w-[400px]"
             style={{ width: `${scrollSize}px` }}
         >
-            <a className="flex items-center gap-2 w-fit" href="">
+            <button
+                className="flex items-center gap-2 w-fit"
+                onClick={() => goBack()}
+            >
                 <FaChevronLeft />
                 <p>ย้อนกลับ</p>
-            </a>
+            </button>
             <div className="mt-4 flex flex-col gap-4 items-start w-full h-full">
                 <h1 className="text-xl font-bold">01 แปลงอุณหภูมิ</h1>
                 <div className="flex items-center gap-1 text-sm justify-start w-full">
