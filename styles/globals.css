@@ -5,3 +5,16 @@
 body {
     font-family: 'Noto Sans Thai', sans-serif;
 }
+
+
+::-webkit-scrollbar{
+	width: 12px;
+}
+
+::-webkit-scrollbar-thumb{
+	background-color: #CBCBCB;
+}
+
+::-webkit-scrollbar-thumb:hover{
+	background-color: #909090;
+}
