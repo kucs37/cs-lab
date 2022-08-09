@@ -10,7 +10,8 @@ import { themesI } from '@interface/Themes'
 import dynamic from 'next/dynamic'
 
 import { useLocalStorage } from 'usehooks-ts'
-const Select = dynamic(() => import('../Common/Select'), { ssr: false })
+import { MenuItem } from '@mui/material'
+const Select = dynamic(() => import('@mui/material/Select'), { ssr: false })
 
 function Editor() {
     const [scrollSize, setScrollSize] = useRecoilState(scrollState)
@@ -18,22 +19,46 @@ function Editor() {
     const [theme, setTheme] = useLocalStorage<themesI>('theme', 'bespin')
     const [fontSize, setFontSize] = useLocalStorage<string>('fontSize', '16px')
 
+    const handleChangeTheme = (event: any) => {
+        const {
+            target: { value },
+        } = event
+        setTheme(value)
+    }
+
+    const handleChangeFont = (event: any) => {
+        const {
+            target: { value },
+        } = event
+        setFontSize(value)
+    }
+
     return (
         <div
             className={`bg-white flex flex-col w-full  mt-10 md:mt-0 h-full`}
             style={{ width: `${width! - scrollSize}px` }}
         >
-            <div className="flex justify-between items-center gap-2 p-2">
+            <div className="flex flex-wrap md:justify-between justify-center items-center gap-2 p-2">
                 <div className="flex items-center gap-2">
                     <Select
-                        onSelect={(value) => setTheme(value as themesI)}
-                        selected={theme}
-                        options={themes.map(({ name }) => name)}
-                    />
+                        size="small"
+                        value={theme}
+                        sx={{ maxWidth: 300 }}
+                        onChange={handleChangeTheme}
+                    >
+                        {themes.map(({ name }, id) => (
+                            <MenuItem key={id} value={name}>
+                                {name}
+                            </MenuItem>
+                        ))}
+                    </Select>
                     <Select
-                        onSelect={(value) => setFontSize(value)}
-                        selected={fontSize}
-                        options={[
+                        size="small"
+                        value={fontSize}
+                        sx={{ width: 100 }}
+                        onChange={handleChangeFont}
+                    >
+                        {[
                             '12px',
                             '14px',
                             '16px',
@@ -49,8 +74,12 @@ function Editor() {
                             '36px',
                             '38px',
                             '40px',
-                        ]}
-                    />
+                        ].map((size, id) => (
+                            <MenuItem key={id} value={size}>
+                                {size}
+                            </MenuItem>
+                        ))}
+                    </Select>
                 </div>
                 <div className="flex items-center gap-2">
                     <button className="self-end flex items-center gap-2 bg-lime-400 w-fit p-2 rounded-md text-white shadow-md">
