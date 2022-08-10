@@ -8,43 +8,42 @@ interface HandleKeyI {
 }
 
 function Console() {
-    const [cmd, setCmd] = useState<string>('')
-    const ref = useRef<HTMLDivElement | null>(null)
-
-    const handleKeyPress = ({ key, domEvent }: HandleKeyI) => {
-        console.log(key)
-        if (domEvent.key !== 'Backspace') {
-            setCmd((prev) => prev + key)
-        }
-    }
-
-    const handleBackSpacePress = ({ key, domEvent }: HandleKeyI) => {
-        if (domEvent.key === 'Backspace') {
-            console.log(cmd.slice(0, -1))
-            // setCmd()
-        }
-    }
+    const terminal = new Terminal()
+    const inputRef = useRef<string | null>(null)
+    const xTermRef = useRef(null)
 
     useEffect(() => {
-        if (!ref.current) return
-        const terminal = new Terminal()
+        inputRef.current = ''
+    }, [])
 
-        terminal.open(ref.current)
-        terminal.onKey(handleKeyPress)
-        terminal.onKey(handleBackSpacePress)
-    }, [ref])
+    useEffect(() => {
+        if (!xTermRef.current) return
+        terminal.open(xTermRef.current)
+        terminal.write('$')
 
-    // useEffect(() => {
-    //     console.log(cmd)
-    //     terminal.write(cmd)
-    // }, [cmd])
+        terminal.onData((data) => {
+            const code = data.charCodeAt(0)
 
-    return (
-        <div className="h-fit flex flex-col items-start bg-white px-1 py-2 font-medium">
-            <div className="">Console</div>
-            <div ref={ref}></div>
-        </div>
-    )
+            if (code === 13) {
+                terminal.write(`\r\n${inputRef.current}\n`)
+                terminal.write('\r$')
+                inputRef.current = ''
+            } else if (code === 127 && terminal._core.buffer.x > 1) {
+                terminal.write('\b \b')
+                inputRef.current = inputRef.current!.substring(
+                    0,
+                    inputRef.current!.length - 1
+                )
+            } else if (code < 32) {
+                return
+            } else {
+                terminal.write(data)
+                inputRef.current = inputRef.current + data
+            }
+        })
+    }, [xTermRef])
+
+    return <div ref={xTermRef}></div>
 }
 
 export default Console

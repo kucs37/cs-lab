@@ -16,9 +16,10 @@ import { useRouter } from 'next/router'
 import { Box, Tab } from '@mui/material'
 import { useState } from 'react'
 
-import SubtitlesIcon from '@mui/icons-material/Subtitles';
-import ChatIcon from '@mui/icons-material/Chat';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import SubtitlesIcon from '@mui/icons-material/Subtitles'
+import ChatIcon from '@mui/icons-material/Chat'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import TerminalIcon from '@mui/icons-material/Terminal'
 import Submission from './Submission'
 
 const markdown = `
@@ -57,11 +58,6 @@ function Description() {
 
     return (
         <>
-            {/* <div className="px-2 flex items-center gap-1">
-                <div>Result: PASSED</div>
-                <BsCheckLg color="green" />
-                <div>[PPPPP]</div>
-            </div> */}
             <div
                 className="bg-white rounded-lg h-full md:overflow-y-scroll md:min-w-[450px] p-4 "
                 style={{ width: `${scrollSize}px` }}
@@ -76,12 +72,33 @@ function Description() {
                 <TabContext value={value}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                         <TabList onChange={handleChange}>
-                            <Tab icon={<SubtitlesIcon />} iconPosition="start" label="Description" value="Description" />
-                            <Tab icon={<ChatIcon />} iconPosition="start" label="Discuss" value="Discuss" />
-                            <Tab icon={<AccessTimeIcon />} iconPosition="start" label="Submissions" value="Submissions" />
+                            <Tab
+                                icon={<SubtitlesIcon />}
+                                iconPosition="start"
+                                label="Description"
+                                value="Description"
+                            />
+                            <Tab
+                                icon={<ChatIcon />}
+                                iconPosition="start"
+                                label="Discuss"
+                                value="Discuss"
+                            />
+                            <Tab
+                                icon={<AccessTimeIcon />}
+                                iconPosition="start"
+                                label="Submissions"
+                                value="Submissions"
+                            />
+                            <Tab
+                                icon={<TerminalIcon />}
+                                iconPosition="start"
+                                label="Submissions"
+                                value="Submissions"
+                            />
                         </TabList>
                     </Box>
-                    <TabPanel sx={{padding:2}} value="Description">
+                    <TabPanel sx={{ padding: 2 }} value="Description">
                         <div className="mt-4 flex flex-col gap-4 items-start w-full h-full">
                             <h1 className="text-xl font-bold">
                                 01 แปลงอุณหภูมิ
