@@ -4,8 +4,12 @@ import { RecoilRoot } from 'recoil'
 import Loading from '@components/Common/Loading'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { SessionProvider } from 'next-auth/react'
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp: React.FC<AppProps> = ({
+    Component,
+    pageProps: { session, ...pageProps },
+}) => {
     const [isStart, setIsStart] = useState<boolean>(false)
     const router = useRouter()
 
@@ -23,10 +27,12 @@ function MyApp({ Component, pageProps }: AppProps) {
     }, [router])
 
     return (
-        <RecoilRoot>
-            {isStart && <Loading />}
-            <Component {...pageProps} />
-        </RecoilRoot>
+        <SessionProvider session={session}>
+            <RecoilRoot>
+                {isStart && <Loading />}
+                <Component {...pageProps} />
+            </RecoilRoot>
+        </SessionProvider>
     )
 }
 

@@ -2,8 +2,10 @@ import type { NextPage } from 'next'
 import { useRecoilState } from 'recoil'
 import { counterState } from '@store/counterState'
 import AsyncBtn from '@components/Common/AsynBtn'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createTheme, TextField, ThemeProvider } from '@mui/material'
+import { signIn, useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 const textFieldTheme = createTheme({
     palette: {
@@ -22,6 +24,16 @@ const textFieldTheme = createTheme({
 const Login: NextPage = () => {
     const [counter, setCounter] = useRecoilState(counterState)
     const [isSubmit, setIsSubmit] = useState<boolean>(false) // Test Async Button component
+    const { status } = useSession()
+    const router = useRouter()
+
+    useEffect(() => {
+        if (status !== 'loading') {
+            if (status === 'authenticated') {
+                router.push('/')
+            }
+        }
+    }, [status])
 
     const handleSubmit = () => {
         setIsSubmit(true)
@@ -63,7 +75,10 @@ const Login: NextPage = () => {
                             placeholder="รหัสผ่านบัญชีผู้ใช้เครือข่ายนนทรี"
                         />
                     </ThemeProvider>
-                    <AsyncBtn isLoading={false} onClick={() => {}}>
+                    <AsyncBtn
+                        isLoading={false}
+                        onClick={() => signIn('google')}
+                    >
                         เข้าสู่ระบบ
                     </AsyncBtn>
                 </div>
