@@ -8,7 +8,7 @@ import ProfileImage from './ProfileImage'
 interface Props {}
 
 const Navbar: NextPage<Props> = () => {
-    const { status } = useSession()
+    const { status, data: session } = useSession()
 
     return (
         <div className="w-full bg-white border-b-[1px]">
@@ -21,7 +21,7 @@ const Navbar: NextPage<Props> = () => {
                         <div className="flex w-full items-center gap-2">
                             <div className="flex flex-col">
                                 <h2 className="text-md font-bold">
-                                    นายศรชัย สมสกุล
+                                    {session.user?.name}
                                 </h2>
                                 <div className="inline-flex gap-2 items-center">
                                     <FaGraduationCap />
