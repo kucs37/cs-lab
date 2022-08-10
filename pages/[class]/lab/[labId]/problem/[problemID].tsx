@@ -43,7 +43,7 @@ function Problem() {
     return (
         <WithNavbar ref={body}>
             <div
-                className="flex flex-wrap md:flex-nowrap h-full"
+                className="flex flex-wrap md:flex-nowrap min-h-0  h-full"
                 onMouseMove={handleOnMouseMove}
                 onTouchMove={handleOnTouchMove}
             >
