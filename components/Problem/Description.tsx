@@ -7,13 +7,10 @@ import { FaChevronLeft } from 'react-icons/fa'
 import { useRecoilState } from 'recoil'
 import { scrollState } from '@store/ScrollSize'
 
-import TabContext from '@mui/lab/TabContext'
-import TabList from '@mui/lab/TabList'
-import TabPanel from '@mui/lab/TabPanel'
+import { Tabs, Tab, Box, Typography } from '@mui/material'
 
 import 'katex/dist/katex.min.css'
 import { useRouter } from 'next/router'
-import { Box, Tab } from '@mui/material'
 import { useState } from 'react'
 
 import SubtitlesIcon from '@mui/icons-material/Subtitles'
@@ -43,13 +40,20 @@ $$
 หนึ่งบรรทัด ประกอบด้วย ตัวเลขจำนวนจริงสองจำนวน คั่นด้วยเว้นวรรค จำนวนแรกคือ ค่าอุณหภูมิหน่วยองศาฟาเรนไฮต์ จำนวนที่สองคือ ค่าอุณหภูมิหน่วยเคลวิน
 `
 
+interface TabPanelProps {
+    children?: React.ReactNode
+    index: number
+    value: number
+}
+
 function Description() {
     const [scrollSize, setScrollSize] = useRecoilState(scrollState)
     const router = useRouter()
-    const [value, setValue] = useState('Description')
+    const [value, setValue] = useState(0)
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-        setValue(newValue)
+        setValue(1)
+        // setValue(newValue)
     }
 
     const goBack = () => {
@@ -69,64 +73,26 @@ function Description() {
                     <FaChevronLeft />
                     <p>ย้อนกลับ</p>
                 </button>
-                <TabContext value={value}>
-                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                        <TabList onChange={handleChange}>
-                            <Tab
-                                icon={<SubtitlesIcon />}
-                                iconPosition="start"
-                                label="Description"
-                                value="Description"
-                            />
-                            <Tab
-                                icon={<ChatIcon />}
-                                iconPosition="start"
-                                label="Discuss"
-                                value="Discuss"
-                            />
-                            <Tab
-                                icon={<AccessTimeIcon />}
-                                iconPosition="start"
-                                label="Submissions"
-                                value="Submissions"
-                            />
-                            <Tab
-                                icon={<TerminalIcon />}
-                                iconPosition="start"
-                                label="Submissions"
-                                value="Submissions"
-                            />
-                        </TabList>
-                    </Box>
-                    <TabPanel sx={{ padding: 2 }} value="Description">
-                        <div className="mt-4 flex flex-col gap-4 items-start w-full h-full">
-                            <h1 className="text-xl font-bold">
-                                01 แปลงอุณหภูมิ
-                            </h1>
-                            <div className="flex items-center gap-1 text-sm justify-start w-full">
-                                <span className="text-yellow-300">
-                                    <AiFillStar size="1.25rem" />
-                                </span>
-                                <p>4.5</p>
-                                <p>•</p>
-                                <p>25 รีวิว</p>
-                            </div>
-                            <hr className="w-full" />
-                            <ReactMarkdown
-                                className="prose w-full py-4"
-                                remarkPlugins={[remarkGFM, remarkMath]}
-                                rehypePlugins={[rehypeKatex]}
-                                children={markdown}
-                            />
+                <div className="mt-4 flex flex-col gap-4 items-start w-full h-full">
+                    <h1 className="text-xl font-bold">01 แปลงอุณหภูมิ</h1>
+                    <div className="flex items-center gap-1 text-sm justify-start w-full">
+                        <span className="text-yellow-300">
+                            <AiFillStar size="1.25rem" />
+                        </span>
+                        <p>4.5</p>
+                        <p>•</p>
+                        <p>25 รีวิว</p>
+                    </div>
+                    <hr className="w-full" />
+                    <ReactMarkdown
+                        className="prose w-full py-4"
+                        remarkPlugins={[remarkGFM, remarkMath]}
+                        rehypePlugins={[rehypeKatex]}
+                        children={markdown}
+                    />
 
-                            <p className="text-gray-500"></p>
-                        </div>
-                    </TabPanel>
-                    <TabPanel value="Discuss">Discuss</TabPanel>
-                    <TabPanel value="Submissions">
-                        <Submission />
-                    </TabPanel>
-                </TabContext>
+                    <p className="text-gray-500"></p>
+                </div>
             </div>
         </>
     )

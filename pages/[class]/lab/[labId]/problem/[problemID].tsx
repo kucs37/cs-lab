@@ -20,7 +20,10 @@ function Problem() {
     }
 
     const handleOnTouchMove = (e: TouchEvent) => {
-        if (isDrag && (width! - scrollSize > 478 || e.touches[0].pageX < scrollSize))
+        if (
+            isDrag &&
+            (width! - scrollSize > 478 || e.touches[0].pageX < scrollSize)
+        )
             setScrollSize(e.touches[0].pageX)
     }
 
@@ -40,7 +43,7 @@ function Problem() {
     return (
         <WithNavbar ref={body}>
             <div
-                className="flex flex-wrap md:flex-nowrap min-h-0 h-full"
+                className="flex flex-wrap md:flex-nowrap h-full"
                 onMouseMove={handleOnMouseMove}
                 onTouchMove={handleOnTouchMove}
             >
