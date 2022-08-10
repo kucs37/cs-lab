@@ -101,7 +101,9 @@ function Editor() {
                     style={{ fontSize }}
                     className="h-full overflow-y-scroll"
                 />
-                <Console />
+                <div className="">
+                    <Console />
+                </div>
             </div>
         </div>
     )
