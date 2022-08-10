@@ -19,6 +19,7 @@ import { useState } from 'react'
 import SubtitlesIcon from '@mui/icons-material/Subtitles';
 import ChatIcon from '@mui/icons-material/Chat';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import Submission from './Submission'
 
 const markdown = `
 ### แปลงอุณหภูมิ
@@ -62,7 +63,7 @@ function Description() {
                 <div>[PPPPP]</div>
             </div> */}
             <div
-                className="bg-white rounded-lg h-full overflow-y-scroll min-w-[600px] p-4 "
+                className="bg-white rounded-lg h-full md:overflow-y-scroll md:min-w-[450px] p-4 "
                 style={{ width: `${scrollSize}px` }}
             >
                 <button
@@ -105,7 +106,9 @@ function Description() {
                         </div>
                     </TabPanel>
                     <TabPanel value="Discuss">Discuss</TabPanel>
-                    <TabPanel value="Submissions">Submissions</TabPanel>
+                    <TabPanel value="Submissions">
+                        <Submission />
+                    </TabPanel>
                 </TabContext>
             </div>
         </>
