@@ -29,6 +29,8 @@
         "@uiw/codemirror-theme-okaidia": "^4.11.4",
         "@uiw/codemirror-theme-sublime": "^4.11.4",
         "@uiw/react-codemirror": "^4.11.4",
+        "axios": "^0.27.2",
+        "jsonwebtoken": "^8.5.1",
         "next": "12.2.4",
         "next-auth": "^4.10.3",
         "react": "18.2.0",
@@ -43,6 +45,7 @@
         "xterm": "^4.19.0"
     },
     "devDependencies": {
+        "@types/jsonwebtoken": "^8.5.8",
         "@types/node": "18.6.3",
         "@types/react": "18.0.15",
         "@types/react-dom": "18.0.6",
