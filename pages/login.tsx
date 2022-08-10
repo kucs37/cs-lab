@@ -4,6 +4,7 @@ import { counterState } from '@store/counterState'
 import AsyncBtn from '@components/Common/AsynBtn'
 import { useState } from 'react'
 import { createTheme, TextField, ThemeProvider } from '@mui/material'
+import { signIn } from "next-auth/react"
 
 const textFieldTheme = createTheme({
     palette: {
@@ -63,7 +64,7 @@ const Login: NextPage = () => {
                             placeholder="รหัสผ่านบัญชีผู้ใช้เครือข่ายนนทรี"
                         />
                     </ThemeProvider>
-                    <AsyncBtn isLoading={false} onClick={() => {}}>
+                    <AsyncBtn isLoading={false} onClick={() => signIn("google")}>
                         เข้าสู่ระบบ
                     </AsyncBtn>
                 </div>
