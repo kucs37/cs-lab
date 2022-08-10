@@ -7,7 +7,18 @@ import { FaChevronLeft } from 'react-icons/fa'
 import { useRecoilState } from 'recoil'
 import { scrollState } from '@store/ScrollSize'
 
+import TabContext from '@mui/lab/TabContext'
+import TabList from '@mui/lab/TabList'
+import TabPanel from '@mui/lab/TabPanel'
+
 import 'katex/dist/katex.min.css'
+import { useRouter } from 'next/router'
+import { Box, Tab } from '@mui/material'
+import { useState } from 'react'
+
+import SubtitlesIcon from '@mui/icons-material/Subtitles';
+import ChatIcon from '@mui/icons-material/Chat';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 const markdown = `
 ### แปลงอุณหภูมิ
@@ -32,37 +43,72 @@ $$
 
 function Description() {
     const [scrollSize, setScrollSize] = useRecoilState(scrollState)
+    const router = useRouter()
+    const [value, setValue] = useState('Description')
+
+    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+        setValue(newValue)
+    }
+
+    const goBack = () => {
+        router.push(`/${router.query.class}/lab/${router.query.labId}/`)
+    }
 
     return (
-        <div
-            className="bg-white rounded-lg  h-full md:overflow-y-scroll p-4 min-w-[400px]"
-            style={{ width: `${scrollSize}px` }}
-        >
-            <a className="flex items-center gap-2 w-fit" href="">
-                <FaChevronLeft />
-                <p>ย้อนกลับ</p>
-            </a>
-            <div className="mt-4 flex flex-col gap-4 items-start w-full h-full">
-                <h1 className="text-xl font-bold">01 แปลงอุณหภูมิ</h1>
-                <div className="flex items-center gap-1 text-sm justify-start w-full">
-                    <span className="text-yellow-300">
-                        <AiFillStar size="1.25rem" />
-                    </span>
-                    <p>4.5</p>
-                    <p>•</p>
-                    <p>25 รีวิว</p>
-                </div>
-                <hr className="w-full" />
-                <ReactMarkdown
-                    className="prose w-full py-4"
-                    remarkPlugins={[remarkGFM, remarkMath]}
-                    rehypePlugins={[rehypeKatex]}
-                    children={markdown}
-                />
+        <>
+            {/* <div className="px-2 flex items-center gap-1">
+                <div>Result: PASSED</div>
+                <BsCheckLg color="green" />
+                <div>[PPPPP]</div>
+            </div> */}
+            <div
+                className="bg-white rounded-lg h-full overflow-y-scroll min-w-[600px] p-4 "
+                style={{ width: `${scrollSize}px` }}
+            >
+                <button
+                    className="flex items-center gap-2 w-fit"
+                    onClick={() => goBack()}
+                >
+                    <FaChevronLeft />
+                    <p>ย้อนกลับ</p>
+                </button>
+                <TabContext value={value}>
+                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                        <TabList onChange={handleChange}>
+                            <Tab icon={<SubtitlesIcon />} iconPosition="start" label="Description" value="Description" />
+                            <Tab icon={<ChatIcon />} iconPosition="start" label="Discuss" value="Discuss" />
+                            <Tab icon={<AccessTimeIcon />} iconPosition="start" label="Submissions" value="Submissions" />
+                        </TabList>
+                    </Box>
+                    <TabPanel sx={{padding:2}} value="Description">
+                        <div className="mt-4 flex flex-col gap-4 items-start w-full h-full">
+                            <h1 className="text-xl font-bold">
+                                01 แปลงอุณหภูมิ
+                            </h1>
+                            <div className="flex items-center gap-1 text-sm justify-start w-full">
+                                <span className="text-yellow-300">
+                                    <AiFillStar size="1.25rem" />
+                                </span>
+                                <p>4.5</p>
+                                <p>•</p>
+                                <p>25 รีวิว</p>
+                            </div>
+                            <hr className="w-full" />
+                            <ReactMarkdown
+                                className="prose w-full py-4"
+                                remarkPlugins={[remarkGFM, remarkMath]}
+                                rehypePlugins={[rehypeKatex]}
+                                children={markdown}
+                            />
 
-                <p className="text-gray-500"></p>
+                            <p className="text-gray-500"></p>
+                        </div>
+                    </TabPanel>
+                    <TabPanel value="Discuss">Discuss</TabPanel>
+                    <TabPanel value="Submissions">Submissions</TabPanel>
+                </TabContext>
             </div>
-        </div>
+        </>
     )
 }
 
