@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect, useCallback } from 'react'
-import { XTerm } from 'xterm-for-react'
+import { useState, useRef, useEffect } from 'react'
+import { Terminal } from 'xterm'
+import 'xterm/css/xterm.css'
 
 interface HandleKeyI {
     key: string
@@ -7,49 +8,42 @@ interface HandleKeyI {
 }
 
 function Console() {
-    const [input, setInput] = useState<string>('')
-    const xTermRef = useRef<XTerm>(null)
+    const terminal = new Terminal()
+    const inputRef = useRef<string | null>(null)
+    const xTermRef = useRef(null)
+
+    useEffect(() => {
+        inputRef.current = ''
+    }, [])
 
     useEffect(() => {
         if (!xTermRef.current) return
+        terminal.open(xTermRef.current)
+        terminal.write('$')
 
-        // xTermRef.current.terminal.write('Hello World')
+        terminal.onData((data) => {
+            const code = data.charCodeAt(0)
+
+            if (code === 13) {
+                terminal.write(`\r\n${inputRef.current}\n`)
+                terminal.write('\r$')
+                inputRef.current = ''
+            } else if (code === 127 && terminal._core.buffer.x > 1) {
+                terminal.write('\b \b')
+                inputRef.current = inputRef.current!.substring(
+                    0,
+                    inputRef.current!.length - 1
+                )
+            } else if (code < 32) {
+                return
+            } else {
+                terminal.write(data)
+                inputRef.current = inputRef.current + data
+            }
+        })
     }, [xTermRef])
 
-    return (
-        <div className="h-fit flex flex-col items-start bg-white px-1 py-2 font-medium">
-            <div className="">Console</div>
-            <XTerm
-                ref={xTermRef}
-                onData={(data) => {
-                    const code = data.charCodeAt(0)
-                    if (!xTermRef.current) return
-                    // If the user hits empty and there is something typed echo it.
-                    if (code === 13 && input.length > 0) {
-                        xTermRef.current.terminal.write(
-                            "\r\nYou typed: '" + input + "'\r\n"
-                        )
-                        alert(input)
-                        xTermRef.current.terminal.write('echo>')
-                        setInput('')
-                    } else if (
-                        code === 127 &&
-                        xTermRef.current.terminal._core.buffer.x > 5
-                    ) {
-                        xTermRef.current.terminal.write('\b \b')
-                        setInput(input.substring(0, input.length - 1))
-                    } else if (code < 32 || code === 127) {
-                        // Disable control Keys such as arrow keys
-                        return
-                    } else {
-                        // Add general key press characters to the terminal
-                        xTermRef.current.terminal.write(data)
-                        setInput(input + data)
-                    }
-                }}
-            />
-        </div>
-    )
+    return <div ref={xTermRef}></div>
 }
 
 export default Console
