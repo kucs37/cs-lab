@@ -3,11 +3,6 @@ import { Terminal } from 'xterm'
 import 'xterm/css/xterm.css'
 import { FitAddon } from 'xterm-addon-fit'
 
-interface HandleKeyI {
-    key: string
-    domEvent: KeyboardEvent
-}
-
 function Console() {
     const terminal = new Terminal()
     const fitAddon = new FitAddon()
@@ -39,8 +34,8 @@ function Console() {
                     0,
                     inputRef.current!.length - 1
                 )
-            } else if (code < 32) {
-                return
+            } else if (code == 12) {
+                terminal.clear()
             } else {
                 terminal.write(data)
                 inputRef.current = inputRef.current + data
