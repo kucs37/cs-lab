@@ -10,7 +10,7 @@ import { themesI } from '@interface/Themes'
 import dynamic from 'next/dynamic'
 import { useLocalStorage } from 'usehooks-ts'
 import { MenuItem } from '@mui/material'
-const Console = dynamic(() => import('./Console'), { ssr: false })
+const Console = dynamic(() => import('./Leftpanel/Console'), { ssr: false })
 const Select = dynamic(() => import('@mui/material/Select'), { ssr: false })
 
 function Editor() {

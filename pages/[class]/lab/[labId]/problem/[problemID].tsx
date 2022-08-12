@@ -1,12 +1,16 @@
 import { createRef, MouseEvent, TouchEvent, useEffect } from 'react'
-import WithNavbar from '@layouts/WithNavbar'
-import Description from '@components/Problem/Description'
-import Editor from '@components/Problem/Editor'
-import Scroll from '@components/Problem/Scroll'
 import { useRecoilState } from 'recoil'
 import { problemState } from '@store/ProblemState'
 import { scrollState } from '@store/ScrollSize'
+import WithNavbar from '@layouts/WithNavbar'
+import Leftpanel from '@components/Problem/Leftpanel'
+import Editor from '@components/Problem/Editor'
+import Scroll from '@components/Problem/Scroll'
+
 import useWindowSize from 'hooks/useWindowSize'
+
+import CodeMirror from '@uiw/react-codemirror'
+import { python } from '@codemirror/lang-python'
 
 function Problem() {
     const body = createRef<HTMLDivElement>()
@@ -47,7 +51,7 @@ function Problem() {
                 onMouseMove={handleOnMouseMove}
                 onTouchMove={handleOnTouchMove}
             >
-                <Description />
+                <Leftpanel />
                 <Scroll />
                 <Editor />
             </div>
