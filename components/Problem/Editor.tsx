@@ -10,7 +10,7 @@ import { themesI } from '@interface/Themes'
 import dynamic from 'next/dynamic'
 import { useLocalStorage } from 'usehooks-ts'
 import { MenuItem } from '@mui/material'
-const Console = dynamic(() => import('./Leftpanel/Console'), { ssr: false })
+import { useMediaQuery } from 'usehooks-ts'
 const Select = dynamic(() => import('@mui/material/Select'), { ssr: false })
 
 function Editor() {
@@ -18,6 +18,7 @@ function Editor() {
     const { width } = useWindowSize()
     const [theme, setTheme] = useLocalStorage<themesI>('theme', 'bespin')
     const [fontSize, setFontSize] = useLocalStorage<string>('fontSize', '16px')
+    const isMd = useMediaQuery('(min-width: 768px)')
 
     const handleChangeTheme = (event: any) => {
         const {
@@ -35,10 +36,10 @@ function Editor() {
 
     return (
         <div
-            className={`bg-white flex flex-col w-full  mt-10 md:mt-0 h-full`}
-            style={{ width: `${width! - scrollSize}px` }}
+            className={`bg-white flex flex-col w-full md:mt-0 h-full border-t-2`}
+            style={{ width: isMd ? `${width! - scrollSize}px` : '100%' }}
         >
-            <div className="flex flex-wrap md:justify-between justify-center items-center gap-2 p-2">
+            <div className="flex md:justify-between justify-center items-center gap-2 p-2">
                 <div className="flex items-center gap-2">
                     <Select
                         size="small"

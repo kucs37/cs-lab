@@ -9,9 +9,6 @@ import Scroll from '@components/Problem/Scroll'
 
 import useWindowSize from 'hooks/useWindowSize'
 
-import CodeMirror from '@uiw/react-codemirror'
-import { python } from '@codemirror/lang-python'
-
 function Problem() {
     const body = createRef<HTMLDivElement>()
     const [isDrag, setIsDrag] = useRecoilState(problemState)

@@ -16,6 +16,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import TerminalIcon from '@mui/icons-material/Terminal'
 import Submission from '../Submission'
 import dynamic from 'next/dynamic'
+import { useMediaQuery } from 'usehooks-ts'
 
 const Console = dynamic(() => import('./Console'), { ssr: false })
 import Description from './Description'
@@ -24,6 +25,7 @@ function LeftPanel() {
     const [scrollSize, setScrollSize] = useRecoilState(scrollState)
     const router = useRouter()
     const [value, setValue] = useState('Description')
+    const isMd = useMediaQuery('(min-width: 768px)')
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue)
@@ -36,8 +38,8 @@ function LeftPanel() {
     return (
         <TabContext value={value}>
             <div
-                className="bg-white flex flex-col h-full md:overflow-y-scroll md:min-w-[450px]"
-                style={{ width: `${scrollSize}px` }}
+                className="w-full bg-white flex flex-col md:overflow-y-scroll md:min-w-[450px]"
+                style={{ width: isMd ? `${scrollSize}px` : '100%' }}
             >
                 <button
                     className="flex items-center gap-2 w-fit p-4"
@@ -72,7 +74,7 @@ function LeftPanel() {
                                 ) : undefined
                             }
                             iconPosition="start"
-                            label="Shell"
+                            label="Console"
                             value="Console"
                         />
                         <Tab
@@ -97,7 +99,7 @@ function LeftPanel() {
                 </Box>
 
                 <TabPanel
-                    className="overflow-y-scroll p-0  h-full"
+                    className="md:overflow-y-scroll p-0  h-full"
                     value="Description"
                 >
                     <Description />
