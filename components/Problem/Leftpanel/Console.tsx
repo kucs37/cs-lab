@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import { Terminal } from 'xterm'
-import 'xterm/css/xterm.css'
+
 import { FitAddon } from 'xterm-addon-fit'
 
 function Console() {
