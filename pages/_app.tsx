@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-// import '../styles/xterm.css'
+import '../styles/xterm.css'
 import type { AppProps } from 'next/app'
 import { RecoilRoot } from 'recoil'
 import Loading from '@components/Common/Loading'
