@@ -2,10 +2,11 @@ import { createRef, MouseEvent, TouchEvent, useEffect } from 'react'
 import { useRecoilState } from 'recoil'
 import { problemState } from '@store/ProblemState'
 import { scrollState } from '@store/ScrollSize'
+import dynamic from 'next/dynamic'
 import WithNavbar from '@layouts/WithNavbar'
-import Leftpanel from '@components/Problem/Leftpanel'
 import Editor from '@components/Problem/Editor'
 import Scroll from '@components/Problem/Scroll'
+import Leftpanel from '@components/Problem/Leftpanel'
 
 import useWindowSize from 'hooks/useWindowSize'
 

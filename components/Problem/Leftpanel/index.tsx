@@ -22,12 +22,12 @@ const Console = dynamic(() => import('./Console'), { ssr: false })
 import Description from './Description'
 
 function LeftPanel() {
-    const [scrollSize, setScrollSize] = useRecoilState(scrollState)
+    const [scrollSize, _] = useRecoilState(scrollState)
     const router = useRouter()
     const [value, setValue] = useState('Description')
     const isMd = useMediaQuery('(min-width: 768px)')
 
-    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    const handleChange = (_: React.SyntheticEvent, newValue: string) => {
         setValue(newValue)
     }
 
@@ -38,11 +38,11 @@ function LeftPanel() {
     return (
         <TabContext value={value}>
             <div
-                className="w-full bg-white flex flex-col md:overflow-y-scroll md:min-w-[450px]"
+                className="w-full bg-white flex-1 flex flex-col md:overflow-y-scroll md:min-w-[450px]"
                 style={{ width: isMd ? `${scrollSize}px` : '100%' }}
             >
                 <button
-                    className="flex items-center gap-2 w-fit p-4"
+                    className="flex items-center gap-2 w-fit p-4 mt-4 md:mt-0"
                     onClick={() => goBack()}
                 >
                     <FaChevronLeft />
