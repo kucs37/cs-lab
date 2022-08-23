@@ -18,6 +18,8 @@ import Submission from '../Submission'
 import dynamic from 'next/dynamic'
 import { useMediaQuery } from 'usehooks-ts'
 
+import { useEffect } from 'react'
+
 const Console = dynamic(() => import('./Console'), { ssr: false })
 import Description from './Description'
 
@@ -33,6 +35,10 @@ function LeftPanel() {
 
     const goBack = () => {
         router.push(`/${router.query.class}/lab/${router.query.labId}/`)
+    }
+
+    const handleResize = () => {
+        console.log('resize')
     }
 
     return (

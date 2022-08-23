@@ -43,6 +43,8 @@ function Console() {
         })
     }, [xTermRef])
 
+    window.onresize = () => fitAddon.fit()
+
     return <div className="w-full h-full" ref={xTermRef}></div>
 }
 
