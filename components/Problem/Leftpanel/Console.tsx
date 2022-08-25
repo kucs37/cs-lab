@@ -2,8 +2,11 @@ import { useRef, useEffect } from 'react'
 import { Terminal } from 'xterm'
 
 import { FitAddon } from 'xterm-addon-fit'
+import { useRecoilState } from 'recoil'
+import { scrollState } from '@store/ScrollSize'
 
 function Console() {
+    const [scrollSize, _] = useRecoilState(scrollState)
     const terminal = new Terminal()
     const fitAddon = new FitAddon()
 
@@ -19,8 +22,8 @@ function Console() {
         terminal.loadAddon(fitAddon)
         terminal.open(xTermRef.current)
         terminal.write('$ ')
-        fitAddon.fit()
 
+        fitAddon.fit()
         terminal.onData((data) => {
             const code = data.charCodeAt(0)
 
@@ -42,8 +45,6 @@ function Console() {
             }
         })
     }, [xTermRef])
-
-    window.onresize = () => fitAddon.fit()
 
     return <div className="w-full h-full" ref={xTermRef}></div>
 }

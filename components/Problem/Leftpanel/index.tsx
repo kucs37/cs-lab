@@ -37,10 +37,6 @@ function LeftPanel() {
         router.push(`/${router.query.class}/lab/${router.query.labId}/`)
     }
 
-    const handleResize = () => {
-        console.log('resize')
-    }
-
     return (
         <TabContext value={value}>
             <div
@@ -55,9 +51,10 @@ function LeftPanel() {
                     <p>ย้อนกลับ</p>
                 </button>
 
-                <Box className="shadow-sm">
+                <Box className="shadow-sm w-full">
                     <Tabs
                         value={value}
+                        centered
                         onChange={handleChange}
                         variant="fullWidth"
                         allowScrollButtonsMobile
@@ -111,7 +108,7 @@ function LeftPanel() {
                     <Description />
                 </TabPanel>
                 <TabPanel value="Discuss">Discuss</TabPanel>
-                <TabPanel className="p-0  h-full" value="Console">
+                <TabPanel className="p-0  h-full w-full bg-black" value="Console">
                     <Console />
                 </TabPanel>
                 <TabPanel className="p-0  h-full" value="Submissions">

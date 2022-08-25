@@ -5,7 +5,7 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import 'katex/dist/katex.min.css'
 
-const markdown = `
+const markdown : string = `
 เขียนโปรแกรมภาษาไพทอน ที่รับเลขจำนวนเต็มบวก n แล้วแสดงผลลัพธ์เป็น ผลบวกของเลขจำนวนเต็มบวกสองจำนวน a และ b โดยที่ a * b = n และ (a+b) มีค่าน้อยที่สุด
 
 **ตัวอย่างข้อมูลเข้า/ข้อมูลออก**
