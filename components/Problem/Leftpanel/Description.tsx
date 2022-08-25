@@ -5,7 +5,7 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import 'katex/dist/katex.min.css'
 
-const markdown : string = `
+const markdown: string = `
 เขียนโปรแกรมภาษาไพทอน ที่รับเลขจำนวนเต็มบวก n แล้วแสดงผลลัพธ์เป็น ผลบวกของเลขจำนวนเต็มบวกสองจำนวน a และ b โดยที่ a * b = n และ (a+b) มีค่าน้อยที่สุด
 
 **ตัวอย่างข้อมูลเข้า/ข้อมูลออก**
@@ -43,15 +43,19 @@ function Description() {
                 <h1 className="text-xl font-bold">
                     09 Find a, b in which a*b=n and (a+b) is the lowest
                 </h1>
-                <div className="flex items-center gap-1 text-sm justify-start w-full">
-                    <span className="text-yellow-300">
-                        <AiFillStar size="1.25rem" />
-                    </span>
-                    <p>4.5</p>
-                    <p>•</p>
-                    <p>25 รีวิว</p>
+                <div className="flex items-center w-full gap-2">
+                    <div className="flex items-center gap-1 text-sm justify-start w-fit">
+                        <span className="text-yellow-300">
+                            <AiFillStar size="1.25rem" />
+                        </span>
+                        <p>4.5</p>
+                        <p>•</p>
+                        <p>25 รีวิว</p>
+                    </div>
+                    <div className="">(<span className='text-lime-500'>PPPPP</span>)</div>
                 </div>
                 <hr className="w-full" />
+
                 <ReactMarkdown
                     className="prose w-full py-4"
                     remarkPlugins={[remarkGFM, remarkMath]}

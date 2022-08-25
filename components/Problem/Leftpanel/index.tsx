@@ -8,17 +8,18 @@ import { useState } from 'react'
 
 import dynamic from 'next/dynamic'
 import { useMediaQuery } from 'usehooks-ts'
-import Tabs from '@components/Problem/Leftpanel/Tabs'
 
-const Console = dynamic(() => import('./Console'), { ssr: false })
 import Description from './Description'
+const Console = dynamic(() => import('./Console'), { ssr: false })
+import Submissions from './Submissions'
+
 import Menu from './Tabs/Menu'
+
 import { MenuType } from '@interface/Menu'
 
 function LeftPanel() {
     const [scrollSize, _] = useRecoilState(scrollState)
     const router = useRouter()
-    const [value, setValue] = useState('Description')
     const isMd = useMediaQuery('(min-width: 768px)')
     const [menu, setMenu] = useState<MenuType>('Description')
 
@@ -28,7 +29,7 @@ function LeftPanel() {
 
     return (
         <div
-            className="w-full bg-white flex-1 flex flex-col md:overflow-y-scroll"
+            className="w-full bg-white flex-1 flex flex-col md:overflow-y-scroll md:min-w-[450px]"
             style={{ width: isMd ? `${scrollSize}px` : '100%' }}
         >
             <div className="flex flex-col md:flex-row w-full h-full">
@@ -46,7 +47,7 @@ function LeftPanel() {
                     </button>
                     {menu === 'Description' && <Description />}
                     {menu === 'Console' && <Console />}
-                    {menu === 'Submissions' && <h1>Test</h1>}
+                    {menu === 'Submissions' && <Submissions />}
                     {menu === 'Discussion' && <h1>Hello</h1>}
                 </div>
             </div>
