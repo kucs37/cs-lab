@@ -46,7 +46,7 @@ function Console() {
         })
     }, [xTermRef])
 
-    return <div className="w-full h-full" ref={xTermRef}></div>
+    return <div className="h-full" ref={xTermRef}></div>
 }
 
 export default Console

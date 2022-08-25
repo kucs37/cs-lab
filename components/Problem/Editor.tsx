@@ -93,14 +93,14 @@ function Editor() {
                     </button>
                 </div>
             </div>
-            <div className="relative h-full flex flex-col">
+            <div className="relative h-full  overflow-y-scroll flex flex-col">
                 <CodeMirror
                     theme={Theme(theme)}
                     minHeight="345px"
                     height="100%"
                     extensions={[python()]}
                     style={{ fontSize }}
-                    className="h-full overflow-y-scroll"
+                    className="h-full"
                 />
             </div>
         </div>
