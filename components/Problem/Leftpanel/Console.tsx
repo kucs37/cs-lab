@@ -7,7 +7,7 @@ import { scrollState } from '@store/ScrollSize'
 
 function Console() {
     const [scrollSize, _] = useRecoilState(scrollState)
-    const terminal = new Terminal()
+    const terminal: Terminal & { _core?: any } = new Terminal()
     const fitAddon = new FitAddon()
 
     const inputRef = useRef<string | null>(null)
