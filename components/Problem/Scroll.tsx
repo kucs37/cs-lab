@@ -4,9 +4,10 @@ import { problemState } from '@store/ProblemState'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 function Scroll() {
     const scroll = useRef<HTMLDivElement | null>(null)
-    const [isDrag, setIsDrag] = useRecoilState(problemState)
+    const [_, setProblem] = useRecoilState(problemState)
 
-    const handleOnMouseDown = () => setIsDrag(true)
+    const handleOnMouseDown = () =>
+        setProblem((prev) => ({ ...prev, isDrag: true }))
 
     return (
         <div

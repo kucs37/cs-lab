@@ -2,7 +2,7 @@ import { atom } from 'recoil'
 
 const scrollState = atom<number>({
     key: 'scroll',
-    default: 450,
+    default: 550,
 })
 
 export { scrollState }

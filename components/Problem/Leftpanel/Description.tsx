@@ -38,8 +38,8 @@ const markdown: string = `
 
 function Description() {
     return (
-        <div className="w-full h-full md:overflow-y-scroll p-4">
-            <div className="mt-4 flex flex-col gap-4 items-start w-full h-full">
+        <div className="w-full p-4 h-full md:overflow-y-scroll">
+            <div className="flex flex-col gap-4 items-start w-full">
                 <h1 className="text-xl font-bold">
                     09 Find a, b in which a*b=n and (a+b) is the lowest
                 </h1>
@@ -52,18 +52,18 @@ function Description() {
                         <p>•</p>
                         <p>25 รีวิว</p>
                     </div>
-                    <div className="">(<span className='text-lime-500'>PPPPP</span>)</div>
+                    <div className="">
+                        (<span className="text-lime-500">PPPPP</span>)
+                    </div>
                 </div>
                 <hr className="w-full" />
 
                 <ReactMarkdown
-                    className="prose w-full py-4"
+                    className="prose w-full py-4 md:h-1"
                     remarkPlugins={[remarkGFM, remarkMath]}
                     rehypePlugins={[rehypeKatex]}
                     children={markdown}
                 />
-
-                <p className="text-gray-500"></p>
             </div>
         </div>
     )
