@@ -12,7 +12,7 @@ function Settings() {
     const [fontSize, setFontSize] = useLocalStorage<string>('fontSize', '16px')
 
     const settingsRef = useRef<HTMLDivElement>(null)
-    const [problem, setProblem] = useRecoilState(problemState)
+    const [_, setProblem] = useRecoilState(problemState)
 
     useOnClickOutside(settingsRef, () =>
         setProblem((prev) => ({ ...prev, isSettings: false }))

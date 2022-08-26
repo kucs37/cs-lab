@@ -7,19 +7,14 @@ import Editor from '@components/Problem/Editor'
 import Scroll from '@components/Problem/Scroll'
 import Leftpanel from '@components/Problem/Leftpanel'
 import Settings from '@components/Problem/Settings'
-import Description from '@components/Problem/Leftpanel/Description'
 
-import useWindowSize from 'hooks/useWindowSize'
 
 function Problem() {
     const body = createRef<HTMLDivElement>()
     const [problem, setProblem] = useRecoilState(problemState)
-    const [scrollSize, setScrollSize] = useRecoilState(scrollState)
-    const { width } = useWindowSize()
+    const [_, setScrollSize] = useRecoilState(scrollState)
 
     const handleOnMouseMove = (e: MouseEvent) => {
-        console.log(width! - scrollSize)
-
         if (problem.isDrag && e.pageX < 768) setScrollSize(e.pageX)
     }
 

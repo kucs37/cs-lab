@@ -1,6 +1,4 @@
 import React from 'react'
-import { useRouter } from 'next/router'
-import { FaChevronLeft } from 'react-icons/fa'
 import { MenuType } from '@interface/Menu'
 
 interface MenuProps {
@@ -9,10 +7,7 @@ interface MenuProps {
 }
 
 function Menu({ menu, onChange }: MenuProps) {
-    const router = useRouter()
-    const goBack = () => {
-        router.push(`/${router.query.class}/lab/${router.query.labId}/`)
-    }
+   
     const menus = [
         { name: 'โจทย์', id: 'Description' },
         { name: 'คอนโซล', id: 'Console' },
