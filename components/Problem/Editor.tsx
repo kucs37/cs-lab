@@ -22,6 +22,7 @@ function Editor() {
         >
             <CodeMirror
                 theme={Theme(theme)}
+                placeholder="เขียนโค้ดตรงนี้..."
                 minHeight="345px"
                 height="100%"
                 extensions={[python()]}

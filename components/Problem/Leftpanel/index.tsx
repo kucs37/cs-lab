@@ -14,7 +14,7 @@ import Description from './Description'
 const Console = dynamic(() => import('./Console'), { ssr: false })
 import Submissions from './Submissions'
 
-import Menu from './Tabs/Menu'
+import Menu from './Menu'
 
 import { MenuType } from '@interface/Menu'
 import { problemState } from '@store/ProblemState'
@@ -64,7 +64,6 @@ function LeftPanel() {
                         {menu === 'Description' && <Description />}
                         {menu === 'Console' && <Console />}
                         {menu === 'Submissions' && <Submissions />}
-                        {menu === 'Discussion' && <h1>Hello</h1>}
                     </div>
                 </div>
             </div>

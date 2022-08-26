@@ -7,11 +7,10 @@ interface MenuProps {
 }
 
 function Menu({ menu, onChange }: MenuProps) {
-   
     const menus = [
         { name: 'โจทย์', id: 'Description' },
         { name: 'คอนโซล', id: 'Console' },
-        { name: 'ผลลัพธ์', id: 'Submissions' },
+        { name: 'ผลการส่ง', id: 'Submissions' },
     ]
     return (
         <>
