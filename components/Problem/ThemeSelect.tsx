@@ -1,4 +1,4 @@
-import { themesI } from '@interface/Themes'
+import { themesI } from '@/interface/Themes'
 import { useState } from 'react'
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
 interface ThemeSelectI {

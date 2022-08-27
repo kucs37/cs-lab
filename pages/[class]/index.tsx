@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import Card from '@components/Lab/Card'
-import Header from '@components/Class/Header'
-import Backto from '@components/Common/Backto'
-import WithNavbar from '@layouts/WithNavbar'
+import Card from '@/components/Lab/Card'
+import Header from '@/components/Class/Header'
+import Backto from '@/components/Common/Backto'
+import WithNavbar from '@/layouts/WithNavbar'
 import Labs from '../../fakeData'
 
 type showType = 'all' | 'open' | 'close'

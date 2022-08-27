@@ -1,10 +1,10 @@
-import { scrollState } from '@store/ScrollSize'
+import { scrollState } from '@/store/ScrollSize'
 import { useRecoilState } from 'recoil'
 import useWindowSize from 'hooks/useWindowSize'
 import CodeMirror from '@uiw/react-codemirror'
 import { python } from '@codemirror/lang-python'
 import Theme from './theme'
-import { themesI } from '@interface/Themes'
+import { themesI } from '@/interface/Themes'
 import { useLocalStorage } from 'usehooks-ts'
 import { useMediaQuery } from 'usehooks-ts'
 

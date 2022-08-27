@@ -1,4 +1,4 @@
-import Navbar from '@components/Common/Navbar'
+import Navbar from '@/components/Common/Navbar'
 import { forwardRef, LegacyRef } from 'react'
 
 interface Props {

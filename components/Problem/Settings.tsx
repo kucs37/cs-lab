@@ -1,10 +1,10 @@
 import { themes } from './theme'
-import { themesI } from '@interface/Themes'
-import Select from '@components/Common/Select'
+import { themesI } from '@/interface/Themes'
+import Select from '@/components/Common/Select'
 import { useRef } from 'react'
 import { useLocalStorage, useOnClickOutside } from 'usehooks-ts'
 import { useRecoilState } from 'recoil'
-import { problemState } from '@store/ProblemState'
+import { problemState } from '@/store/ProblemState'
 import { GrFormClose } from 'react-icons/gr'
 
 function Settings() {
@@ -53,14 +53,6 @@ function Settings() {
                             className="border-2 text-md p-2 rounded-lg"
                             value={fontSize.replace('px', '')}
                             onChange={(e) => setFontSize(`${e.target.value}px`)}
-                        />
-
-                        <h4>ขนาด Tabs </h4>
-
-                        <input
-                            type="number"
-                            className="border-2 text-md p-2 rounded-lg"
-                            value={4}
                         />
                     </div>
                 </div>

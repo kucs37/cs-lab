@@ -1,8 +1,8 @@
-import WithNavbar from '@layouts/WithNavbar'
-import Header from '@components/Lab/Header'
-import Backto from '@components/Common/Backto'
-import Problem from '@components/Lab/Problem'
-import Breadcrumb from '@components/Common/Breadcrumb'
+import WithNavbar from '@/layouts/WithNavbar'
+import Header from '@/components/Lab/Header'
+import Backto from '@/components/Common/Backto'
+import Problem from '@/components/Lab/Problem'
+import Breadcrumb from '@/components/Common/Breadcrumb'
 import { useRouter } from 'next/router'
 
 type Result = 'success' | 'failed' | 'not-attempted'

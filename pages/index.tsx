@@ -1,8 +1,8 @@
 import React from 'react'
 import type { NextPage } from 'next'
-import Class from '@components/Class'
+import Class from '@/components/Class'
 import Labs from '../fakeData'
-import WithNavbar from '@layouts/WithNavbar'
+import WithNavbar from '@/layouts/WithNavbar'
 
 const Home: NextPage = () => {
     return (

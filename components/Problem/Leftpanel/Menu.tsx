@@ -1,5 +1,5 @@
 import React from 'react'
-import { MenuType } from '@interface/Menu'
+import { MenuType } from '@/interface/Menu'
 
 interface MenuProps {
     menu: MenuType

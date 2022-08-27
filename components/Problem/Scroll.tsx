@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { useRecoilState } from 'recoil'
-import { problemState } from '@store/ProblemState'
+import { problemState } from '@/store/ProblemState'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 function Scroll() {
     const scroll = useRef<HTMLDivElement | null>(null)

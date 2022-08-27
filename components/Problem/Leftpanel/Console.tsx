@@ -3,7 +3,7 @@ import { Terminal } from 'xterm'
 
 import { FitAddon } from 'xterm-addon-fit'
 import { useRecoilState } from 'recoil'
-import { scrollState } from '@store/ScrollSize'
+import { scrollState } from '@/store/ScrollSize'
 
 function Console() {
     const [scrollSize, _] = useRecoilState(scrollState)

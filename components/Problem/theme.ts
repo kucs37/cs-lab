@@ -1,5 +1,5 @@
 import { Extension } from '@codemirror/state'
-import { themesI } from '@interface/Themes'
+import { themesI } from '@/interface/Themes'
 import { abcdef } from '@uiw/codemirror-theme-abcdef'
 import { androidstudio } from '@uiw/codemirror-theme-androidstudio'
 import { atomone } from '@uiw/codemirror-theme-atomone'
@@ -11,6 +11,7 @@ import { eclipse } from '@uiw/codemirror-theme-eclipse'
 import { githubDark, githubLight } from '@uiw/codemirror-theme-github'
 import { okaidia } from '@uiw/codemirror-theme-okaidia'
 import { sublime } from '@uiw/codemirror-theme-sublime'
+import { oneDark } from '@/editorTheme/one-dark'
 
 interface ThemesI {
     name: themesI
