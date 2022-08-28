@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { IoMdClipboard } from 'react-icons/io'
 import CodeMirror from '@uiw/react-codemirror'
 import Theme from '../theme'
 import { python } from '@codemirror/lang-python'
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
-import { useLocalStorage } from 'usehooks-ts'
+import { useLocalStorage, useElementSize } from 'usehooks-ts'
 import { themesI } from '@/interface/Themes'
 import { SubmissionI } from '@/interface/Submission'
+
 interface SubmissionCardI extends SubmissionI {
     isFirst: boolean
 }
@@ -18,10 +19,17 @@ function SubmissionCard({
     code,
 }: SubmissionCardI) {
     const [theme, _] = useLocalStorage<themesI>('theme', 'bespin')
+
+    const [cardRef, { width }] = useElementSize()
+
     const [isSelected, setIsSelected] = useState<boolean>(isFirst)
+
     return (
-        <div className="bg-white p-4 rounded-md shadow-md flex flex-col gap-4 w-full cursor-pointer">
-            <div className="flex justify-between items-center gap-2">
+        <div
+            className="bg-white p-4 rounded-md shadow-md flex flex-col w-full gap-4"
+            ref={cardRef}
+        >
+            <div className="flex justify-between items-center gap-2 cursor-pointer">
                 <div
                     className="flex-1 flex items-center gap-4"
                     onClick={() => setIsSelected(!isSelected)}
@@ -46,14 +54,14 @@ function SubmissionCard({
                 {isSelected ? <BsChevronUp /> : <BsChevronDown />}
             </div>
             {isSelected && (
-                <div className="relative overflow-auto">
+                <div className="rounded-md overflow-hidden">
                     <CodeMirror
                         theme={Theme(theme)}
                         extensions={[python()]}
+                        width={`${width - 40}px`}
                         height="300px"
                         value={code}
                         readOnly
-                        className="h-full rounded-md overflow-hidden"
                     />
                 </div>
             )}

@@ -3,9 +3,7 @@ import { themesI } from '@/interface/Themes'
 import { abcdef } from '@uiw/codemirror-theme-abcdef'
 import { androidstudio } from '@uiw/codemirror-theme-androidstudio'
 import { atomone } from '@uiw/codemirror-theme-atomone'
-import { bespin } from '@uiw/codemirror-theme-bespin'
 import { darcula } from '@uiw/codemirror-theme-darcula'
-import { dracula } from '@uiw/codemirror-theme-dracula'
 import { duotoneDark, duotoneLight } from '@uiw/codemirror-theme-duotone'
 import { eclipse } from '@uiw/codemirror-theme-eclipse'
 import { githubDark, githubLight } from '@uiw/codemirror-theme-github'
@@ -16,7 +14,25 @@ import { aura } from '@/editorTheme/aura'
 import { materialDark } from '@/editorTheme/material-dark'
 import { materialLight } from '@/editorTheme/material-light'
 import { solarizedDark } from '@/editorTheme/solarized-dark'
-import { solarizedLight } from '@/editorTheme/solarized-light'
+
+import {
+    amy,
+    ayuLight,
+    barf,
+    bespin,
+    birdsOfParadise,
+    boysAndGirls,
+    clouds,
+    cobalt,
+    coolGlow,
+    dracula,
+    espresso,
+    noctisLilac,
+    rosePineDawn,
+    smoothy,
+    solarizedLight,
+    tomorrow,
+} from 'thememirror'
 
 interface ThemesI {
     name: themesI
@@ -43,6 +59,18 @@ export const themes: ThemesI[] = [
     { name: 'material-light', theme: materialLight },
     { name: 'solarized-dark', theme: solarizedDark },
     { name: 'solarized-light', theme: solarizedLight },
+    { name: 'amy', theme: amy },
+    { name: 'ayu-light', theme: ayuLight },
+    { name: 'barf', theme: barf },
+    { name: 'birds-of-paradise', theme: birdsOfParadise },
+    { name: 'boys-and-girls', theme: boysAndGirls },
+    { name: 'clouds', theme: clouds },
+    { name: 'cobalt', theme: cobalt },
+    { name: 'cool-glow', theme: coolGlow },
+    { name: 'espresso', theme: espresso },
+    { name: 'noctis-lilac', theme: noctisLilac },
+    { name: 'rose-pine-dawn', theme: rosePineDawn },
+    { name: 'smoothy', theme: smoothy },
 ]
 
 export default function Theme(theme: themesI) {

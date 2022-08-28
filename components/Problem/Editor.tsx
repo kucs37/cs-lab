@@ -17,7 +17,7 @@ function Editor() {
 
     return (
         <div
-            className={`bg-white flex flex-col w-full md:mt-0 h-full border-t-2`}
+            className={`bg-white flex flex-col w-full h-full border-t-2`}
             style={{ width: isMd ? `${width! - scrollSize}px` : '100%' }}
         >
             <CodeMirror
