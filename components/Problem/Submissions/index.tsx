@@ -3,7 +3,7 @@ import { dummySubmissions } from './dummy'
 import Submission from './Submission'
 
 function Submissions() {
-    const [selected, setSelected] = useState<number | null>(0)
+    const [selected, setSelected] = useState<number | null>(1)
 
     const handleOnClick = (order: number) => {
         return selected === order ? setSelected(null) : setSelected(order)

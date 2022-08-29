@@ -61,9 +61,14 @@ function SubmissionCard({
                         </h4>
                     </div>
                 </div>
-                <button onClick={handleOnCopyToCurrent}>
-                    <IoMdClipboard size="1.5rem" />
-                </button>
+                {isSelected && (
+                    <button
+                        className="active:text-gray-500 text-gray-900 transition-all duration-150 active:scale-110"
+                        onClick={handleOnCopyToCurrent}
+                    >
+                        <IoMdClipboard size="1.5rem" />
+                    </button>
+                )}
                 {isSelected ? <BsChevronUp /> : <BsChevronDown />}
             </div>
             {isSelected && (
