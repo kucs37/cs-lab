@@ -56,9 +56,9 @@ function Description() {
                         (<span className="text-lime-500">PPPPP</span>)
                     </div>
                 </div>
-                <hr className="w-full" />
+                <hr className="w-full my-2" />
             </div>
-            <div className="prose h-full overflow-y-scroll bg-white flex-1">
+            <div className="prose h-full overflow-y-scroll flex-1">
                 <ReactMarkdown
                     remarkPlugins={[remarkGFM, remarkMath]}
                     rehypePlugins={[rehypeKatex]}

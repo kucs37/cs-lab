@@ -24,15 +24,15 @@ function Console() {
         if (!xTermRef.current) return
         terminal.loadAddon(fitAddon)
         terminal.open(xTermRef.current)
-        terminal.write('$ ')
+        terminal.write('>>> ')
 
         fitAddon.fit()
         terminal.onData((data) => {
             const code = data.charCodeAt(0)
 
             if (code === 13) {
-                terminal.write(`\r\n${inputRef.current}\n`)
-                terminal.write('\r$ ')
+                terminal.write(`\r\n${inputRef.current}`)
+                terminal.write('\r>>> ')
                 inputRef.current = ''
             } else if (code === 127 && terminal._core.buffer.x > 2) {
                 terminal.write('\b \b')
@@ -48,11 +48,6 @@ function Console() {
             }
         })
     }, [xTermRef])
-
-    terminal.onResize(() => {
-        console.log('resize')
-        fitAddon.fit()
-    })
 
     return <div className="h-full" ref={xTermRef}></div>
 }

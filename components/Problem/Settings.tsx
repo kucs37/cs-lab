@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { themes } from './theme'
 import { themesI } from '@/interface/Themes'
 import Select from '@/components/Common/Select'
@@ -17,6 +18,16 @@ function Settings() {
     useOnClickOutside(settingsRef, () =>
         setProblem((prev) => ({ ...prev, isSettings: false }))
     )
+
+    const handleESCPress = ({ code, key }: KeyboardEvent) => {
+        if (key == 'Escape' || code == 'Escape') {
+            setProblem((prev) => ({ ...prev, isSettings: false }))
+        }
+    }
+    useEffect(() => {
+        document.addEventListener('keydown', handleESCPress)
+        return () => document.removeEventListener('keydown', handleESCPress)
+    }, [])
 
     return (
         <div className="fixed w-full flex justify-center items-center h-screen bg-gray-900 bg-opacity-50 z-40">

@@ -1,4 +1,3 @@
-import { useState, useRef, useEffect } from 'react'
 import { IoMdClipboard } from 'react-icons/io'
 import CodeMirror from '@uiw/react-codemirror'
 import Theme from '../theme'
@@ -7,22 +6,34 @@ import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
 import { useLocalStorage, useElementSize } from 'usehooks-ts'
 import { themesI } from '@/interface/Themes'
 import { SubmissionI } from '@/interface/Submission'
+import { useRecoilState } from 'recoil'
+import { problemState } from '@/store/ProblemState'
+import { format } from 'date-fns'
+import { th } from 'date-fns/locale'
 
 interface SubmissionCardI extends SubmissionI {
     isFirst: boolean
+    isSelected: boolean
+    onClick: () => void
 }
 function SubmissionCard({
     isFirst,
+    isSelected,
+    onClick,
     order,
     date,
     status,
     code,
 }: SubmissionCardI) {
-    const [theme, _] = useLocalStorage<themesI>('theme', 'bespin')
+    const [theme, __] = useLocalStorage<themesI>('theme', 'bespin')
 
     const [cardRef, { width }] = useElementSize()
 
-    const [isSelected, setIsSelected] = useState<boolean>(isFirst)
+    const [_, setProblem] = useRecoilState(problemState)
+
+    const handleOnCopyToCurrent = () => {
+        setProblem((prev) => ({ ...prev, code }))
+    }
 
     return (
         <div
@@ -32,7 +43,7 @@ function SubmissionCard({
             <div className="flex justify-between items-center gap-2 cursor-pointer">
                 <div
                     className="flex-1 flex items-center gap-4"
-                    onClick={() => setIsSelected(!isSelected)}
+                    onClick={onClick}
                 >
                     <div className="p-2 w-10 h-10 rounded-full flex justify-center items-center">
                         <h3 className="text-gray-900 font-bold text-lg">
@@ -44,13 +55,15 @@ function SubmissionCard({
                             ({status.join('')})
                         </h1>
                         <h4 className="text-sm">
-                            ส่งเมื่อ 05 ส.ค 2565 เวลา 16:07
+                            ส่งเมื่อ{' '}
+                            {format(date, 'dd MMMM yyyy', { locale: th })} เวลา{' '}
+                            {format(date, 'HH:mm')}
                         </h4>
                     </div>
                 </div>
-                <div>
+                <button onClick={handleOnCopyToCurrent}>
                     <IoMdClipboard size="1.5rem" />
-                </div>
+                </button>
                 {isSelected ? <BsChevronUp /> : <BsChevronDown />}
             </div>
             {isSelected && (
