@@ -14,7 +14,7 @@ function Menu({ menu, onChange }: MenuProps) {
     ]
     return (
         <>
-            <div className="flex p-2 justify-around text-sm">
+            <div className="flex p-2 justify-around text-sm w-full h-fit">
                 {menus.map(({ name, id }) => (
                     <button
                         onClick={() => onChange(id as MenuType)}

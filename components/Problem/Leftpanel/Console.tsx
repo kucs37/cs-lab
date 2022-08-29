@@ -7,7 +7,10 @@ import { scrollState } from '@/store/ScrollSize'
 
 function Console() {
     const [scrollSize, _] = useRecoilState(scrollState)
-    const terminal: Terminal & { _core?: any } = new Terminal()
+    const terminal: Terminal & { _core?: any } = new Terminal({
+        rows: 2,
+        cols: 2,
+    })
     const fitAddon = new FitAddon()
 
     const inputRef = useRef<string | null>(null)
@@ -46,7 +49,12 @@ function Console() {
         })
     }, [xTermRef])
 
-    return <div className="w-full h-full" ref={xTermRef}></div>
+    terminal.onResize(() => {
+        console.log('resize')
+        fitAddon.fit()
+    })
+
+    return <div className="h-full" ref={xTermRef}></div>
 }
 
 export default Console

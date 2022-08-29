@@ -58,7 +58,7 @@ function SubmissionCard({
                     <CodeMirror
                         theme={Theme(theme)}
                         extensions={[python()]}
-                        width={`${width - 40}px`}
+                        width="100%"
                         height="300px"
                         value={code}
                         readOnly

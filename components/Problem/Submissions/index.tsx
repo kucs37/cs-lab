@@ -235,7 +235,7 @@ const dummySubmissions: SubmissionI[] = [
 ]
 function Submissions() {
     return (
-        <div className="p-4 flex flex-col w-full h-10 gap-4">
+        <div className="p-4 flex flex-col w-full gap-4">
             {[
                 dummySubmissions.map(({ order, date, status, code }, index) => (
                     <Submission

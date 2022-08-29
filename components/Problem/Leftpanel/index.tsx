@@ -32,40 +32,37 @@ function LeftPanel() {
 
     return (
         <div
-            className="w-full bg-white flex-1 md:min-w-[500px] md:max-w-3xl"
+            className="w-full bg-white flex-1 md:min-w-[500px] md:max-w-3xl max-h-full h-full"
             style={{ width: isMd ? `${scrollSize}px` : '100%' }}
         >
-            <div className="flex flex-col w-full max-h-full h-full">
+            <div className="flex flex-col md:flex-row w-full h-full md:bg-gray-50">
                 <button
-                    className="flex items-center gap-2 p-4 w-fit"
-                    onClick={() => goBack()}
+                    className="self-end m-2 bg-white p-2 rounded-full shadow-sm hidden md:block"
+                    onClick={() =>
+                        setProblem((prev) => ({
+                            ...prev,
+                            isSettings: true,
+                        }))
+                    }
                 >
-                    <FaChevronLeft />
-                    <p>ย้อนกลับ</p>
+                    <IoSettingsOutline size="1.75rem" />
                 </button>
-                <div className="flex flex-col md:flex-row max-h-full w-full h-full md:bg-gray-50">
+                <div className="bg-white overflow-scroll w-full">
                     <button
-                        className="self-end m-2 bg-white p-2 rounded-full shadow-sm hidden md:block"
-                        onClick={() =>
-                            setProblem((prev) => ({
-                                ...prev,
-                                isSettings: true,
-                            }))
-                        }
+                        className="flex items-center gap-2 p-4 w-fit"
+                        onClick={() => goBack()}
                     >
-                        <IoSettingsOutline size="1.75rem" />
+                        <FaChevronLeft />
+                        <p>ย้อนกลับ</p>
                     </button>
-                    <div className="flex flex-col w-full bg-white mb-4">
-                        <Menu
-                            menu={menu}
-                            onChange={(menu: MenuType) => setMenu(menu)}
-                        />
-                        <div className="overflow-y-scroll w-full h-full">
-                            {menu === 'Description' && <Description />}
-                            {menu === 'Console' && <Console />}
-                            {menu === 'Submissions' && <Submissions />}
-                        </div>
-                    </div>
+                    <Menu
+                        menu={menu}
+                        onChange={(menu: MenuType) => setMenu(menu)}
+                    />
+
+                    {menu === 'Description' && <Description />}
+                    {menu === 'Console' && <Console />}
+                    {menu === 'Submissions' && <Submissions />}
                 </div>
             </div>
         </div>

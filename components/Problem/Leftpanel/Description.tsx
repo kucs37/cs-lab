@@ -38,8 +38,8 @@ const markdown: string = `
 
 function Description() {
     return (
-        <div className="w-full p-4 h-full">
-            <div className="flex flex-col gap-4 items-start w-full">
+        <div className="w-full p-3">
+            <div>
                 <h1 className="text-xl font-bold">
                     09 Find a, b in which a*b=n and (a+b) is the lowest
                 </h1>
@@ -57,9 +57,9 @@ function Description() {
                     </div>
                 </div>
                 <hr className="w-full" />
-
+            </div>
+            <div className="prose h-full overflow-y-scroll bg-white flex-1">
                 <ReactMarkdown
-                    className="prose w-full py-4 md:h-1"
                     remarkPlugins={[remarkGFM, remarkMath]}
                     rehypePlugins={[rehypeKatex]}
                     children={markdown}
