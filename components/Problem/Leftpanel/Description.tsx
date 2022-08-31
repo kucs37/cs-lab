@@ -33,7 +33,6 @@ const markdown: string = `
 
 
 อธิบาย: คู่เลขจำนวนเต็มที่คูณกันได้ 20 คือ (1,20) (2,10) (4,5) ซึ่งในสามคู่นี้ 4+5 = 9 เป็นผลบวกที่น้อยที่สุด คำตอบจึงเป็น 9
-
 `
 
 function Description() {
@@ -52,13 +51,13 @@ function Description() {
                         <p>•</p>
                         <p>25 รีวิว</p>
                     </div>
-                    <div className="">
+                    <div className="text-gray-900 font-bold">
                         (<span className="text-lime-500">PPPPP</span>)
                     </div>
                 </div>
                 <hr className="w-full my-2" />
             </div>
-            <div className="prose h-full overflow-y-scroll flex-1">
+            <div className="prose">
                 <ReactMarkdown
                     remarkPlugins={[remarkGFM, remarkMath]}
                     rehypePlugins={[rehypeKatex]}
