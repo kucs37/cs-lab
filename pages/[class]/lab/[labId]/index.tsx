@@ -95,7 +95,7 @@ function Lab() {
     })
 
     return (
-        <WithNavbar>
+        <WithNavbar title="CS Python Lab 01 Input Process Output - CS-LAB">
             <div className="px-3 container mx-auto mt-2 my-10">
                 <div className="my-6">
                     <Backto href={`/${router.query.class}`} />

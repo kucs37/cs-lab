@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import ProblemI from '@/interface/Problem'
 import Lab from '@/interface/Lab'
+import Section from '@/components/Class/Section'
 
 interface Props {
     title: string
@@ -18,18 +18,7 @@ function Class({ title, code, section, labs }: Props) {
         <Link href="/cs112">
             <a className="col-span-12 md:col-span-6 xl:col-span-4">
                 <div className="rounded-lg border-[1px] bg-white border-gray-50 w-full px-6 py-4 shadow-sm flex flex-col gap-3">
-                    <div className="flex flex-wrap items-center gap-2">
-                        <div className="rounded-full px-2 py-1 bg-gray-200 w-fit">
-                            <p className="text-sm text-gray-500 font-bold">
-                                {code}
-                            </p>
-                        </div>
-                        <div className="rounded-full px-2 py-1 bg-gray-200 w-fit">
-                            <p className="text-sm text-gray-500 font-bold">
-                                หมู่ {section}
-                            </p>
-                        </div>
-                    </div>
+                    <Section code="cs112" section={11} />
                     <h3 className="font-bold text-lg text-gray-900">{title}</h3>
 
                     {/* <div className="flex flex-col gap-2">

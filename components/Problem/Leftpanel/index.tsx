@@ -37,9 +37,9 @@ function LeftPanel() {
                 width: isMd ? `${scrollSize}px` : '100%',
             }}
         >
-            <div className="flex flex-col md:flex-row w-full h-full bg-gray-50">
+            <div className="flex flex-col md:flex-row w-full h-full bg-gray-50 ">
                 <button
-                    className="self-end m-2 p-2 rounded-full shadow-sm hidden md:block text-gray-600"
+                    className="self-end m-2 p-2 rounded-full shadow-md hidden md:block text-gray-600 bg-white"
                     onClick={() =>
                         setProblem((prev) => ({
                             ...prev,
@@ -49,7 +49,7 @@ function LeftPanel() {
                 >
                     <IoSettingsOutline size="1.75rem" />
                 </button>
-                <div className="overflow-scroll w-full border-l-2">
+                <div className="overflow-scroll w-full border-l-2 bg-white">
                     <button
                         className="flex items-center gap-2 p-4 w-fit"
                         onClick={() => goBack()}

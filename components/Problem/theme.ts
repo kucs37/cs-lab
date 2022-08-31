@@ -71,7 +71,8 @@ export const themes: ThemesI[] = [
     { name: 'noctis-lilac', theme: noctisLilac },
     { name: 'rose-pine-dawn', theme: rosePineDawn },
     { name: 'smoothy', theme: smoothy },
-]
+    { name: 'tomorrow', theme: tomorrow },
+].sort((a, b) => a.name.localeCompare(b.name)) as ThemesI[]
 
 export default function Theme(theme: themesI) {
     return themes.find(({ name }) => name === theme)?.theme

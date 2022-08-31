@@ -43,7 +43,7 @@ function Description() {
                 <h1 className="text-xl font-bold">
                     09 Find a, b in which a*b=n and (a+b) is the lowest
                 </h1>
-                <div className="flex items-center w-full gap-2">
+                <div className="flex items-center w-full gap-2 my-2">
                     <div className="flex items-center gap-1 text-sm justify-start w-fit">
                         <span className="text-yellow-300">
                             <AiFillStar size="1.25rem" />

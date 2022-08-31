@@ -8,7 +8,7 @@ import Theme from './theme'
 import { themesI } from '@/interface/Themes'
 import { useLocalStorage } from 'usehooks-ts'
 import { useMediaQuery } from 'usehooks-ts'
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { ViewUpdate } from '@codemirror/view'
 
 function Editor() {
@@ -24,13 +24,17 @@ function Editor() {
         setSourceCode(value)
     }, [])
 
+    useEffect(() => {
+        setSourceCode(code)
+    }, [code])
+
     return (
         <div
             className={`bg-white flex flex-col w-full h-full border-t-2`}
             style={{ width: isMd ? `${width! - scrollSize}px` : '100%' }}
         >
             <CodeMirror
-                value={code}
+                value={sourceCode}
                 onChange={handleOnChange}
                 theme={Theme(theme)}
                 placeholder="Write your code here..."

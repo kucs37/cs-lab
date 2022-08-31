@@ -37,10 +37,13 @@ function Problem() {
     }, [])
 
     return (
-        <WithNavbar ref={body}>
+        <WithNavbar
+            ref={body}
+            title="09 Find a, b in which a*b=n and (a+b) is the lowest - CS-LAB"
+        >
             {problem.isSettings && <Settings />}
             <div
-                className="flex flex-col md:flex-row min-h-0 h-full"
+                className="flex flex-col md:flex-row min-h-0 h-full bg-white"
                 onMouseMove={handleOnMouseMove}
                 onTouchMove={handleOnTouchMove}
             >

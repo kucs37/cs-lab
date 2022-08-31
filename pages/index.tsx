@@ -6,7 +6,7 @@ import WithNavbar from '@/layouts/WithNavbar'
 
 const Home: NextPage = () => {
     return (
-        <WithNavbar>
+        <WithNavbar title="Class - CS-LAB">
             <div className="px-3 container mx-auto mt-2 my-10">
                 <div className="p-4 flex flex-col items-center">
                     <div>

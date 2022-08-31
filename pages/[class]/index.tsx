@@ -4,6 +4,7 @@ import Header from '@/components/Class/Header'
 import Backto from '@/components/Common/Backto'
 import WithNavbar from '@/layouts/WithNavbar'
 import Labs from '../../fakeData'
+import Head from 'next/head'
 
 type showType = 'all' | 'open' | 'close'
 
@@ -14,11 +15,11 @@ function Class() {
         setShow(type)
     }
     return (
-        <WithNavbar>
+        <WithNavbar title="Fundamental Programming Concepts - CS-LAB">
             <div className="px-3 container mx-auto mt-2 my-10">
                 <Backto href="../" className="my-6" />
                 <div className="bg-white  p-6 rounded-lg shadow-sm">
-                    <Header />
+                    <Header className="Fundamental Programming Concepts" />
 
                     <hr />
                     <div className="my-6">
