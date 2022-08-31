@@ -39,18 +39,19 @@ function Editor() {
         >
             <RunButton onRun={() => {}} />
             <SubmitButton onSubmit={() => {}} />
-
-            <CodeMirror
-                value={sourceCode}
-                onChange={handleOnChange}
-                theme={Theme(theme)}
-                placeholder="Write your code here..."
-                minHeight="345px"
-                height="100%"
-                extensions={[python()]}
-                style={{ fontSize }}
-                className="h-full"
-            />
+            <div className="overflow-y-scroll">
+                <CodeMirror
+                    value={sourceCode}
+                    onChange={handleOnChange}
+                    theme={Theme(theme)}
+                    placeholder="Write your code here..."
+                    minHeight="345px"
+                    height="100%"
+                    extensions={[python()]}
+                    style={{ fontSize }}
+                    className="h-full"
+                />
+            </div>
         </div>
     )
 }
