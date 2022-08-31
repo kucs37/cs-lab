@@ -31,6 +31,7 @@ function Problem() {
         document.addEventListener('touchend', handleOnMouseUp)
 
         return () => {
+            document.removeEventListener('mouseup', handleOnMouseUp)
             document.removeEventListener('touchend', handleOnMouseUp)
         }
     }, [])

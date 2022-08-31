@@ -12,8 +12,9 @@ function Submissions() {
     return (
         <div className="p-4 flex flex-col w-full gap-4">
             {[
-                dummySubmissions.map(({ order, date, status, code }, index) => (
+                dummySubmissions.map(({ order, date, status, code }) => (
                     <Submission
+                        key={order}
                         isFirst={order == 1}
                         isSelected={selected === order}
                         onClick={() => handleOnClick(order)}

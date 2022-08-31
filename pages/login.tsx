@@ -33,7 +33,7 @@ const Login: NextPage = () => {
                 router.push('/')
             }
         }
-    }, [status])
+    }, [status, router])
 
     const handleSubmit = () => {
         setIsSubmit(true)
