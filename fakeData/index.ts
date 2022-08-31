@@ -1,4 +1,4 @@
-import ProblemI from '@interface/Problem'
+import ProblemI from '@/interface/Problem'
 interface Lab {
     title: string
     id: number

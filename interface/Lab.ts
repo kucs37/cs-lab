@@ -1,4 +1,4 @@
-import ProblemI from '@interface/Problem'
+import ProblemI from '@/interface/Problem'
 export default interface Lab {
     title: string
     problems: ProblemI[]

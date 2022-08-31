@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import ProblemI from '@interface/Problem'
-import Lab from '@interface/Lab'
+import ProblemI from '@/interface/Problem'
+import Lab from '@/interface/Lab'
 
 interface Props {
     title: string

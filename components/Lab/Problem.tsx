@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Result } from '@interface/Result'
+import { Result } from '@/interface/Result'
 
 interface Props {
     title: string

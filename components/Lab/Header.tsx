@@ -1,4 +1,4 @@
-import { Result } from '@interface/Result'
+import { Result } from '@/interface/Result'
 
 interface Props {
     title: string

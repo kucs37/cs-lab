@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Problem from '@interface/Problem'
+import Problem from '@/interface/Problem'
 import { useRouter } from 'next/router'
 interface Props {
     title: string
