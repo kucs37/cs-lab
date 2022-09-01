@@ -43,7 +43,7 @@ function Problem() {
         >
             {problem.isSettings && <Settings />}
             <div
-                className="flex flex-col md:flex-row min-h-0 h-full bg-white"
+                className="flex flex-col md:flex-row md:min-h-0  bg-white"
                 onMouseMove={handleOnMouseMove}
                 onTouchMove={handleOnTouchMove}
             >

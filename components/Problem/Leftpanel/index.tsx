@@ -32,14 +32,14 @@ function LeftPanel() {
 
     return (
         <div
-            className="w-full md:min-w-[500px] md:max-w-3xl"
+            className="w-full md:min-w-[500px] md:max-w-3xl h-full"
             style={{
                 width: isMd ? `${scrollSize}px` : '100%',
             }}
         >
-            <div className="flex flex-col-reverse md:flex-row w-full h-full bg-white md:bg-gray-50 ">
+            <div className="block md:flex md:flex-row w-full h-full bg-white md:bg-gray-50 ">
                 <button
-                    className="self-end m-2 p-2 rounded-full shadow-md md:block text-gray-600 bg-white"
+                    className="hidden self-end m-2 p-2 rounded-full shadow-md md:block text-gray-600 bg-white"
                     onClick={() =>
                         setProblem((prev) => ({
                             ...prev,
@@ -49,7 +49,8 @@ function LeftPanel() {
                 >
                     <IoSettingsOutline size="1.75rem" />
                 </button>
-                <div className="md:overflow-scroll w-full h-full border-l-2 bg-white">
+
+                <div className="md:overflow-y-scroll w-full h-full md:border-l-2 bg-white">
                     <button
                         className="flex items-center gap-2 p-4 w-fit"
                         onClick={() => goBack()}

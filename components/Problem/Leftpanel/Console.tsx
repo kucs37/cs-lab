@@ -49,7 +49,7 @@ function Console() {
         })
     }, [xTermRef])
 
-    return <div className="h-full" ref={xTermRef}></div>
+    return <div className="h-full min-h-[300px]" ref={xTermRef}></div>
 }
 
 export default Console

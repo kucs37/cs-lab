@@ -12,12 +12,13 @@ import { useState, useCallback, useEffect } from 'react'
 import { ViewUpdate } from '@codemirror/view'
 import RunButton from './Buttons/RunButton'
 import SubmitButton from './Buttons/SubmitButton'
+import { IoSettingsOutline } from 'react-icons/io5'
 
 function Editor() {
     const [theme] = useLocalStorage<themesI>('theme', 'bespin')
     const [fontSize] = useLocalStorage<string>('fontSize', '16px')
     const [scrollSize] = useRecoilState(scrollState)
-    const [{ code }] = useRecoilState(problemState)
+    const [{ code }, setProblem] = useRecoilState(problemState)
     const { width } = useWindowSize()
     const isMd = useMediaQuery('(min-width: 768px)')
     const [sourceCode, setSourceCode] = useState<string>(code)
@@ -34,18 +35,32 @@ function Editor() {
 
     return (
         <div
-            className={`bg-white flex flex-col w-full max-h-full border-t-2 relative`}
+            className={`bg-white flex flex-col w-full max-h-full h-full border-t-2 relative`}
             style={{ width: isMd ? `${width! - scrollSize}px` : '100%' }}
         >
             <RunButton onRun={() => {}} />
-            <SubmitButton onSubmit={() => {}} />
+            <div className="flex justify-between">
+                <button
+                    className="block md:hidden self-end m-2 p-2 rounded-full shadow-md text-gray-600 bg-white"
+                    onClick={() =>
+                        setProblem((prev) => ({
+                            ...prev,
+                            isSettings: true,
+                        }))
+                    }
+                >
+                    <IoSettingsOutline size="1.75rem" />
+                </button>
+                <SubmitButton onSubmit={() => {}} />
+            </div>
 
             <CodeMirror
                 value={sourceCode}
                 onChange={handleOnChange}
                 theme={Theme(theme)}
                 placeholder="Write your code here..."
-                minHeight="100%"
+                minHeight="345px"
+                height="100%"
                 extensions={[python()]}
                 style={{ fontSize }}
                 className="h-full overflow-auto"
