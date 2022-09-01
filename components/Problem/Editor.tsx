@@ -34,24 +34,22 @@ function Editor() {
 
     return (
         <div
-            className={`bg-white flex flex-col w-full h-full border-t-2 relative`}
+            className={`bg-white flex flex-col w-full max-h-full border-t-2 relative`}
             style={{ width: isMd ? `${width! - scrollSize}px` : '100%' }}
         >
             <RunButton onRun={() => {}} />
             <SubmitButton onSubmit={() => {}} />
-            <div className="overflow-y-scroll">
-                <CodeMirror
-                    value={sourceCode}
-                    onChange={handleOnChange}
-                    theme={Theme(theme)}
-                    placeholder="Write your code here..."
-                    minHeight="345px"
-                    height="100%"
-                    extensions={[python()]}
-                    style={{ fontSize }}
-                    className="h-full"
-                />
-            </div>
+
+            <CodeMirror
+                value={sourceCode}
+                onChange={handleOnChange}
+                theme={Theme(theme)}
+                placeholder="Write your code here..."
+                minHeight="100%"
+                extensions={[python()]}
+                style={{ fontSize }}
+                className="h-full overflow-auto"
+            />
         </div>
     )
 }
