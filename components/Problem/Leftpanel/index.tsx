@@ -32,7 +32,7 @@ function LeftPanel() {
 
     return (
         <div
-            className="w-full md:min-w-[500px] md:max-w-3xl h-full"
+            className="w-full md:min-w-[500px] md:max-w-3xl h-full overflow-y-scroll"
             style={{
                 width: isMd ? `${scrollSize}px` : '100%',
             }}

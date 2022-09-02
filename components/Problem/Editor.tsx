@@ -35,7 +35,7 @@ function Editor() {
 
     return (
         <div
-            className={`bg-white flex flex-col w-full max-h-full h-full border-t-2 relative`}
+            className={`bg-white flex flex-col flex-1 w-full max-h-full h-full border-t-2 relative`}
             style={{ width: isMd ? `${width! - scrollSize}px` : '100%' }}
         >
             <RunButton onRun={() => {}} />
