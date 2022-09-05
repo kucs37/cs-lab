@@ -12,7 +12,7 @@ function Scroll() {
     return (
         <div
             ref={scroll}
-            className="md:flex w-full md:w-4 h-full border-x-2 bg-gray-50  flex-col justify-center items-center cursor-ew-resize"
+            className="hidden md:flex w-full md:w-4 h-full border-x-2 bg-gray-50  flex-col justify-center items-center cursor-ew-resize"
             onMouseDown={handleOnMouseDown}
             onTouchStart={handleOnMouseDown}
         >

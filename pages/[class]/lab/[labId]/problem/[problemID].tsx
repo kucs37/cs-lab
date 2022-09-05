@@ -48,7 +48,7 @@ function Problem() {
                 onTouchMove={handleOnTouchMove}
             >
                 <Leftpanel />
-                {/* <Scroll /> */}
+                <Scroll />
                 <Editor />
             </div>
         </WithNavbar>
