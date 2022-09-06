@@ -1,6 +1,6 @@
 import { IoMdClipboard } from 'react-icons/io'
 import CodeMirror from '@uiw/react-codemirror'
-import Theme from '../theme'
+import Theme from '../../../editorTheme/theme'
 import { python } from '@codemirror/lang-python'
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
 import { useLocalStorage, useElementSize } from 'usehooks-ts'

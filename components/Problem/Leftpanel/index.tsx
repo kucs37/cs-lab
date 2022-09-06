@@ -18,6 +18,7 @@ import Menu from './Menu'
 
 import { MenuType } from '@/interface/Menu'
 import { problemState } from '@/store/ProblemState'
+import Backto from '@/components/Common/Backto'
 
 function LeftPanel() {
     const [__, setProblem] = useRecoilState(problemState)
@@ -26,9 +27,7 @@ function LeftPanel() {
     const isMd = useMediaQuery('(min-width: 768px)')
     const [menu, setMenu] = useState<MenuType>('Description')
 
-    const goBack = () => {
-        router.push(`/${router.query.class}/lab/${router.query.labId}/`)
-    }
+    const backToHref = `/${router.query.class}/lab/${router.query.labId}/`
 
     return (
         <div
@@ -51,13 +50,8 @@ function LeftPanel() {
                 </button>
 
                 <div className="md:overflow-y-scroll w-full h-full md:border-l-2 bg-white">
-                    <button
-                        className="flex items-center gap-2 p-4 w-fit"
-                        onClick={() => goBack()}
-                    >
-                        <FaChevronLeft />
-                        <p>ย้อนกลับ</p>
-                    </button>
+                    <Backto href={backToHref} className="my-6 mx-3" />
+
                     <Menu
                         menu={menu}
                         onChange={(menu: MenuType) => setMenu(menu)}

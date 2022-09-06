@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { themes } from './theme'
+import { themes } from '../../editorTheme/theme'
 import { themesI } from '@/interface/Themes'
 import Select from '@/components/Common/Select'
 import { useRef } from 'react'
