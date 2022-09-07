@@ -1,5 +1,6 @@
 import '@/styles/globals.css'
 import '@/styles/xterm.css'
+
 import type { AppProps } from 'next/app'
 import Loading from '@/components/Common/Loading'
 import { useState, useEffect } from 'react'

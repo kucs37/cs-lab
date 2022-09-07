@@ -7,7 +7,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { IoCheckmarkSharp, IoClose } from 'react-icons/io5'
 import dynamic from 'next/dynamic'
-const CodeEditor = dynamic(() => import('@/components/Common/CodeEditor'), {
+const CodeEditor = dynamic(() => import('@/components/Lessons/CodeEditor'), {
     ssr: false,
 })
 
@@ -70,23 +70,26 @@ while index < 6:
 
 1. ประกาศ List ของจำนวนเฉพาะ ให้ชื่อตัวแปรว่า \`primes\` โดยมีข้อมูลเป็นจำนวนเฉพาะ 10 จำนวนแรก  
 คำนวณหาผลรวมของจำนวนเฉพาะทั้ง 10 จำนวน โดยใช้ while loop เก็บผลรวมใส่ในตัวแปร \`total\`
-
-<editor value="total = 0
-while     
-print(total)" />
-
+<div>
+<problem><hidemultiple>primes = [2,3,5,7,11,13,17,19,23,29]
+index = 0</hidemultiple><code>total = 0</code><code>while<hideinline>index < len(primes):</hideinline></code><hidemultiple>total += primes[index]
+index += 1</hidemultiple><code>print(total)</code></problem>
+</div>
 
 
 2. กำหนด List \`months\` และ \`days_in_month\` เป็น List ของตัวย่อชื่อเดือน และ List ของจำนวนวันในแต่ละเดือนตามลำดับ  
 ให้แสดง 12 บรรทัด ว่าแต่ละเดือนมีกี่วัน โดยใช้ while loop โดยแสดงชื่อเดือนและจำนวนวัน คั่นด้วยช่องว่าง
 
-\`\`\`python
-months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+<div>
+<problem><code>months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']</code>
+<code>days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]</code><blank></blank><code>while <hideinline>index < len(months):</hideinline></code>
+<hidemultiple>print(months[index],days_in_month[index])
+index += 1</hidemultiple>
+</problem>
+</div>
 
-while 
     
-\`\`\`
+
 
 
 ## Index เป็นค่าลบได้
@@ -169,9 +172,10 @@ function LabID() {
                                 children,
                                 ...props
                             }) {
-                                const match = /language-(\w+)/.exec(
+                                const match = /language-(\w+[^problem])/.exec(
                                     className || ''
                                 )
+
                                 return !inline && match ? (
                                     <SyntaxHighlighter
                                         children={String(children).replace(
@@ -185,19 +189,13 @@ function LabID() {
                                         {...props}
                                     />
                                 ) : (
-                                    <code className={className} {...props}>
-                                        {children}
+                                    <code {...props}>
+                                        {String(children).replace(/\n$/, '')}
                                     </code>
                                 )
                             },
 
-                            input({
-                                node,
-                                inline,
-                                className,
-                                children,
-                                ...props
-                            }) {
+                            input({ node, className, children, ...props }) {
                                 if (node.properties!.name === 'l1') {
                                     return (
                                         <div className="flex items-center gap-2">
@@ -233,21 +231,15 @@ function LabID() {
                                     </div>
                                 )
                             },
-                            editor({
-                                node,
-                                inline,
-                                className,
-                                children,
-                                ...props
-                            }) {
-                                return <CodeEditor />
+                            problem({ node }: { node: any }) {
+                                return <CodeEditor code={node.children} />
                             },
                         }}
                     >
                         {markdown}
                     </ReactMarkdown>
 
-                    <button className="bg-gray-900 text-white px-10 py-2 rounded-lg mt-4 shadow-md hover:bg-gray-700">
+                    <button className="bg-gray-900 text-white w-1/4 py-2 rounded-lg mt-4 shadow-md hover:bg-gray-700">
                         ส่ง
                     </button>
                 </div>
