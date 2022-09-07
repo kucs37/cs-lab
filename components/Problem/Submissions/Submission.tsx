@@ -1,13 +1,12 @@
 import { IoMdClipboard } from 'react-icons/io'
 import CodeMirror from '@uiw/react-codemirror'
-import Theme from '../../../editorTheme/theme'
+import Theme from '@/editorTheme/theme'
 import { python } from '@codemirror/lang-python'
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
 import { useLocalStorage, useElementSize } from 'usehooks-ts'
 import { themesI } from '@/interface/Themes'
 import { SubmissionI } from '@/interface/Submission'
-import { useRecoilState } from 'recoil'
-import { problemState } from '@/store/ProblemState'
+import { useProblemContext } from '@/Context/Problem'
 import { format } from 'date-fns'
 import { th } from 'date-fns/locale'
 
@@ -27,12 +26,12 @@ function SubmissionCard({
 }: SubmissionCardI) {
     const [theme, __] = useLocalStorage<themesI>('theme', 'bespin')
 
-    const [cardRef, { width }] = useElementSize()
+    const [cardRef] = useElementSize()
 
-    const [_, setProblem] = useRecoilState(problemState)
+    const { setCode } = useProblemContext()
 
     const handleOnCopyToCurrent = () => {
-        setProblem((prev) => ({ ...prev, code }))
+        setCode(code)
     }
 
     return (

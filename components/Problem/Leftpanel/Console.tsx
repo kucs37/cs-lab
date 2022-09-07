@@ -1,12 +1,8 @@
 import { useRef, useEffect } from 'react'
 import { Terminal } from 'xterm'
-
 import { FitAddon } from 'xterm-addon-fit'
-import { useRecoilState } from 'recoil'
-import { scrollState } from '@/store/ScrollSize'
 
 function Console() {
-    const [scrollSize, _] = useRecoilState(scrollState)
     const terminal: Terminal & { _core?: any } = new Terminal({
         rows: 2,
         cols: 2,

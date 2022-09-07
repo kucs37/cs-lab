@@ -1,13 +1,12 @@
 import { useRef } from 'react'
-import { useRecoilState } from 'recoil'
-import { problemState } from '@/store/ProblemState'
 import { BsThreeDotsVertical } from 'react-icons/bs'
+
+import { useProblemContext } from '@/Context/Problem'
 function Scroll() {
     const scroll = useRef<HTMLDivElement | null>(null)
-    const [_, setProblem] = useRecoilState(problemState)
+    const { setIsDrag } = useProblemContext()
 
-    const handleOnMouseDown = () =>
-        setProblem((prev) => ({ ...prev, isDrag: true }))
+    const handleOnMouseDown = () => setIsDrag(true)
 
     return (
         <div

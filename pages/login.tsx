@@ -1,6 +1,4 @@
 import type { NextPage } from 'next'
-import { useRecoilState } from 'recoil'
-import { counterState } from '@/store/counterState'
 import AsyncBtn from '@/components/Common/AsynBtn'
 import { useEffect, useState } from 'react'
 import { createTheme, TextField, ThemeProvider } from '@mui/material'
@@ -23,7 +21,6 @@ const textFieldTheme = createTheme({
 })
 
 const Login: NextPage = () => {
-    const [counter, setCounter] = useRecoilState(counterState)
     const [isSubmit, setIsSubmit] = useState<boolean>(false) // Test Async Button component
     const { status } = useSession()
     const router = useRouter()

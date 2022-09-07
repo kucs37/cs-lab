@@ -1,4 +1,4 @@
-import WithNavbar from '@/layouts/WithNavbar'
+import WithNavbar from '@/HOC/WithNavbar'
 import ReactMarkdown from 'react-markdown'
 import Backto from '@/components/Common/Backto'
 import { useRouter } from 'next/router'

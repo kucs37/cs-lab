@@ -1,27 +1,24 @@
 import { useEffect } from 'react'
-import { themes } from '../../editorTheme/theme'
+import { themes } from '@/editorTheme/theme'
 import { themesI } from '@/interface/Themes'
 import Select from '@/components/Common/Select'
 import { useRef } from 'react'
 import { useLocalStorage, useOnClickOutside } from 'usehooks-ts'
-import { useRecoilState } from 'recoil'
-import { problemState } from '@/store/ProblemState'
 import { GrFormClose } from 'react-icons/gr'
+import { useProblemContext } from '@/Context/Problem'
 
 function Settings() {
     const [theme, setTheme] = useLocalStorage<themesI>('theme', 'bespin')
     const [fontSize, setFontSize] = useLocalStorage<string>('fontSize', '16px')
 
     const settingsRef = useRef<HTMLDivElement>(null)
-    const [_, setProblem] = useRecoilState(problemState)
+    const { setIsSettings } = useProblemContext()
 
-    useOnClickOutside(settingsRef, () =>
-        setProblem((prev) => ({ ...prev, isSettings: false }))
-    )
+    useOnClickOutside(settingsRef, () => setIsSettings(false))
 
     const handleESCPress = ({ code, key }: KeyboardEvent) => {
         if (key == 'Escape' || code == 'Escape') {
-            setProblem((prev) => ({ ...prev, isSettings: false }))
+            setIsSettings(false)
         }
     }
     useEffect(() => {
@@ -37,12 +34,7 @@ function Settings() {
                         <h2 className="text-2xl font-semibold">ตั้งค่า</h2>
                         <button
                             className="inline-flex items-center gap-2"
-                            onClick={() =>
-                                setProblem((prev) => ({
-                                    ...prev,
-                                    isSettings: false,
-                                }))
-                            }
+                            onClick={() => setIsSettings(false)}
                         >
                             <h4>ปิด</h4>
                             <GrFormClose size="1.25rem" />

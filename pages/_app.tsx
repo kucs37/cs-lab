@@ -1,7 +1,6 @@
-import '../styles/globals.css'
-import '../styles/xterm.css'
+import '@/styles/globals.css'
+import '@/styles/xterm.css'
 import type { AppProps } from 'next/app'
-import { RecoilRoot } from 'recoil'
 import Loading from '@/components/Common/Loading'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -29,10 +28,8 @@ const MyApp: React.FC<AppProps> = ({
 
     return (
         <SessionProvider session={session}>
-            <RecoilRoot>
-                {isStart && <Loading />}
-                <Component {...pageProps} />
-            </RecoilRoot>
+            {isStart && <Loading />}
+            <Component {...pageProps} />
         </SessionProvider>
     )
 }

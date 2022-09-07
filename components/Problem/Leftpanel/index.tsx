@@ -1,7 +1,3 @@
-import { FaChevronLeft } from 'react-icons/fa'
-import { useRecoilState } from 'recoil'
-import { scrollState } from '@/store/ScrollSize'
-
 import 'katex/dist/katex.min.css'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -17,12 +13,13 @@ import Submissions from '../Submissions'
 import Menu from './Menu'
 
 import { MenuType } from '@/interface/Menu'
-import { problemState } from '@/store/ProblemState'
 import Backto from '@/components/Common/Backto'
 
+import { useProblemContext } from '@/Context/Problem'
+
 function LeftPanel() {
-    const [__, setProblem] = useRecoilState(problemState)
-    const [scrollSize, _] = useRecoilState(scrollState)
+    const { scrollSize, setIsSettings } = useProblemContext()
+
     const router = useRouter()
     const isMd = useMediaQuery('(min-width: 768px)')
     const [menu, setMenu] = useState<MenuType>('Description')
@@ -39,12 +36,7 @@ function LeftPanel() {
             <div className="block md:flex md:flex-row w-full h-full bg-white md:bg-gray-50 ">
                 <button
                     className="hidden self-end m-2 p-2 rounded-full shadow-md md:block text-gray-600 bg-white"
-                    onClick={() =>
-                        setProblem((prev) => ({
-                            ...prev,
-                            isSettings: true,
-                        }))
-                    }
+                    onClick={() => setIsSettings(true)}
                 >
                     <IoSettingsOutline size="1.75rem" />
                 </button>

@@ -1,10 +1,7 @@
-import { scrollState } from '@/store/ScrollSize'
-import { problemState } from '@/store/ProblemState'
-import { useRecoilState } from 'recoil'
 import useWindowSize from 'hooks/useWindowSize'
 import CodeMirror from '@uiw/react-codemirror'
 import { python } from '@codemirror/lang-python'
-import Theme from '../../editorTheme/theme'
+import Theme from '@/editorTheme/theme'
 import { themesI } from '@/interface/Themes'
 import { useLocalStorage } from 'usehooks-ts'
 import { useMediaQuery } from 'usehooks-ts'
@@ -13,12 +10,13 @@ import { ViewUpdate } from '@codemirror/view'
 import RunButton from './Buttons/RunButton'
 import SubmitButton from './Buttons/SubmitButton'
 import { IoSettingsOutline } from 'react-icons/io5'
+import { useProblemContext } from '@/Context/Problem'
 
 function Editor() {
     const [theme] = useLocalStorage<themesI>('theme', 'bespin')
     const [fontSize] = useLocalStorage<string>('fontSize', '16px')
-    const [scrollSize] = useRecoilState(scrollState)
-    const [{ code }, setProblem] = useRecoilState(problemState)
+    const { scrollSize, code, setIsSettings } = useProblemContext()
+
     const { width } = useWindowSize()
     const isMd = useMediaQuery('(min-width: 768px)')
     const [sourceCode, setSourceCode] = useState<string>(code)
@@ -42,12 +40,7 @@ function Editor() {
             <div className="flex justify-between">
                 <button
                     className="block md:hidden self-end m-2 p-2 rounded-full shadow-md text-gray-600 bg-white"
-                    onClick={() =>
-                        setProblem((prev) => ({
-                            ...prev,
-                            isSettings: true,
-                        }))
-                    }
+                    onClick={() => setIsSettings(true)}
                 >
                     <IoSettingsOutline size="1.75rem" />
                 </button>
