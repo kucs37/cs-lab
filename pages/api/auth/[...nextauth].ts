@@ -1,5 +1,8 @@
+import axios from 'axios'
 import NextAuth from 'next-auth'
+import { JWT } from 'next-auth/jwt'
 import GoogleProvider from 'next-auth/providers/google'
+import jwt from 'jsonwebtoken'
 
 export default NextAuth({
     providers: [
@@ -26,12 +29,29 @@ export default NextAuth({
             }
             throw new Error('Sign in provider not supported')
         },
-        jwt(data) {
-            return data.token
+        async jwt({ token, account, isNewUser, profile, user }) {
+            let ress = await axios.post(
+                process.env.API_BASE_URL! + '/auth/verifyToken',
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${jwt.sign(
+                            {
+                                email: token.email,
+                            },
+                            process.env.SECRET!
+                        )}`,
+                    },
+                }
+            )
+            return {
+                ...token,
+                ...ress.data.resData
+            }
         },
-        session(data) {
-            data.session.accessToken = data.token.accessToken
-            return data.session
+        async session({ session, user, token }) {
+            session.user = token
+            return session
         },
     },
     secret: process.env.SECRET,
