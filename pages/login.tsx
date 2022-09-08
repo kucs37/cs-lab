@@ -1,24 +1,9 @@
 import type { NextPage } from 'next'
 import AsyncBtn from '@/components/Common/AsynBtn'
 import { useEffect, useState } from 'react'
-import { createTheme, TextField, ThemeProvider } from '@mui/material'
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-
-const textFieldTheme = createTheme({
-    palette: {
-        primary: {
-            main: '#84CC16',
-        },
-    },
-    shape: {
-        borderRadius: '8px',
-    },
-    typography: {
-        fontFamily: 'Noto Sans Thai',
-    },
-})
 
 const Login: NextPage = () => {
     const [isSubmit, setIsSubmit] = useState<boolean>(false) // Test Async Button component
@@ -53,30 +38,6 @@ const Login: NextPage = () => {
                     </div>
 
                     <div className="my-4 flex flex-col gap-6">
-                        <ThemeProvider theme={textFieldTheme}>
-                            <TextField
-                                label="บัญชีผู้ใช้เครือข่ายนนทรี"
-                                variant="outlined"
-                                InputLabelProps={{
-                                    style: {
-                                        fontWeight: 'bold',
-                                    },
-                                }}
-                                sx={{ fontWeight: 'bold' }}
-                                placeholder="เช่น b63xxxxxxxx หรือ regxxx"
-                            />
-                            <TextField
-                                label="รหัสผ่าน"
-                                type="password"
-                                InputLabelProps={{
-                                    style: {
-                                        fontWeight: 'bold',
-                                    },
-                                }}
-                                variant="outlined"
-                                placeholder="รหัสผ่านบัญชีผู้ใช้เครือข่ายนนทรี"
-                            />
-                        </ThemeProvider>
                         <AsyncBtn
                             isLoading={false}
                             onClick={() => signIn('google')}
