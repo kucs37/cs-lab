@@ -25,10 +25,16 @@ function MDInput({ node }: InputProps) {
 
     return (
         <Input
-            status={problemId === '001' ? 'correct' : 'incorrect'}
+            status={
+                problemId
+                    ? problemId === '004'
+                        ? 'correct'
+                        : 'incorrect'
+                    : 'not-answered'
+            }
             value={value}
-            size={node.properties.ans.length}
             onChange={handleChange}
+            wFull
         />
     )
 }

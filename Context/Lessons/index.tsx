@@ -1,5 +1,10 @@
-import ProblemI from '@/interface/Problem'
-import { createContext, useContext, useState, ReactNode } from 'react'
+import {
+    createContext,
+    useContext,
+    useState,
+    useEffect,
+    ReactNode,
+} from 'react'
 
 interface LessonQuizzesI {
     id: string
