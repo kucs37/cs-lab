@@ -1,15 +1,9 @@
 import ProblemI from '@/interface/Problem'
-import {
-    createContext,
-    useContext,
-    useState,
-    ReactNode,
-    useEffect,
-} from 'react'
+import { createContext, useContext, useState, ReactNode } from 'react'
 
 interface LessonQuizzesI {
     id: string
-    answers: string[]
+    answers: string | string[]
 }
 
 interface LessonCtxI {
@@ -24,10 +18,6 @@ const LessonCtx = createContext<LessonCtxI>({
 
 function LessonCTX({ children }: { children: ReactNode }) {
     const [lessonQuizzes, setLessonQuizzes] = useState<LessonQuizzesI[]>([])
-
-    // useEffect(() => {
-    //     console.log(lessonQuizzes)
-    // }, [lessonQuizzes])
 
     return (
         <LessonCtx.Provider value={{ lessonQuizzes, setLessonQuizzes }}>

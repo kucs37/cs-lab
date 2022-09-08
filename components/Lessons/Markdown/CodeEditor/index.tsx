@@ -1,5 +1,7 @@
 import { ChangeEvent, useState, useEffect } from 'react'
 import { useLessonCTX } from '@/Context/Lessons'
+import Input from '@/components/Lessons/Common/Input'
+import TextArea from '@/components/Lessons/Common/TextArea'
 
 interface TypeI {
     tagName: string
@@ -45,7 +47,7 @@ function CodeEditor({ code }: CodeEditorI) {
     }
 
     return (
-        <div className="not-prose flex flex-col gap-3 w-full border-2 rounded-lg border-gray-200 shadow-sm p-4 bg-gray-50">
+        <div className="not-prose flex flex-col gap-3 w-full border-2 rounded-lg border-gray-200 shadow-sm p-4 bg-gray-50 mb-10">
             {code.map(({ tagName, children }, index) => {
                 if (tagName === 'code') {
                     if (
@@ -58,8 +60,8 @@ function CodeEditor({ code }: CodeEditorI) {
                             >
                                 <h4>{children[0].value}</h4>
 
-                                <input
-                                    className="border-2 border-gray-200 rounded-md  px-2 outline-gray-500"
+                                <Input
+                                    status="not-answered"
                                     size={children[1].children[0].value.length}
                                     value={answers[index] ? answers[index] : ''}
                                     onChange={(
@@ -74,13 +76,14 @@ function CodeEditor({ code }: CodeEditorI) {
 
                 if (tagName === 'blank') {
                     return (
-                        <input
-                            className="border-2 border-gray-200 rounded-md w-full px-2 outline-gray-500"
+                        <Input
                             key={index}
+                            status="not-answered"
                             value={answers[index] ? answers[index] : ''}
                             onChange={(ev: ChangeEvent<HTMLInputElement>) =>
                                 handleOnChange(index, ev)
                             }
+                            wFull
                         />
                     )
                 }
@@ -88,10 +91,10 @@ function CodeEditor({ code }: CodeEditorI) {
                 if (tagName === 'hidemultiple') {
                     const rows = children[0].value.split('\n').length
                     return (
-                        <textarea
+                        <TextArea
+                            status="not-answered"
                             key={index}
                             rows={rows}
-                            className="border-2 border-gray-200 rounded-md p-2 outline-gray-500"
                             value={answers[index] ? answers[index] : ''}
                             onChange={(ev: ChangeEvent<HTMLTextAreaElement>) =>
                                 handleOnChange(index, ev)
