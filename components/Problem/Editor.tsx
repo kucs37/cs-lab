@@ -31,16 +31,14 @@ function Editor() {
 
     const handleOnRun = () => {}
 
-    return <div className="flex flex-col w-full h-full bg-yellow-500">s</div>
-
     return (
         <div
-            className="bg-yellow-500 flex flex-col flex-1 w-full h-full relative"
+            className="flex flex-col flex-1 w-full h-full relative "
             style={{
                 width: isMd ? `${width! - scrollSize}px` : '100%',
             }}
         >
-            {/* <RunButton onRun={() => {}} />
+            <RunButton onRun={() => {}} />
             <div className="flex justify-between">
                 <button
                     className="block md:hidden self-end m-2 p-2 rounded-full shadow-md text-gray-600 bg-white"
@@ -49,8 +47,8 @@ function Editor() {
                     <IoSettingsOutline size="1.75rem" />
                 </button>
                 <SubmitButton onSubmit={() => {}} />
-            </div> */}
-            {/* <CodeMirror
+            </div>
+            <CodeMirror
                 value={sourceCode}
                 onChange={handleOnChange}
                 theme={Theme(theme)}
@@ -59,7 +57,8 @@ function Editor() {
                 height="100%"
                 extensions={[python()]}
                 style={{ fontSize }}
-            /> */}
+                className="h-full"
+            />
         </div>
     )
 }

@@ -28,7 +28,7 @@ function ScrollProvider({ children }: { children: ReactNode }) {
     const [isSettings, setIsSettings] = useState(false)
     const [code, setCode] = useState('')
 
-    const contextValue: ProblemContextI = {
+    const contextValue = {
         isDrag,
         setIsDrag,
         isSettings,

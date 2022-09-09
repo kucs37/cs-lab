@@ -4,9 +4,7 @@ import Editor from '@/components/Problem/Editor'
 import Scroll from '@/components/Problem/Scroll'
 import Leftpanel from '@/components/Problem/Leftpanel'
 import Settings from '@/components/Problem/Settings'
-
-// Context
-import ProblemContext, { useProblemContext } from '@/Context/Problem'
+import { useProblemContext } from '@/Context/Problem'
 
 function Problem() {
     const body = createRef<HTMLDivElement>()
@@ -36,23 +34,21 @@ function Problem() {
     }, [])
 
     return (
-        <ProblemContext>
-            <WithNavbar
-                ref={body}
-                title="09 Find a, b in which a*b=n and (a+b) is the lowest - CS-LAB"
+        <WithNavbar
+            ref={body}
+            title="09 Find a, b in which a*b=n and (a+b) is the lowest - CS-LAB"
+        >
+            {isSettings && <Settings />}
+            <div
+                className="flex flex-col md:flex-row min-h-0 max-h-full flex-1 h-full"
+                onMouseMove={handleOnMouseMove}
+                onTouchMove={handleOnTouchMove}
             >
-                {/* {isSettings && <Settings />} */}
-                <div
-                    className="flex flex-col md:flex-row min-h-0 max-h-full flex-1 bg-black"
-                    onMouseMove={handleOnMouseMove}
-                    onTouchMove={handleOnTouchMove}
-                >
-                    <Leftpanel />
-                    {/* <Scroll /> */}
-                    <Editor />
-                </div>
-            </WithNavbar>
-        </ProblemContext>
+                <Leftpanel />
+                <Scroll />
+                <Editor />
+            </div>
+        </WithNavbar>
     )
 }
 

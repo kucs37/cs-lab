@@ -4,7 +4,7 @@ import { BsThreeDotsVertical } from 'react-icons/bs'
 import { useProblemContext } from '@/Context/Problem'
 function Scroll() {
     const scroll = useRef<HTMLDivElement | null>(null)
-    const { setIsDrag } = useProblemContext()
+    const { isDrag, setIsDrag } = useProblemContext()
 
     const handleOnMouseDown = () => setIsDrag(true)
 
