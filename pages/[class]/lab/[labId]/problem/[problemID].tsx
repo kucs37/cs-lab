@@ -41,14 +41,14 @@ function Problem() {
                 ref={body}
                 title="09 Find a, b in which a*b=n and (a+b) is the lowest - CS-LAB"
             >
-                {isSettings && <Settings />}
+                {/* {isSettings && <Settings />} */}
                 <div
-                    className="flex flex-col md:flex-row min-h-0 h-full  bg-white"
+                    className="flex flex-col md:flex-row min-h-0 max-h-full flex-1 bg-black"
                     onMouseMove={handleOnMouseMove}
                     onTouchMove={handleOnTouchMove}
                 >
                     <Leftpanel />
-                    <Scroll />
+                    {/* <Scroll /> */}
                     <Editor />
                 </div>
             </WithNavbar>

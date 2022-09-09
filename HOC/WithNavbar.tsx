@@ -10,12 +10,15 @@ interface Props {
 }
 
 const WithNavbar: React.FC<Props> = forwardRef(
-    ({ children, title , className }, ref: LegacyRef<HTMLDivElement>) => (
+    ({ children, title, className = '' }, ref: LegacyRef<HTMLDivElement>) => (
         <>
             <Head>
                 <title>{title}</title>
             </Head>
-            <div className={`flex flex-col w-full min-h-screen ${className}`} ref={ref}>
+            <div
+                className={`flex flex-col w-full min-h-screen ${className}`}
+                ref={ref}
+            >
                 <Navbar />
 
                 {children}

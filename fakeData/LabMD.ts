@@ -57,13 +57,13 @@ while index < 6:
 
 1. ประกาศ List ของจำนวนเฉพาะ ให้ชื่อตัวแปรว่า \`primes\` โดยมีข้อมูลเป็นจำนวนเฉพาะ 10 จำนวนแรก  
 คำนวณหาผลรวมของจำนวนเฉพาะทั้ง 10 จำนวน โดยใช้ while loop เก็บผลรวมใส่ในตัวแปร \`total\`
-\`\`\`
+
 <div>
 <problem><id>001</id><hidemultiple>primes = [2,3,5,7,11,13,17,19,23,29]
 index = 0</hidemultiple><code>total = 0</code><code>while<hideinline>index < len(primes):</hideinline></code><hidemultiple>total += primes[index]
 index += 1</hidemultiple><code>print(total)</code></problem>
 </div>
-\`\`\`
+
 
 2. กำหนด List \`months\` และ \`days_in_month\` เป็น List ของตัวย่อชื่อเดือน และ List ของจำนวนวันในแต่ละเดือนตามลำดับ  
 ให้แสดง 12 บรรทัด ว่าแต่ละเดือนมีกี่วัน โดยใช้ while loop โดยแสดงชื่อเดือนและจำนวนวัน คั่นด้วยช่องว่าง
