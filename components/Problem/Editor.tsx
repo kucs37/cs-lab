@@ -33,12 +33,12 @@ function Editor() {
 
     return (
         <div
-            className="flex flex-col flex-1 w-full h-full max-h-full relative"
+            className="flex flex-col max-h-full relative flex-1 overflow-y-scroll"
             style={{
                 width: isMd ? `${width! - scrollSize}px` : '100%',
             }}
         >
-            <RunButton onRun={() => {}} />
+            {/* <RunButton onRun={() => {}} /> */}
             <div className="flex justify-between">
                 <button
                     className="block md:hidden self-end m-2 p-2 rounded-full shadow-md text-gray-600 bg-white"
@@ -48,17 +48,19 @@ function Editor() {
                 </button>
                 <SubmitButton onSubmit={() => {}} />
             </div>
-            <CodeMirror
-                value={sourceCode}
-                onChange={handleOnChange}
-                theme={Theme(theme)}
-                placeholder="Write your code here..."
-                minHeight="345px"
-                height="100%"
-                extensions={[python()]}
-                style={{ fontSize }}
-                className="h-full overflow-hidden"
-            />
+            <div className="overflow-hidden h-full">
+                <CodeMirror
+                    value={sourceCode}
+                    onChange={handleOnChange}
+                    theme={Theme(theme)}
+                    placeholder="Write your code here..."
+                    minHeight="345px"
+                    height="100%"
+                    extensions={[python()]}
+                    style={{ fontSize }}
+                    className="h-full"
+                />
+            </div>
         </div>
     )
 }
