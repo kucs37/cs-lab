@@ -1,16 +1,6 @@
-import {
-    createContext,
-    useContext,
-    useState,
-    useEffect,
-    ReactNode,
-} from 'react'
+import { createContext, useContext, useState, ReactNode } from 'react'
 
-interface LessonQuizzesI {
-    id: string
-    answers: string | string[]
-}
-
+import { LessonQuizzesI } from './interface'
 interface LessonCtxI {
     lessonQuizzes: LessonQuizzesI[]
     setLessonQuizzes: (value: LessonQuizzesI[]) => void

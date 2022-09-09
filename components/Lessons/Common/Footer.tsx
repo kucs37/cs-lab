@@ -5,7 +5,6 @@ function Footer() {
 
     const handleSubmitAnswer = () => {
         console.log(lessonQuizzes)
-        clearAnswers()
     }
 
     const clearAnswers = () => {

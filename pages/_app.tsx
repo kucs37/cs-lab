@@ -6,6 +6,7 @@ import Loading from '@/components/Common/Loading'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { SessionProvider } from 'next-auth/react'
+import LessonsCtx from '@/Context/Lessons'
 
 const MyApp: React.FC<AppProps> = ({
     Component,
@@ -29,8 +30,10 @@ const MyApp: React.FC<AppProps> = ({
 
     return (
         <SessionProvider session={session}>
-            {isStart && <Loading />}
-            <Component {...pageProps} />
+            <LessonsCtx>
+                {isStart && <Loading />}
+                <Component {...pageProps} />
+            </LessonsCtx>
         </SessionProvider>
     )
 }

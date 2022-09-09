@@ -2,19 +2,11 @@ import { ChangeEvent, useState, useEffect } from 'react'
 import { useLessonCTX } from '@/Context/Lessons'
 import Input from '@/components/Lessons/Common/Input'
 import TextArea from '@/components/Lessons/Common/TextArea'
-
-interface TypeI {
-    tagName: string
-    value: string
-    children: TypeI[]
-}
+import { toFinalAnswer } from './utils'
+import { AnswersI, TypeI } from './interface'
 
 interface CodeEditorI {
     code: TypeI[]
-}
-
-interface AnswersI {
-    [key: string]: string
 }
 
 function CodeEditor({ code }: CodeEditorI) {
@@ -26,9 +18,14 @@ function CodeEditor({ code }: CodeEditorI) {
         const otherQuizzes = lessonQuizzes.filter(
             (quiz) => quiz.id !== problemID
         )
+
         setLessonQuizzes([
             ...otherQuizzes,
-            { id: problemID, answers: Object.values(answers) },
+            {
+                id: problemID,
+                answers: toFinalAnswer(code, answers),
+                status: 'not-answered',
+            },
         ])
     }, [answers])
 
