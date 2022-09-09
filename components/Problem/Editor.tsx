@@ -33,7 +33,7 @@ function Editor() {
 
     return (
         <div
-            className="flex flex-col flex-1 w-full h-full relative "
+            className="flex flex-col flex-1 w-full h-full max-h-full relative"
             style={{
                 width: isMd ? `${width! - scrollSize}px` : '100%',
             }}
@@ -57,7 +57,7 @@ function Editor() {
                 height="100%"
                 extensions={[python()]}
                 style={{ fontSize }}
-                className="h-full"
+                className="h-full overflow-hidden"
             />
         </div>
     )

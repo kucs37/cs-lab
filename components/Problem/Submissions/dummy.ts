@@ -4,7 +4,7 @@ export const dummySubmissions: SubmissionI[] = [
     {
         order: 1,
         status: ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
-        date: new Date('2022 05 05 23:07'),
+        date: new Date('September 09, 2022 23:07:00'),
         code: `day = input()
         at = int(input())
         
@@ -50,7 +50,7 @@ export const dummySubmissions: SubmissionI[] = [
     {
         order: 2,
         status: ['P', 'P', 'P', 'P', 'P', '-', 'P', 'P', 'P', 'P'],
-        date: new Date('2022 05 05 16:07'),
+        date: new Date('September 09, 2022 23:07:10'),
         code: `day = input()
         at = int(input())
         
@@ -137,7 +137,7 @@ export const dummySubmissions: SubmissionI[] = [
           elif diff == 7 :
             at = 'Sunday' 
           print(at)`,
-        date: new Date(),
+          date: new Date('September 09, 2022 10:07:00'),
     },
     {
         order: 4,
@@ -183,7 +183,7 @@ export const dummySubmissions: SubmissionI[] = [
           elif diff == 7 :
             at = 'Sunday' 
           print(at)`,
-        date: new Date(),
+          date: new Date('September 09, 2022 22:07:00'),
     },
     {
         order: 5,
@@ -229,6 +229,6 @@ export const dummySubmissions: SubmissionI[] = [
           elif diff == 7 :
             at = 'Sunday' 
           print(at)`,
-        date: new Date(),
+          date: new Date('September 09, 2022 20:07:00'),
     },
 ]
