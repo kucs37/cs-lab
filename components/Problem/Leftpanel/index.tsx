@@ -28,12 +28,12 @@ function LeftPanel() {
 
     return (
         <div
-            className="w-full md:min-w-[500px] md:max-w-3xl h-full overflow-y-scroll flex-1"
+            className="w-full md:min-w-[500px] md:max-w-3xl h-full overflow-y-scroll flex-1 md:flex-auto bg-white"
             style={{
                 width: isMd ? `${scrollSize}px` : '100%',
             }}
         >
-            <div className="block md:flex md:flex-row w-full h-full bg-white md:bg-gray-50 ">
+            <div className="block md:flex md:flex-row w-full h-full">
                 <button
                     className="hidden self-end m-2 p-2 rounded-full shadow-md md:block text-gray-600 bg-white"
                     onClick={() => setIsSettings(true)}
@@ -41,8 +41,8 @@ function LeftPanel() {
                     <IoSettingsOutline size="1.75rem" />
                 </button>
 
-                <div className="md:overflow-y-scroll w-full h-full md:border-l-2 bg-white">
-                    <Backto href={backToHref} className="my-6 mx-3" />
+                <div className="w-full max-h-full md:border-l-2 flex flex-col">
+                    <Backto href={backToHref} className="my-6 mx-3 w-fit" />
 
                     <Menu
                         menu={menu}

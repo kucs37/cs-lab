@@ -26,8 +26,6 @@ function SubmissionCard({
 }: SubmissionCardI) {
     const [theme, __] = useLocalStorage<themesI>('theme', 'bespin')
 
-    const [cardRef] = useElementSize()
-
     const { setCode } = useProblemContext()
 
     const handleOnCopyToCurrent = () => {
@@ -35,11 +33,8 @@ function SubmissionCard({
     }
 
     return (
-        <div
-            className="bg-white p-4 rounded-md shadow-md flex flex-col w-full gap-4"
-            ref={cardRef}
-        >
-            <div className="flex justify-between items-center gap-2 cursor-pointer">
+        <div className="bg-white p-4 rounded-md shadow-md flex flex-col w-full gap-4">
+            {/* <div className="flex justify-between items-center gap-2 cursor-pointer">
                 <div
                     className="flex-1 flex items-center gap-4"
                     onClick={onClick}
@@ -69,17 +64,19 @@ function SubmissionCard({
                     </button>
                 )}
                 {isSelected ? <BsChevronUp /> : <BsChevronDown />}
-            </div>
+            </div> */}
+
             {isSelected && (
-                <div className="rounded-md overflow-hidden">
-                    <CodeMirror
+                <div className="rounded-md bg-black w-full overflow-x-scroll">
+                    <div className="w-screen h-20 bg-yellow-200"></div>
+                    {/* <CodeMirror
                         theme={Theme(theme)}
                         extensions={[python()]}
-                        width="100%"
+                        maxWidth="100%"
                         height="300px"
                         value={code}
                         readOnly
-                    />
+                    /> */}
                 </div>
             )}
         </div>

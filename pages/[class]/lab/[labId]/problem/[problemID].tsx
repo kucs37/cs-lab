@@ -1,4 +1,10 @@
-import { createRef, MouseEvent, TouchEvent, useEffect } from 'react'
+import {
+    createRef,
+    MouseEvent,
+    TouchEvent,
+    useEffect,
+    useCallback,
+} from 'react'
 import WithNavbar from '@/HOC/WithNavbar'
 import Editor from '@/components/Problem/Editor'
 import Scroll from '@/components/Problem/Scroll'
@@ -15,13 +21,13 @@ function Problem() {
     }
 
     const handleOnTouchMove = (e: TouchEvent) => {
-        if (isDrag && e.touches[0].pageX < 768)
+        if (isDrag && e.touches[0].pageX < 600)
             setScrollSize(e.touches[0].pageX)
     }
 
-    const handleOnMouseUp = () => {
+    const handleOnMouseUp = useCallback(() => {
         setIsDrag(false)
-    }
+    }, [setIsDrag])
 
     useEffect(() => {
         document.addEventListener('mouseup', handleOnMouseUp)
@@ -31,7 +37,7 @@ function Problem() {
             document.removeEventListener('mouseup', handleOnMouseUp)
             document.removeEventListener('touchend', handleOnMouseUp)
         }
-    }, [])
+    }, [handleOnMouseUp])
 
     return (
         <WithNavbar

@@ -38,7 +38,7 @@ const markdown: string = `
 
 function Description() {
     return (
-        <div className="w-full p-3">
+        <div className="w-full h-full p-3 overflow-y-scroll flex flex-col">
             <div>
                 <h1 className="text-xl font-bold">
                     09 Find a, b in which a*b=n and (a+b) is the lowest

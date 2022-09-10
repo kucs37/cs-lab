@@ -50,6 +50,7 @@ const Home: NextPage<Props> = ({ data }) => {
                         <div className="mt-4 grid grid-cols-12 gap-4 w-full">
                             {data?.resData?.map((item) => (
                                 <Class
+                                    key={item.fkSubjectId}
                                     title={item.subject.name}
                                     code={item.fkSubjectId}
                                     section={item.fkSectionId}

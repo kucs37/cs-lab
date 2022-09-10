@@ -10,7 +10,7 @@ function Submissions() {
     }
 
     return (
-        <div className="p-4 flex flex-col w-full gap-4">
+        <div className="p-4 flex flex-col items-center w-full gap-4 h-full overflow-y-scroll">
             {[
                 dummySubmissions.map(({ order, date, status, code }) => (
                     <Submission
