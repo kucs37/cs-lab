@@ -9,35 +9,38 @@ import jwt from 'jsonwebtoken'
 import { StudentInfo } from '@/interface/StudentInfo'
 
 export async function getServerSideProps(context: NextPageContext) {
-    const { req } = context
-    const token = await getToken({
-        req: req as NextApiRequest,
-        secret: process.env.SECRET,
-    })
+    try {
+        const { req } = context
+        const token = await getToken({
+            req: req as NextApiRequest,
+            secret: process.env.SECRET,
+        })
 
-    const { data } = await axios.get<StudentInfo>(
-        process.env.API_BASE_URL + '/classroom/studentInfo',
-        {
-            headers: {
-                Authorization: `Bearer ${jwt.sign(
-                    token!,
-                    process.env.SECRET!
-                )}`,
-            },
+        const { data } = await axios.get<StudentInfo>(
+            process.env.API_BASE_URL + '/classroom/studentInfo',
+            {
+                headers: {
+                    Authorization: `Bearer ${jwt.sign(
+                        token!,
+                        process.env.SECRET!
+                    )}`,
+                },
+            }
+        )
+
+        return {
+            props: { data },
         }
-    )
-
-    return {
-        props: { data },
+    } catch (error) {
+        return { props: { data: null } }
     }
 }
 
 interface Props {
-    data: StudentInfo
+    data: StudentInfo | null
 }
 
 const Home: NextPage<Props> = ({ data }) => {
-    console.log(data)
     return (
         <WithNavbar title="Class - CS-LAB">
             <div className="px-3 container mx-auto mt-2 my-10">
