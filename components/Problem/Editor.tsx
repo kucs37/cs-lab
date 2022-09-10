@@ -3,8 +3,8 @@ import CodeMirror from '@uiw/react-codemirror'
 import { python } from '@codemirror/lang-python'
 import Theme from '@/editorTheme/theme'
 import { themesI } from '@/interface/Themes'
-import { useLocalStorage } from 'usehooks-ts'
-import { useMediaQuery } from 'usehooks-ts'
+import { useLocalStorage, useMediaQuery, useElementSize } from 'usehooks-ts'
+
 import { useState, useCallback, useEffect } from 'react'
 import { ViewUpdate } from '@codemirror/view'
 import RunButton from './Buttons/RunButton'
@@ -20,6 +20,8 @@ function Editor() {
     const { width } = useWindowSize()
     const isMd = useMediaQuery('(min-width: 768px)')
     const [sourceCode, setSourceCode] = useState<string>(code)
+    const [frame, { height: frameHeight }] = useElementSize()
+    const [topSection, { height: topSectionHeight }] = useElementSize()
 
     useEffect(() => {
         setSourceCode(code)
@@ -30,18 +32,20 @@ function Editor() {
     }, [])
 
     const handleOnRun = () => {
-        console.log(sourceCode)
+        console.log(frameHeight)
+        console.log(topSectionHeight)
     }
 
     return (
         <div
-            className="flex-1 md:flex-auto overflow-y-scroll"
+            className="flex-1 md:flex-auto flex flex-col"
             style={{
                 width: isMd ? `${width! - scrollSize}px` : '100%',
             }}
+            ref={frame}
         >
             <RunButton onRun={handleOnRun} />
-            <div className="flex justify-between">
+            <div className="flex justify-between" ref={topSection}>
                 <button
                     className="block md:hidden self-end m-2 p-2 rounded-full shadow-md text-gray-600 bg-white"
                     onClick={() => setIsSettings(true)}
@@ -58,6 +62,7 @@ function Editor() {
                 placeholder="Write your code here..."
                 minHeight="345px"
                 height="100%"
+                maxHeight={`${frameHeight - topSectionHeight}px`}
                 extensions={[python()]}
                 style={{ fontSize }}
                 className="h-full"

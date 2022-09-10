@@ -33,8 +33,14 @@ function SubmissionCard({
     }
 
     return (
+        <div className="w-full overflow-x-scroll">
+            <div className="w-screen h-20 bg-red-200"> </div>
+        </div>
+    )
+
+    return (
         <div className="bg-white p-4 rounded-md shadow-md flex flex-col w-full gap-4">
-            {/* <div className="flex justify-between items-center gap-2 cursor-pointer">
+            <div className="flex justify-between items-center gap-2 cursor-pointer">
                 <div
                     className="flex-1 flex items-center gap-4"
                     onClick={onClick}
@@ -64,23 +70,23 @@ function SubmissionCard({
                     </button>
                 )}
                 {isSelected ? <BsChevronUp /> : <BsChevronDown />}
-            </div> */}
-
-            {isSelected && (
-                <div className="rounded-md bg-black w-full overflow-x-scroll">
-                    <div className="w-screen h-20 bg-yellow-200"></div>
-                    {/* <CodeMirror
-                        theme={Theme(theme)}
-                        extensions={[python()]}
-                        maxWidth="100%"
-                        height="300px"
-                        value={code}
-                        readOnly
-                    /> */}
-                </div>
-            )}
+            </div>
         </div>
     )
 }
 
 export default SubmissionCard
+
+// {isSelected && (
+//     <div className="rounded-md bg-black w-fit">
+//         <div className="w-screen h-20 bg-yellow-200"></div>
+//         {/* <CodeMirror
+//             theme={Theme(theme)}
+//             extensions={[python()]}
+//             maxWidth="100%"
+//             height="300px"
+//             value={code}
+//             readOnly
+//         /> */}
+//     </div>
+// )}

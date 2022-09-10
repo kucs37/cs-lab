@@ -41,7 +41,7 @@ function LeftPanel() {
                     <IoSettingsOutline size="1.75rem" />
                 </button>
 
-                <div className="w-full max-h-full md:border-l-2 flex flex-col">
+                <div className="w-full max-h-full md:border-l-2  flex flex-col flex-1">
                     <Backto href={backToHref} className="my-6 mx-3 w-fit" />
 
                     <Menu
