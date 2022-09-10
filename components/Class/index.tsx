@@ -15,10 +15,10 @@ function Class({ title, code, section, labs }: Props) {
     ).length
     const allLab = labs.length
     return (
-        <Link href="/cs112">
+        <Link href={`/${code}`}>
             <a className="col-span-12 md:col-span-6 xl:col-span-4">
                 <div className="rounded-lg border-[1px] bg-white border-gray-50 w-full px-6 py-4 shadow-sm flex flex-col gap-3">
-                    <Section code="cs112" section={11} />
+                    <Section code={code} section={section} />
                     <h3 className="font-bold text-lg text-gray-900">{title}</h3>
 
                     {/* <div className="flex flex-col gap-2">
