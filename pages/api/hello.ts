@@ -1,13 +1,17 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { getToken } from 'next-auth/jwt'
+import jwt from 'jsonwebtoken'
 
-type Data = {
-    name: string
-}
-
-export default function handler(
+export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<Data>
+    res: NextApiResponse
 ) {
+    // const token = await getToken({
+    //     req,
+    //     secret: process.env.SECRET,
+    // })
+
+    // console.log(jwt.sign(token!, process.env.SECRET!))
+
     res.status(200).json({ name: 'John Doe' })
 }
