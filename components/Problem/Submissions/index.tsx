@@ -10,19 +10,6 @@ function Submissions() {
     }
 
     return (
-        <div className='w-full flex-1'>
-            <Submission
-                onClick={() => {}}
-                isFirst={true}
-                isSelected={true}
-                order={1}
-                date={new Date()}
-                status={['P', 'P']}
-                code={`print("Hello World)`}
-            />
-        </div>
-    )
-    return (
         <div className="p-4 flex flex-col items-center w-full gap-4 h-full overflow-y-scroll">
             {[
                 dummySubmissions.map(({ order, date, status, code }) => (

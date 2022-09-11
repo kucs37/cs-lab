@@ -9,6 +9,7 @@ import { SubmissionI } from '@/interface/Submission'
 import { useProblemContext } from '@/Context/Problem'
 import { format } from 'date-fns'
 import { th } from 'date-fns/locale'
+import { useEffect } from 'react'
 
 interface SubmissionCardI extends SubmissionI {
     isFirst: boolean
@@ -31,12 +32,6 @@ function SubmissionCard({
     const handleOnCopyToCurrent = () => {
         setCode(code)
     }
-
-    return (
-        <div className="w-full overflow-x-scroll">
-            <div className="w-screen h-20 bg-red-200"> </div>
-        </div>
-    )
 
     return (
         <div className="bg-white p-4 rounded-md shadow-md flex flex-col w-full gap-4">
@@ -71,22 +66,20 @@ function SubmissionCard({
                 )}
                 {isSelected ? <BsChevronUp /> : <BsChevronDown />}
             </div>
+            <div className="rounded-md overflow-hidden">
+                {isSelected && (
+                    <CodeMirror
+                        theme={Theme(theme)}
+                        extensions={[python()]}
+                        width="100%"
+                        height="300px"
+                        value={code}
+                        readOnly
+                    />
+                )}
+            </div>
         </div>
     )
 }
 
 export default SubmissionCard
-
-// {isSelected && (
-//     <div className="rounded-md bg-black w-fit">
-//         <div className="w-screen h-20 bg-yellow-200"></div>
-//         {/* <CodeMirror
-//             theme={Theme(theme)}
-//             extensions={[python()]}
-//             maxWidth="100%"
-//             height="300px"
-//             value={code}
-//             readOnly
-//         /> */}
-//     </div>
-// )}
