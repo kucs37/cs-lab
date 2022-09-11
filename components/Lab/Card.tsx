@@ -5,7 +5,7 @@ interface Props {
     title: string
     end: string
     problems: Problem[]
-    id: number
+    id: string
 }
 
 function Card({ title, end, problems, id }: Props) {

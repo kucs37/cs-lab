@@ -5,15 +5,60 @@ import Backto from '@/components/Common/Backto'
 import WithNavbar from '@/HOC/WithNavbar'
 import Labs from '@/fakeData'
 import Head from 'next/head'
+import { StudentInfo } from '@/interface/StudentInfo'
+import axios from 'axios'
+import { NextPageContext, NextApiRequest } from 'next'
+import { getToken } from 'next-auth/jwt'
+import jwt from 'jsonwebtoken'
+import { GetLabs } from '@/interface/GetLabs'
 
-type showType = 'all' | 'open' | 'close'
+export async function getServerSideProps(context: NextPageContext) {
+    try {
+        const { req } = context
+        const token = await getToken({
+            req: req as NextApiRequest,
+            secret: process.env.SECRET,
+        })
 
-function Class() {
-    const [show, setShow] = useState<showType>('all')
+        const { data } = await axios.post<StudentInfo>(
+            process.env.API_BASE_URL + '/classroom/getLabs',
+            {
+                subjectId: context.query.class,
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${jwt.sign(
+                        token!,
+                        process.env.SECRET!
+                    )}`,
+                },
+            }
+        )
+
+        return {
+            props: { data },
+        }
+    } catch (error) {
+        return { props: { data: null } }
+    }
+}
+
+interface Props {
+    data: GetLabs | null
+}
+
+type showType = 0 | 1 | 2
+
+const Class: React.FC<Props> = ({ data }) => {
+    const [show, setShow] = useState<showType>(1)
+
+    const [Data, setData] = useState<GetLabs | null>(data)
 
     const handleOnClick = (type: showType) => {
         setShow(type)
     }
+
+    console.log(Data)
     return (
         <WithNavbar title="Fundamental Programming Concepts - CS-LAB">
             <div className="px-3 container mx-auto mt-2 my-10">
@@ -24,29 +69,29 @@ function Class() {
                     <hr />
                     <div className="my-6">
                         <h2 className="text-2xl font-bold">
-                            แลปทั้งหมด ({Labs.length})
+                            แลปทั้งหมด ({Data?.resData.length})
                         </h2>
                         <div className="flex flex-wrap items-center gap-2 my-4">
-                            <button
-                                onClick={() => handleOnClick('all')}
+                            {/* <button
+                                onClick={() => handleOnClick(1)}
                                 className={`rounded-full px-4 py-1 border-2 ${
-                                    show == 'all' && 'bg-gray-900 text-white'
+                                    show == 1 && 'bg-gray-900 text-white'
                                 } border-gray-900 active:bg-gray-900 active:text-white`}
                             >
                                 <p>ทั้งหมด</p>
-                            </button>
+                            </button> */}
                             <button
-                                onClick={() => handleOnClick('open')}
+                                onClick={() => handleOnClick(1)}
                                 className={`rounded-full px-4 py-1 border-2 ${
-                                    show == 'open' && 'bg-gray-900 text-white'
+                                    show == 1 && 'bg-gray-900 text-white'
                                 } border-gray-900 active:bg-gray-900 active:text-white`}
                             >
                                 <p>เปิดการส่งงาน</p>
                             </button>
                             <button
-                                onClick={() => handleOnClick('close')}
+                                onClick={() => handleOnClick(2)}
                                 className={`rounded-full px-4 py-1 border-2 ${
-                                    show == 'close' && 'bg-gray-900 text-white'
+                                    show == 2 && 'bg-gray-900 text-white'
                                 } border-gray-900 active:bg-gray-900 active:text-white`}
                             >
                                 <p>อ่านอย่างเดียว</p>
@@ -54,24 +99,18 @@ function Class() {
                         </div>
                     </div>
                     <div className="grid grid-cols-12 gap-4 place-items-stretch">
-                        {Labs.filter(({ end }) => {
-                            const isEnd = new Date(end) < new Date()
-                            if (show == 'all') {
-                                return true
-                            } else if (show == 'open') {
-                                return !isEnd
-                            } else if (show == 'close') {
-                                return isEnd
-                            }
-                        }).map(({ title, problems, end, id }) => (
-                            <Card
-                                key={id}
-                                id={id}
-                                title={title}
-                                problems={problems}
-                                end={end}
-                            />
-                        ))}
+                        {Data?.resData
+                            .filter(({status}) => status == show)
+                            .map((lab, id) => (
+                                <Card
+                                    key={id}
+                                    id={lab.labId}
+                                    title={lab.name}
+                                    problems={[]}
+                                    end={new Date().toISOString()}
+                                />
+                            ))}
+                        
                     </div>
                 </div>
             </div>
