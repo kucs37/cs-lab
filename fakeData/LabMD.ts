@@ -1,4 +1,4 @@
-const markdown: string = `
+export const fakeMarkdown: string = `
 
 # List Index และการเข้าถึง (access) ข้อมูลใน List
 \`\`\`python
@@ -149,5 +149,3 @@ while i <= 7:
 <input type="text" ans='months=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]' id="005"  />
 
 `
-
-export default markdown

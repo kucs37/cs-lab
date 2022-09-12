@@ -13,8 +13,6 @@ export default withAuth({
             // }
             // // `/me` only requires the user to be logged in
 
-            console.log(token)
-
             return !!token
         },
     },

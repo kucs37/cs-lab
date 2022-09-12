@@ -12,4 +12,5 @@ export interface ResDaum {
     sectionId: number
     sectionName: string
     type: string
+    problems: any[]
 }

@@ -1,40 +1,12 @@
 import React from 'react'
 import type { NextApiRequest, NextPage, NextPageContext } from 'next'
 import Class from '@/components/Class'
-import Labs from '@/fakeData'
+import { fakeLabs, fakeClass } from '@/fakeData'
 import WithNavbar from '@/HOC/WithNavbar'
 import { getToken } from 'next-auth/jwt'
 import axios from 'axios'
 import jwt from 'jsonwebtoken'
 import { StudentInfo } from '@/interface/StudentInfo'
-
-export async function getServerSideProps(context: NextPageContext) {
-    try {
-        const { req } = context
-        const token = await getToken({
-            req: req as NextApiRequest,
-            secret: process.env.SECRET,
-        })
-
-        const { data } = await axios.get<StudentInfo>(
-            process.env.API_BASE_URL + '/classroom/studentInfo',
-            {
-                headers: {
-                    Authorization: `Bearer ${jwt.sign(
-                        token!,
-                        process.env.SECRET!
-                    )}`,
-                },
-            }
-        )
-
-        return {
-            props: { data },
-        }
-    } catch (error) {
-        return { props: { data: null } }
-    }
-}
 
 interface Props {
     data: StudentInfo | null
@@ -54,7 +26,7 @@ const Home: NextPage<Props> = ({ data }) => {
                                     title={item.subject.name}
                                     code={item.fkSubjectId}
                                     section={item.section.sectionId}
-                                    labs={Labs}
+                                    labs={fakeLabs}
                                 />
                             ))}
                         </div>
@@ -66,3 +38,33 @@ const Home: NextPage<Props> = ({ data }) => {
 }
 
 export default Home
+
+export async function getServerSideProps(context: NextPageContext) {
+    const res: StudentInfo = { resCode: '200', resData: fakeClass, msg: '' }
+    return { props: { data: res } }
+    // try {
+    //     const { req } = context
+    //     const token = await getToken({
+    //         req: req as NextApiRequest,
+    //         secret: process.env.SECRET,
+    //     })
+
+    //     const { data } = await axios.get<StudentInfo>(
+    //         process.env.API_BASE_URL + '/classroom/studentInfo',
+    //         {
+    //             headers: {
+    //                 Authorization: `Bearer ${jwt.sign(
+    //                     token!,
+    //                     process.env.SECRET!
+    //                 )}`,
+    //             },
+    //         }
+    //     )
+
+    //     return {
+    //         props: { data },
+    //     }
+    // } catch (error) {
+    //     return { props: { data: null } }
+    // }
+}
