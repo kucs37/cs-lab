@@ -2,14 +2,14 @@ export interface GetLabs {
     resCode: string
     resData: ResDaum[]
     msg: string
-  }
-  
-  export interface ResDaum {
+}
+
+export interface ResDaum {
     labId: string
     name: string
     fkSubjectId: string
     status: number
-    sectionId: string
+    sectionId: number
     sectionName: string
-  }
-  
+    type: string
+}

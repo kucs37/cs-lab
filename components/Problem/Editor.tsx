@@ -15,7 +15,7 @@ import { useProblemContext } from '@/Context/Problem'
 function Editor() {
     const [theme] = useLocalStorage<themesI>('theme', 'bespin')
     const [fontSize] = useLocalStorage<string>('fontSize', '16px')
-    const { scrollSize, code, setIsSettings } = useProblemContext()
+    const { scrollSize, code, setIsSettings, setMenu } = useProblemContext()
 
     const { width } = useWindowSize()
     const isMd = useMediaQuery('(min-width: 768px)')
@@ -32,6 +32,7 @@ function Editor() {
     }, [])
 
     const handleOnRun = () => {
+        setMenu('Console')
         console.log(frameHeight)
         console.log(topSectionHeight)
     }

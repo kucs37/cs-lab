@@ -1,3 +1,4 @@
+import { MenuType } from '@/interface/Menu'
 import { createContext, useState, useContext, ReactNode } from 'react'
 
 interface ProblemContextI {
@@ -9,6 +10,8 @@ interface ProblemContextI {
     setCode: (value: string) => void
     scrollSize: number
     setScrollSize: (value: number) => void
+    menu: MenuType
+    setMenu: (menu: MenuType) => void
 }
 
 const ProblemContext = createContext<ProblemContextI>({
@@ -20,6 +23,8 @@ const ProblemContext = createContext<ProblemContextI>({
     setCode: () => {},
     scrollSize: 0,
     setScrollSize: () => {},
+    menu: 'Description',
+    setMenu: () => {},
 })
 
 function ScrollProvider({ children }: { children: ReactNode }) {
@@ -27,6 +32,7 @@ function ScrollProvider({ children }: { children: ReactNode }) {
     const [isDrag, setIsDrag] = useState(false)
     const [isSettings, setIsSettings] = useState(false)
     const [code, setCode] = useState('')
+    const [menu, setMenu] = useState<MenuType>('Description')
 
     const contextValue = {
         isDrag,
@@ -37,6 +43,8 @@ function ScrollProvider({ children }: { children: ReactNode }) {
         setScrollSize,
         code,
         setCode,
+        menu,
+        setMenu,
     }
     return (
         <ProblemContext.Provider value={contextValue}>

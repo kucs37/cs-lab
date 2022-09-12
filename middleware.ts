@@ -1,18 +1,21 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest, NextFetchEvent } from 'next/server'
+import { withAuth } from 'next-auth/middleware'
 
-export function middleware(request: NextRequest, ev: NextFetchEvent) {
-    const PUBLIC_FILE = /\.(.*)$/
-    const { pathname } = request.nextUrl
-    if (
-        true ||
-        pathname.startsWith('/login') ||
-        pathname.startsWith('/_next') || // exclude Next.js internals
-        pathname.startsWith('/api') || //  exclude all API routes
-        pathname.startsWith('/static') || // exclude static files
-        PUBLIC_FILE.test(pathname)
-    )
-        return NextResponse.next()
+export default withAuth({
+    pages: {
+        signIn: '/login',
+        error: '/error',
+    },
+    callbacks: {
+        authorized({ req, token }) {
+            // `/admin` requires admin role
+            // if (req.nextUrl.pathname === '/admin') {
+            //     return token?.userRole === 'user'
+            // }
+            // // `/me` only requires the user to be logged in
 
-    return NextResponse.redirect(new URL('/login', request.url))
-}
+            console.log(token)
+
+            return !!token
+        },
+    },
+})

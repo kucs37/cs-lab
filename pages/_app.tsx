@@ -30,7 +30,7 @@ const MyApp: React.FC<AppProps> = ({
 
     return (
         <AllContext>
-            <SessionProvider session={session}>
+            <SessionProvider session={session} refetchInterval={0}>
                 {isStart && <Loading />}
                 <Component {...pageProps} />
             </SessionProvider>

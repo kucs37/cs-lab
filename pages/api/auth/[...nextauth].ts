@@ -1,20 +1,16 @@
 import axios from 'axios'
-import NextAuth from 'next-auth'
-import { JWT } from 'next-auth/jwt'
+import NextAuth, { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 import jwt from 'jsonwebtoken'
 
-export default NextAuth({
+export const authOptions: NextAuthOptions = {
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID!,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
         }),
     ],
-    pages: {
-        signIn: '/api/auth/signin',
-        error: '/error',
-    },
+
     callbacks: {
         async signIn({ account, profile }) {
             if (account.provider === 'google') {
@@ -39,14 +35,14 @@ export default NextAuth({
                             {
                                 email: token.email,
                             },
-                            process.env.SECRET!
+                            process.env.NEXTAUTH_SECRET!
                         )}`,
                     },
                 }
             )
             return {
                 ...token,
-                ...ress.data.resData
+                ...ress.data.resData,
             }
         },
         async session({ session, user, token }) {
@@ -54,8 +50,9 @@ export default NextAuth({
             return session
         },
     },
-    secret: process.env.SECRET,
     jwt: {
-        secret: process.env.SECRET,
+        secret: process.env.NEXTAUTH_SECRET,
     },
-})
+}
+
+export default NextAuth(authOptions)

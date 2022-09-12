@@ -18,11 +18,10 @@ import Backto from '@/components/Common/Backto'
 import { useProblemContext } from '@/Context/Problem'
 
 function LeftPanel() {
-    const { scrollSize, setIsSettings } = useProblemContext()
+    const { scrollSize, setIsSettings, menu, setMenu } = useProblemContext()
 
     const router = useRouter()
     const isMd = useMediaQuery('(min-width: 768px)')
-    const [menu, setMenu] = useState<MenuType>('Description')
 
     const backToHref = `/${router.query.class}/lab/${router.query.labId}/`
 

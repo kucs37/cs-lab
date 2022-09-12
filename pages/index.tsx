@@ -53,7 +53,7 @@ const Home: NextPage<Props> = ({ data }) => {
                                     key={item.fkSubjectId}
                                     title={item.subject.name}
                                     code={item.fkSubjectId}
-                                    section={item.fkSectionId}
+                                    section={item.section.sectionId}
                                     labs={Labs}
                                 />
                             ))}

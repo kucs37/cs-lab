@@ -3,22 +3,25 @@ import Problem from '@/interface/Problem'
 import { useRouter } from 'next/router'
 interface Props {
     title: string
-    end: string
+    isClosed: boolean
     problems: Problem[]
     id: string
+    type: string
 }
 
-function Card({ title, end, problems, id }: Props) {
+function Card({ title, isClosed, problems, id, type }: Props) {
     const router = useRouter()
     const success = problems.filter(({ status }) => status == 'success').length
-    const isEnd = new Date(end) < new Date()
-
+    const isLesson = type === 'LS'
+    const hrefTo = isLesson
+        ? `${router.asPath}/lesson/${id}`
+        : `${router.asPath}/lab/${id}`
     return (
-        <Link href={`${router.asPath}/lab/${id}`}>
+        <Link href={hrefTo}>
             <a className="col-span-12 md:col-span-6 xl:col-span-4">
                 <div className="rounded-lg border-[1px] bg-white border-gray-50 w-full h-full px-6 py-4 shadow-sm flex flex-col gap-3">
                     <div className="flex flex-wrap items-center gap-2">
-                        {isEnd && (
+                        {isClosed && (
                             <div className="rounded-full px-2 py-1 bg-red-200 w-fit">
                                 <p className="text-sm text-red-500 font-bold">
                                     อ่านอย่างเดียว

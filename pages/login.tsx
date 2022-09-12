@@ -1,29 +1,9 @@
 import type { NextPage } from 'next'
 import AsyncBtn from '@/components/Common/AsynBtn'
-import { useEffect, useState } from 'react'
-import { signIn, useSession } from 'next-auth/react'
-import { useRouter } from 'next/router'
+import { signIn } from 'next-auth/react'
 import Head from 'next/head'
 
 const Login: NextPage = () => {
-    const [isSubmit, setIsSubmit] = useState<boolean>(false) // Test Async Button component
-    const { status } = useSession()
-    const router = useRouter()
-
-    useEffect(() => {
-        if (status !== 'loading') {
-            if (status === 'authenticated') {
-                router.push('/')
-            }
-        }
-    }, [status, router])
-
-    const handleSubmit = () => {
-        setIsSubmit(true)
-        setTimeout(() => {
-            setIsSubmit(false)
-        }, 1000)
-    }
     return (
         <>
             <Head>
@@ -40,7 +20,9 @@ const Login: NextPage = () => {
                     <div className="my-4 flex flex-col gap-6">
                         <AsyncBtn
                             isLoading={false}
-                            onClick={() => signIn('google')}
+                            onClick={() =>
+                                signIn('google', { callbackUrl: '/' })
+                            }
                         >
                             เข้าสู่ระบบ
                         </AsyncBtn>

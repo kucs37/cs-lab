@@ -6,12 +6,12 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    // const token = await getToken({
-    //     req,
-    //     secret: process.env.SECRET,
-    // })
+    const token = await getToken({
+        req,
+        secret: process.env.SECRET,
+    })
 
-    // console.log(jwt.sign(token!, process.env.SECRET!))
+    console.log(jwt.sign(token!, process.env.SECRET!))
 
     res.status(200).json({ name: 'John Doe' })
 }
