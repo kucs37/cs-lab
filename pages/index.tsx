@@ -26,7 +26,7 @@ const Home: NextPage<Props> = ({ data }) => {
                                     title={item.subject.name}
                                     code={item.fkSubjectId}
                                     section={item.section.sectionId}
-                                    labs={fakeLabs}
+                                    labs={fakeLabs as any}
                                 />
                             ))}
                         </div>

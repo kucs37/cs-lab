@@ -18,7 +18,7 @@ function LabID({
     answers: LessonQuizzesI[]
 }) {
     const router = useRouter()
-    const backToHref = `/${router.query.class}/lab/${router.query.labId}`
+    const backToHref = `/${router.query.class}`
     const { setLessonQuizzes } = useLessonCTX()
 
     useEffect(() => {
@@ -41,12 +41,12 @@ function LabID({
 export default LabID
 
 // Fake Datas
-import fromServer from '@/fakeData/LabMD'
+import { fakeMarkdown } from '@/fakeData'
 export async function getServerSideProps(ctx: GetServerSideProps) {
     const fetchedAns: LessonQuizzesI[] = []
     return {
         props: {
-            labMD: fromServer,
+            labMD: fakeMarkdown,
             answers: fetchedAns,
         },
     }

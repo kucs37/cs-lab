@@ -1,16 +1,15 @@
+import type { AppProps } from 'next/app'
 import '@/styles/globals.css'
 import '@/styles/xterm.css'
-
-import type { AppProps } from 'next/app'
 import Loading from '@/components/Common/Loading'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { SessionProvider } from 'next-auth/react'
 import AllContext from '@/Context'
 
-const MyApp: React.FC<AppProps> = ({
+const MyApp: React.FC<AppProps & { pageProps: any }> = ({
     Component,
-    pageProps: { session, ...pageProps },
+    pageProps,
 }) => {
     const [isStart, setIsStart] = useState<boolean>(false)
     const router = useRouter()
@@ -30,7 +29,7 @@ const MyApp: React.FC<AppProps> = ({
 
     return (
         <AllContext>
-            <SessionProvider session={session} refetchInterval={0}>
+            <SessionProvider session={pageProps.session} refetchInterval={0}>
                 {isStart && <Loading />}
                 <Component {...pageProps} />
             </SessionProvider>

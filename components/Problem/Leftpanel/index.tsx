@@ -23,7 +23,7 @@ function LeftPanel() {
     const router = useRouter()
     const isMd = useMediaQuery('(min-width: 768px)')
 
-    const backToHref = `/${router.query.class}/lab/${router.query.labId}/`
+    const backToHref = `/${router.query.class}/problem/${router.query.labId}/`
 
     return (
         <div
