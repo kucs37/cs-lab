@@ -11,7 +11,7 @@ export default async function handler(
         secret: process.env.SECRET,
     })
 
-    console.log(jwt.sign(token!, process.env.SECRET!))
+    console.log(jwt.sign(token!, process.env.NEXTAUTH_SECRET!))
 
     res.status(200).json({ name: 'John Doe' })
 }
