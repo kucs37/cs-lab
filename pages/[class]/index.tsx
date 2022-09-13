@@ -40,40 +40,35 @@ const Class: React.FC<Props> = ({ data }) => {
                         Fundamental Programming Concepts
                     </h3>
                 </div>
-
-                <hr />
-                <div className="my-6">
-                    <h2 className="text-2xl font-bold">
-                        แลปทั้งหมด ({Data?.resData.length})
-                    </h2>
-                    <div className="flex flex-wrap items-center gap-2 my-4">
-                        <button
-                            onClick={() => handleOnClick(0)}
-                            className={`rounded-full px-4 py-1 border-2 ${
-                                show == 0 && 'bg-gray-900 text-white'
-                            } border-gray-900 active:bg-gray-900 active:text-white`}
-                        >
-                            <p>ทั้งหมด</p>
-                        </button>
-                        <button
-                            onClick={() => handleOnClick(1)}
-                            className={`rounded-full px-4 py-1 border-2 ${
-                                show == 1 && 'bg-gray-900 text-white'
-                            } border-gray-900 active:bg-gray-900 active:text-white`}
-                        >
-                            <p>เปิดการส่งงาน</p>
-                        </button>
-                        <button
-                            onClick={() => handleOnClick(2)}
-                            className={`rounded-full px-4 py-1 border-2 ${
-                                show == 2 && 'bg-gray-900 text-white'
-                            } border-gray-900 active:bg-gray-900 active:text-white`}
-                        >
-                            <p>อ่านอย่างเดียว</p>
-                        </button>
-                    </div>
+                <div className="flex flex-wrap items-center gap-2 my-4">
+                    <button
+                        onClick={() => handleOnClick(0)}
+                        className={`rounded-full px-4 py-1 border-2 ${
+                            show == 0 && 'bg-gray-900 text-white'
+                        } border-gray-900 active:bg-gray-900 active:text-white`}
+                    >
+                        <p>ทั้งหมด</p>
+                    </button>
+                    <button
+                        onClick={() => handleOnClick(1)}
+                        className={`rounded-full px-4 py-1 border-2 ${
+                            show == 1 && 'bg-gray-900 text-white'
+                        } border-gray-900 active:bg-gray-900 active:text-white`}
+                    >
+                        <p>เปิดการส่งงาน</p>
+                    </button>
+                    <button
+                        onClick={() => handleOnClick(2)}
+                        className={`rounded-full px-4 py-1 border-2 ${
+                            show == 2 && 'bg-gray-900 text-white'
+                        } border-gray-900 active:bg-gray-900 active:text-white`}
+                    >
+                        <p>อ่านอย่างเดียว</p>
+                    </button>
                 </div>
-                <div className="grid grid-cols-12 gap-4 place-items-stretch">
+                <hr />
+
+                <div className="grid grid-cols-12 gap-4 place-items-stretch mt-10">
                     {Data?.resData
                         .filter(({ status }) => status == show || show === 0)
                         .map(({ labId, name, status, type, problems }, id) => (

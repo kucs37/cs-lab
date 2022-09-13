@@ -1,36 +1,80 @@
 import { NextPage } from 'next'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
-import React from 'react'
-import { FaGraduationCap } from 'react-icons/fa'
+import { useState, useRef } from 'react'
 import ProfileImage from './ProfileImage'
+import Logo from '@/public/logo-CS37.png'
+import Image from 'next/image'
+import { IoSettingsOutline } from 'react-icons/io5'
+import { BsDoorOpen } from 'react-icons/bs'
+import { useRouter } from 'next/router'
+import { useOnClickOutside } from 'usehooks-ts'
 
 interface Props {}
 
 const Navbar: NextPage<Props> = () => {
     const { status, data: session } = useSession()
+    const [isProfileClick, setIsProfileClick] = useState<boolean>(false)
+    const router = useRouter()
+    const settingRef = useRef<HTMLDivElement>(null)
+
+    const handleSignOut = () => {
+        signOut()
+    }
+
+    const handleClickSetting = () => {
+        router.push('/settings')
+    }
+
+    const handleClickProfile = () => {
+        setIsProfileClick(!isProfileClick)
+    }
+
+    useOnClickOutside(settingRef, handleClickProfile)
 
     return (
-        <div className="w-full bg-white border-b-[1px]">
+        <div className="w-full bg-white shadow-md shadow-gray-50 border-b-[1px] border-gray-200">
             <div className="container mx-auto max-w-5xl px-2 py-3 flex justify-between items-center">
                 <Link href={'/'}>
-                    <h1 className="text-xl cursor-pointer font-bold">CS Lab</h1>
+                    <a>
+                        <Image
+                            src={Logo}
+                            layout="fixed"
+                            width={50}
+                            height={50}
+                            alt="CS-37 Logo"
+                        />
+                    </a>
                 </Link>
                 {status === 'authenticated' ? (
                     <div>
-                        <div className="flex w-full items-center gap-2">
-                            <div className="flex flex-col">
-                                <h2 className="text-md font-bold">
-                                    {session.user?.name}
-                                </h2>
-                                <div className="inline-flex gap-2 items-center">
-                                    <FaGraduationCap />
-                                    <p>นิสิตชั้นปีที่ 1</p>
+                        <div className="flex w-full items-center gap-2 relative ">
+                            <ProfileImage onClick={handleClickProfile} />
+                            {isProfileClick && (
+                                <div
+                                    ref={settingRef}
+                                    className="absolute w-[200px] bg-white rounded-lg shadow-md shadow-gray-100 border-2 border-gray-50 right-0 top-14 overflow-hidden p-2"
+                                >
+                                    <button
+                                        className="hover:bg-gray-100 rounded-lg p-2 inline-flex items-center justify-between w-full"
+                                        onClick={handleClickSetting}
+                                    >
+                                        <p>การตั้งค่า</p>
+                                        <div className="p-2 rounded-full bg-gray-50">
+                                            <IoSettingsOutline size="1.2rem" />
+                                        </div>
+                                    </button>
+                                    <button
+                                        className="hover:bg-gray-100 rounded-lg p-2 inline-flex items-center justify-between w-full"
+                                        onClick={handleSignOut}
+                                    >
+                                        <p>ออกจากระบบ</p>
+                                        <div className="p-2 rounded-full bg-gray-50">
+                                            <BsDoorOpen size="1.2rem" />
+                                        </div>
+                                    </button>
                                 </div>
-                            </div>
-                            <div onClick={() => signOut()}>
-                                <ProfileImage />
-                            </div>
+                            )}
                         </div>
                     </div>
                 ) : (

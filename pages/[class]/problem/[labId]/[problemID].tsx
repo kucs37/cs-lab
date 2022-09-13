@@ -17,7 +17,7 @@ function Problem() {
     const { isDrag, setIsDrag, setScrollSize, isSettings } = useProblemContext()
 
     const handleOnMouseMove = (e: MouseEvent) => {
-        if (isDrag && e.pageX < 768) setScrollSize(e.pageX)
+        if (isDrag && e.pageX < 900) setScrollSize(e.pageX)
     }
 
     const handleOnTouchMove = (e: TouchEvent) => {

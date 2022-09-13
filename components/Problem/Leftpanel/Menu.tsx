@@ -19,7 +19,7 @@ function Menu({ menu, onChange }: MenuProps) {
                     <button
                         onClick={() => onChange(id as MenuType)}
                         key={id}
-                        className="flex flex-col w-full items-center"
+                        className="flex flex-col w-full items-center pt-4"
                     >
                         <h4 className={id === menu ? 'font-bold' : ''}>
                             {name}

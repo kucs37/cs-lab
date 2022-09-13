@@ -15,7 +15,7 @@ interface Props {
 const Home: NextPage<Props> = ({ data }) => {
     return (
         <WithNavbar title="Class - CS-LAB">
-            <div className="mt-4 p-4 flex flex-col items-center w-full">
+            <div className="p-10 w-full container mx-auto">
                 <div>
                     <h2 className="text-2xl font-bold">คลาสเรียน</h2>
                     <div className="mt-4 grid grid-cols-12 gap-4 w-full">

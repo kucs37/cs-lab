@@ -15,7 +15,7 @@ function Card({ title, isClosed, problems, id, type }: Props) {
     const success = problems.filter(({ status }) => status == 'success').length
     const isLesson = type === 'LS'
     const hrefTo = isLesson
-        ? `${router.asPath}/lesson/${id}`
+        ? `${router.asPath}/lesson/${id}/01`
         : `${router.asPath}/problem/${id}`
     return (
         <Link href={hrefTo}>
