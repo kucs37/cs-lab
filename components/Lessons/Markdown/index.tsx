@@ -33,11 +33,7 @@ const mdComponents = {
 
 const Markdown = ({ labMD }: { labMD: string }) => {
     return (
-        <ReactMarkdown
-            className="my-10"
-            rehypePlugins={[rehypeRaw]}
-            components={mdComponents}
-        >
+        <ReactMarkdown rehypePlugins={[rehypeRaw]} components={mdComponents}>
             {labMD}
         </ReactMarkdown>
     )

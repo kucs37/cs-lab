@@ -28,10 +28,29 @@ function LabID({
     return (
         <WithNavbar title="Lab - CS LAB" className="bg-white">
             <div className="min-h-full h-full">
-                <div className="container mx-auto px-4 md:px-6 lg:px-0 pt-6 pb-10 md:max-w-4xl h-full prose">
+                <div className="container mx-auto px-4 py-10 max-w-2lg h-full w-full">
                     <Backto href={backToHref} />
-                    <Markdown labMD={labMD} />
-                    <Footer />
+                    <div className="flex flex-col md:flex-row w-full h-full gap-6 my-10">
+                        <div className="prose">
+                            <h2 className="text-lg">
+                                CS Python Lab 01 Input Process Output
+                            </h2>
+                            <ul>
+                                <li>01 Elab&apos;s Automatic Grading</li>
+                                <li>02 Elab&apos;s Manual Grading</li>
+                                <li>03 Reusing Submitted Answer</li>
+                                <li>04 Variable and Basic Output</li>
+                                <li>05 Expression</li>
+                                <li>06 Basic Input</li>
+                                <li>07 - Exercise 1.1: Input Process Output</li>
+                                <li>08 Exercise 1.2: Input Process Output</li>
+                            </ul>
+                        </div>
+                        <div className="prose prose-base max-w-full flex-1">
+                            <Markdown labMD={labMD} />
+                            <Footer />
+                        </div>
+                    </div>
                 </div>
             </div>
         </WithNavbar>

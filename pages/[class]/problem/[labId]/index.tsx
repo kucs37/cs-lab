@@ -95,10 +95,9 @@ function Lab() {
 
     return (
         <WithNavbar title="CS Python Lab 01 Input Process Output - CS-LAB">
-            <div className="px-3 container mx-auto mt-2 my-10">
-                <div className="my-6">
-                    <Backto href={`/${router.query.class}`} />
-                </div>
+            <div className="px-3 container mx-auto mt-2 py-10">
+                <Backto href={`/${router.query.class}`} />
+
                 <div className="bg-white p-6 rounded-lg shadow-sm">
                     <Header
                         title={mock.title}

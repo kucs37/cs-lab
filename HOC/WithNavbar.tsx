@@ -27,4 +27,6 @@ const WithNavbar: React.FC<Props> = forwardRef(
     )
 )
 
+WithNavbar.displayName = 'WithNavbar'
+
 export default WithNavbar

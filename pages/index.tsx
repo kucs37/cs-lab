@@ -15,21 +15,19 @@ interface Props {
 const Home: NextPage<Props> = ({ data }) => {
     return (
         <WithNavbar title="Class - CS-LAB">
-            <div className="px-3 container mx-auto mt-2 my-10">
-                <div className="p-4 flex flex-col items-center">
-                    <div>
-                        <h2 className="text-2xl font-bold">คลาสเรียน</h2>
-                        <div className="mt-4 grid grid-cols-12 gap-4 w-full">
-                            {data?.resData?.map((item) => (
-                                <Class
-                                    key={item.fkSubjectId}
-                                    title={item.subject.name}
-                                    code={item.fkSubjectId}
-                                    section={item.section.sectionId}
-                                    labs={fakeLabs as any}
-                                />
-                            ))}
-                        </div>
+            <div className="mt-4 p-4 flex flex-col items-center w-full">
+                <div>
+                    <h2 className="text-2xl font-bold">คลาสเรียน</h2>
+                    <div className="mt-4 grid grid-cols-12 gap-4 w-full">
+                        {data?.resData?.map((item) => (
+                            <Class
+                                key={item.fkSubjectId}
+                                title={item.subject.name}
+                                code={item.fkSubjectId}
+                                section={item.section.sectionId}
+                                labs={fakeLabs as any}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>
