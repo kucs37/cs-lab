@@ -34,7 +34,7 @@ const Navbar: NextPage<Props> = () => {
 
     return (
         <div className="w-full bg-white shadow-md shadow-gray-50 border-b-[1px] border-gray-200">
-            <div className="container mx-auto max-w-5xl px-2 py-3 flex justify-between items-center">
+            <div className="container mx-auto px-2 py-3 flex justify-between items-center">
                 <Link href={'/'}>
                     <a>
                         <Image
@@ -53,7 +53,7 @@ const Navbar: NextPage<Props> = () => {
                             {isProfileClick && (
                                 <div
                                     ref={settingRef}
-                                    className="absolute w-[200px] bg-white rounded-lg shadow-md shadow-gray-100 border-2 border-gray-50 right-0 top-14 overflow-hidden p-2"
+                                    className="z-40 absolute w-[200px] bg-white rounded-lg shadow-md shadow-gray-100 border-2 border-gray-50 right-0 top-14 overflow-hidden p-2"
                                 >
                                     <button
                                         className="hover:bg-gray-100 rounded-lg p-2 inline-flex items-center justify-between w-full"
