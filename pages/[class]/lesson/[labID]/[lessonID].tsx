@@ -31,7 +31,7 @@ function LabID({
 
     return (
         <WithNavbar title="Lab - CS LAB" className="bg-white">
-            <div className="min-h-full h-full">
+            <div className="min-h-full h-full ">
                 <div className="container mx-auto px-4 py-10 max-w-2lg h-full w-full">
                     <Backto href={backToHref} />
 
@@ -44,7 +44,7 @@ function LabID({
                                 <Badge title="อ่านอย่างเดียว" color="red" />
                             )}
 
-                            <ul className='text-gray-500'>
+                            <ul className="text-gray-500">
                                 <Link
                                     href={`${router.asPath}/01 Elab's Automatic Grading`}
                                 >

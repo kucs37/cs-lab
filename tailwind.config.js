@@ -14,6 +14,12 @@ module.exports = {
                     },
                 },
             }),
+            width: {
+                0.5: '0.125rem',
+            },
+            borderWidth: {
+                1: '1.5px',
+            },
         },
     },
 

@@ -18,7 +18,7 @@ function Footer() {
             >
                 ส่ง
             </button>
-            <button className="" onClick={clearAnswers}>
+            <button className="text-red-500" onClick={clearAnswers}>
                 ล้างคำตอบ
             </button>
         </div>
