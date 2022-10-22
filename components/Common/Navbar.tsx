@@ -34,7 +34,7 @@ const Navbar: NextPage<Props> = () => {
 
     return (
         <div className="w-full bg-white shadow-md shadow-gray-50 border-b-[1px] border-gray-200">
-            <div className="container mx-auto px-2 py-3 flex justify-between items-center">
+            <div className="container mx-auto px-2 py-1 flex justify-between items-center">
                 <Link href={'/'}>
                     <a>
                         <Image
