@@ -1,1 +1,1 @@
-export type WindowT = 'code' | 'terminal' | 'submissions'
+export type WindowT =  'console' | 'submissions'

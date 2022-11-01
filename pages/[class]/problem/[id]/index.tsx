@@ -1,31 +1,30 @@
 import CodeZone from '@/components/Editor/CodeZone'
 import Description from '@/components/Editor/Description'
-import { SideNav, BottomNav } from '@/components/Editor/Navigation/'
+import { SideNav } from '@/components/Editor/Navigation/'
 import Settings from '@/components/Editor/Settings'
 import WithNavbar from '@/HOC/WithNavbar'
-import { useEffect } from 'react'
-import { useMediaQuery } from 'usehooks-ts'
-
-function PC() {
-    return (
-        <div className="bg-white shadow-lg rounded-xl flex overflow-hidden m-4 gap-2">
-            <Settings />
-            <SideNav />
-            <Description />
-            <CodeZone />
-        </div>
-    )
-}
+import { useRef, useState } from 'react'
+import Window from '@/components/Editor/Window'
 
 function Editor() {
-    const isPC = useMediaQuery('(min-width : 768px)')
+    const tabRef = useRef<HTMLDivElement>(null)
 
+    const [height, setHeight] = useState<number>(200)
     return (
         <WithNavbar
             title="09 Find a, b in which a*b=n and (a+b) is the lowest - CS-LAB"
-            className="bg-gray-50"
+            className="bg-gray-50 fixed w-screen"
         >
-            <PC />
+            <div
+                className="bg-white shadow-lg rounded-xl flex w-full m-4 h-[calc(100vh-100px)]"
+                ref={tabRef}
+            >
+                <Settings />
+                <SideNav />
+                <Description windowRef={tabRef} />
+
+                <CodeZone tabRef={tabRef} />
+            </div>
         </WithNavbar>
     )
 }

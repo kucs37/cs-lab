@@ -1,15 +1,22 @@
 import CodeMirror from '@uiw/react-codemirror'
 import { python } from '@codemirror/lang-python'
-function CodeMirrorComponent() {
+import { RefObject } from 'react'
+interface CodeMirrorI {
+    width: string
+    maxHeight: string
+}
+
+function CodeMirrorComponent({ width, maxHeight }: CodeMirrorI) {
     return (
         <CodeMirror
             // value={sourceCode}
             // onChange={handleOnChange}
             // theme={Theme(theme)}
             placeholder="Write your code here..."
+            width={width}
             minHeight="345px"
             height="100%"
-            // maxHeight={`300px`}
+            maxHeight={maxHeight}
             extensions={[python()]}
             className="h-full"
         />

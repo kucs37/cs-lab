@@ -1,20 +1,25 @@
-import { useState } from 'react'
-import Window from './Window'
+import { RefObject, useRef, useState } from 'react'
+import Window from '../Window'
 import CodeMirror from './CodeMirror'
-import ActionButton from './ActionButton'
-import { WindowT } from '@/interface/Window'
 
-function CodeZone() {
-    const [active, SetActive] = useState<WindowT>('code')
+function CodeZone({ tabRef }: { tabRef: RefObject<HTMLDivElement> }) {
+    const zoneRef = useRef<HTMLDivElement>(null)
+    const [windowHeight, setWindowHeight] = useState<number>(200)
+
     return (
-        <div className="w-full flex flex-col pt-2">
-            <div className="flex items-center justify-between">
-                <Window active={active} setActive={SetActive}/>
-                <ActionButton />
-            </div>
-            <div className="flex-1 h-full overflow-hidden">
-                {active === 'code' && <CodeMirror />}
-            </div>
+        <div ref={zoneRef} className="flex-1 relative">
+            <CodeMirror
+                width={`${
+                    tabRef.current?.offsetWidth! - zoneRef.current?.offsetLeft!
+                }px`}
+                maxHeight={`${zoneRef.current?.clientHeight! - windowHeight}px`}
+            />
+
+            <Window
+                zoneRef={zoneRef}
+                windowHeight={windowHeight}
+                setWindowHeight={setWindowHeight}
+            />
         </div>
     )
 }

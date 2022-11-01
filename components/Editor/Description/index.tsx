@@ -4,6 +4,8 @@ import remarkGFM from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import 'katex/dist/katex.min.css'
+import useDrag from '@/hooks/useDrag'
+import { RefObject, useState, useEffect } from 'react'
 
 const markdown: string = `
 เขียนโปรแกรมภาษาไพทอน ที่รับเลขจำนวนเต็มบวก n แล้วแสดงผลลัพธ์เป็น ผลบวกของเลขจำนวนเต็มบวกสองจำนวน a และ b โดยที่ a * b = n และ (a+b) มีค่าน้อยที่สุด
@@ -36,35 +38,49 @@ const markdown: string = `
 
 `
 
-function Description() {
+function Description({ windowRef }: { windowRef: RefObject<HTMLDivElement> }) {
+    const [width, setWidth] = useState<number>(400)
+    const { size, setIsDrag } = useDrag(windowRef, width, 'width')
+
+    useEffect(() => {
+        console.log(size)
+
+        setWidth(size)
+    }, [size])
+
     return (
-        <div className="h-full p-3 overflow-y-scroll flex flex-col">
-            <div>
-                <h1 className="text-xl font-bold">
-                    09 Find a, b in which a*b=n and (a+b) is the lowest
-                </h1>
-                <div className="flex items-center w-full gap-2 my-2">
-                    <div className="flex items-center gap-1 text-sm justify-start w-fit">
-                        <span className="text-yellow-300">
-                            <AiFillStar size="1.25rem" />
-                        </span>
-                        <p>4.5</p>
-                        <p>•</p>
-                        <p>25 รีวิว</p>
-                    </div>
-                    <div className="text-gray-900 font-bold">
-                        (<span className="text-lime-500">PPPPP</span>)
+        <>
+            <div
+                className="h-full p-3 overflow-y-scroll flex flex-col select-none"
+                style={{ minWidth: 400, width, maxWidth: 700 }}
+            >
+                <div>
+                    <h1 className="text-xl font-bold">
+                        09 Find a, b in which a*b=n and (a+b) is the lowest
+                    </h1>
+                    <div className="flex items-center w-full gap-2 my-2">
+                        <div className="flex items-center gap-1 text-sm justify-start w-fit">
+                            <span className="text-yellow-300">
+                                <AiFillStar size="1.25rem" />
+                            </span>
+                            <p>4.5</p>
+                            <p>•</p>
+                            <p>25 รีวิว</p>
+                        </div>
+                        <div className="text-gray-900 font-bold">
+                            (<span className="text-lime-500">PPPPP</span>)
+                        </div>
                     </div>
                 </div>
+                <div className="prose">
+                    <ReactMarkdown
+                        remarkPlugins={[remarkGFM, remarkMath]}
+                        rehypePlugins={[rehypeKatex]}
+                        children={markdown}
+                    />
+                </div>
             </div>
-            <div className="prose">
-                <ReactMarkdown
-                    remarkPlugins={[remarkGFM, remarkMath]}
-                    rehypePlugins={[rehypeKatex]}
-                    children={markdown}
-                />
-            </div>
-        </div>
+        </>
     )
 }
 

@@ -12,8 +12,8 @@ export default withAuth({
             //     return token?.userRole === 'user'
             // }
             // // `/me` only requires the user to be logged in
-
-            return !!token
+            return true
+            // return !!token
         },
     },
 })
