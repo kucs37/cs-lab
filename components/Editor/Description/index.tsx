@@ -43,8 +43,6 @@ function Description({ windowRef }: { windowRef: RefObject<HTMLDivElement> }) {
     const { size, setIsDrag } = useDrag(windowRef, width, 'width')
 
     useEffect(() => {
-        console.log(size)
-
         setWidth(size)
     }, [size])
 

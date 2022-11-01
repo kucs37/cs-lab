@@ -7,6 +7,8 @@ interface CodeMirrorI {
 }
 
 function CodeMirrorComponent({ width, maxHeight }: CodeMirrorI) {
+    console.log(width);
+    
     return (
         <CodeMirror
             // value={sourceCode}

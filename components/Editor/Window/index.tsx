@@ -3,6 +3,11 @@ import React, { RefObject, useEffect, useState } from 'react'
 import Tabs from './Tabs'
 import { WindowT } from '@/interface/Window'
 import Submissions from './Submissions'
+import dynamic from 'next/dynamic'
+
+const Console = dynamic(() => import('../CodeZone/Console'), {
+    ssr: false,
+})
 
 interface WindowI {
     windowHeight: number
@@ -11,11 +16,10 @@ interface WindowI {
 }
 
 function Window({ zoneRef, windowHeight, setWindowHeight }: WindowI) {
-    const [active, setActive] = useState<WindowT>('console')
     const { size, setIsDrag } = useDrag(zoneRef, windowHeight, 'height')
-    const width = zoneRef.current?.offsetWidth
+
     useEffect(() => {
-        setWindowHeight(size + 83)
+        if (size > 16) setWindowHeight(size + 83)
     }, [size, setWindowHeight])
 
     return (
@@ -39,16 +43,12 @@ function Window({ zoneRef, windowHeight, setWindowHeight }: WindowI) {
 
             <div className="p-2 cursor-pointer select-none w-fit">
                 <h4 className="text-sm font-medium uppercase">CONSOLE</h4>
-                <div
-                    className={`border-b-2 ${
-                        active ? 'border-gray-900' : 'border-none'
-                    } px-2`}
-                ></div>
+                <div className="border-b-2 border-gray-900 px-2"></div>
             </div>
 
             {/* Content */}
-            <div className="p-2">
-                {active === 'console' && <div>Console</div>}
+            <div className="bg-black h-full">
+                <Console />
             </div>
         </div>
     )
