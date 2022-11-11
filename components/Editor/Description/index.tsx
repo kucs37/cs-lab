@@ -38,45 +38,25 @@ const markdown: string = `
 
 `
 
-function Description({ windowRef }: { windowRef: RefObject<HTMLDivElement> }) {
-    const [width, setWidth] = useState<number>(400)
-    const { size, setIsDrag } = useDrag(windowRef, width, 'width')
+function Description() {
+    const [width, setWidth] = useState<number>(300)
+    // const { size, setIsDrag } = useDrag(windowRef, width, 'width')
 
-    useEffect(() => {
-        setWidth(size)
-    }, [size])
+    // useEffect(() => {
+    //     setWidth(size)
+    // }, [size])
 
     return (
         <>
-            <div
-                className="h-full p-3 overflow-y-scroll flex flex-col select-none"
-                style={{ minWidth: 400, width, maxWidth: 700 }}
-            >
-                <div>
-                    <h1 className="text-xl font-bold">
-                        09 Find a, b in which a*b=n and (a+b) is the lowest
-                    </h1>
-                    <div className="flex items-center w-full gap-2 my-2">
-                        <div className="flex items-center gap-1 text-sm justify-start w-fit">
-                            <span className="text-yellow-300">
-                                <AiFillStar size="1.25rem" />
-                            </span>
-                            <p>4.5</p>
-                            <p>•</p>
-                            <p>25 รีวิว</p>
-                        </div>
-                        <div className="text-gray-900 font-bold">
-                            (<span className="text-lime-500">PPPPP</span>)
-                        </div>
-                    </div>
-                </div>
-                <div className="prose">
-                    <ReactMarkdown
-                        remarkPlugins={[remarkGFM, remarkMath]}
-                        rehypePlugins={[rehypeKatex]}
-                        children={markdown}
-                    />
-                </div>
+            <div>
+                <h1 className="text-xl font-bold">01 แปลงอุณหภูมิ</h1>
+            </div>
+            <div className="prose">
+                <ReactMarkdown
+                    remarkPlugins={[remarkGFM, remarkMath]}
+                    rehypePlugins={[rehypeKatex]}
+                    children={markdown}
+                />
             </div>
         </>
     )

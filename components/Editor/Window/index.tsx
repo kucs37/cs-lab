@@ -24,7 +24,7 @@ function Window({ zoneRef, windowHeight, setWindowHeight }: WindowI) {
 
     return (
         <div
-            className="absolute bottom-0 bg-gray-50 w-full overflow-y-scroll"
+            className="absolute bottom-0 bg-gray-50 w-full flex flex-col"
             style={{
                 minHeight: 16,
                 maxHeight: '100%',
@@ -33,7 +33,7 @@ function Window({ zoneRef, windowHeight, setWindowHeight }: WindowI) {
         >
             {/* Tab Size */}
             <div
-                className="h-4 bg-gray-300 cursor-row-resize flex items-center justify-center"
+                className="w-full h-4 bg-slate-200 cursor-row-resize flex items-center justify-center"
                 onTouchStart={() => setIsDrag(true)}
                 onMouseDown={() => setIsDrag(true)}
                 onDoubleClick={() => setWindowHeight(400)}
@@ -47,8 +47,9 @@ function Window({ zoneRef, windowHeight, setWindowHeight }: WindowI) {
             </div>
 
             {/* Content */}
-            <div className="bg-black h-full">
-                <Console />
+            <div className="flex-1 h-full bg-yellow-500">
+
+                {/* <Console /> */}
             </div>
         </div>
     )

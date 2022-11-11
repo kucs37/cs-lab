@@ -12,19 +12,19 @@ export const authOptions: NextAuthOptions = {
     ],
 
     callbacks: {
-        async signIn({ account, profile }) {
-            if (account.provider === 'google') {
-                if (
-                    profile.email_verified &&
-                    profile.email?.endsWith('@ku.th')
-                ) {
-                    return true
-                } else {
-                    throw new Error('You must login with email @ku.th')
-                }
-            }
-            throw new Error('Sign in provider not supported')
-        },
+        // async signIn({ account, profile }) {
+        //     if (account.provider === 'google') {
+        //         if (
+        //             profile.email_verified &&
+        //             profile.email?.endsWith('@ku.th')
+        //         ) {
+        //             return true
+        //         } else {
+        //             throw new Error('You must login with email @ku.th')
+        //         }
+        //     }
+        //     throw new Error('Sign in provider not supported')
+        // },
         // async jwt({ token, account, isNewUser, profile, user }) {
         //     let ress = await axios.post(
         //         process.env.API_BASE_URL! + '/auth/verifyToken',
