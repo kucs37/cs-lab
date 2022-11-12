@@ -1,13 +1,6 @@
 import useDrag from '@/hooks/useDrag'
-import React, { RefObject, useEffect, useState } from 'react'
-import Tabs from './Tabs'
-import { WindowT } from '@/interface/Window'
-import Submissions from './Submissions'
-import dynamic from 'next/dynamic'
-
-const Console = dynamic(() => import('../CodeZone/Console'), {
-    ssr: false,
-})
+import React, { RefObject, useEffect } from 'react'
+import SaveStatus from './SaveStatus'
 
 interface WindowI {
     windowHeight: number
@@ -31,12 +24,17 @@ function Window({ zoneRef, windowHeight, setWindowHeight }: WindowI) {
                 height: windowHeight,
             }}
         >
-            {/* Tab Size */}
+            {/* Save Status */}
+            <div className="p-2 bg-gray-100">
+                <SaveStatus status="saved" />
+            </div>
+
+            {/* Tab Resize */}
             <div
                 className="w-full h-4 bg-slate-200 cursor-row-resize flex items-center justify-center"
                 onTouchStart={() => setIsDrag(true)}
                 onMouseDown={() => setIsDrag(true)}
-                onDoubleClick={() => setWindowHeight(400)}
+                onDoubleClick={() => setWindowHeight(200)}
             >
                 <span className="h-1/4 rounded-full w-10 bg-gray-500"></span>
             </div>
@@ -46,11 +44,8 @@ function Window({ zoneRef, windowHeight, setWindowHeight }: WindowI) {
                 <div className="border-b-2 border-gray-900 px-2"></div>
             </div>
 
-            {/* Content */}
-            <div className="flex-1 h-full bg-gray-100">
-
-                {/* <Console /> */}
-            </div>
+            {/* Console */}
+            <div className="flex-1 h-full bg-gray-100"></div>
         </div>
     )
 }

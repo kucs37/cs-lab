@@ -7,7 +7,7 @@ function Editor() {
     return (
         <WithNavbar
             title="09 Find a, b in which a*b=n and (a+b) is the lowest - CS-LAB"
-            className="bg-gray-50 fixed w-screen"
+            className="bg-gray-50 fixed"
         >
             <div className="bg-white shadow-lg rounded-xl overflow-hidden flex m-2 h-full">
                 <Settings />
