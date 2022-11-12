@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
-import { useState, useRef } from 'react'
+import { useState, useRef, LegacyRef, forwardRef } from 'react'
 import ProfileImage from './ProfileImage'
 import Logo from '@/public/logo-CS37.png'
 import Image from 'next/image'
@@ -10,9 +10,11 @@ import { BsDoorOpen } from 'react-icons/bs'
 import { useRouter } from 'next/router'
 import { useOnClickOutside } from 'usehooks-ts'
 
-interface Props {}
+interface Props {
+    ref: LegacyRef<HTMLDivElement>
+}
 
-const Navbar: NextPage<Props> = () => {
+const Navbar = forwardRef((_, ref: LegacyRef<HTMLDivElement>) => {
     const { status, data: session } = useSession()
     const [isProfileClick, setIsProfileClick] = useState<boolean>(false)
     const router = useRouter()
@@ -33,7 +35,10 @@ const Navbar: NextPage<Props> = () => {
     useOnClickOutside(settingRef, handleClickProfile)
 
     return (
-        <div className="w-full bg-white shadow-md shadow-gray-50 border-b-[1px] border-gray-200">
+        <div
+            ref={ref}
+            className="w-full bg-white shadow-md shadow-gray-50 border-b-[1px] border-gray-200"
+        >
             <div className="container mx-auto px-2 py-1 flex justify-between items-center">
                 <Link href={'/'}>
                     <a>
@@ -83,6 +88,8 @@ const Navbar: NextPage<Props> = () => {
             </div>
         </div>
     )
-}
+})
+
+Navbar.displayName = 'Navbar'
 
 export default Navbar

@@ -6,6 +6,7 @@ body {
     font-family: 'Noto Sans Thai', sans-serif;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
 }
 
 /* Chrome, Safari, Edge, Opera */

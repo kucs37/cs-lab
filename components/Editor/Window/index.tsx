@@ -47,7 +47,7 @@ function Window({ zoneRef, windowHeight, setWindowHeight }: WindowI) {
             </div>
 
             {/* Content */}
-            <div className="flex-1 h-full bg-yellow-500">
+            <div className="flex-1 h-full bg-gray-100">
 
                 {/* <Console /> */}
             </div>
