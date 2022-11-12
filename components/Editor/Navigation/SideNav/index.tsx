@@ -1,25 +1,25 @@
 import Backto from '@/components/Common/Backto'
 import Badge from '@/components/Common/Badge'
 import React from 'react'
-import Settings from '../../Buttons'
+import { IoClose, IoCheckmark } from 'react-icons/io5'
 
 function Navigation() {
     return (
         <div className="pb-4 break-words">
-            {/* <Badge title="อ่านอย่างเดียว" color="red" /> */}
+            <Badge title="อ่านอย่างเดียว" color="red" />
             <h4 className="text-lg font-bold my-2">
                 CS Python Lab 01 Input Process Output
             </h4>
             <ul>
-                <li className="text-gray-900 font-bold">
+                <li className="text-gray-900 font-bold flex items-center gap-2">
                     01 แปลงอุณหภูมิ
-                    {/* <div className="text-gray-900 font-bold">
-                        (<span className="text-lime-500">P-PPP</span>)
-                    </div> */}
+                    <IoCheckmark  className="text-lime-500 text-xl" />
+                    
                 </li>
 
-                <a href="#" className="no-underline text-gray-500">
+                <a href="#" className="no-underline text-gray-500 flex items-center gap-2">
                     <li>02 แตกหน่วยวินาที</li>
+                    <IoClose className="text-red-500 text-xl" />
                 </a>
                 <a href="#" className="no-underline text-gray-500">
                     <li>03 จะบวกแบบไหน</li>

@@ -7,7 +7,7 @@ function CodeZone() {
     const [windowHeight, setWindowHeight] = useState<number>(200)
     const codeMirrorHeight = `calc(100% - ${windowHeight}px)`
     return (
-        <div ref={zoneRef} className="w-full relative">
+        <div ref={zoneRef} className="flex-1 relative">
             <CodeMirror height={codeMirrorHeight} />
 
             <Window

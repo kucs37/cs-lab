@@ -1,22 +1,32 @@
-import Backto from '@/components/Common/Backto'
-import React from 'react'
 import Description from '../Description'
-import { SideNav } from '../Navigation'
-
+import Navigation from '../Navigation/SideNav'
+import useDrag from '@/hooks/useDrag'
+import { useRef, useState, useEffect } from 'react'
 function LeftPanel() {
+    const [windowWidth, setWindowWidth] = useState<number>(688)
+    const leftPanelRef = useRef<HTMLDivElement>(null)
+    const { size, setIsDrag } = useDrag(leftPanelRef, windowWidth, 'width')
+
+    useEffect(() => {
+        setWindowWidth(size)
+    }, [size])
+
     return (
-        <div className="flex">
+        <div
+            ref={leftPanelRef}
+            className="flex justify-between  max-w-max"
+            style={{ minWidth: 320, width: windowWidth }}
+        >
             <div className="p-4 h-full overflow-y-scroll">
-                {/* <Backto href="/" className="mb-4" /> */}
-                <SideNav />
-                <hr className='h-4'/>
+                <Navigation />
+                <hr className="h-4" />
                 <Description />
             </div>
             <div
-                className="w-4 h-full bg-slate-200 cursor-col-resize flex items-center justify-center"
-                // onTouchStart={() => setIsDrag(true)}
-                // onMouseDown={() => setIsDrag(true)}
-                // onDoubleClick={() => setWindowHeight(400)}
+                className="flex-shrink-0 w-3 h-full bg-slate-200 cursor-col-resize flex items-center justify-center"
+                onTouchStart={() => setIsDrag(true)}
+                onMouseDown={() => setIsDrag(true)}
+                onDoubleClick={() => setWindowWidth(400)}
             >
                 <span className="h-10 rounded-full w-1/3 bg-gray-500"></span>
             </div>

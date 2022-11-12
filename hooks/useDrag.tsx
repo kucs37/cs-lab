@@ -9,21 +9,21 @@ function useDrag(
     const [size, setSize] = useState<number>(defaultWidth)
     const parentSize =
         dimension === 'width'
-            ? ref.current?.clientWidth!
+            ? ref.current?.getBoundingClientRect().left!
             : ref.current?.clientHeight!
     const client = dimension === 'width' ? 'clientX' : 'clientY'
     const onUp = () => setIsDrag(false)
 
     const onMouseDrag = useCallback(
         (e: MouseEvent) => {
-            setSize(parentSize - e[client])
+            setSize(Math.abs(parentSize - e[client]))
         },
         [setSize, parentSize, client]
     )
 
     const touchDragging = useCallback(
         (e: TouchEvent) => {
-            setSize(parentSize - e.touches[0][client])
+            setSize(Math.abs(parentSize - e.touches[0][client]))
         },
         [setSize, parentSize, client]
     )
