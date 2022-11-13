@@ -1,5 +1,5 @@
 import React from 'react'
-import CodeMirror from '../CodeZone/CodeMirror'
+import CodeMirror from '../RightPanel/CodeMirror'
 import { IoClose } from 'react-icons/io5'
 import { useRef, useState, useMemo } from 'react'
 import { EditorState } from '@codemirror/state'

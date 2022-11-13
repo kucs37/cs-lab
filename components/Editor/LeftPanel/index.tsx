@@ -1,5 +1,5 @@
 import Description from '../Description'
-import Navigation from '../Navigation/SideNav'
+import Outline from './Outline'
 import useDrag from '@/hooks/useDrag'
 import { useRef, useState, useEffect } from 'react'
 function LeftPanel() {
@@ -18,10 +18,12 @@ function LeftPanel() {
             style={{ minWidth: 320, width: windowWidth }}
         >
             <div className="p-4 h-full overflow-y-scroll">
-                <Navigation />
+                <Outline />
                 <hr className="h-4" />
                 <Description />
             </div>
+
+            {/* Tab Resize */}
             <div
                 className="flex-shrink-0 w-3 h-full bg-slate-200 cursor-col-resize flex items-center justify-center"
                 onTouchStart={() => setIsDrag(true)}

@@ -1,5 +1,5 @@
-import CodeZone from '@/components/Editor/CodeZone'
-import Settings from '@/components/Editor/Buttons'
+import RightPanel from '@/components/Editor/RightPanel'
+import SideNav from '@/components/Editor/SideNav'
 import WithNavbar from '@/HOC/WithNavbar'
 import LeftPanel from '@/components/Editor/LeftPanel'
 import History from '@/components/Editor/History'
@@ -12,9 +12,9 @@ function Editor() {
         >
             {/* <History /> */}
             <div className="bg-white shadow-lg rounded-xl overflow-hidden flex m-2 h-full">
-                <Settings />
+                <SideNav />
                 <LeftPanel />
-                <CodeZone />
+                <RightPanel />
             </div>
         </WithNavbar>
     )

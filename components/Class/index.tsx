@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Lab from '@/interface/Lab'
 import Section from '@/components/Class/Section'
+import Status from './Status'
 
 interface Props {
     title: string
@@ -10,41 +11,13 @@ interface Props {
 }
 
 function Class({ title, code, section, labs }: Props) {
-    const successLab = labs.filter((lab) =>
-        lab.problems.every(({ status }) => status == 'success')
-    ).length
-    const allLab = labs.length
-
     return (
         <Link href={`/${code}`}>
             <a className="col-span-12 md:col-span-6 xl:col-span-4">
                 <div className="rounded-lg border-[1px] bg-white border-gray-50 w-full px-6 py-4 shadow-lg shadow-gray-200 flex flex-col gap-3 min-w-[300px]">
                     <Section code={code} section={section} />
                     <h3 className="font-bold text-lg text-gray-900">{title}</h3>
-                    {allLab > 0 && (
-                        <div className="flex flex-col gap-2">
-                            <div className="w-full grid grid-cols-7 gap-1 place-items-stretch">
-                                {labs.map(({ problems }, index) => {
-                                    const isSuccess = problems.every(
-                                        ({ status }) => status == 'success'
-                                    )
-                                    return (
-                                        <div
-                                            key={index}
-                                            className={`h-2 ${
-                                                isSuccess
-                                                    ? 'bg-lime-500'
-                                                    : 'bg-gray-200'
-                                            } rounded-full`}
-                                        ></div>
-                                    )
-                                })}
-                            </div>
-                            <h6 className="font-bold text-md">
-                                {successLab}/{allLab}
-                            </h6>
-                        </div>
-                    )}
+                    <Status labs={labs} />
                 </div>
             </a>
         </Link>
