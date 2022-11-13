@@ -52,11 +52,6 @@ function Description() {
                     <span>S</span>
                     <span>P</span>
                 </div>
-
-                <button className="p-2 flex items-center gap-3 bg-yellow-400 rounded-md text-md my-2">
-                    <FaHistory />
-                    ประวัติการส่ง
-                </button>
             </div>
             <div className="prose">
                 <ReactMarkdown

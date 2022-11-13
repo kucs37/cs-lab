@@ -207,7 +207,7 @@ function History() {
                         <h4 className="text-xl font-semibold">ประวัติการส่ง</h4>
                     </div>
                     <div className="flex flex-col gap-2 mt-3">
-                        <div className="border-2 border-gray-900 p-2 rounded-lg cursor-pointer">
+                        <div className="border-2 border-gray-200 p-2 rounded-lg cursor-pointer">
                             <div>
                                 <h4 className="text-md font-bold">
                                     ส่งเมื่อวันที่ 14 พ.ย 2565
@@ -218,7 +218,7 @@ function History() {
                                 </div>
                             </div>
                             <div className="flex items-center flex-wrap bg-gray-200 rounded-lg gap-1 py-1 px-2 w-fit font-bold text-sm mt-2">
-                                <span className='text-lime-500'>P</span>
+                                <span>P</span>
                                 <span>P</span>
                                 <span>P</span>
                                 <span>-</span>
@@ -362,7 +362,7 @@ function History() {
                                 <span>C</span>
                             </div>
                         </div>
-                        <div className="border-2 border-gray-200 p-2 rounded-lg cursor-pointer">
+                        <div className="border-2 border-gray-900 p-2 rounded-lg cursor-pointer">
                             <div>
                                 <h4 className="text-md font-bold">
                                     ส่งเมื่อวันที่ 14 พ.ย 2565
