@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
-import { EditorState } from '@codemirror/state'
+import { useState, useEffect, useRef } from 'react'
+import { EditorState, Extension } from '@codemirror/state'
 import { python } from '@codemirror/lang-python'
 import { basicSetup } from 'codemirror'
 import { EditorView } from '@codemirror/view'
@@ -14,24 +14,29 @@ const baseTheme = EditorView.baseTheme({
     '&': {
         height: '100%',
     },
-    "&.cm-editor.cm-focused": {
-        outline: "none"
-    }
+    '&.cm-editor.cm-focused': {
+        outline: 'none',
+    },
 })
 
-function useCodemirror({
-    initialDoc,
-    onChange,
-}: Props): [React.RefObject<HTMLDivElement>, EditorView?] {
+function useCodemirror(
+    { initialDoc, onChange }: Props,
+    ...extensions: Extension[]
+): [React.RefObject<HTMLDivElement>, EditorView?] {
     const editorRef = useRef<HTMLDivElement>(null)
     const [editorView, setEditorView] = useState<EditorView>()
 
     useEffect(() => {
         if (!editorRef.current) return
-
         const state = EditorState.create({
             doc: initialDoc,
-            extensions: [basicSetup, python(), baseTheme, ayuLight],
+            extensions: [
+                basicSetup,
+                python(),
+                baseTheme,
+                ayuLight,
+                ...extensions,
+            ],
         })
 
         const view = new EditorView({

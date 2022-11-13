@@ -4,6 +4,7 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import 'katex/dist/katex.min.css'
 import { RefObject, useState, useEffect } from 'react'
+import { FaHistory } from 'react-icons/fa'
 
 const markdown: string = `
 เขียนโปรแกรมภาษาไพทอน ที่รับเลขจำนวนเต็มบวก n แล้วแสดงผลลัพธ์เป็น ผลบวกของเลขจำนวนเต็มบวกสองจำนวน a และ b โดยที่ a * b = n และ (a+b) มีค่าน้อยที่สุด
@@ -41,6 +42,21 @@ function Description() {
         <>
             <div>
                 <h1 className="text-xl font-bold">01 แปลงอุณหภูมิ</h1>
+                {/* Test case */}
+                <div className="flex items-center flex-wrap bg-gray-200 rounded-lg gap-1 py-1 px-2 w-fit my-2 font-bold text-sm">
+                    <span>P</span>
+                    <span>P</span>
+                    <span>P</span>
+                    <span>-</span>
+                    <span>C</span>
+                    <span>S</span>
+                    <span>P</span>
+                </div>
+
+                <button className="p-2 flex items-center gap-3 bg-yellow-400 rounded-md text-md my-2">
+                    <FaHistory />
+                    ประวัติการส่ง
+                </button>
             </div>
             <div className="prose">
                 <ReactMarkdown
