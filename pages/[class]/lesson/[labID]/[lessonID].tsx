@@ -41,7 +41,11 @@ function LabID({
                                 CS Python Lab 01 Input Process Output
                             </h2>
                             {isClosed && (
-                                <Badge title="อ่านอย่างเดียว" color="red" />
+                                <Badge
+                                    title="อ่านอย่างเดียว"
+                                    backgroundColor="#fecaca"
+                                    color="#ef4444"
+                                />
                             )}
 
                             <ul className="text-gray-500">
