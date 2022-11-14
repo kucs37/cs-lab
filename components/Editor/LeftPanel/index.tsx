@@ -3,7 +3,7 @@ import Outline from './Outline'
 import useDrag from '@/hooks/useDrag'
 import { useRef, useState, useEffect } from 'react'
 function LeftPanel() {
-    const [windowWidth, setWindowWidth] = useState<number>(688)
+    const [windowWidth, setWindowWidth] = useState<number>(400)
     const leftPanelRef = useRef<HTMLDivElement>(null)
     const { size, setIsDrag } = useDrag(leftPanelRef, windowWidth, 'width')
 

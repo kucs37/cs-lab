@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
-import { EditorState, Extension } from '@codemirror/state'
-import { python } from '@codemirror/lang-python'
 import { basicSetup } from 'codemirror'
-import { EditorView } from '@codemirror/view'
+import { EditorState, Extension } from '@codemirror/state'
+import { EditorView, keymap } from '@codemirror/view'
+import { python } from '@codemirror/lang-python'
+import { indentWithTab } from '@codemirror/commands'
 import { ayuLight } from 'thememirror'
 
 interface Props {
@@ -32,9 +33,10 @@ function useCodemirror(
             doc: initialDoc,
             extensions: [
                 basicSetup,
-                python(),
                 baseTheme,
                 ayuLight,
+                python(),
+                keymap.of([indentWithTab]),
                 ...extensions,
             ],
         })

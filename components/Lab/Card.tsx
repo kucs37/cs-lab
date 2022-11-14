@@ -23,7 +23,7 @@ function Card({ title, isClosed, problems, id, type }: Props) {
                 <div className="rounded-lg border-[1px] bg-white border-gray-50 w-full h-full px-6 py-4 shadow-lg shadow-gray-200 flex flex-col gap-3">
                     <div className="flex flex-wrap items-center gap-2">
                         {isClosed && (
-                            <Badge title="อ่านอย่างเดียว" color="red" />
+                            <Badge title="อ่านอย่างเดียว" backgroundColor='#fecaca' color="#ef4444" />
                         )}
                     </div>
                     <h3 className="font-bold text-lg text-gray-900">{title}</h3>
