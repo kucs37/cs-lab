@@ -5,7 +5,8 @@ import Loading from '@/components/Common/Loading'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { SessionProvider } from 'next-auth/react'
-import AllContext from '@/Context'
+import { Provider } from 'react-redux'
+import store from '@/store'
 
 const MyApp: React.FC<AppProps & { pageProps: any }> = ({
     Component,
@@ -28,12 +29,12 @@ const MyApp: React.FC<AppProps & { pageProps: any }> = ({
     }, [router])
 
     return (
-        <AllContext>
+        <Provider store={store}>
             <SessionProvider session={pageProps.session} refetchInterval={0}>
                 {isStart && <Loading />}
                 <Component {...pageProps} />
             </SessionProvider>
-        </AllContext>
+        </Provider>
     )
 }
 
