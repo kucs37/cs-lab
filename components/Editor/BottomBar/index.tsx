@@ -25,11 +25,6 @@ function Window({ zoneRef, windowHeight, setWindowHeight }: WindowI) {
                 height: windowHeight,
             }}
         >
-            {/* Save Status */}
-            <div className="p-2 bg-gray-100">
-                <SaveStatus status="saved" />
-            </div>
-
             {/* Tab Resize */}
             <div
                 className="w-full h-4 bg-slate-200 cursor-row-resize flex items-center justify-center"

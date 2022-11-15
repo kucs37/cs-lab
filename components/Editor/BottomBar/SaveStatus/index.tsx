@@ -1,17 +1,19 @@
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+import { BsCloudCheck } from 'react-icons/bs'
 const SaveStatus = ({ status = 'saved' }: { status: 'saved' | 'saving' }) => {
     if (status == 'saving') {
         return (
-            <div className="flex items-center">
-                <div className="w-2 h-2 rounded-full bg-yellow-500 mr-2 animate-pulse"></div>
-                <span className="text-xs">กำลังเซฟ</span>
+            <div className="flex items-center gap-2 text-gray-700">
+                <AiOutlineLoading3Quarters className='animate-spin'/>
+                <span className="text-xs">กำลังบันทึก</span>
             </div>
         )
     }
 
     return (
-        <div className="flex items-center">
-            <div className="w-2 h-2 rounded-full bg-lime-500 mr-2"></div>
-            <span className="text-xs">เซฟแล้ว</span>
+        <div className="flex items-center gap-2 text-gray-700">
+            <BsCloudCheck />
+            <span className="text-xs">บันทึกแล้ว</span>
         </div>
     )
 }

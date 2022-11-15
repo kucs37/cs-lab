@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import { NextPage } from 'next'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
@@ -11,47 +12,48 @@ import { useRouter } from 'next/router'
 import { useOnClickOutside } from 'usehooks-ts'
 
 interface Props {
-    ref: LegacyRef<HTMLDivElement>
+    children?: ReactNode
 }
+const Navbar = forwardRef(
+    ({ children }: Props, ref: LegacyRef<HTMLDivElement>) => {
+        const { status, data: session } = useSession()
+        const [isProfileClick, setIsProfileClick] = useState<boolean>(false)
+        const router = useRouter()
+        const settingRef = useRef<HTMLDivElement>(null)
 
-const Navbar = forwardRef((_, ref: LegacyRef<HTMLDivElement>) => {
-    const { status, data: session } = useSession()
-    const [isProfileClick, setIsProfileClick] = useState<boolean>(false)
-    const router = useRouter()
-    const settingRef = useRef<HTMLDivElement>(null)
+        const handleSignOut = () => {
+            signOut()
+        }
 
-    const handleSignOut = () => {
-        signOut()
-    }
+        const handleClickSetting = () => {
+            router.push('/settings')
+        }
 
-    const handleClickSetting = () => {
-        router.push('/settings')
-    }
+        const handleClickProfile = () => {
+            setIsProfileClick(!isProfileClick)
+        }
 
-    const handleClickProfile = () => {
-        setIsProfileClick(!isProfileClick)
-    }
+        useOnClickOutside(settingRef, handleClickProfile)
 
-    useOnClickOutside(settingRef, handleClickProfile)
-
-    return (
-        <div
-            ref={ref}
-            className="w-full bg-white shadow-md shadow-gray-50 border-b-[1px] border-gray-200"
-        >
-            <div className="container mx-auto px-2 py-1 flex justify-between items-center">
-                <Link href={'/'}>
-                    <a>
-                        <Image
-                            src={Logo}
-                            layout="fixed"
-                            width={50}
-                            height={50}
-                            alt="CS-37 Logo"
-                        />
-                    </a>
-                </Link>
-                {status === 'authenticated' ? (
+        return (
+            <div
+                ref={ref}
+                className="w-full bg-white shadow-md shadow-gray-50 border-b-[1px] border-gray-200"
+            >
+                <div className="px-6 py-1 flex justify-between items-center">
+                    <Link href={'/'}>
+                        <a>
+                            <Image
+                                src={Logo}
+                                layout="fixed"
+                                width={40}
+                                height={40}
+                                alt="CS-37 Logo"
+                            />
+                        </a>
+                    </Link>
+                    {children}
+                    {/* {status === 'authenticated' ? ( */}
                     <div>
                         <div className="flex w-full items-center gap-2 relative ">
                             <ProfileImage onClick={handleClickProfile} />
@@ -82,13 +84,14 @@ const Navbar = forwardRef((_, ref: LegacyRef<HTMLDivElement>) => {
                             )}
                         </div>
                     </div>
-                ) : (
+                    {/* ) : (
                     ''
-                )}
+                )} */}
+                </div>
             </div>
-        </div>
-    )
-})
+        )
+    }
+)
 
 Navbar.displayName = 'Navbar'
 

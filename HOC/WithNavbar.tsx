@@ -1,25 +1,29 @@
 import Navbar from '@/components/Common/Navbar'
-import { forwardRef, LegacyRef, Ref } from 'react'
+import { forwardRef, LegacyRef, Ref, ReactNode } from 'react'
 import Head from 'next/head'
 
 interface Props {
     title: string
-    children: React.ReactNode
+    children: ReactNode
     navbarRef?: Ref<HTMLDivElement>
     className?: string
+    navbarChildren?: ReactNode
 }
 
 const WithNavbar: React.FC<Props> = forwardRef(
     (
-        { children, title, className = '', navbarRef },
+        { children, title, className = '', navbarRef, navbarChildren },
         ref: LegacyRef<HTMLDivElement>
     ) => (
         <>
             <Head>
                 <title>{title}</title>
             </Head>
-            <div className={`flex flex-col w-full h-screen  ${className}`} ref={ref}>
-                <Navbar ref={navbarRef} />
+            <div
+                className={`flex flex-col w-full h-screen  ${className}`}
+                ref={ref}
+            >
+                <Navbar children={navbarChildren} ref={navbarRef} />
 
                 {children}
             </div>
