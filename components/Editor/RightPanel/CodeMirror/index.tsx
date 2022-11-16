@@ -1,24 +1,15 @@
 import { ReactNode } from 'react'
-import { initialDoc } from '@/fakeData/initialDoc'
 import useCodemirror from '@/hooks/useCodemirror'
-import { EditorState, Extension } from '@codemirror/state'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
 
 interface Props {
     width?: number
     height: string
-    extensions?: Extension[]
     children?: ReactNode
 }
 
-function CodeMirror({
-    width,
-    height,
-    extensions = [],
-    children,
-    ...props
-}: Props) {
+function CodeMirror({ width, height, children, ...props }: Props) {
     const { fontSize, tabSize } = useSelector(
         (state: RootState) => state.editor
     )

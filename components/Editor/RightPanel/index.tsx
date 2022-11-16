@@ -14,7 +14,7 @@ function RightPanel() {
     const { editorWindowWidth, leftPanelWidth } = useSelector(
         (state: RootState) => state.editorWindow
     )
-   
+
     const onClick = () => {
         if (status == 'saving') setstatus('saved')
         else setstatus('saving')
@@ -24,11 +24,9 @@ function RightPanel() {
         <div
             style={{
                 minWidth: 400,
-                width: '100%',
-                maxWidth: editorWindowWidth - leftPanelWidth,
             }}
             ref={zoneRef}
-            className="relative"
+            className="flex-1 relative"
         >
             <div className="bg-white border-b-1 py-2 px-4 flex justify-between">
                 <SaveStatus status={status} />

@@ -66,8 +66,6 @@ function useCodemirror({
     }, [editorRef, initialDoc])
 
     useEffect(() => {
-        console.log(viewRef.current)
-
         if (!viewRef.current) return
         viewRef.current.dispatch({
             effects: _tabSize.reconfigure(EditorState.tabSize.of(tabSize)),

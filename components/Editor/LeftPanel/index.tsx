@@ -1,22 +1,24 @@
 import { useRef, useState, useEffect } from 'react'
 import useDrag from '@/hooks/useDrag'
 import Problem from './Problem'
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState, Dispatch } from '@/store'
+import { useDispatch } from 'react-redux'
+import { Dispatch } from '@/store'
+import { useResizeDetector } from 'react-resize-detector'
 
 function LeftPanel() {
-    const [windowWidth, setWindowWidth] = useState<number>(400)
-    const leftPanelRef = useRef<HTMLDivElement>(null)
-    const { size, setIsDrag } = useDrag(leftPanelRef, windowWidth, 'width')
-    const isSettingsOpen = useSelector(
-        (state: RootState) => state.menus.isSettingsOpen
-    )
+    const [windowWidth, setWindowWidth] = useState<number>(320)
+    const { width, ref } = useResizeDetector()
+    const { size, setIsDrag } = useDrag(ref, windowWidth, 'width')
+
     const dispatch = useDispatch<Dispatch>()
 
     useEffect(() => {
-        setWindowWidth(size)
-        dispatch.editorWindow.setLeftPanelWidth(size)
+        if (size >= 320) setWindowWidth(size)
     }, [size])
+
+    useEffect(() => {
+        if (width) dispatch.editorWindow.setLeftPanelWidth(width)
+    }, [width])
 
     const onDoubleClick = () => {
         setWindowWidth(400)
@@ -25,9 +27,13 @@ function LeftPanel() {
 
     return (
         <div
-            ref={leftPanelRef}
+            ref={ref}
             className="flex justify-between"
-            style={{ minWidth: 320, width: windowWidth }}
+            style={{
+                minWidth: 320,
+                width: windowWidth,
+                maxWidth: 'max-content',
+            }}
         >
             <Problem />
 

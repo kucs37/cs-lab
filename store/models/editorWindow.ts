@@ -8,7 +8,7 @@ interface EditorWindowState {
 export const editorWindow = createModel<RootModel>()({
     state: {
         editorWindowWidth: 0,
-        leftPanelWidth: 400,
+        leftPanelWidth: 320,
     } as EditorWindowState,
     reducers: {
         setEditorWindowWidth(state, editorWindowWidth: number) {
