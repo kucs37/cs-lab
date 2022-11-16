@@ -29,6 +29,7 @@
         "react-icons": "^4.4.0",
         "react-markdown": "^8.0.3",
         "react-redux": "^8.0.5",
+        "react-resize-detector": "^7.1.2",
         "react-syntax-highlighter": "^15.5.0",
         "react-toastify": "^9.0.8",
         "react-tooltip": "^4.5.0",

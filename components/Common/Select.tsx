@@ -22,23 +22,20 @@ function ThemeSelect({ selected, options, onSelect, className }: SelectI) {
     useOnClickOutside(selectRef, () => setIsSelect(false))
 
     return (
-        <div
-            className={`relative select-none ${className}`}
-            ref={selectRef}
-        >
+        <div className={`relative select-none ${className}`} ref={selectRef}>
             <button
                 onClick={handleOnClick}
-                className="border-2 border-gray-200 rounded-lg py-2 px-3 flex justify-between items-center gap-2 w-full"
+                className="border-1 bg-gray-100 border-gray-200 text-gray-800 rounded-lg py-2 px-3 flex justify-between items-center gap-2 w-full"
             >
                 <p>{selected}</p>
                 {isSelect ? <BsChevronUp /> : <BsChevronDown />}
             </button>
             {isSelect && (
-                <div className="absolute z-40 mt-2 w-full rounded-md shadow-lg bg-white flex flex-col gap-2 cursor-pointer h-[300px] overflow-y-scroll">
+                <div className="absolute mt-1 z-40 w-full rounded-md shadow-md border-1 bg-gray-100 border-gray-200  flex flex-col gap-2 cursor-pointer h-fit">
                     {options.map((name) => (
                         <span
                             key={name}
-                            className="hover:bg-gray-50  px-4 py-2"
+                            className="hover:bg-gray-200  px-4 py-2"
                             onClick={() => handleSelectTheme(name)}
                         >
                             {name}

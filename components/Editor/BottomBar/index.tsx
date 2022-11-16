@@ -1,7 +1,6 @@
 import useDrag from '@/hooks/useDrag'
 import Console from './Console'
 import React, { RefObject, useEffect } from 'react'
-import SaveStatus from '../SaveStatus'
 
 interface WindowI {
     windowHeight: number
@@ -18,7 +17,7 @@ function Window({ zoneRef, windowHeight, setWindowHeight }: WindowI) {
 
     return (
         <div
-            className="absolute bottom-0 bg-gray-50 w-full flex flex-col"
+            className="absolute z-30 bottom-0 bg-gray-50 w-full flex flex-col"
             style={{
                 minHeight: 16,
                 maxHeight: '100%',

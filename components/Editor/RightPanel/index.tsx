@@ -1,23 +1,34 @@
 import { useRef, useState, useEffect } from 'react'
 import BottomBar from '../BottomBar'
 import CodeMirror from './CodeMirror'
-import { BsCheck2All, BsTerminal, BsPlay } from 'react-icons/bs'
-import { EditorState } from '@codemirror/state'
+import { BsCheck2All, BsTerminal } from 'react-icons/bs'
 import SaveStatus from '../SaveStatus'
+import { useSelector, useDispatch } from 'react-redux'
+import { RootState, Dispatch } from '@/store'
 
-function CodeZone() {
+function RightPanel() {
     const zoneRef = useRef<HTMLDivElement>(null)
     const [windowHeight, setWindowHeight] = useState<number>(200)
     const codeMirrorHeight = `calc(100% - ${windowHeight + 68}px)`
     const [status, setstatus] = useState<'saving' | 'saved'>('saving')
-
+    const { editorWindowWidth, leftPanelWidth } = useSelector(
+        (state: RootState) => state.editorWindow
+    )
     const onClick = () => {
         if (status == 'saving') setstatus('saved')
         else setstatus('saving')
     }
 
     return (
-        <div ref={zoneRef} className="flex-1 relative">
+        <div
+            style={{
+                minWidth: 400,
+                width: '100%',
+                maxWidth: editorWindowWidth - leftPanelWidth,
+            }}
+            ref={zoneRef}
+            className="relative"
+        >
             <div className="bg-white border-b-1 py-2 px-4 flex justify-between">
                 <SaveStatus status={status} />
                 <div className="flex items-center gap-2">
@@ -45,4 +56,4 @@ function CodeZone() {
     )
 }
 
-export default CodeZone
+export default RightPanel

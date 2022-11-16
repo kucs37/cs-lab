@@ -3,13 +3,8 @@ import { basicSetup } from 'codemirror'
 import { EditorState, Extension } from '@codemirror/state'
 import { EditorView, keymap } from '@codemirror/view'
 import { python } from '@codemirror/lang-python'
-import {
-    defaultKeymap,
-    indentMore,
-    indentLess,
-    insertTab,
-} from '@codemirror/commands'
-import { ayuLight } from 'thememirror'
+import { indentLess, insertTab } from '@codemirror/commands'
+import { ayuLight, dracula } from 'thememirror'
 
 interface Props {
     initialDoc: string

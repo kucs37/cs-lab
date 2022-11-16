@@ -24,7 +24,7 @@ function Buttons() {
             <Button
                 tooltip="ตั้งค่า"
                 icon={<IoSettingsOutline size="1.75rem" />}
-                onClick={() => dispatch.menus.toggleHistory()}
+                onClick={() => dispatch.menus.toggleSettings()}
             />
         </div>
     )
