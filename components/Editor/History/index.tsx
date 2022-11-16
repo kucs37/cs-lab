@@ -19,14 +19,11 @@ function History() {
     const closeBtnRef = useRef<HTMLDivElement>(null)
     const bottomRef = useRef<HTMLDivElement>(null)
 
-    const readOnly = EditorState.readOnly.of(true)
-    const [editorRef, editorView] = useCodemirror(
-        {
-            initialDoc,
-            onChange: (value) => console.log(value),
-        },
-        readOnly
-    )
+    const [editorRef, editorView] = useCodemirror({
+        initialDoc,
+        onChange: (value) => console.log(value),
+        readonly: true,
+    })
 
     useOnClickOutside(historyWindow, () => dispatch.menus.toggleHistory())
 
