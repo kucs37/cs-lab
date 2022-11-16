@@ -38,7 +38,6 @@ function Settings() {
                 <InputRange
                     value={fontSize}
                     onChange={(value) => dispatch.editor.setFontSize(value)}
-                    unit="px"
                     step={2}
                 />
 
