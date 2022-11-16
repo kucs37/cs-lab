@@ -6,6 +6,7 @@ import History from '@/components/Editor/History'
 import { useRef, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState, Dispatch } from '@/store'
+import Settings from '@/components/Editor/Settings'
 
 function Editor() {
     const editorRef = useRef<HTMLDivElement>(null)
@@ -27,6 +28,7 @@ function Editor() {
             className="bg-gray-200 fixed"
         >
             {menu.isHistoryOpen && <History />}
+            {menu.isSettingsOpen && <Settings />}
 
             <div
                 ref={editorRef}

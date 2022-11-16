@@ -1,14 +1,15 @@
+import { ReactNode } from 'react'
 import { initialDoc } from '@/fakeData/initialDoc'
 import useCodemirror from '@/hooks/useCodemirror'
-import { Extension } from '@codemirror/state'
-import { ReactNode } from 'react'
+import { EditorState, Extension } from '@codemirror/state'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 
 interface Props {
     width?: number
     height: string
     extensions?: Extension[]
     children?: ReactNode
-    [key: string]: any
 }
 
 function CodeMirror({
@@ -18,16 +19,17 @@ function CodeMirror({
     children,
     ...props
 }: Props) {
-    const [editorRef, editorView] = useCodemirror(
-        {
-            initialDoc,
-            onChange: (value) => console.log(value),
-        },
-        ...extensions
+    const { fontSize, tabSize } = useSelector(
+        (state: RootState) => state.editor
     )
+    const [editorRef, editorView] = useCodemirror({
+        initialDoc: '',
+        onChange: (value) => console.log(value),
+        tabSize,
+    })
 
     return (
-        <div ref={editorRef} style={{ width, height }} {...props}>
+        <div ref={editorRef} style={{ width, height, fontSize }} {...props}>
             {children}
         </div>
     )

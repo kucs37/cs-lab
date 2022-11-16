@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { basicSetup } from 'codemirror'
-import { EditorState, Extension } from '@codemirror/state'
+import { EditorState, Extension, Compartment } from '@codemirror/state'
 import { EditorView, keymap } from '@codemirror/view'
 import { python } from '@codemirror/lang-python'
 import { indentLess, insertTab } from '@codemirror/commands'
@@ -9,6 +9,7 @@ import { ayuLight, dracula } from 'thememirror'
 interface Props {
     initialDoc: string
     onChange: (value: string) => void
+    tabSize: number
 }
 
 const baseTheme = EditorView.baseTheme({
@@ -20,12 +21,15 @@ const baseTheme = EditorView.baseTheme({
     },
 })
 
-function useCodemirror(
-    { initialDoc, onChange }: Props,
-    ...extensions: Extension[]
-): [React.RefObject<HTMLDivElement>, EditorView?] {
+const _tabSize = new Compartment()
+
+function useCodemirror({
+    initialDoc,
+    onChange,
+    tabSize,
+}: Props): [React.RefObject<HTMLDivElement>, EditorView?] {
     const editorRef = useRef<HTMLDivElement>(null)
-    const [editorView, setEditorView] = useState<EditorView>()
+    const viewRef = useRef<EditorView>()
 
     useEffect(() => {
         if (!editorRef.current) return
@@ -48,21 +52,29 @@ function useCodemirror(
                         run: indentLess,
                     },
                 ]),
-                ...extensions,
+                _tabSize.of(EditorState.tabSize.of(4)),
             ],
         })
-
         const view = new EditorView({
             state,
             parent: editorRef.current,
         })
 
-        setEditorView(view)
+        viewRef.current = view
 
         return () => view.destroy()
     }, [editorRef, initialDoc])
 
-    return [editorRef, editorView]
+    useEffect(() => {
+        console.log(viewRef.current)
+
+        if (!viewRef.current) return
+        viewRef.current.dispatch({
+            effects: _tabSize.reconfigure(EditorState.tabSize.of(tabSize)),
+        })
+    }, [viewRef, _tabSize, tabSize])
+
+    return [editorRef, viewRef.current]
 }
 
 export default useCodemirror

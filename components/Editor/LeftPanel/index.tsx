@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import useDrag from '@/hooks/useDrag'
 import Problem from './Problem'
-import Settings from './Settings'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState, Dispatch } from '@/store'
 

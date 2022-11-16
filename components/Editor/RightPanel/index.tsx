@@ -1,10 +1,10 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import BottomBar from '../BottomBar'
 import CodeMirror from './CodeMirror'
 import { BsCheck2All, BsTerminal } from 'react-icons/bs'
 import SaveStatus from '../SaveStatus'
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState, Dispatch } from '@/store'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 
 function RightPanel() {
     const zoneRef = useRef<HTMLDivElement>(null)
@@ -14,6 +14,7 @@ function RightPanel() {
     const { editorWindowWidth, leftPanelWidth } = useSelector(
         (state: RootState) => state.editorWindow
     )
+   
     const onClick = () => {
         if (status == 'saving') setstatus('saved')
         else setstatus('saving')
