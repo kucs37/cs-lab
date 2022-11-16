@@ -3,17 +3,12 @@ import BottomBar from '../BottomBar'
 import CodeMirror from './CodeMirror'
 import { BsCheck2All, BsTerminal } from 'react-icons/bs'
 import SaveStatus from '../SaveStatus'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/store'
 
 function RightPanel() {
     const zoneRef = useRef<HTMLDivElement>(null)
     const [windowHeight, setWindowHeight] = useState<number>(200)
     const codeMirrorHeight = `calc(100% - ${windowHeight + 68}px)`
     const [status, setstatus] = useState<'saving' | 'saved'>('saving')
-    const { editorWindowWidth, leftPanelWidth } = useSelector(
-        (state: RootState) => state.editorWindow
-    )
 
     const onClick = () => {
         if (status == 'saving') setstatus('saved')

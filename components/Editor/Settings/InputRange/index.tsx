@@ -3,17 +3,22 @@ import { TiPlus, TiMinus } from 'react-icons/ti'
 
 interface Props {
     value: number
-    unit?: string
     step?: number
     onChange: (value: number) => void
 }
 
-const InputRange = ({ value, onChange, unit, step = 1 }: Props) => {
+const InputRange = ({ value, onChange, step = 1 }: Props) => {
     const [inputValue, setInputValue] = useState<number>(value)
 
     useEffect(() => {
         onChange(inputValue)
     }, [inputValue])
+
+    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = parseInt(e.target.value)
+        if (Number.isNaN(value)) return setInputValue(1)
+        setInputValue(value)
+    }
     return (
         <div className="flex items-center gap-2 my-2">
             <button
@@ -23,9 +28,9 @@ const InputRange = ({ value, onChange, unit, step = 1 }: Props) => {
                 <TiMinus size="1.25rem" />
             </button>
             <input
-                value={`${inputValue}${unit ? unit : ''}`}
-                readOnly
-                type="text"
+                value={inputValue}
+                onChange={handleOnChange}
+                type="number"
                 className="border-1 border-gray-600 rounded-xl py-1 px-2 text-center flex-1"
             />
             <button

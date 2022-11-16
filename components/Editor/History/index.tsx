@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { IoClose } from 'react-icons/io5'
 import { useRef, useCallback } from 'react'
-import { EditorState } from '@codemirror/state'
 import useCodemirror from '@/hooks/useCodemirror'
 import { FaHistory } from 'react-icons/fa'
 import { HiOutlineClipboardCopy } from 'react-icons/hi'

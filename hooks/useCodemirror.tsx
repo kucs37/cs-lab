@@ -56,7 +56,7 @@ function useCodemirror({
                     },
                 ]),
                 _tabSize.of(EditorState.tabSize.of(4)),
-                _readonly.of(EditorState.readOnly.of(true)),
+                _readonly.of(EditorState.readOnly.of(false)),
             ],
         })
         const view = new EditorView({

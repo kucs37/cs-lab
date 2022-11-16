@@ -7,27 +7,20 @@ import { useResizeDetector } from 'react-resize-detector'
 
 function LeftPanel() {
     const [windowWidth, setWindowWidth] = useState<number>(320)
-    const { width, ref } = useResizeDetector()
-    const { size, setIsDrag } = useDrag(ref, windowWidth, 'width')
-
-    const dispatch = useDispatch<Dispatch>()
+    const leftPanelRef = useRef<HTMLDivElement>(null)
+    const { size, setIsDrag } = useDrag(leftPanelRef, windowWidth, 'width')
 
     useEffect(() => {
         if (size >= 320) setWindowWidth(size)
     }, [size])
 
-    useEffect(() => {
-        if (width) dispatch.editorWindow.setLeftPanelWidth(width)
-    }, [width])
-
     const onDoubleClick = () => {
-        setWindowWidth(400)
-        dispatch.editorWindow.setLeftPanelWidth(400)
+        setWindowWidth(320)
     }
 
     return (
         <div
-            ref={ref}
+            ref={leftPanelRef}
             className="flex justify-between"
             style={{
                 minWidth: 320,
