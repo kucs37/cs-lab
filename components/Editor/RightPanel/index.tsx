@@ -2,7 +2,8 @@ import { useRef, useState, useEffect } from 'react'
 import BottomBar from '../BottomBar'
 import CodeMirror from './CodeMirror'
 import { BsCheck2All, BsTerminal, BsPlay } from 'react-icons/bs'
-import SaveStatus from '../BottomBar/SaveStatus'
+import { EditorState } from '@codemirror/state'
+import SaveStatus from '../SaveStatus'
 
 function CodeZone() {
     const zoneRef = useRef<HTMLDivElement>(null)

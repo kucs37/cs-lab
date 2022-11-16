@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { IoClose } from 'react-icons/io5'
-import { useRef } from 'react'
+import { useRef, useCallback } from 'react'
 import { EditorState } from '@codemirror/state'
 import useCodemirror from '@/hooks/useCodemirror'
 import { FaHistory } from 'react-icons/fa'
@@ -50,22 +50,25 @@ function History() {
         })
     }, [])
 
-    const updateEditor = (code: string) => {
-        if (editorView)
-            editorView.dispatch(
-                editorView.state.update({
-                    changes: {
-                        from: 0,
-                        to: editorView.state.doc.length,
-                        insert: code,
-                    },
-                })
-            )
-    }
+    const updateEditor = useCallback(
+        (code: string) => {
+            if (editorView)
+                editorView.dispatch(
+                    editorView.state.update({
+                        changes: {
+                            from: 0,
+                            to: editorView.state.doc.length,
+                            insert: code,
+                        },
+                    })
+                )
+        },
+        [editorView]
+    )
 
     useEffect(() => {
         if (selected) updateEditor(selected.code)
-    }, [selected])
+    }, [selected, updateEditor])
 
     return (
         <div className="fixed w-full h-full bg-black bg-opacity-25 z-40 flex items-center justify-center">
