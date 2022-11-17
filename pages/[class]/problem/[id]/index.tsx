@@ -6,8 +6,15 @@ import History from '@/components/Editor/History'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import Settings from '@/components/Editor/Settings'
+import type { NextPageContext, NextPage } from 'next'
 
-function Editor() {
+interface Props {
+    test: string
+}
+
+const Editor: NextPage<Props> = ({ test }) => {
+    console.log(test)
+
     const menu = useSelector((state: RootState) => state.menus)
 
     return (
@@ -28,3 +35,11 @@ function Editor() {
 }
 
 export default Editor
+
+export async function getServerSideProps(context: NextPageContext) {
+    return {
+        props: {
+            test: 'YO!',
+        },
+    }
+}

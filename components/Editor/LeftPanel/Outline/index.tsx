@@ -13,33 +13,20 @@ function Outline() {
             <h4 className="text-lg font-bold my-2">
                 CS Python Lab 01 Input Process Output
             </h4>
-            <ul>
-                <li className="text-gray-900 font-bold flex items-center gap-2">
-                    01 แปลงอุณหภูมิ
-                    <IoCheckmark className="text-lime-500 text-xl" />
+            <ul className="leading-relaxed">
+                <li className="text-gray-900 font-bold">
+                    01 Find a, b in which a*b=n and (a+b) is the lowest
+                    <IoCheckmark className="inline text-lime-500 text-xl ml-2" />
                 </li>
 
-                <a
-                    href="#"
-                    className="no-underline text-gray-500 flex items-center gap-2"
-                >
-                    <li>02 แตกหน่วยวินาที</li>
-                    <IoClose className="text-red-500 text-xl" />
+                <a href="#" className="no-underline text-gray-500">
+                    <li>
+                        02 Elab Test Case
+                        <IoClose className="inline text-red-500 text-xl ml-2" />
+                    </li>
                 </a>
                 <a href="#" className="no-underline text-gray-500">
                     <li>03 จะบวกแบบไหน</li>
-                </a>
-                <a href="#" className="no-underline text-gray-500">
-                    <li>04 คะแนนสอบ</li>
-                </a>
-                <a href="#" className="no-underline text-gray-500">
-                    <li>05 ค่าตัดหญ้า</li>
-                </a>
-                <a href="#" className="no-underline text-gray-500">
-                    <li>06 Basic Input</li>
-                </a>
-                <a href="#" className="block no-underline text-gray-500">
-                    <li>06 พิมพ์ดาวบรรทัดเดียว</li>
                 </a>
             </ul>
         </div>

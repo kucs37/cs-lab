@@ -1,9 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import useDrag from '@/hooks/useDrag'
-import Problem from './Problem'
-import { useDispatch } from 'react-redux'
-import { Dispatch } from '@/store'
-import { useResizeDetector } from 'react-resize-detector'
+import Outline from './Outline'
+import Description from './Description'
 
 function LeftPanel() {
     const [windowWidth, setWindowWidth] = useState<number>(320)
@@ -28,7 +26,11 @@ function LeftPanel() {
                 maxWidth: 'max-content',
             }}
         >
-            <Problem />
+            <div className="p-4 h-full overflow-y-scroll">
+                <Outline />
+                <hr className="h-4" />
+                <Description />
+            </div>
 
             {/* Tab Resize */}
             <div
