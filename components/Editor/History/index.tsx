@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
 import { IoClose } from 'react-icons/io5'
-import { useRef, useCallback } from 'react'
-import useCodemirror from '@/hooks/useCodemirror'
+import { useRef } from 'react'
 import { FaHistory } from 'react-icons/fa'
 import { HiOutlineClipboardCopy } from 'react-icons/hi'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState, Dispatch } from '@/store'
 import { useOnClickOutside } from 'usehooks-ts'
 import HistoryItems from './HistoryItem'
+import CodeMirror from '../CodeMirror'
 import { initialDoc } from '@/fakeData/initialDoc'
 
 function History() {
@@ -18,13 +18,13 @@ function History() {
     const closeBtnRef = useRef<HTMLDivElement>(null)
     const bottomRef = useRef<HTMLDivElement>(null)
 
-    const [editorRef, editorView] = useCodemirror({
-        initialDoc,
-        onChange: (value) => console.log(value),
-        readonly: true,
-    })
-
     useOnClickOutside(historyWindow, () => dispatch.menus.toggleHistory())
+
+    const handleCopy = () => {
+        if (!selected) return
+        dispatch.editor.setCode(selected.code)
+        dispatch.menus.toggleHistory()
+    }
 
     useEffect(() => {
         dispatch.history.setHistory([
@@ -45,26 +45,6 @@ function History() {
             status: ['P', 'P', 'P', 'S', 'C', 'P', 'P'],
         })
     }, [])
-
-    const updateEditor = useCallback(
-        (code: string) => {
-            if (editorView)
-                editorView.dispatch(
-                    editorView.state.update({
-                        changes: {
-                            from: 0,
-                            to: editorView.state.doc.length,
-                            insert: code,
-                        },
-                    })
-                )
-        },
-        [editorView]
-    )
-
-    useEffect(() => {
-        if (selected) updateEditor(selected.code)
-    }, [selected, updateEditor])
 
     return (
         <div className="fixed w-full h-full bg-black bg-opacity-25 z-40 flex items-center justify-center">
@@ -90,13 +70,20 @@ function History() {
                         <IoClose size="1.25rem" />
                     </button>
                     <div className="flex-1 overflow-y-scroll">
-                        <div ref={editorRef} className="h-full"></div>
+                        <CodeMirror
+                            value={selected ? selected.code : ''}
+                            height="100%"
+                            readonly
+                        />
                     </div>
                     <div
                         ref={bottomRef}
                         className="bg-gray-50 flex justify-end p-2"
                     >
-                        <button className="bg-yellow-400 py-2 px-4 rounded-lg flex items-center gap-1 text-gray-800">
+                        <button
+                            onClick={handleCopy}
+                            className="bg-yellow-400 border-b-4 active:border-b-2  transition-all duration-50 border-yellow-500 text-yellow-800 py-2 px-4 rounded-lg flex items-center gap-1 "
+                        >
                             <HiOutlineClipboardCopy />
                             คัดลอก
                         </button>

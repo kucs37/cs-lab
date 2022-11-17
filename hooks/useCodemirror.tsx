@@ -1,14 +1,14 @@
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { useEffect, useRef } from 'react'
 import { basicSetup } from 'codemirror'
-import { EditorState, Extension, Compartment } from '@codemirror/state'
+import { EditorState, Compartment } from '@codemirror/state'
 import { EditorView, keymap } from '@codemirror/view'
 import { python } from '@codemirror/lang-python'
 import { indentLess, insertTab } from '@codemirror/commands'
 import { ayuLight, dracula } from 'thememirror'
 
 interface Props {
-    initialDoc: string
-    onChange: (value: string) => void
+    onChange?: (value: string) => void
+    onKeyDown?: (key: KeyboardEvent) => void
     tabSize?: number
     readonly?: boolean
 }
@@ -25,19 +25,15 @@ const baseTheme = EditorView.baseTheme({
 const _tabSize = new Compartment(),
     _readonly = new Compartment()
 
-function useCodemirror({
-    initialDoc,
-    onChange,
-    tabSize,
-    readonly,
-}: Props): [React.RefObject<HTMLDivElement>, EditorView?] {
+function useCodemirror({ onChange, onKeyDown, tabSize, readonly }: Props): {
+    editorRef: React.RefObject<HTMLDivElement>
+    editorView: EditorView | undefined
+} {
     const editorRef = useRef<HTMLDivElement>(null)
     const viewRef = useRef<EditorView>()
-
     useEffect(() => {
         if (!editorRef.current) return
         const state = EditorState.create({
-            doc: initialDoc,
             extensions: [
                 basicSetup,
                 baseTheme,
@@ -57,6 +53,14 @@ function useCodemirror({
                 ]),
                 _tabSize.of(EditorState.tabSize.of(4)),
                 _readonly.of(EditorState.readOnly.of(false)),
+                EditorView.updateListener.of((update) => {
+                    if (update.docChanged) {
+                        if (onChange) onChange(update.state.doc.toString())
+                    }
+                }),
+                EditorView.domEventHandlers({
+                    keydown: (key) => onKeyDown && onKeyDown(key),
+                }),
             ],
         })
         const view = new EditorView({
@@ -67,8 +71,9 @@ function useCodemirror({
         viewRef.current = view
 
         return () => view.destroy()
-    }, [editorRef, initialDoc])
+    }, [editorRef])
 
+    //  Tab Size Change Detect
     useEffect(() => {
         if (!viewRef.current || !tabSize) return
         viewRef.current.dispatch({
@@ -76,6 +81,7 @@ function useCodemirror({
         })
     }, [viewRef, _tabSize, tabSize])
 
+    //  Readonly Change Detect
     useEffect(() => {
         if (!viewRef.current || !readonly) return
         viewRef.current.dispatch({
@@ -83,7 +89,7 @@ function useCodemirror({
         })
     }, [viewRef, _readonly, readonly])
 
-    return [editorRef, viewRef.current]
+    return { editorRef, editorView: viewRef.current }
 }
 
 export default useCodemirror
