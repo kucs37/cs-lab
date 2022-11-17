@@ -4,6 +4,7 @@ import { AiOutlineHistory } from 'react-icons/ai'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { Dispatch } from '@/store'
+import { BsTerminal } from 'react-icons/bs'
 function Buttons() {
     const router = useRouter()
     const backToHref = `/${router.query.class}`
@@ -14,6 +15,11 @@ function Buttons() {
                 tooltip="ย้อนกลับ"
                 icon={<IoArrowBackOutline size="1.75rem" />}
                 onClick={() => router.push(backToHref)}
+            />
+            <Button
+                tooltip="Console"
+                icon={<BsTerminal size="1.75rem" />}
+                onClick={() => dispatch.menus.toggleConsole()}
             />
             <Button
                 tooltip="ประวัติการส่ง"
