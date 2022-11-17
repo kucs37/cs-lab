@@ -34,12 +34,12 @@ function History() {
             setHistory([
                 {
                     code: initialDoc,
-                    date: new Date('November 16, 2565 11:12:00'),
+                    date: new Date('November 16, 2565 11:12:00').toString(),
                     status: ['P', 'P', 'P', 'S', 'C', 'P', 'P'],
                 },
                 {
                     code: 'Hello World',
-                    date: new Date('November 16, 2565 11:12:01'),
+                    date: new Date('November 16, 2565 11:12:01').toString(),
                     status: ['P', 'P', 'P', 'S', 'C', 'P', 'P'],
                 },
             ])
@@ -47,7 +47,7 @@ function History() {
         dispatch(
             setSelected({
                 code: initialDoc,
-                date: new Date('November 16, 2565 11:12:00'),
+                date: new Date('November 16, 2565 11:12:00').toString(),
                 status: ['P', 'P', 'P', 'S', 'C', 'P', 'P'],
             })
         )

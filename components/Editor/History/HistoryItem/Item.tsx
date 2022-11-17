@@ -9,9 +9,10 @@ import { setSelected } from '@/store/slices/historySlice'
 function Item(item: HistoryI) {
     const selected = useAppSelector((state) => state.history.selected)
     const dispatch = useAppDispatch()
+    const itemDate = new Date(item.date)
+    const slectedDate = new Date(selected?.date || '')
 
-    const isSelected =
-        selected && selected.date.getTime() === item.date.getTime()
+    const isSelected = selected && slectedDate.getTime() === itemDate.getTime()
     const handleOnClick = () => {
         dispatch(setSelected(item))
     }
@@ -26,14 +27,14 @@ function Item(item: HistoryI) {
             <div>
                 <h4 className="text-md font-bold">
                     ส่งเมื่อวันที่{' '}
-                    {format(item.date, 'dd MMM yyyy', {
+                    {format(itemDate, 'dd MMM yyyy', {
                         locale: th,
                     })}
                 </h4>
                 <div className="flex items-center gap-1">
                     <AiOutlineClockCircle />
                     <h4 className="text-sm">
-                        เวลา {format(item.date, 'HH:mm')} น.
+                        เวลา {format(itemDate, 'HH:mm')} น.
                     </h4>
                 </div>
             </div>

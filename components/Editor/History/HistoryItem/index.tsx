@@ -9,7 +9,7 @@ function HistoryItems({ allHistory }: Props): JSX.Element {
     return (
         <>
             {allHistory.map((item, _) => (
-                <Item key={item.date.getTime()} {...item} />
+                <Item key={new Date(item.date).getTime()} {...item} />
             ))}
         </>
     )

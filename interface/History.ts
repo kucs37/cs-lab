@@ -1,6 +1,6 @@
 type Status = 'P' | '-' | 'S' | 'C'
 export interface HistoryI {
-    date: Date
+    date: string
     status: Status[]
     code: string
 }
