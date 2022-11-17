@@ -3,17 +3,17 @@ import React from 'react'
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import { format } from 'date-fns'
 import th from 'date-fns/locale/th'
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState, Dispatch } from '@/store'
+import { useAppSelector, useAppDispatch } from '@/store/hooks'
+import { setSelected } from '@/store/slices/historySlice'
 
 function Item(item: HistoryI) {
-    const selected = useSelector((state: RootState) => state.history.selected)
-    const dispatch = useDispatch<Dispatch>()
+    const selected = useAppSelector((state) => state.history.selected)
+    const dispatch = useAppDispatch()
 
     const isSelected =
         selected && selected.date.getTime() === item.date.getTime()
     const handleOnClick = () => {
-        dispatch.history.setSelected(item)
+        dispatch(setSelected(item))
     }
 
     return (

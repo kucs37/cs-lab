@@ -1,10 +1,11 @@
 import React from 'react'
 import { IoClose } from 'react-icons/io5'
 import { useDispatch } from 'react-redux'
-import { Dispatch } from '@/store'
+import { useAppDispatch } from '@/store/hooks'
+import { toggleConsole } from '@/store/slices/menuSlice'
 
 function Console() {
-    const dispatch = useDispatch<Dispatch>()
+    const dispatch = useDispatch()
     return (
         <>
             <div className="p-2 cursor-pointer select-none w-fit">
@@ -12,7 +13,7 @@ function Console() {
                     <h4 className="text-sm font-medium uppercase">console</h4>
                     <button
                         className=""
-                        onClick={() => dispatch.menus.toggleConsole()}
+                        onClick={() => dispatch(toggleConsole())}
                     >
                         <IoClose className="text-md" />
                     </button>

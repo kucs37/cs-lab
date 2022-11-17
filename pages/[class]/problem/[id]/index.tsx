@@ -3,8 +3,7 @@ import SideNav from '@/components/Editor/SideNav'
 import WithNavbar from '@/HOC/WithNavbar'
 import LeftPanel from '@/components/Editor/LeftPanel'
 import History from '@/components/Editor/History'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/store'
+import { useAppSelector } from '@/store/hooks'
 import Settings from '@/components/Editor/Settings'
 import type { NextPageContext, NextPage } from 'next'
 
@@ -13,9 +12,7 @@ interface Props {
 }
 
 const Editor: NextPage<Props> = ({ test }) => {
-    console.log(test)
-
-    const menu = useSelector((state: RootState) => state.menus)
+    const menu = useAppSelector((state) => state.menu)
 
     return (
         <WithNavbar

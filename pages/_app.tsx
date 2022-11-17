@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { SessionProvider } from 'next-auth/react'
 import { Provider } from 'react-redux'
-import store from '@/store'
+import { store } from '@/store'
 
 const MyApp: React.FC<AppProps & { pageProps: any }> = ({
     Component,

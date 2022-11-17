@@ -1,7 +1,6 @@
 import { ReactNode, useEffect } from 'react'
 import useCodemirror from '@/hooks/useCodemirror'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/store'
+import { useAppSelector } from '@/store/hooks'
 
 interface Props {
     value: string
@@ -22,9 +21,7 @@ function CodeMirror({
     children,
     readonly,
 }: Props) {
-    const { fontSize, tabSize } = useSelector(
-        (state: RootState) => state.editor
-    )
+    const { fontSize, tabSize } = useAppSelector((state) => state.editor)
     const { editorRef, editorView } = useCodemirror({
         onChange,
         onKeyDown,

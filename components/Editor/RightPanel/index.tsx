@@ -3,8 +3,10 @@ import BottomBar from './BottomBar'
 import CodeMirror from '../CodeMirror'
 import { BsCheck2All, BsTerminal } from 'react-icons/bs'
 import SaveStatus from '../SaveStatus'
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState, Dispatch } from '@/store'
+import { useAppSelector, useAppDispatch } from '@/store/hooks'
+import { openConsole } from '@/store/slices/menuSlice'
+import { setCode } from '@/store/slices/editorSlice'
+
 import { specialKeyCode } from '@/utils'
 
 function RightPanel() {
@@ -14,16 +16,16 @@ function RightPanel() {
         useState<string>(`calc(100% - 58px)`)
     const [status, setstatus] = useState<'saving' | 'saved'>('saved')
 
-    const { code } = useSelector((state: RootState) => state.editor)
-    const { isConsoleOpen } = useSelector((state: RootState) => state.menus)
-    const dispatch = useDispatch<Dispatch>()
+    const { code } = useAppSelector((state) => state.editor)
+    const { isConsoleOpen } = useAppSelector((state) => state.menu)
+    const dispatch = useAppDispatch()
 
     const handleOnKeyDown = (key: KeyboardEvent) => {
         if (!specialKeyCode.includes(key.key)) setstatus('saving')
     }
 
     const handleOnRun = () => {
-        dispatch.menus.openConsole()
+        dispatch(openConsole())
     }
 
     useEffect(() => {
@@ -70,7 +72,7 @@ function RightPanel() {
 
             <CodeMirror
                 value={code}
-                onChange={(value) => dispatch.editor.setCode(value)}
+                onChange={(value) => dispatch(setCode(value))}
                 onKeyDown={handleOnKeyDown}
                 height={codeMirrorHeight}
             />

@@ -2,13 +2,18 @@ import Button from './Button'
 import { IoArrowBackOutline, IoSettingsOutline } from 'react-icons/io5'
 import { AiOutlineHistory } from 'react-icons/ai'
 import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
-import { Dispatch } from '@/store'
+import { useAppDispatch } from '@/store/hooks'
+import {
+    toggleConsole,
+    toggleHistory,
+    toggleSettings,
+} from '@/store/slices/menuSlice'
+
 import { BsTerminal } from 'react-icons/bs'
 function Buttons() {
     const router = useRouter()
     const backToHref = `/${router.query.class}`
-    const dispatch = useDispatch<Dispatch>()
+    const dispatch = useAppDispatch()
     return (
         <div className="flex items-center gap-2">
             <Button
@@ -19,18 +24,18 @@ function Buttons() {
             <Button
                 tooltip="Console"
                 icon={<BsTerminal size="1.75rem" />}
-                onClick={() => dispatch.menus.toggleConsole()}
+                onClick={() => dispatch(toggleConsole())}
             />
             <Button
                 tooltip="ประวัติการส่ง"
                 icon={<AiOutlineHistory size="1.75rem" />}
-                onClick={() => dispatch.menus.toggleHistory()}
+                onClick={() => dispatch(toggleHistory())}
             />
 
             <Button
                 tooltip="ตั้งค่า"
                 icon={<IoSettingsOutline size="1.75rem" />}
-                onClick={() => dispatch.menus.toggleSettings()}
+                onClick={() => dispatch(toggleSettings())}
             />
         </div>
     )

@@ -1,9 +1,15 @@
-import { init, RematchDispatch, RematchRootState } from '@rematch/core'
-import { models, RootModel } from './models'
-const store = init({ models })
+import { configureStore } from '@reduxjs/toolkit'
+import menuReducer from './slices/menuSlice'
+import historyReducer from './slices/historySlice'
+import editorReducer from './slices/editorSlice'
 
-export default store
+export const store = configureStore({
+    reducer: {
+        menu: menuReducer,
+        history: historyReducer,
+        editor: editorReducer,
+    },
+})
 
-export type Store = typeof store
-export type Dispatch = RematchDispatch<RootModel>
-export type RootState = RematchRootState<RootModel>
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

@@ -1,18 +1,17 @@
 import { useRef } from 'react'
 import InputRange from './InputRange'
 import { IoClose, IoSettingsOutline } from 'react-icons/io5'
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState, Dispatch } from '@/store'
+import { useAppSelector, useAppDispatch } from '@/store/hooks'
 import { useOnClickOutside } from 'usehooks-ts'
+import { toggleSettings } from '@/store/slices/menuSlice'
+import { setFontSize, setTabSize } from '@/store/slices/editorSlice'
 
 function Settings() {
     const settingsWindow = useRef<HTMLDivElement>(null)
-    const { fontSize, tabSize } = useSelector(
-        (state: RootState) => state.editor
-    )
-    const dispatch = useDispatch<Dispatch>()
+    const { fontSize, tabSize } = useAppSelector((state) => state.editor)
+    const dispatch = useAppDispatch()
 
-    useOnClickOutside(settingsWindow, () => dispatch.menus.toggleSettings())
+    useOnClickOutside(settingsWindow, () => dispatch(toggleSettings()))
 
     return (
         <div className="fixed w-full h-full bg-black bg-opacity-25 z-40 flex items-center justify-center">
@@ -26,7 +25,7 @@ function Settings() {
                         <h2 className="text-xl font-semibold">การตั้งค่า</h2>
                     </div>
                     <button
-                        onClick={() => dispatch.menus.toggleSettings()}
+                        onClick={() => dispatch(toggleSettings())}
                         className="self-end p-4"
                     >
                         <IoClose size="1.25rem" />
@@ -37,14 +36,14 @@ function Settings() {
 
                 <InputRange
                     value={fontSize}
-                    onChange={(value) => dispatch.editor.setFontSize(value)}
+                    onChange={(value) => dispatch(setFontSize(value))}
                     step={2}
                 />
 
                 <h4 className="text-md my-2">ขนาด Tab</h4>
                 <InputRange
                     value={tabSize}
-                    onChange={(value) => dispatch.editor.setTabSize(value)}
+                    onChange={(value) => dispatch(setTabSize(value))}
                 />
             </div>
         </div>

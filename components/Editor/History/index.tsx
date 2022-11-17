@@ -3,47 +3,54 @@ import { IoClose } from 'react-icons/io5'
 import { useRef } from 'react'
 import { FaHistory } from 'react-icons/fa'
 import { HiOutlineClipboardCopy } from 'react-icons/hi'
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState, Dispatch } from '@/store'
 import { useOnClickOutside } from 'usehooks-ts'
 import HistoryItems from './HistoryItem'
 import CodeMirror from '../CodeMirror'
 import { initialDoc } from '@/fakeData/initialDoc'
+import { useAppSelector, useAppDispatch } from '@/store/hooks'
+import { setCode } from '@/store/slices/editorSlice'
+import { toggleHistory } from '@/store/slices/menuSlice'
+import { setHistory, setSelected } from '@/store/slices/historySlice'
 
 function History() {
-    const selected = useSelector((state: RootState) => state.history.selected)
-    const dispatch = useDispatch<Dispatch>()
+    const selected = useAppSelector((state) => state.history.selected)
+    const allHistory = useAppSelector((state) => state.history.allHistory)
+    const dispatch = useAppDispatch()
 
     const historyWindow = useRef<HTMLDivElement>(null)
     const closeBtnRef = useRef<HTMLDivElement>(null)
     const bottomRef = useRef<HTMLDivElement>(null)
 
-    useOnClickOutside(historyWindow, () => dispatch.menus.toggleHistory())
+    useOnClickOutside(historyWindow, () => dispatch(toggleHistory()))
 
     const handleCopy = () => {
         if (!selected) return
-        dispatch.editor.setCode(selected.code)
-        dispatch.menus.toggleHistory()
+        dispatch(setCode(selected.code))
+        dispatch(toggleHistory())
     }
 
     useEffect(() => {
-        dispatch.history.setHistory([
-            {
+        dispatch(
+            setHistory([
+                {
+                    code: initialDoc,
+                    date: new Date('November 16, 2565 11:12:00'),
+                    status: ['P', 'P', 'P', 'S', 'C', 'P', 'P'],
+                },
+                {
+                    code: 'Hello World',
+                    date: new Date('November 16, 2565 11:12:01'),
+                    status: ['P', 'P', 'P', 'S', 'C', 'P', 'P'],
+                },
+            ])
+        )
+        dispatch(
+            setSelected({
                 code: initialDoc,
                 date: new Date('November 16, 2565 11:12:00'),
                 status: ['P', 'P', 'P', 'S', 'C', 'P', 'P'],
-            },
-            {
-                code: 'Hello World',
-                date: new Date('November 16, 2565 11:12:01'),
-                status: ['P', 'P', 'P', 'S', 'C', 'P', 'P'],
-            },
-        ])
-        dispatch.history.setSelected({
-            code: initialDoc,
-            date: new Date('November 16, 2565 11:12:00'),
-            status: ['P', 'P', 'P', 'S', 'C', 'P', 'P'],
-        })
+            })
+        )
     }, [])
 
     return (
@@ -58,13 +65,13 @@ function History() {
                         <h4 className="text-xl font-semibold">ประวัติการส่ง</h4>
                     </div>
                     <div className="flex flex-col gap-2 mt-3">
-                        <HistoryItems />
+                        <HistoryItems allHistory={allHistory} />
                     </div>
                 </div>
 
                 <div ref={closeBtnRef} className="col-span-6 flex flex-col">
                     <button
-                        onClick={() => dispatch.menus.toggleHistory()}
+                        onClick={() => dispatch(toggleHistory())}
                         className="self-end p-4"
                     >
                         <IoClose size="1.25rem" />

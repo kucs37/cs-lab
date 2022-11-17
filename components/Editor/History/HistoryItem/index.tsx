@@ -1,12 +1,11 @@
 import React from 'react'
 import Item from './Item'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/store'
+import type { HistoryI } from '@/interface/History'
 
-function HistoryItems(): JSX.Element {
-    const allHistory = useSelector(
-        (state: RootState) => state.history.allHistory
-    )
+interface Props {
+    allHistory: HistoryI[]
+}
+function HistoryItems({ allHistory }: Props): JSX.Element {
     return (
         <>
             {allHistory.map((item, _) => (
