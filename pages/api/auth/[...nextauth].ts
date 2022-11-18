@@ -11,6 +11,10 @@ export const authOptions: NextAuthOptions = {
         }),
     ],
 
+    pages: {
+        error: '/login',
+    },
+
     callbacks: {
         // async signIn({ account, profile }) {
         //     if (account.provider === 'google') {

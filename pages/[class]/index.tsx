@@ -26,7 +26,7 @@ const Class: React.FC<Props> = ({ data }) => {
     }
 
     return (
-        <WithNavbar title="Fundamental Programming Concepts - CS-LAB">
+        <WithNavbar title="Fundamental Programming Concepts | CS-LAB">
             <div className="px-3 container mx-auto mt-2 py-10">
                 <Backto href="../" />
 

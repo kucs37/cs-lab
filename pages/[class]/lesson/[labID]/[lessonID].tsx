@@ -30,7 +30,10 @@ function LabID({
     }, [])
 
     return (
-        <WithNavbar title="Lab - CS LAB" className="bg-white">
+        <WithNavbar
+            title="CS Python Lab 01 Input Process Output | CS LAB"
+            className="bg-white"
+        >
             <div className="min-h-full h-full ">
                 <div className="container mx-auto px-4 py-10 max-w-2lg h-full w-full">
                     <Backto href={backToHref} />

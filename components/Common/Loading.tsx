@@ -7,7 +7,7 @@ let list_style: any[] = [CoffeeDog1, CoffeeDog2, CoffeeDog3]
 
 function Loading() {
     return (
-        <div className="fixed top-0 left-0 w-full h-screen bg-white z-50 flex flex-col gap-4 justify-center items-center">
+        <div className="fixed top-0 left-0 w-screen h-screen min-h-screen bg-white z-50 flex flex-col gap-4 justify-center items-center">
             <Player
                 autoplay
                 loop

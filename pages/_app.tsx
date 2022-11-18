@@ -7,6 +7,8 @@ import { useRouter } from 'next/router'
 import { SessionProvider } from 'next-auth/react'
 import { Provider } from 'react-redux'
 import { wrapper } from '@/store'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const MyApp: React.FC<AppProps> = ({ Component, ...rest }) => {
     const [isStart, setIsStart] = useState<boolean>(false)
@@ -26,11 +28,12 @@ const MyApp: React.FC<AppProps> = ({ Component, ...rest }) => {
             router.events.off('routeChangeError', handleRouteStop)
         }
     }, [router])
-    
+
     return (
         <Provider store={store}>
             <SessionProvider session={pageProps.session} refetchInterval={0}>
                 {isStart && <Loading />}
+                <ToastContainer />
                 <Component {...pageProps} />
             </SessionProvider>
         </Provider>

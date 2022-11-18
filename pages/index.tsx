@@ -14,7 +14,7 @@ interface Props {
 
 const Home: NextPage<Props> = ({ data }) => {
     return (
-        <WithNavbar title="Class - CS-LAB">
+        <WithNavbar title="Class | CS-LAB">
             <div className="p-10 w-full container mx-auto">
                 <div>
                     <h2 className="text-2xl font-bold">คลาสเรียน</h2>

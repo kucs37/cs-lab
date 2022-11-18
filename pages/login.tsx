@@ -1,31 +1,53 @@
+import { useEffect } from 'react'
 import type { NextPage } from 'next'
-import AsyncBtn from '@/components/Common/AsynBtn'
 import { signIn } from 'next-auth/react'
 import Head from 'next/head'
+import { FcGoogle } from 'react-icons/fc'
+import { BsGithub } from 'react-icons/bs'
+import { toast } from 'react-toastify'
 
 const Login: NextPage = () => {
+    useEffect(() => {
+        // toast('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง', {
+        //     type: 'error',
+        // })
+    }, [])
     return (
         <>
             <Head>
-                <title>Login - CS-LAB</title>
+                <title>Login | CS-LAB</title>
             </Head>
-            <div className="flex justify-center items-center min-h-screen bg-gray-50">
-                <div className="flex flex-col w-full max-w-sm p-4  rounded-2xl bg-white shadow-sm py-6">
-                    <div className="w-full mb-6">
-                        <h1 className="text-3xl text-center font-semibold mb-2 text-lime-500 mt-4">
-                            CS Lab
-                        </h1>
-                    </div>
+            <div className="fixed w-screen">
+                <div className="flex justify-center items-center h-screen">
+                    <div className="w-full flex flex-col items-center p-4 max-w-md">
+                        <div className="mb-4">
+                            <h1 className="text-3xl text-center font-semibold mb-2 text-gray-900">
+                                CS LAB
+                            </h1>
+                            <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full animate-pulse bg-emerald-500"></div>
+                                <p className="text-center">
+                                    มีผู้ใช้งานขณะนี้อยู่ 128 คน
+                                </p>
+                            </div>
+                        </div>
 
-                    <div className="my-4 flex flex-col gap-6">
-                        <AsyncBtn
-                            isLoading={false}
-                            onClick={() =>
-                                signIn('google', { callbackUrl: '/' })
-                            }
+                        <button
+                            onClick={() => signIn('google')}
+                            className="flex justify-center items-center gap-3 hover:bg-zinc-100 bg-zinc-50 border-2 border-zinc-200 text-gray-700 py-3 rounded-lg w-3/4"
                         >
-                            เข้าสู่ระบบ
-                        </AsyncBtn>
+                            <FcGoogle size="1.5rem" />
+                            เข้าสู่ระบบด้วย Google
+                        </button>
+
+                        <a
+                            className="absolute bottom-4 flex items-center gap-2 underline"
+                            href="https://github.com/kucs37/cs-lab"
+                            target="_blank"
+                        >
+                            <BsGithub size="1.25rem" />
+                            Github Repo
+                        </a>
                     </div>
                 </div>
             </div>
