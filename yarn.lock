@@ -3738,6 +3738,11 @@ next-auth@^4.10.3:
     preact-render-to-string "^5.1.19"
     uuid "^8.3.2"
 
+next-redux-wrapper@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/next-redux-wrapper/-/next-redux-wrapper-8.0.0.tgz#588f2d89146c60c77d4a40c0af7e5282acfe4773"
+  integrity sha512-zKRdpvDeqNXQr1j5DUWwsB2fz6XpHR32iy2qJGItTKLsbLB9GvtxDL9b4mFCfhDvnzy5dw97UqMjWDpFY8h0zA==
+
 next-remove-imports@^1.0.7:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/next-remove-imports/-/next-remove-imports-1.0.8.tgz#c6479109ffccf925595ac5b8f03eed4ad5c36ec0"

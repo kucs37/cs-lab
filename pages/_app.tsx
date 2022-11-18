@@ -6,14 +6,13 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { SessionProvider } from 'next-auth/react'
 import { Provider } from 'react-redux'
-import { store } from '@/store'
+import { wrapper } from '@/store'
 
-const MyApp: React.FC<AppProps & { pageProps: any }> = ({
-    Component,
-    pageProps,
-}) => {
+const MyApp: React.FC<AppProps> = ({ Component, ...rest }) => {
     const [isStart, setIsStart] = useState<boolean>(false)
     const router = useRouter()
+    const { store, props } = wrapper.useWrappedStore(rest)
+    const { pageProps } = props
 
     useEffect(() => {
         const handleRouteStart = () => setIsStart(true)
@@ -27,7 +26,7 @@ const MyApp: React.FC<AppProps & { pageProps: any }> = ({
             router.events.off('routeChangeError', handleRouteStop)
         }
     }, [router])
-
+    
     return (
         <Provider store={store}>
             <SessionProvider session={pageProps.session} refetchInterval={0}>

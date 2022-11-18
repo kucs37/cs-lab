@@ -1,15 +1,19 @@
+import { createWrapper } from 'next-redux-wrapper'
 import { configureStore } from '@reduxjs/toolkit'
 import menuReducer from './slices/menuSlice'
 import historyReducer from './slices/historySlice'
 import editorReducer from './slices/editorSlice'
 
-export const store = configureStore({
-    reducer: {
-        menu: menuReducer,
-        history: historyReducer,
-        editor: editorReducer,
-    },
-})
+export const makeStore = () =>
+    configureStore({
+        reducer: {
+            menu: menuReducer,
+            history: historyReducer,
+            editor: editorReducer,
+        },
+    })
+export type AppStore = ReturnType<typeof makeStore>
+export type RootState = ReturnType<AppStore['getState']>
+export type AppDispatch = AppStore['dispatch']
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export const wrapper = createWrapper(makeStore, { debug: true })
