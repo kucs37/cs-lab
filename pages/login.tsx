@@ -44,6 +44,7 @@ const Login: NextPage = () => {
                             className="absolute bottom-4 flex items-center gap-2 underline"
                             href="https://github.com/kucs37/cs-lab"
                             target="_blank"
+                            rel="noreferrer"
                         >
                             <BsGithub size="1.25rem" />
                             Github Repo
