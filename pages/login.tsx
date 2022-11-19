@@ -1,17 +1,31 @@
 import { useEffect } from 'react'
-import type { NextPage } from 'next'
+import type { NextPage, GetServerSideProps } from 'next'
 import { signIn } from 'next-auth/react'
 import Head from 'next/head'
 import { FcGoogle } from 'react-icons/fc'
 import { BsGithub } from 'react-icons/bs'
 import { toast } from 'react-toastify'
+import { useRouter } from 'next/router'
 
-const Login: NextPage = () => {
+interface Props {
+    error: string
+}
+const Login: NextPage<Props> = ({ error }) => {
+    const { query } = useRouter()
+
     useEffect(() => {
-        // toast('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง', {
-        //     type: 'error',
-        // })
-    }, [])
+        if (query.error) {
+            if (query.error === 'not-authorize') {
+                toast('กรุณาเข้าสู่ระบบด้วย @ku.th !', {
+                    type: 'error',
+                })
+            } else {
+                toast('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง', {
+                    type: 'error',
+                })
+            }
+        }
+    }, [query])
     return (
         <>
             <Head>
@@ -33,7 +47,16 @@ const Login: NextPage = () => {
                         </div>
 
                         <button
-                            onClick={() => signIn('google')}
+                            onClick={() =>
+                                signIn('google', {
+                                    redirect: false,
+                                    callbackUrl: `${
+                                        query.callbackUrl
+                                            ? query.callbackUrl
+                                            : window.location.origin
+                                    }`,
+                                })
+                            }
                             className="flex justify-center items-center gap-3 hover:bg-zinc-100 bg-zinc-50 border-2 border-zinc-200 text-gray-700 py-3 rounded-lg w-3/4"
                         >
                             <FcGoogle size="1.5rem" />
@@ -57,3 +80,11 @@ const Login: NextPage = () => {
 }
 
 export default Login
+
+// export const getServerSideProps: GetServerSideProps = async (ctx) => {
+//     console.log(ctx)
+
+//     return {
+//         props: {},
+//     }
+// }

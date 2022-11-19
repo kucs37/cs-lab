@@ -3,7 +3,7 @@ import { withAuth } from 'next-auth/middleware'
 export default withAuth({
     pages: {
         signIn: '/login',
-        error: '/error',
+        error: '/login',
     },
     callbacks: {
         authorized({ req, token }) {
@@ -12,8 +12,8 @@ export default withAuth({
             //     return token?.userRole === 'user'
             // }
             // // `/me` only requires the user to be logged in
-            return true
-            // return !!token
+            // return true
+            return !!token
         },
     },
 })
