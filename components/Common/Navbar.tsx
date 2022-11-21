@@ -38,7 +38,7 @@ const Navbar = forwardRef(
         return (
             <div
                 ref={ref}
-                className="w-full bg-white shadow-md shadow-gray-50 border-b-[1px] border-gray-200"
+                className="w-full bg-white border-b-[1px] border-gray-200 sticky top-0 z-40"
             >
                 <div className="px-6 py-1 flex justify-between items-center">
                     <Link href={'/'}>

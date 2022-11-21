@@ -20,7 +20,7 @@ const WithNavbar: React.FC<Props> = forwardRef(
                 <title>{title}</title>
             </Head>
             <div
-                className={`flex flex-col w-full h-screen  ${className}`}
+                className={`flex flex-col w-full min-h-screen ${className}`}
                 ref={ref}
             >
                 <Navbar children={navbarChildren} ref={navbarRef} />
