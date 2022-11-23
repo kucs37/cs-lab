@@ -1,8 +1,7 @@
 import { ChangeEvent } from 'react'
 import { IoCheckmarkSharp, IoClose } from 'react-icons/io5'
-import { LessonQuizzesStatus } from '@/Context/Lessons/interface'
 interface InputProps {
-    status: LessonQuizzesStatus
+    status: 'correct' | 'incorrect' | 'not-answered'
     value: string
     onChange: (ev: ChangeEvent<HTMLInputElement>) => void
     size?: number

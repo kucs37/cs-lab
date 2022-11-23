@@ -6,7 +6,7 @@ import rehypeRaw from 'rehype-raw'
 import 'katex/dist/katex.min.css'
 import { FindAB } from '@/fakeData'
 
-function Description() {
+function Loaded() {
     return (
         <>
             <div>
@@ -50,4 +50,4 @@ function Description() {
     )
 }
 
-export default Description
+export default Loaded

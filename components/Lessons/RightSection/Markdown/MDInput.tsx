@@ -1,6 +1,5 @@
 import { useState, ChangeEvent, useEffect } from 'react'
 import Input from '../../Common/Input'
-import { LessonQuizzesStatus } from '@/Context/Lessons/interface'
 
 interface InputProps {
     type: 'text' | 'number'
@@ -9,7 +8,6 @@ interface InputProps {
 }
 
 function MDInput({ type, ans, id }: InputProps) {
-    const [status, setStatus] = useState<LessonQuizzesStatus>('not-answered')
     const [value, setValue] = useState<string>('')
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +29,14 @@ function MDInput({ type, ans, id }: InputProps) {
     //     }
     // }, [lessonQuizzes.length > 0])
 
-    return <Input status={status} value={value} onChange={handleChange} wFull />
+    return (
+        <Input
+            status="not-answered"
+            value={value}
+            onChange={handleChange}
+            wFull
+        />
+    )
 }
 
 export default MDInput

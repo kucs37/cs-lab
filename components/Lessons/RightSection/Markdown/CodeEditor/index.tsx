@@ -1,5 +1,4 @@
 import { ChangeEvent, useState, useEffect } from 'react'
-import { useLessonCTX } from '@/Context/Lessons'
 import Input from '@/components/Lessons/Common/Input'
 import TextArea from '@/components/Lessons/Common/TextArea'
 import { toFinalAnswer } from './utils/toFinalAnswer'
@@ -12,26 +11,24 @@ interface CodeEditorI {
 function CodeEditor({ code }: CodeEditorI) {
     const problemID = code[0].children[0].value
     const [answers, setAnswers] = useState<AnswersI>({})
-    const { lessonQuizzes, setLessonQuizzes } = useLessonCTX()
 
     useEffect(() => {
-        const otherQuizzes = lessonQuizzes.filter(
-            (quiz) => quiz.id !== problemID
-        )
-
-        setLessonQuizzes([
-            ...otherQuizzes,
-            {
-                id: problemID,
-                answers: toFinalAnswer(code, answers),
-                status: 'not-answered',
-            },
-        ])
+        // const otherQuizzes = lessonQuizzes.filter(
+        //     (quiz) => quiz.id !== problemID
+        // )
+        // setLessonQuizzes([
+        //     ...otherQuizzes,
+        //     {
+        //         id: problemID,
+        //         answers: toFinalAnswer(code, answers),
+        //         status: 'not-answered',
+        //     },
+        // ])
     }, [answers])
 
-    useEffect(() => {
-        setAnswers({})
-    }, [lessonQuizzes.length === 0])
+    // useEffect(() => {
+    //     setAnswers({})
+    // }, [lessonQuizzes.length === 0])
 
     const handleOnChange = (
         index: number,

@@ -4,11 +4,11 @@ function Outline() {
     const router = useRouter()
     return (
         <ul className="text-gray-500 leading-relaxed">
-            {/* <Link href={`${router.asPath}`}>
+            <Link href={`${router.asPath}`}>
                 <a className="no-underline text-gray-900 font-semibold">
                     <li>01 Elab&apos;s Automatic Grading</li>
                 </a>
-            </Link> */}
+            </Link>
             <li>02 Elab&apos;s Manual Grading</li>
             <li>03 Reusing Submitted Answer</li>
             <li>04 Variable and Basic Output</li>

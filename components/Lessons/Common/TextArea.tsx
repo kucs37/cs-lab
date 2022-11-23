@@ -1,6 +1,5 @@
 import { ChangeEvent, useState, useEffect } from 'react'
 import { IoCheckmarkSharp, IoClose } from 'react-icons/io5'
-import { useLessonCTX } from '@/Context/Lessons'
 
 interface InputProps {
     status: 'correct' | 'incorrect' | 'not-answered'
@@ -9,7 +8,7 @@ interface InputProps {
     onChange: (ev: ChangeEvent<HTMLTextAreaElement>) => void
 }
 
-function Input({ status, value = '', rows, onChange }: InputProps) {
+function TextArea({ status, value = '', rows, onChange }: InputProps) {
     return (
         <div className="flex items-center gap-2 w-full">
             <div
@@ -35,4 +34,4 @@ function Input({ status, value = '', rows, onChange }: InputProps) {
     )
 }
 
-export default Input
+export default TextArea

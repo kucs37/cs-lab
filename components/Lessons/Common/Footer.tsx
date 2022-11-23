@@ -1,15 +1,7 @@
-import { useLessonCTX } from '@/Context/Lessons'
-
 function Footer() {
-    const { lessonQuizzes, setLessonQuizzes } = useLessonCTX()
+    const handleSubmitAnswer = () => {}
 
-    const handleSubmitAnswer = () => {
-        console.log(lessonQuizzes)
-    }
-
-    const clearAnswers = () => {
-        setLessonQuizzes([])
-    }
+    const clearAnswers = () => {}
     return (
         <div className="flex justify-between items-center py-10">
             <button

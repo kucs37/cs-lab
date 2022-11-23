@@ -1,6 +1,5 @@
 import { GetServerSideProps } from 'next'
 import WithNavbar from '@/HOC/WithNavbar'
-import { LessonQuizzesI } from '@/Context/Lessons/interface'
 import LeftSection from '@/components/Lessons/LeftSection'
 import RightSection from '@/components/Lessons/RightSection'
 import { serialize } from 'next-mdx-remote/serialize'
@@ -14,7 +13,7 @@ interface Props {
         outline: OutlineI[]
     }
     content: string
-    answers: LessonQuizzesI[]
+    answers: string[]
     isClosed: boolean
 }
 
@@ -35,7 +34,7 @@ function LabID({ metadata, content, answers, isClosed }: Props) {
 export default LabID
 
 export async function getServerSideProps(ctx: GetServerSideProps) {
-    const fetchedAns: LessonQuizzesI[] = []
+    const fetchedAns: string[] = []
     const mdxPath = path.join(process.cwd(), 'fakeData/MDX/lesson01.mdx')
     const file = readFileSync(mdxPath, 'utf8')
     const { metadata, content } = parseMD(file)
