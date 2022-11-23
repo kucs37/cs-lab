@@ -7,6 +7,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 import { readFileSync } from 'fs'
 import parseMD from 'parse-md'
 import { OutlineI } from '@/interface/Outline'
+import path from 'path'
 
 interface Props {
     metadata: {
@@ -35,7 +36,8 @@ export default LabID
 
 export async function getServerSideProps(ctx: GetServerSideProps) {
     const fetchedAns: LessonQuizzesI[] = []
-    const file = readFileSync('fakeData/MDX/lesson01.mdx', 'utf8')
+    const mdxPath = path.join(process.cwd(), 'fakeData/MDX/lesson01.mdx')
+    const file = readFileSync(mdxPath, 'utf8')
     const { metadata, content } = parseMD(file)
     const mdxSource = await serialize(content)
 

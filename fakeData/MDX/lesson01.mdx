@@ -20,12 +20,10 @@ outline:
 
 <h1 id="01">List Index และการเข้าถึง (access) ข้อมูลใน List</h1>
 
-<SyntaxHighlighter>
-    {`
-    scores = [60, 70, 85, 66, 70, 0, 15, 9] days = ['Sunday', 'Monday',
-    'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    `}
-</SyntaxHighlighter>
+<SyntaxHighlight language="python">
+    {`scores = [60, 70, 85, 66, 70, 0, 15, 9] 
+days = ['Sunday', 'Monday','Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']`}
+</SyntaxHighlight>
 
 -   ข้อมูลที่เก็บอยู่ใน List จะมีเลขลำดับกำกับอยู่ ซึ่งเลขลำดับดังกล่าวเรียกว่า Index
 -   Index ของ List ในภาษา Python เริ่มต้นที่ 0
@@ -40,7 +38,7 @@ outline:
 
 -   ใส่เลข Index ไว้ใน bracket (\`[]\`) หลังชื่อตัวแปร List เพื่อเข้าถึงข้อมูลใน List ณ Index ที่ต้องการ
 
-<SyntaxHighlighter>
+<SyntaxHighlight language="python">
 {`scores = [60, 70, 85, 66, 70, 0, 15, 9]
 
 # ต้องการค่าใน List scores ณ Index ที่ 2 เก็บเข้าตัวแปร score
@@ -50,9 +48,9 @@ score = scores[2]
 print(score)
 `}
 
-</SyntaxHighlighter>
+</SyntaxHighlight>
 
-<SyntaxHighlighter>
+<SyntaxHighlight language="python">
 {`
 scores = [60, 70, 85, 66, 70, 0, 15, 9]
 
@@ -63,9 +61,9 @@ score = scores[1] + scores[4]
 print(score)
 `}
 
-</SyntaxHighlighter>
+</SyntaxHighlight>
 
-<SyntaxHighlighter>
+<SyntaxHighlight language="python">
 {`
 days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
@@ -74,11 +72,11 @@ days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Satur
 print(days[2]) # ค่าที่ได้มา เป็น string
 `}
 
-</SyntaxHighlighter>
+</SyntaxHighlight>
 
 <h2 id="03">วนลูปข้อมูลใน List โดยใช้ index</h2>
 
-<SyntaxHighlighter>
+<SyntaxHighlight language="python">
 {`
 days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 index = 0
@@ -88,7 +86,7 @@ while index < 6:
     index += 1
 `}
 
-</SyntaxHighlighter>
+</SyntaxHighlight>
 
 <h2 id="04">แบบฝึกหัด</h2>
 
@@ -100,13 +98,13 @@ while index < 6:
 
 <h2 id="05"> Index เป็นค่าลบได้</h2>
 
-<SyntaxHighlighter>
+<SyntaxHighlight language="python">
 {`
 scores = [60, 70, 85, 66, 70, 0, 15, 9]
 days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 `}
 
-</SyntaxHighlighter>
+</SyntaxHighlight>
 
 -   Index ของ List ในภาษา Python เป็นค่าลบได้ โดยค่าสุดท้ายของ List เป็น -1
 
@@ -119,7 +117,7 @@ days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Satur
 
 -   ใส่เลข Index ไว้ใน bracket (\`[]\`) หลังชื่อตัวแปร List เพื่อเข้าถึงข้อมูลใน List ณ Index ที่ต้องการ
 
-<SyntaxHighlighter>
+<SyntaxHighlight language="python">
 {`
 scores = [60, 70, 85, 66, 70, 0, 15, 9]
 
@@ -130,9 +128,9 @@ score = scores[-2]
 print(score)
 `}
 
-</SyntaxHighlighter>
+</SyntaxHighlight>
 
-<SyntaxHighlighter>
+<SyntaxHighlight language="python">
 {`
 scores = [60, 70, 85, 66, 70, 0, 15, 9]
 
@@ -143,9 +141,9 @@ score = scores[-1] + scores[-4]
 print(score)
 `}
 
-</SyntaxHighlighter>
+</SyntaxHighlight>
 
-<SyntaxHighlighter>
+<SyntaxHighlight language="python">
 {`
 days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
@@ -154,19 +152,19 @@ days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Satur
 print(days[-5]) # ค่าที่ได้มา เป็น string
 `}
 
-</SyntaxHighlighter>
+</SyntaxHighlight>
 
 <h2 id="07">ระวังการเข้าถึงค่า ณ Index ที่ไม่มีใน List</h2>
 
-<SyntaxHighlighter>
+<SyntaxHighlight language="python">
 {`
 days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 print(days[-8])  # ไม่มี Index ที่ -8
 `}
 
-</SyntaxHighlighter>
+</SyntaxHighlight>
 
-<SyntaxHighlighter>
+<SyntaxHighlight language="python">
 {`
 days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 i = 0
@@ -174,7 +172,7 @@ while i <= 7:
     print(days[i])  # ไม่มี Index ทึ่ 7
 `}
 
-</SyntaxHighlighter>
+</SyntaxHighlight>
 
 <h2 id="08">แบบฝึกหัด</h2>
 
@@ -184,16 +182,8 @@ while i <= 7:
 
 2. ประกาศ List ของข้อมูลใด ๆ ให้ชื่อตัวแปรว่า data โดยมีข้อมูล 15 ตัว
 
-<MDInput
-    type="text"
-    ans="data=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]"
-    id="004"
-/>
+<MDInput type="text" id="004" />
 
 3. ประกาศ List ของที่เก็บข้อมูลเดือนทั้ง 12 เดือนใน 1 ปี (ตั้งแต่มกราคม ถึง ธันวาคม ตามลำดับ) ให้ชื่อตัวแปรว่า months โดยเก็บชื่อเดือน 3 ตัวแรกของแต่ละเดือนเป็นตัวพิมพ์ใหญ่ทั้งหมด (เช่น JAN สำหรับเดือนมกราคม)
 
-<MDInput
-    type="text"
-    ans='months=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]'
-    id="005"
-/>
+<MDInput type="text" id="005" />
