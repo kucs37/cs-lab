@@ -31,26 +31,26 @@ export default NextAuth({
             }
             throw new Error('Sign in provider not supported')
         },
-        // async jwt({ token, account, isNewUser, profile, user }) {
-        //     let ress = await axios.post(
-        //         process.env.API_BASE_URL! + '/auth/verifyToken',
-        //         {},
-        //         {
-        //             headers: {
-        //                 Authorization: `Bearer ${jwt.sign(
-        //                     {
-        //                         email: token.email,
-        //                     },
-        //                     process.env.NEXTAUTH_SECRET!
-        //                 )}`,
-        //             },
-        //         }
-        //     )
-        //     return {
-        //         ...token,
-        //         ...ress.data.resData,
-        //     }
-        // },
+        async jwt({ token, account, isNewUser, profile, user }) {
+            let ress = await axios.post(
+                process.env.API_BASE_URL! + '/auth/verifyToken',
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${jwt.sign(
+                            {
+                                email: token.email,
+                            },
+                            process.env.NEXTAUTH_SECRET!
+                        )}`,
+                    },
+                }
+            )
+            return {
+                ...token,
+                ...ress.data.resData,
+            }
+        },
         async session({ session, user, token }) {
             session.user = token
             return session

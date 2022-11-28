@@ -4,13 +4,18 @@ import { EditorState, Compartment } from '@codemirror/state'
 import { EditorView, keymap } from '@codemirror/view'
 import { python } from '@codemirror/lang-python'
 import { indentLess, insertTab } from '@codemirror/commands'
-import { ayuLight, dracula } from 'thememirror'
+import { ayuLight, dracula, amy } from 'thememirror'
+import readOnlyRangesExtension from 'codemirror-readonly-ranges'
 
 interface Props {
     onChange?: (value: string) => void
     onKeyDown?: (key: KeyboardEvent) => void
     tabSize?: number
     readonly?: boolean
+    initialDoc?: string
+    readOnlyRanges?: (
+        targetState: EditorState
+    ) => Array<{ from: number | undefined; to: number | undefined }>
 }
 
 const baseTheme = EditorView.baseTheme({
@@ -23,9 +28,17 @@ const baseTheme = EditorView.baseTheme({
 })
 
 const _tabSize = new Compartment(),
-    _readonly = new Compartment()
+    _readonly = new Compartment(),
+    _readOnlyRanges = new Compartment()
 
-function useCodemirror({ onChange, onKeyDown, tabSize, readonly }: Props): {
+function useCodemirror({
+    onChange,
+    onKeyDown,
+    tabSize,
+    readonly,
+    initialDoc,
+    readOnlyRanges,
+}: Props): {
     editorRef: React.RefObject<HTMLDivElement>
     editorView: EditorView | undefined
 } {
@@ -34,10 +47,11 @@ function useCodemirror({ onChange, onKeyDown, tabSize, readonly }: Props): {
     useEffect(() => {
         if (!editorRef.current) return
         const state = EditorState.create({
+            doc: initialDoc,
             extensions: [
                 basicSetup,
                 baseTheme,
-                ayuLight,
+                dracula,
                 python(),
                 keymap.of([
                     {
@@ -61,6 +75,7 @@ function useCodemirror({ onChange, onKeyDown, tabSize, readonly }: Props): {
                 EditorView.domEventHandlers({
                     keydown: (key) => onKeyDown && onKeyDown(key),
                 }),
+                _readOnlyRanges.of([]),
             ],
         })
         const view = new EditorView({
@@ -88,6 +103,16 @@ function useCodemirror({ onChange, onKeyDown, tabSize, readonly }: Props): {
             effects: _readonly.reconfigure(EditorState.readOnly.of(readonly)),
         })
     }, [viewRef, _readonly, readonly])
+
+    //  Readonly Ranges Change Detect
+    useEffect(() => {
+        if (!viewRef.current || !readOnlyRanges) return
+        viewRef.current.dispatch({
+            effects: _readOnlyRanges.reconfigure(
+                readOnlyRangesExtension(readOnlyRanges)
+            ),
+        })
+    }, [viewRef, _readOnlyRanges, readOnlyRanges])
 
     return { editorRef, editorView: viewRef.current }
 }

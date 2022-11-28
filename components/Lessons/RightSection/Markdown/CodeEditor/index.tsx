@@ -1,7 +1,7 @@
 import { ChangeEvent, useState, useEffect } from 'react'
 import Input from '@/components/Lessons/Common/Input'
 import TextArea from '@/components/Lessons/Common/TextArea'
-import { toFinalAnswer } from './utils/toFinalAnswer'
+import { toFinalAnswer } from '@/utils/toFinalAnswer'
 import { AnswersI, TypeI } from './interface'
 
 interface CodeEditorI {

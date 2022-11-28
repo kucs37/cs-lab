@@ -1340,6 +1340,11 @@ clsx@^1.1.1:
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.2.1.tgz#0ddc4a20a549b59c93a4116bb26f5294ca17dc12"
   integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
 
+codemirror-readonly-ranges@^0.1.0-alpha.1:
+  version "0.1.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/codemirror-readonly-ranges/-/codemirror-readonly-ranges-0.1.0-alpha.1.tgz#1999ba2003bf02087b7bca8d207dfd665764dcfb"
+  integrity sha512-/CwcA8bvjK9IAe+t0RZYSoQiFKye9rjLn4aSwWOvgYaFkR2SEiF7uQh0O9j4yafkGonlszhgqzfyniBcGSSk/A==
+
 codemirror@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-6.0.1.tgz#62b91142d45904547ee3e0e0e4c1a79158035a29"
@@ -4765,6 +4770,11 @@ quick-lru@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
+
+range-analyzer@^0.1.1-alpha.2:
+  version "0.1.1-alpha.2"
+  resolved "https://registry.yarnpkg.com/range-analyzer/-/range-analyzer-0.1.1-alpha.2.tgz#2e8bf334fe3f53391a5e69cd157a3af7af85ef58"
+  integrity sha512-Ad9J4t3zljH/DHNSDthAFyQdd5DniHTaqES/oTwAFB7prV7E4u01et6WYCpqbJSmUDC05XlMMR2ycO84Hi1IvA==
 
 rc@1.2.8, rc@^1.0.1, rc@^1.1.6, rc@^1.2.1, rc@^1.2.8:
   version "1.2.8"

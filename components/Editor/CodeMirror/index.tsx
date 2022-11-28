@@ -1,8 +1,10 @@
 import { ReactNode, useEffect } from 'react'
 import useCodemirror from '@/hooks/useCodemirror'
 import { useAppSelector } from '@/store/hooks'
+import { EditorState } from '@codemirror/state'
 
 interface Props {
+    initialDoc?: string
     value: string
     onChange?: (code: string) => void
     onKeyDown?: (key: KeyboardEvent) => void
@@ -10,9 +12,13 @@ interface Props {
     width?: number
     children?: ReactNode
     readonly?: boolean
+    readOnlyRanges?: (
+        targetState: EditorState
+    ) => Array<{ from: number | undefined; to: number | undefined }>
 }
 
 function CodeMirror({
+    initialDoc,
     value,
     onChange,
     onKeyDown,
@@ -20,13 +26,16 @@ function CodeMirror({
     height,
     children,
     readonly,
+    readOnlyRanges,
 }: Props) {
     const { fontSize, tabSize } = useAppSelector((state) => state.editor)
     const { editorRef, editorView } = useCodemirror({
+        initialDoc,
         onChange,
         onKeyDown,
         tabSize,
         readonly,
+        readOnlyRanges,
     })
 
     useEffect(() => {

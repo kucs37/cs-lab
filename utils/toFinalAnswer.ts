@@ -1,4 +1,4 @@
-import { AnswersI, TypeI } from '../interface'
+import { AnswersI, TypeI } from '../components/Lessons/RightSection/Markdown/CodeEditor/interface'
 
 export const toFinalAnswer = (code: TypeI[], answers: AnswersI) => {
     let finalCode = ''
