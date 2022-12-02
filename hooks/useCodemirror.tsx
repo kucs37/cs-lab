@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react'
 import { basicSetup } from 'codemirror'
-import { EditorState, Compartment } from '@codemirror/state'
+import { EditorState, Compartment, Extension } from '@codemirror/state'
 import { EditorView, keymap } from '@codemirror/view'
 import { python } from '@codemirror/lang-python'
 import { indentLess, insertTab } from '@codemirror/commands'
-import { ayuLight, dracula, amy } from 'thememirror'
+
 import readOnlyRangesExtension from 'codemirror-readonly-ranges'
 
 interface Props {
@@ -13,6 +13,7 @@ interface Props {
     tabSize?: number
     readonly?: boolean
     initialDoc?: string
+    theme: Extension
     readOnlyRanges?: (
         targetState: EditorState
     ) => Array<{ from: number | undefined; to: number | undefined }>
@@ -38,6 +39,7 @@ function useCodemirror({
     readonly,
     initialDoc,
     readOnlyRanges,
+    theme,
 }: Props): {
     editorRef: React.RefObject<HTMLDivElement>
     editorView: EditorView | undefined
@@ -51,7 +53,7 @@ function useCodemirror({
             extensions: [
                 basicSetup,
                 baseTheme,
-                dracula,
+                theme,
                 python(),
                 keymap.of([
                     {

@@ -3,6 +3,7 @@ import Footer from '../Common/Footer'
 import Markdown from './Markdown/index'
 import ScrollSpy from 'react-scrollspy'
 import { OutlineI } from '@/interface/Outline'
+import Outline from '@/components/Lessons/RightSection/Outline'
 
 interface Props {
     outline: OutlineI[]
@@ -16,14 +17,15 @@ interface TOC {
 
 function RightSection({ outline, labMD }: Props) {
     return (
-        <div className="w-3/4 flex py-10 gap-10 relative">
-            <div className="w-3/4">
+        <div className="w-full flex py-10 gap-10 relative">
+            <div className="w-full md:w-2/3">
+                {/* <Outline values={outline} /> */}
                 <Markdown labMD={labMD} />
                 <Footer />
             </div>
 
             <ScrollSpy
-                className="border-l-2 border-gray-200 h-fit pb-3 pl-2 text-gray-300 text-sm leading-loose sticky top-20"
+                className="hidden md:block w-1/3 border-l-2 border-gray-200 h-fit pb-3 pl-2 text-gray-300 text-sm leading-loose sticky top-20"
                 items={outline.map(({ id }) => id)}
                 currentClassName="text-gray-900 font-semibold"
                 scrolledPastClassName="text-gray-400"

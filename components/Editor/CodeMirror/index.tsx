@@ -2,7 +2,7 @@ import { ReactNode, useEffect } from 'react'
 import useCodemirror from '@/hooks/useCodemirror'
 import { useAppSelector } from '@/store/hooks'
 import { EditorState } from '@codemirror/state'
-
+import { ayuLight, dracula, amy } from 'thememirror'
 interface Props {
     initialDoc?: string
     value: string
@@ -36,6 +36,7 @@ function CodeMirror({
         tabSize,
         readonly,
         readOnlyRanges,
+        theme: dracula,
     })
 
     useEffect(() => {
