@@ -17,9 +17,9 @@ interface TOC {
 
 function RightSection({ outline, labMD }: Props) {
     return (
-        <div className="w-full flex py-10 gap-10 relative">
+        <div className="col-span-9 flex py-10 gap-10 relative">
             <div className="w-full md:w-2/3">
-                {/* <Outline values={outline} /> */}
+                <Outline values={outline} />
                 <Markdown labMD={labMD} />
                 <Footer />
             </div>
