@@ -1,7 +1,7 @@
 import Backto from '@/components/Common/Backto'
 import Badge from '@/components/Common/Badge'
 import { useRouter } from 'next/router'
-import Outline from './Outline'
+import Outline from '../Outline'
 
 interface Props {
     title: string

@@ -10,7 +10,7 @@ import { IoSettingsOutline } from 'react-icons/io5'
 import { BsDoorOpen } from 'react-icons/bs'
 import { useRouter } from 'next/router'
 import { useOnClickOutside } from 'usehooks-ts'
-import Hamburger from './Mobile/Hamburger'
+import Hamburger from './Hamburger'
 
 interface Props {
     children?: ReactNode

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Footer from '../Common/Footer'
+import Footer from './Common/Footer'
 import Markdown from './Markdown/index'
 import ScrollSpy from 'react-scrollspy'
 import { OutlineI } from '@/interface/Outline'
@@ -18,8 +18,7 @@ interface TOC {
 function RightSection({ outline, labMD }: Props) {
     return (
         <div className="col-span-12 md:col-span-9 2xl:col-span-10 flex py-10 gap-10 relative">
-            <div className="w-full md:w-2/3">
-                {/* <Outline values={outline} /> */}
+            <div className="w-full md:w-2/3 md:px-10">
                 <Markdown labMD={labMD} />
                 <Footer />
             </div>

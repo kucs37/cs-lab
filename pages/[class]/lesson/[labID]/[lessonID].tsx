@@ -6,7 +6,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 import { readFileSync } from 'fs'
 import parseMD from 'parse-md'
 import { OutlineI } from '@/interface/Outline'
-import Outline from '@/components/Lessons/RightSection/Outline'
+import Hamburger from '@/components/Lessons/Outline/Hamburger'
 import path from 'path'
 
 interface Props {
@@ -21,10 +21,10 @@ interface Props {
 function LabID({ metadata, content, answers, isClosed }: Props) {
     return (
         <WithNavbar
-            hamburgerChild={<Outline values={metadata.outline} />}
+            hamburgerChild={<Hamburger outline={metadata.outline} />}
             title="CS Python Lab 01 Input Process Output | CS LAB"
         >
-            <div className="grid grid-cols-12 w-full h-full gap-10 px-6 md:px-2">
+            <div className="grid grid-cols-12 w-full h-full px-6 md:px-2">
                 <LeftSection
                     title="CS Python Lab 01 Input Process Output"
                     isClosed={isClosed}

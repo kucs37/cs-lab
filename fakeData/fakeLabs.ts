@@ -25,46 +25,6 @@ export const fakeLabs: ResDaum[] = [
                 name: '08 Exercise 1.2: Input Process Output',
                 status: 'success',
             },
-            {
-                name: '09 Exercise 1.3: Input Process Output',
-                status: 'success',
-            },
-            {
-                name: '10 Exercise 1.4: Input Process Output',
-                status: 'success',
-            },
-            {
-                name: '11 Exercise 1.5: Input Process Output',
-                status: 'success',
-            },
-            {
-                name: '11 Exercise 1.5: Input Process Output',
-                status: 'success',
-            },
-            {
-                name: '11 Exercise 1.5: Input Process Output',
-                status: 'success',
-            },
-            {
-                name: '11 Exercise 1.5: Input Process Output',
-                status: 'success',
-            },
-            {
-                name: '11 Exercise 1.5: Input Process Output',
-                status: 'success',
-            },
-            {
-                name: '11 Exercise 1.5: Input Process Output',
-                status: 'success',
-            },
-            {
-                name: '11 Exercise 1.5: Input Process Output',
-                status: 'success',
-            },
-            {
-                name: '11 Exercise 1.5: Input Process Output',
-                status: 'success',
-            },
         ],
     },
     {

@@ -20,7 +20,7 @@ function Hamburger({ children }: Props) {
     return (
         <div className="md:hidden">
             <button onClick={() => dispatch(toggleHamburger())}>
-                <RxHamburgerMenu size={20} />
+                <RxHamburgerMenu size={28} />
             </button>
 
             {isHamburgerOpen ? (
@@ -32,7 +32,7 @@ function Hamburger({ children }: Props) {
                         >
                             <IoClose size={26} />
                         </button>
-                        {children}
+                        <div className="h-full overflow-y-scroll">{children}</div>
                     </div>
                 </div>
             ) : null}

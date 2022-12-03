@@ -14,7 +14,6 @@ outline:
             id: '06',
         },
         { name: 'ระวังการเข้าถึงค่า ณ Index ที่ไม่มีใน List', id: '07' },
-        { name: 'แบบฝึกหัด', id: '08' },
     ]
 ---
 
@@ -94,8 +93,7 @@ while index < 6:
     source={`# เพิ่มโค้ดในช่องว่าง
 
 total = 0
-while          :
-
+while :
 
 print(total)`}
 readOnlyRanges={[{ line: 3, from: 0, to: -1 },{ line: 4, from: 0, to: 6 },{ line: 4, from: -1, to: 0 },{ line: 7, from: 0, to: -1 }]}
@@ -109,8 +107,8 @@ readOnlyRanges={[{ line: 3, from: 0, to: -1 },{ line: 4, from: 0, to: 6 },{ line
 days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 index = 0
-while               :
-    
+while :
+
     `}
     readOnlyRanges={[
         { line: 1, from: 0, to: -1 },
@@ -119,6 +117,7 @@ while               :
         {line : 5 ,from :0 , to : 5 },
         {line : 5 ,from :-1 , to : 0 }
     ]}
+
 />
 
 <h2 id="05"> Index เป็นค่าลบได้</h2>
