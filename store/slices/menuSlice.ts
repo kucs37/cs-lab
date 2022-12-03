@@ -4,12 +4,14 @@ interface MenuState {
     isSettingsOpen: boolean
     isHistoryOpen: boolean
     isConsoleOpen: boolean
+    isHamburgerOpen: boolean
 }
 
 const initialState: MenuState = {
     isSettingsOpen: false,
     isHistoryOpen: false,
     isConsoleOpen: false,
+    isHamburgerOpen: false,
 }
 
 export const menuSlice = createSlice({
@@ -28,9 +30,17 @@ export const menuSlice = createSlice({
         toggleConsole: (state) => {
             state.isConsoleOpen = !state.isConsoleOpen
         },
+        toggleHamburger: (state) => {
+            state.isHamburgerOpen = !state.isHamburgerOpen
+        },
     },
 })
 
-export const { toggleSettings, toggleHistory, openConsole, toggleConsole } =
-    menuSlice.actions
+export const {
+    toggleSettings,
+    toggleHistory,
+    openConsole,
+    toggleConsole,
+    toggleHamburger,
+} = menuSlice.actions
 export default menuSlice.reducer

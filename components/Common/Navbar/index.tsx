@@ -3,19 +3,21 @@ import { NextPage } from 'next'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { useState, useRef, LegacyRef, forwardRef } from 'react'
-import ProfileImage from './ProfileImage'
+import ProfileImage from '../ProfileImage'
 import Logo from '@/public/logo-CS37.png'
 import Image from 'next/image'
 import { IoSettingsOutline } from 'react-icons/io5'
 import { BsDoorOpen } from 'react-icons/bs'
 import { useRouter } from 'next/router'
 import { useOnClickOutside } from 'usehooks-ts'
+import Hamburger from './Mobile/Hamburger'
 
 interface Props {
     children?: ReactNode
+    hamburgerChild?: ReactNode
 }
 const Navbar = forwardRef(
-    ({ children }: Props, ref: LegacyRef<HTMLDivElement>) => {
+    ({ children, hamburgerChild }: Props, ref: LegacyRef<HTMLDivElement>) => {
         const { status, data: session } = useSession()
         const [isProfileClick, setIsProfileClick] = useState<boolean>(false)
         const router = useRouter()
@@ -41,6 +43,7 @@ const Navbar = forwardRef(
                 className="w-full bg-white border-b-[1px] border-gray-200 sticky top-0 z-40"
             >
                 <div className="px-6 py-1 flex justify-between items-center">
+                    <Hamburger children={hamburgerChild} />
                     <Link href={'/'}>
                         <a>
                             <Image

@@ -12,17 +12,57 @@ export const fakeLabs: ResDaum[] = [
         type: 'LS',
         problems: [
             { name: "01 Elab's Automatic Grading", status: 'success' },
-            { name: "02 Elab's Manual Grading", status: 'success' },
+            { name: "02 Elab's Manual Grading", status: 'failed' },
             { name: '03 Reusing Submitted Answer', status: 'success' },
             { name: '04 Variable and Basic Output', status: 'success' },
             { name: '05 Expression', status: 'success' },
-            { name: '06 Basic Input', status: 'success' },
+            { name: '06 Basic Input', status: 'none' },
             {
                 name: '07 - Exercise 1.1: Input Process Output',
-                status: 'success',
+                status: 'failed',
             },
             {
                 name: '08 Exercise 1.2: Input Process Output',
+                status: 'success',
+            },
+            {
+                name: '09 Exercise 1.3: Input Process Output',
+                status: 'success',
+            },
+            {
+                name: '10 Exercise 1.4: Input Process Output',
+                status: 'success',
+            },
+            {
+                name: '11 Exercise 1.5: Input Process Output',
+                status: 'success',
+            },
+            {
+                name: '11 Exercise 1.5: Input Process Output',
+                status: 'success',
+            },
+            {
+                name: '11 Exercise 1.5: Input Process Output',
+                status: 'success',
+            },
+            {
+                name: '11 Exercise 1.5: Input Process Output',
+                status: 'success',
+            },
+            {
+                name: '11 Exercise 1.5: Input Process Output',
+                status: 'success',
+            },
+            {
+                name: '11 Exercise 1.5: Input Process Output',
+                status: 'success',
+            },
+            {
+                name: '11 Exercise 1.5: Input Process Output',
+                status: 'success',
+            },
+            {
+                name: '11 Exercise 1.5: Input Process Output',
                 status: 'success',
             },
         ],

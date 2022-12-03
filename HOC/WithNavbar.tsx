@@ -8,11 +8,19 @@ interface Props {
     navbarRef?: Ref<HTMLDivElement>
     className?: string
     navbarChildren?: ReactNode
+    hamburgerChild?: ReactNode
 }
 
 const WithNavbar: React.FC<Props> = forwardRef(
     (
-        { children, title, className = '', navbarRef, navbarChildren },
+        {
+            children,
+            title,
+            className = '',
+            navbarRef,
+            navbarChildren,
+            hamburgerChild,
+        },
         ref: LegacyRef<HTMLDivElement>
     ) => (
         <>
@@ -23,7 +31,11 @@ const WithNavbar: React.FC<Props> = forwardRef(
                 className={`flex flex-col w-full min-h-screen ${className}`}
                 ref={ref}
             >
-                <Navbar children={navbarChildren} ref={navbarRef} />
+                <Navbar
+                    children={navbarChildren}
+                    ref={navbarRef}
+                    hamburgerChild={hamburgerChild}
+                />
 
                 {children}
             </div>

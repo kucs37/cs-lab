@@ -5,7 +5,7 @@ interface Props {
 }
 function Outline({ values }: Props) {
     return (
-        <div className="block md:hidden border-l-2 border-gray-200 px-2 w-1/3">
+        <div className="block md:hidden border-l-2 border-gray-200 px-2 w-full">
             <ul>
                 {values.map(({ id, name }, i) => (
                     <li

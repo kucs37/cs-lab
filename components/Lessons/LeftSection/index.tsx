@@ -11,19 +11,21 @@ function LeftSection({ title, isClosed }: Props) {
     const router = useRouter()
     const backToHref = `/${router.query.class}`
     return (
-        <div className="col-span-3 hidden md:block relative border-r border-gray-300 py-2 px-4">
-            <div className="sticky top-20">
-                <Backto href={backToHref} className="mb-4" />
-                <h2 className="text-xl font-bold mb-4">{title}</h2>
+        <div className="col-span-3 2xl:col-span-2 hidden md:block relative border-r border-gray-300">
+            <div className="sticky top-12 h-[calc(100vh-3rem)] overflow-y-scroll p-4">
+                <div>
+                    <Backto href={backToHref} className="mb-4" />
+                    <h2 className="text-xl font-bold mb-4">{title}</h2>
 
-                {isClosed && (
-                    <Badge
-                        className="my-4"
-                        title="อ่านอย่างเดียว"
-                        backgroundColor="#fecaca"
-                        color="#ef4444"
-                    />
-                )}
+                    {isClosed && (
+                        <Badge
+                            className="my-4"
+                            title="อ่านอย่างเดียว"
+                            backgroundColor="#fecaca"
+                            color="#ef4444"
+                        />
+                    )}
+                </div>
 
                 <Outline />
             </div>

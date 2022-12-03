@@ -1,53 +1,49 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { IoCheckmark, IoClose } from 'react-icons/io5'
-function Outline() {
+import { fakeLabs } from '@/fakeData'
+import clsx from 'clsx'
+
+const EachProblem = ({
+    name,
+    status,
+    active,
+}: {
+    name: string
+    status: 'success' | 'failed' | 'none'
+    active: boolean
+}) => {
     const router = useRouter()
+
     return (
-        <ul className="text-gray-400 no-underline flex flex-col gap-3">
-            <Link href={`${router.asPath}`}>
-                <a className="no-underline text-gray-900 font-bold grid grid-cols-12 items-center">
-                    <li className="col-span-11">
-                        01 Elab&apos;s Automatic Grading
-                    </li>
-                    <IoCheckmark className="col-span-1 text-lime-500 text-2xl" />
-                </a>
-            </Link>
-
-            <a href="#" className="no-underline grid grid-cols-12 items-center">
-                <li className="col-span-11">02 Elab&apos;s Manual Grading</li>
-                <IoClose className="text-red-500 text-2xl" />
-            </a>
-            <a href="#" className="no-underline grid grid-cols-12 items-center">
-                <li className="col-span-11">03 Reusing Submitted Answer</li>
+        <button
+            className={clsx(
+                'grid grid-cols-12 items-center',
+                active && 'text-gray-900 font-bold'
+            )}
+        >
+            <h4 className="col-span-11 text-start">{name}</h4>
+            {status === 'success' ? (
                 <IoCheckmark className="col-span-1 text-lime-500 text-2xl" />
-            </a>
-            <a href="#" className="no-underline grid grid-cols-12 items-center">
-                <li className="col-span-11"> 04 Variable and Basic Output</li>
-                <IoCheckmark className="col-span-1 text-lime-500 text-2xl" />
-            </a>
-
-            <a href="#" className="no-underline grid grid-cols-12 items-center">
-                <li className="col-span-11">05 Expression</li>
-                <IoCheckmark className="col-span-1 text-lime-500 text-2xl" />
-            </a>
-            <a href="#" className="no-underline grid grid-cols-12 items-center">
-                <li className="col-span-11">06 Basic Input</li>
-                <IoCheckmark className="col-span-1 text-lime-500 text-2xl" />
-            </a>
-            <a href="#" className="no-underline grid grid-cols-12 items-center">
-                <li className="col-span-11">
-                    07 - Exercise 1.1: Input Process Output
-                </li>
-                <IoCheckmark className="col-span-1 text-lime-500 text-2xl" />
-            </a>
-            <a href="#" className="no-underline grid grid-cols-12 items-center">
-                <li className="col-span-11">
-                    08 Exercise 1.2: Input Process Output
-                </li>
-                <IoCheckmark className="col-span-1 text-lime-500 text-2xl" />
-            </a>
-        </ul>
+            ) : null}
+            {status === 'failed' ? (
+                <IoClose className="col-span-1 text-red-500 text-2xl" />
+            ) : null}
+        </button>
+    )
+}
+function Outline() {
+    return (
+        <div className="text-gray-400 flex flex-col gap-3 px-2 mb-20">
+            {fakeLabs[0].problems.map(({ name, status }, index) => (
+                <EachProblem
+                    key={name}
+                    name={name}
+                    status={status}
+                    active={index === 0}
+                />
+            ))}
+        </div>
     )
 }
 
