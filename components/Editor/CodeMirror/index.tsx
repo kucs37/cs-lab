@@ -36,7 +36,7 @@ function CodeMirror({
         tabSize,
         readonly,
         readOnlyRanges,
-        theme: dracula,
+        theme: ayuLight,
     })
 
     useEffect(() => {

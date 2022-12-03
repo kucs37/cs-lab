@@ -3,7 +3,7 @@ import { fakeLabs } from '@/fakeData'
 
 function Outline() {
     return (
-        <div className="text-gray-400 flex flex-col gap-3 px-2 mb-20">
+        <div className="text-gray-400 mb-20">
             {fakeLabs[0].problems.map(({ name, status }, index) => (
                 <Item
                     key={name}
