@@ -1,10 +1,13 @@
 import { useEffect, useRef } from 'react'
-import { basicSetup } from 'codemirror'
+import { minimalSetup } from 'codemirror'
 import { EditorState, Compartment, Extension } from '@codemirror/state'
-import { EditorView, keymap } from '@codemirror/view'
+import { EditorView, keymap, lineNumbers } from '@codemirror/view'
 import { python } from '@codemirror/lang-python'
-import { indentLess, insertTab } from '@codemirror/commands'
+import { closeBrackets } from '@codemirror/autocomplete'
+import { searchKeymap } from '@codemirror/search'
+import { bracketMatching, foldGutter } from '@codemirror/language'
 
+import { indentWithTab, indentWithTabLess } from '../commands/indentWithTab'
 import readOnlyRangesExtension from 'codemirror-readonly-ranges'
 
 interface Props {
@@ -25,6 +28,10 @@ const baseTheme = EditorView.baseTheme({
     },
     '&.cm-editor.cm-focused': {
         outline: 'none',
+    },
+    '&.cm-scroller': {
+        fontFamily: `Consolas, 'Bitstream Vera Sans Mono', 'Courier New', Courier,
+        monospace`,
     },
 })
 
@@ -51,7 +58,11 @@ function useCodemirror({
         const state = EditorState.create({
             doc: initialDoc,
             extensions: [
-                basicSetup,
+                minimalSetup,
+                lineNumbers(),
+                closeBrackets(),
+                bracketMatching(),
+                foldGutter(),
                 baseTheme,
                 theme,
                 python(),
@@ -59,13 +70,14 @@ function useCodemirror({
                     {
                         key: 'Tab',
                         preventDefault: true,
-                        run: insertTab,
+                        run: indentWithTab,
                     },
                     {
                         key: 'Shift-Tab',
                         preventDefault: true,
-                        run: indentLess,
+                        run: indentWithTabLess,
                     },
+                    ...searchKeymap,
                 ]),
                 _tabSize.of(EditorState.tabSize.of(4)),
                 _readonly.of(EditorState.readOnly.of(false)),

@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from 'react'
-import useCodemirror from '@/hooks/useCodemirror'
+import useCodemirror from '@/components/Editor/CodeMirror/hooks/useCodemirror'
 import { useAppSelector } from '@/store/hooks'
 import { EditorState } from '@codemirror/state'
 import { ayuLight, dracula, amy } from 'thememirror'
