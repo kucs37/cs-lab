@@ -43,10 +43,21 @@ pre code.hljs {
 
 /* markdown image */
 .image {
-    filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
-    border-radius : 10px;
+    filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
+        drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+    border-radius: 10px;
 }
 
-h1,h2,h3,h4,h5,h6 {
-    scroll-margin : 4rem;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    scroll-margin: 4rem;
+}
+
+/* Codemirror */
+.cm-scroller {
+    font-family: Consolas, "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
 }

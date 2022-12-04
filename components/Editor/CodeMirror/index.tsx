@@ -3,6 +3,7 @@ import useCodemirror from '@/hooks/useCodemirror'
 import { useAppSelector } from '@/store/hooks'
 import { EditorState } from '@codemirror/state'
 import { ayuLight, dracula, amy } from 'thememirror'
+import { ghcolors } from './themes/ghcolors'
 interface Props {
     initialDoc?: string
     value: string
@@ -36,7 +37,7 @@ function CodeMirror({
         tabSize,
         readonly,
         readOnlyRanges,
-        theme: ayuLight,
+        theme: ghcolors,
     })
 
     useEffect(() => {
@@ -51,7 +52,14 @@ function CodeMirror({
     }, [editorView, value])
 
     return (
-        <div ref={editorRef} style={{ width, height, fontSize }}>
+        <div
+            ref={editorRef}
+            style={{
+                width,
+                height,
+                fontSize,
+            }}
+        >
             {children}
         </div>
     )

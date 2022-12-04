@@ -1,7 +1,10 @@
 import { CSSProperties } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { materialDark , dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import styles from './styles/index.module.css'
+import {
+    materialDark,
+    tomorrow,
+    ghcolors
+} from 'react-syntax-highlighter/dist/cjs/styles/prism'
 interface Props {
     children: string
     language: string
@@ -10,8 +13,10 @@ function SyntaxHighlight({ children, language }: Props) {
     return (
         <SyntaxHighlighter
             language={language}
-            style={dracula}
+            style={ghcolors}
+            showLineNumbers
             customStyle={{
+                fontSize : 18,
                 margin: '10px 0px',
                 borderRadius: '10px',
                 boxShadow:
