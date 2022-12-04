@@ -16,9 +16,10 @@ interface Props {
     content: string
     answers: string[]
     isClosed: boolean
+    title: string
 }
 
-function LabID({ metadata, content, answers, isClosed }: Props) {
+function LabID({ metadata, content, answers, isClosed, title }: Props) {
     return (
         <WithNavbar
             hamburgerChild={<Hamburger outline={metadata.outline} />}
@@ -29,7 +30,11 @@ function LabID({ metadata, content, answers, isClosed }: Props) {
                     title="CS Python Lab 01 Input Process Output"
                     isClosed={isClosed}
                 />
-                <RightSection outline={metadata.outline} labMD={content} />
+                <RightSection
+                    title={title}
+                    outline={metadata.outline}
+                    labMD={content}
+                />
             </div>
         </WithNavbar>
     )
@@ -46,6 +51,7 @@ export async function getServerSideProps(ctx: GetServerSideProps) {
 
     return {
         props: {
+            title: "01 Elab's Automatic Grading",
             metadata,
             content: mdxSource,
             answers: fetchedAns,

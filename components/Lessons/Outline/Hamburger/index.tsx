@@ -1,6 +1,6 @@
+import { Fragment } from 'react'
 import { fakeLabs } from '@/fakeData'
 import Item from '../Item'
-import clsx from 'clsx'
 import ScrollSpy from 'react-scrollspy'
 import { OutlineI } from '@/interface/Outline'
 import { useAppDispatch } from '@/store/hooks'
@@ -13,13 +13,8 @@ function Hamburger({ outline }: Props) {
     return (
         <div className="flex flex-col gap-3 p-4">
             {fakeLabs[0].problems.map(({ name, status }, index) => (
-                <>
-                    <Item
-                        key={name}
-                        name={name}
-                        status={status}
-                        active={index === 0}
-                    />
+                <Fragment key={name}>
+                    <Item name={name} status={status} active={index === 0} />
                     {index === 0 ? (
                         <ScrollSpy
                             className="w-full border-l-2 border-gray-200 pb-3 pl-2 text-gray-300 text-sm leading-loose"
@@ -37,7 +32,7 @@ function Hamburger({ outline }: Props) {
                             ))}
                         </ScrollSpy>
                     ) : null}
-                </>
+                </Fragment>
             ))}
         </div>
     )

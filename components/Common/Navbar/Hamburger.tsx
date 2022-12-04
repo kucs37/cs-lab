@@ -25,7 +25,7 @@ function Hamburger({ children }: Props) {
 
             {isHamburgerOpen ? (
                 <div className="fixed z-50 top-0 left-0  w-full h-full bg-black bg-opacity-40">
-                    <div ref={overlayRef} className="w-9/12 h-full bg-white">
+                    <div ref={overlayRef} className="w-9/12 h-full bg-white flex flex-col">
                         <button
                             onClick={() => dispatch(toggleHamburger())}
                             className="w-full p-4 border-b flex justify-end items-center"
