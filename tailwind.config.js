@@ -11,9 +11,9 @@ module.exports = {
                 DEFAULT: {
                     css: {
                         pre: false,
-                        // code: false,
-                        // 'code::before': false,
-                        // 'code::after': false,
+                        code: false,
+                        'code::before': false,
+                        'code::after': false,
                     },
                 },
             }),
