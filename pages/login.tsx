@@ -31,7 +31,7 @@ const Login: NextPage<Props> = ({ error }) => {
             <Head>
                 <title>Login | CS-LAB</title>
             </Head>
-            <div className="fixed w-screen bg-white dark:bg-black/90">
+            <div className="fixed w-screen bg-white dark:bg-zinc-900">
                 <div className="flex justify-center items-center h-screen">
                     <div className="w-full flex flex-col items-center p-4 max-w-md">
                         <div className="mb-4">

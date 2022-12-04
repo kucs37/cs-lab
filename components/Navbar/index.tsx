@@ -40,7 +40,7 @@ const Navbar = forwardRef(
         return (
             <div
                 ref={ref}
-                className="w-full  border-b-[1px] bg-accent-3 border-gray-200 dark:border-gray-800 sticky top-0 z-40"
+                className="w-full border-b bg-white dark:bg-zinc-900 border-gray-200 dark:border-gray-700  sticky top-0 z-40"
             >
                 <div className="px-6 py-2 flex justify-between items-center">
                     <Hamburger children={hamburgerChild} />

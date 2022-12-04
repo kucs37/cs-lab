@@ -1,4 +1,5 @@
 import Lab from '@/interface/Lab'
+import clsx from 'clsx'
 interface Props {
     labs: Lab[]
 }
@@ -20,14 +21,16 @@ function Status({ labs }: Props) {
                     return (
                         <div
                             key={index}
-                            className={`h-2 ${
-                                isSuccess ? 'bg-lime-500' : 'bg-gray-200'
-                            } rounded-full`}
+                            className={clsx(
+                                'h-2',
+                                isSuccess ? 'bg-lime-500 dark:bg-lime-800' : 'bg-gray-200 dark:bg-gray-600',
+                                'rounded-full'
+                            )}
                         ></div>
                     )
                 })}
             </div>
-            <h6 className="font-bold text-md">
+            <h6 className="font-bold text-md dark:text-white">
                 {successLab}/{allLab}
             </h6>
         </div>

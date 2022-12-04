@@ -20,19 +20,24 @@ function Hamburger({ children }: Props) {
     return (
         <div className="md:hidden">
             <button onClick={() => dispatch(toggleHamburger())}>
-                <RxHamburgerMenu size={28} />
+                <RxHamburgerMenu size={28} className="dark:text-white" />
             </button>
 
             {isHamburgerOpen ? (
                 <div className="fixed z-50 top-0 left-0  w-full h-full bg-black bg-opacity-40">
-                    <div ref={overlayRef} className="w-9/12 h-full bg-white flex flex-col">
+                    <div
+                        ref={overlayRef}
+                        className="w-9/12 h-full bg-white dark:bg-zinc-900 flex flex-col"
+                    >
                         <button
                             onClick={() => dispatch(toggleHamburger())}
-                            className="w-full p-4 border-b flex justify-end items-center"
+                            className="w-full p-4 border-b border-gray-200 dark:border-gray-800 flex justify-end items-center"
                         >
-                            <IoClose size={26} />
+                            <IoClose size={26} className="dark:text-white" />
                         </button>
-                        <div className="h-full overflow-y-scroll">{children}</div>
+                        <div className="h-full overflow-y-scroll">
+                            {children}
+                        </div>
                     </div>
                 </div>
             ) : null}

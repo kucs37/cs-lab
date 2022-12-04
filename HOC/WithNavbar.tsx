@@ -1,4 +1,4 @@
-import Navbar from '@/components/Common/Navbar'
+import Navbar from '@/components/Navbar'
 import { forwardRef, LegacyRef, Ref, ReactNode } from 'react'
 import Head from 'next/head'
 
@@ -28,7 +28,7 @@ const WithNavbar: React.FC<Props> = forwardRef(
                 <title>{title}</title>
             </Head>
             <div
-                className={`flex flex-col w-full min-h-screen ${className}`}
+                className={`flex flex-col w-full min-h-screen bg-white dark:bg-zinc-900 ${className}`}
                 ref={ref}
             >
                 <Navbar
