@@ -1,6 +1,4 @@
-import { AnswersI, TypeI } from '../components/Lessons/RightSection/Markdown/CodeEditor/interface'
-
-export const toFinalAnswer = (code: TypeI[], answers: AnswersI) => {
+export const toFinalAnswer = (code: any[], answers: any) => {
     let finalCode = ''
 
     code.map(({ tagName, children }, index) => {
