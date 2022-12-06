@@ -19,7 +19,6 @@ function Console() {
                     </button>
                 </div>
             </div>
-            {/* <div className="flex-1 h-full bg-gray-100"></div> */}
         </>
     )
 }

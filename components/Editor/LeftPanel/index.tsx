@@ -26,20 +26,21 @@ function LeftPanel() {
                 maxWidth: 'max-content',
             }}
         >
-            <div className="p-4 h-full overflow-y-scroll">
+            <div className="p-4 overflow-y-scroll bg-white rounded-xl overflow-hidden">
                 <Outline />
                 <hr className="h-4" />
                 <Description />
             </div>
 
             {/* Tab Resize */}
+            
             <div
-                className="group flex-shrink-0 w-3 h-full bg-slate-200 hover:bg-slate-300 cursor-col-resize flex items-center justify-center"
+                className="group flex-shrink-0 w-6 h-full bg-gray-100 cursor-col-resize flex items-center justify-center"
                 onTouchStart={() => setIsDrag(true)}
                 onMouseDown={() => setIsDrag(true)}
                 onDoubleClick={onDoubleClick}
             >
-                <span className="h-10 rounded-full w-1/3 bg-gray-500 group-hover:h-16 transition-all"></span>
+                <span className="h-10 rounded-full w-1/5 bg-gray-500 group-hover:h-16 transition-all"></span>
             </div>
         </div>
     )

@@ -21,11 +21,7 @@ function Buttons() {
                 icon={<IoArrowBackOutline size="1.75rem" />}
                 onClick={() => router.push(backToHref)}
             />
-            <Button
-                tooltip="Console"
-                icon={<BsTerminal size="1.75rem" />}
-                onClick={() => dispatch(toggleConsole())}
-            />
+            
             <Button
                 tooltip="ประวัติการส่ง"
                 icon={<AiOutlineHistory size="1.75rem" />}

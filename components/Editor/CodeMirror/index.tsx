@@ -59,6 +59,7 @@ function CodeMirror({
                 height,
                 fontSize,
             }}
+            className="rounded-b-xl overflow-hidden"
         >
             {children}
         </div>
