@@ -55,7 +55,10 @@ function RightPanel() {
             ref={zoneRef}
             className="flex-1 relative flex flex-col"
         >
-            <div className="rounded-xl overflow-hidden flex-1 flex flex-col bg-white">
+            <div
+                className="rounded-xl overflow-hidden flex-1 flex flex-col bg-white"
+                style={{ minHeight: 200 }}
+            >
                 <div className="border-b py-2 px-4 flex justify-between flex-1">
                     <SaveStatus status={status} />
                     <div className="flex items-center gap-2">
@@ -78,12 +81,13 @@ function RightPanel() {
                     value={code}
                     onChange={(value) => dispatch(setCode(value))}
                     onKeyDown={handleOnKeyDown}
-                    height='100%'
+                    height="100%"
                 />
             </div>
 
             <div
                 className="group w-full h-8 bg-gray-100  cursor-row-resize flex items-center justify-center "
+                style={{ minHeight: '2rem' }}
                 onTouchStart={() => setIsDrag(true)}
                 onMouseDown={() => setIsDrag(true)}
                 onDoubleClick={() => setWindowHeight(200)}
