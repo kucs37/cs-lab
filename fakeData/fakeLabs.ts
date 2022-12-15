@@ -96,30 +96,30 @@ export const fakeLabs: ResDaum[] = [
         status: 1,
         type: 'PB',
         problems: [
-            { name: '01 พื้นที่และเส้นรอบวง', status: 'success' },
+            { name: '01 พื้นที่และเส้นรอบวง', status: 'none' },
             {
                 name: '02 สระว่ายน้ำ',
-                status: 'success',
+                status: 'none',
             },
             {
                 name: '03 พิมพ์ตามสั่ง',
-                status: 'success',
+                status: 'none',
             },
             {
                 name: '04 ผลรวมเศษส่วน',
-                status: 'success',
+                status: 'none',
             },
             {
                 name: '05 เติมน้ำมัน',
-                status: 'success',
+                status: 'none',
             },
             {
                 name: '06 พิมพ์ดาวบรรทัดเดียวสลับกัน',
-                status: 'success',
+                status: 'none',
             },
             {
                 name: '07 ฟังก์ชันทางคณิตศาสตร์',
-                status: 'success',
+                status: 'none',
             },
         ],
     },

@@ -18,12 +18,12 @@ const Editor: NextPage<Props> = ({ test }) => {
         <WithNavbar
             navbarChildren={<SideNav />}
             title="09 Find a, b in which a*b=n and (a+b) is the lowest | CS-LAB"
-            className="bg-gray-200 fixed h-screen"
+            className="fixed h-screen max-h-screen"
         >
             {menu.isHistoryOpen && <History />}
             {menu.isSettingsOpen && <Settings />}
 
-            <div className="bg-white shadow-md rounded-xl overflow-hidden flex m-2 h-full">
+            <div className="px-4 py-6 shadow-md flex flex-1 h-full overflow-hidden">
                 <LeftPanel />
                 <RightPanel />
             </div>

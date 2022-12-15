@@ -10,12 +10,12 @@ function Loaded() {
     return (
         <>
             <div>
-                <h1 className="text-xl font-bold">
+                <h1 className="text-xl font-bold dark:text-[#E0E2E8]">
                     09 Find a, b in which a*b=n and (a+b) is the lowest
                 </h1>
 
                 {/* Test case */}
-                <div className="flex items-center flex-wrap bg-gray-200 text-black rounded-lg py-1 px-2 w-fit my-2 font-bold text-sm">
+                <div className="flex items-center flex-wrap bg-gray-200 dark:bg-[#5C5C5C] text-black dark:text-[#E0E2E8] rounded-lg py-1 px-2 w-fit my-2 font-bold text-sm">
                     <span>P</span>
                     <span>P</span>
                     <span>C</span>
@@ -39,7 +39,7 @@ function Loaded() {
                     <span>P</span>
                 </div>
             </div>
-            <div className="prose">
+            <div className="prose dark:prose-headings:text-[#E0E2E8] dark:text-[#E0E2E8] dark:prose-code:text-[#E0E2E8] dark:prose-strong:text-[#E0E2E8]">
                 <ReactMarkdown
                     remarkPlugins={[remarkGFM, remarkMath]}
                     rehypePlugins={[rehypeKatex, rehypeRaw]}

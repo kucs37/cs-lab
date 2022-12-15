@@ -28,7 +28,7 @@ const WithNavbar: React.FC<Props> = forwardRef(
                 <title>{title}</title>
             </Head>
             <div
-                className={`flex flex-col w-full min-h-screen bg-white dark:bg-zinc-900 ${className}`}
+                className={`flex flex-col w-full min-h-screen bg-white dark:bg-[#27272A] ${className}`}
                 ref={ref}
             >
                 <Navbar

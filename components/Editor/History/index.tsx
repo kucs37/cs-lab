@@ -57,10 +57,10 @@ function History() {
         <div className="fixed w-full h-full bg-black bg-opacity-25 z-40 flex items-center justify-center">
             <div
                 ref={historyWindow}
-                className="bg-white w-5/6 h-5/6 rounded-lg overflow-hidden grid grid-cols-8 auto-rows-fr"
+                className="bg-white dark:bg-[#33373A] w-5/6 h-5/6 rounded-lg overflow-hidden grid grid-cols-8 auto-rows-fr"
             >
                 <div className="col-span-2 border-r-2 p-4">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 dark:text-[#E0E2E8]">
                         <FaHistory />
                         <h4 className="text-xl font-semibold">ประวัติการส่ง</h4>
                     </div>
@@ -72,7 +72,7 @@ function History() {
                 <div ref={closeBtnRef} className="col-span-6 flex flex-col">
                     <button
                         onClick={() => dispatch(toggleHistory())}
-                        className="self-end p-4"
+                        className="self-end p-4 dark:text-[#E0E2E8]"
                     >
                         <IoClose size="1.25rem" />
                     </button>
@@ -85,11 +85,11 @@ function History() {
                     </div>
                     <div
                         ref={bottomRef}
-                        className="bg-gray-50 flex justify-end p-2"
+                        className="bg-gray-50 dark:bg-[#33373A]/70 flex justify-end p-2"
                     >
                         <button
                             onClick={handleCopy}
-                            className="bg-yellow-400 border-b-4 active:border-b-2  transition-all duration-50 border-yellow-500 text-yellow-800 py-2 px-4 rounded-lg flex items-center gap-1 "
+                            className="bg-yellow-400 dark:bg-[#E2BD44] border-b-4 active:border-b-2  transition-all duration-50 border-yellow-500 dark:border-[#C19834] text-yellow-800 dark:text-[#7D4F1F] py-2 px-4 rounded-lg flex items-center gap-1 "
                         >
                             <HiOutlineClipboardCopy />
                             คัดลอก

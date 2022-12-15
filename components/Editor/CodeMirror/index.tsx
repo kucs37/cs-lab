@@ -3,7 +3,7 @@ import useCodemirror from '@/components/Editor/CodeMirror/hooks/useCodemirror'
 import { useAppSelector } from '@/store/hooks'
 import { EditorState } from '@codemirror/state'
 import { ayuLight, dracula, amy } from 'thememirror'
-import { ghcolors } from './themes/ghcolors'
+import { ghcolors, materialDark, materialDarkCode } from './themes'
 interface Props {
     initialDoc?: string
     value: string
@@ -37,7 +37,7 @@ function CodeMirror({
         tabSize,
         readonly,
         readOnlyRanges,
-        theme: ghcolors,
+        theme: materialDarkCode,
     })
 
     useEffect(() => {
@@ -59,6 +59,7 @@ function CodeMirror({
                 height,
                 fontSize,
             }}
+            className="rounded-b-xl overflow-hidden"
         >
             {children}
         </div>

@@ -1,45 +1,45 @@
 import useDrag from '@/hooks/useDrag'
 import Console from './Console'
-import { RefObject, useEffect } from 'react'
+import { RefObject, useEffect, useState } from 'react'
 import { useAppSelector } from '@/store/hooks'
 
 interface WindowI {
-    windowHeight: number
-    setWindowHeight: (height: number) => void
     zoneRef: RefObject<HTMLDivElement>
 }
 
-function Window({ zoneRef, windowHeight, setWindowHeight }: WindowI) {
+function Window({ zoneRef }: WindowI) {
+    const [windowHeight, setWindowHeight] = useState<number>(200)
     const { size, setIsDrag } = useDrag(zoneRef, windowHeight, 'height')
     const { isConsoleOpen } = useAppSelector((state) => state.menu)
 
     useEffect(() => {
-        if (size > 100) setWindowHeight(size + 83)
-    }, [size, setWindowHeight])
+        setWindowHeight(size + 83)
+    }, [size])
 
+    if (!isConsoleOpen) return null
     return (
-        <div
-            className="absolute z-30 bottom-0 bg-gray-50 w-full flex-col"
-            style={{
-                minHeight: 183,
-                maxHeight: '100%',
-                height: windowHeight,
-                display: isConsoleOpen ? 'flex' : 'none',
-            }}
-        >
-            {/* Tab Resize */}
+        <>
             <div
-                className="group w-full h-4 bg-slate-200 hover:bg-slate-300 cursor-row-resize flex items-center justify-center "
+                className="group w-full h-8 bg-gray-100 dark:bg-[#27272A] cursor-row-resize flex items-center justify-center "
+                style={{ minHeight: '2rem' }}
                 onTouchStart={() => setIsDrag(true)}
                 onMouseDown={() => setIsDrag(true)}
                 onDoubleClick={() => setWindowHeight(200)}
             >
-                <span className="h-1/4 rounded-full w-10 bg-gray-500 group-hover:w-16 transition-all"></span>
+                <span className="h-1/6 rounded-full w-10 bg-gray-500 group-hover:w-16 transition-all"></span>
             </div>
-
-            {/* Console */}
-            <Console />
-        </div>
+            <div
+                className="bg-white dark:bg-[#33373A] border dark:border-[#6B6B6B] w-full flex flex-col rounded-xl"
+                style={{
+                    minHeight: 183,
+                    maxHeight: '100%',
+                    height: windowHeight,
+                }}
+            >
+                {/* Console */}
+                <Console />
+            </div>
+        </>
     )
 }
 

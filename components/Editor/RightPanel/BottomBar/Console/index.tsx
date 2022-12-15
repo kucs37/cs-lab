@@ -8,18 +8,19 @@ function Console() {
     const dispatch = useDispatch()
     return (
         <>
-            <div className="p-2 cursor-pointer select-none w-fit">
-                <div className="border-b-2 border-gray-900 px-2 flex items-start gap-1">
-                    <h4 className="text-sm font-medium uppercase">console</h4>
+            <div className="p-2 cursor-pointer select-none w-fit ">
+                <div className="border-b-2 border-gray-900 dark:border-[#E0E2E8] px-2 flex items-center gap-1">
+                    <h4 className="text-sm font-medium uppercase dark:text-[#E0E2E8]">
+                        console
+                    </h4>
                     <button
-                        className=""
+                        className="h-fit"
                         onClick={() => dispatch(toggleConsole())}
                     >
-                        <IoClose className="text-md" />
+                        <IoClose className="text-md dark:text-[#E0E2E8]" />
                     </button>
                 </div>
             </div>
-            {/* <div className="flex-1 h-full bg-gray-100"></div> */}
         </>
     )
 }
