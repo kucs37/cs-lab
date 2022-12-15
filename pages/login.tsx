@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import type { NextPage, GetServerSideProps } from 'next'
+import type { NextPage } from 'next'
 import { signIn } from 'next-auth/react'
 import Head from 'next/head'
 import { FcGoogle } from 'react-icons/fc'
@@ -10,6 +10,7 @@ import { useRouter } from 'next/router'
 interface Props {
     error: string
 }
+
 const Login: NextPage<Props> = ({ error }) => {
     const { query } = useRouter()
 
@@ -26,12 +27,13 @@ const Login: NextPage<Props> = ({ error }) => {
             }
         }
     }, [query])
+
     return (
         <>
             <Head>
                 <title>Login | CS-LAB</title>
             </Head>
-            <div className="fixed w-screen bg-white dark:bg-zinc-900">
+            <div className="fixed w-screen bg-white dark:bg-[#27272A]">
                 <div className="flex justify-center items-center h-screen">
                     <div className="w-full flex flex-col items-center p-4 max-w-md">
                         <div className="mb-4">
@@ -80,11 +82,3 @@ const Login: NextPage<Props> = ({ error }) => {
 }
 
 export default Login
-
-// export const getServerSideProps: GetServerSideProps = async (ctx) => {
-//     console.log(ctx)
-
-//     return {
-//         props: {},
-//     }
-// }

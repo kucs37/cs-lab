@@ -22,7 +22,7 @@ const Editor: NextPage<Props> = ({ test }) => {
         >
             {menu.isHistoryOpen && <History />}
             {menu.isSettingsOpen && <Settings />}
-            {/* rounded-xl overflow-hidden  */}
+
             <div className="px-4 py-6 shadow-md flex flex-1 h-full overflow-hidden">
                 <LeftPanel />
                 <RightPanel />

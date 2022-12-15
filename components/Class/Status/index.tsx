@@ -1,29 +1,32 @@
 import Lab from '@/interface/Lab'
+import { LabStatus } from '@/interface/LabStatus'
+import ProblemI from '@/interface/Problem'
 import clsx from 'clsx'
 interface Props {
-    labs: Lab[]
+    items: LabStatus[]
 }
-function Status({ labs }: Props) {
-    const successLab = labs.filter((lab) =>
-        lab.problems.every(({ status }) => status == 'success')
-    ).length
-
-    const allLab = labs.length
+function Status({ items }: Props) {
+    const successLab = items.filter((status) => status == 'success').length
+    const allLab = items.length
 
     if (allLab === 0) return null
     return (
         <div className="flex flex-col gap-2">
-            <div className="w-full grid grid-cols-7 gap-1 place-items-stretch">
-                {labs.map(({ problems }, index) => {
-                    const isSuccess = problems.every(
-                        ({ status }) => status == 'success'
-                    )
+            <div
+                className="w-full grid  gap-1 place-items-stretch"
+                style={{ gridTemplateColumns: `repeat(${allLab} , 1fr)` }}
+            >
+                {items.map((status, index) => {
                     return (
                         <div
                             key={index}
                             className={clsx(
                                 'h-2',
-                                isSuccess ? 'bg-lime-500 dark:bg-lime-800' : 'bg-gray-200 dark:bg-gray-600',
+                                status === 'success'
+                                    ? 'bg-lime-500 dark:bg-lime-200'
+                                    : status === 'failed'
+                                    ? 'bg-red-500 dark:bg-red-200'
+                                    : 'bg-gray-200 dark:bg-gray-200',
                                 'rounded-full'
                             )}
                         ></div>

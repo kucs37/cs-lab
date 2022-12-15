@@ -1,19 +1,14 @@
 interface BadgeProps {
     title: string
-    backgroundColor: string
-    color: string
     className?: string
 }
 
-function Badge({ title, backgroundColor, color, className = '' }: BadgeProps) {
+function Badge({ title, className = '' }: BadgeProps) {
     return (
         <div
-            className={`rounded-full px-2 py-1 bg-${color}-200 w-fit ${className}`}
-            style={{ backgroundColor }}
+            className={`rounded-full px-2 py-1 bg-[#FF708A]/50 w-fit ${className}`}
         >
-            <p className="text-sm font-bold" style={{ color }}>
-                {title}
-            </p>
+            <p className="text-sm font-bold text-[#FFDEDF]">{title}</p>
         </div>
     )
 }

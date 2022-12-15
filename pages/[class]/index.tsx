@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Card from '@/components/Lab/Card'
+import Card from '@/components/Labs/Card'
 import Backto from '@/components/Common/Backto'
 import WithNavbar from '@/HOC/WithNavbar'
 import { StudentInfo } from '@/interface/StudentInfo'
@@ -9,66 +9,37 @@ import { getToken } from 'next-auth/jwt'
 import jwt from 'jsonwebtoken'
 import { GetLabs } from '@/interface/GetLabs'
 import Section from '@/components/Class/Section'
+import Filter from '@/components/Labs/Filter'
 
 interface Props {
     data: GetLabs | null
 }
 
-type showType = 0 | 1 | 2
-
 const Class: React.FC<Props> = ({ data }) => {
-    const [show, setShow] = useState<showType>(0)
-
     const [Data, setData] = useState<GetLabs | null>(data)
-
-    const handleOnClick = (type: showType) => {
-        setShow(type)
-    }
+    const [show, setShow] = useState<showType>(0)
 
     return (
         <WithNavbar title="Fundamental Programming Concepts | CS-LAB">
-            <div className="px-3 container mx-auto mt-2 py-10">
-                <Backto href="../" />
+            <div className="container mx-auto xl:max-w-6xl px-4 pb-10">
+                <div className="px-3 mt-6 pt-16 pb-4 bg-gradient-to-l from-[#28313B] to-[#485461] rounded-xl shadow">
+                    <div>
+                        <Section
+                            code={Data?.resData[0].fkSubjectId!}
+                            section={Data?.resData[0].sectionId!}
+                        />
 
-                <div className="my-6">
-                    <Section
-                        code={Data?.resData[0].fkSubjectId!}
-                        section={Data?.resData[0].sectionId!}
-                    />
-
-                    <h3 className="font-bold text-xl my-2">
-                        Fundamental Programming Concepts
-                    </h3>
+                        <h3 className="font-bold text-3xl my-2 text-white">
+                            Fundamental Programming Concepts
+                        </h3>
+                    </div>
                 </div>
-                <div className="flex flex-wrap items-center gap-2 my-4">
-                    <button
-                        onClick={() => handleOnClick(0)}
-                        className={`rounded-full px-4 py-1 border-2 ${
-                            show == 0 && 'bg-gray-900 text-white'
-                        } border-gray-900 active:bg-gray-900 active:text-white`}
-                    >
-                        <p>ทั้งหมด</p>
-                    </button>
-                    <button
-                        onClick={() => handleOnClick(1)}
-                        className={`rounded-full px-4 py-1 border-2 ${
-                            show == 1 && 'bg-gray-900 text-white'
-                        } border-gray-900 active:bg-gray-900 active:text-white`}
-                    >
-                        <p>เปิดการส่งงาน</p>
-                    </button>
-                    <button
-                        onClick={() => handleOnClick(2)}
-                        className={`rounded-full px-4 py-1 border-2 ${
-                            show == 2 && 'bg-gray-900 text-white'
-                        } border-gray-900 active:bg-gray-900 active:text-white`}
-                    >
-                        <p>อ่านอย่างเดียว</p>
-                    </button>
-                </div>
-                <hr />
+                <Filter show={show} setShow={setShow} />
 
-                <div className="grid grid-cols-12 gap-4 place-items-stretch mt-10">
+                <div
+                    className="grid grid-cols-12 gap-4 place-items-stretch"
+                    style={{ gridAutoRows: '1fr' }}
+                >
                     {Data?.resData
                         .filter(({ status }) => status == show || show === 0)
                         .map(({ labId, name, status, type, problems }, id) => (
@@ -90,6 +61,7 @@ const Class: React.FC<Props> = ({ data }) => {
 export default Class
 
 import { fakeLabs } from '@/fakeData'
+import { showType } from '@/interface/LabType'
 
 export async function getServerSideProps(context: NextPageContext) {
     const res: GetLabs = {

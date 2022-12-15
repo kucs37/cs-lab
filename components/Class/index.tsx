@@ -11,13 +11,27 @@ interface Props {
 }
 
 function Class({ title, code, section, labs }: Props) {
+    const problems = labs.map((lab) => {
+        const isSuccess = lab.problems.every(
+            (problem) => problem.status == 'success'
+        )
+        const isFailed = lab.problems.some(
+            (problem) => problem.status == 'failed'
+        )
+        if (isSuccess) return 'success'
+        if (isFailed) return 'failed'
+        return 'not-attempted'
+    })
+
     return (
         <Link href={`/${code}`}>
             <a className="col-span-12 md:col-span-6 xl:col-span-4">
-                <div className="rounded-lg border-[1px] bg-white dark:bg-zinc-800 border-gray-50 dark:border-gray-900 w-full px-6 py-4 shadow-lg shadow-gray-200 dark:shadow-black/10 flex flex-col gap-3 min-w-[300px]">
+                <div className="rounded-lg border dark:border-[#6B6B6B] bg-white dark:bg-[#33373A]  w-full h-full px-6 py-4 shadow-lg flex justify-end flex-col gap-3">
                     <Section code={code} section={section} />
-                    <h3 className="font-bold text-lg text-gray-900 dark:text-white">{title}</h3>
-                    <Status labs={labs} />
+                    <h3 className="font-bold text-lg text-gray-900 dark:text-white">
+                        {title}
+                    </h3>
+                    <Status items={problems} />
                 </div>
             </a>
         </Link>
