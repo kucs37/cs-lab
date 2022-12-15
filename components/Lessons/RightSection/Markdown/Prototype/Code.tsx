@@ -29,7 +29,7 @@ function Code({ id, source, readOnlyRanges = [] }: Props) {
     const [value, setValue] = useState<string>(source)
 
     return (
-        <div className="rounded-xl overflow-hidden shadow-md border border-[#dddd]">
+        <div className="rounded-xl overflow-hidden shadow-md border dark:border-transparent border-[#dddd]">
             <CodeMirror
                 initialDoc={source}
                 value={value}

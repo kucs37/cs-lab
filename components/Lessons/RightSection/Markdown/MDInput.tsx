@@ -31,7 +31,7 @@ function MDInput({ type, ans, id }: InputProps) {
 
     return (
         <Input
-            status="not-answered"
+            status="not-attempted"
             value={value}
             onChange={handleChange}
             wFull

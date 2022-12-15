@@ -3,7 +3,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import {
     materialDark,
     tomorrow,
-    ghcolors
+    ghcolors,
 } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 interface Props {
     children: string
@@ -13,10 +13,10 @@ function SyntaxHighlight({ children, language }: Props) {
     return (
         <SyntaxHighlighter
             language={language}
-            style={ghcolors}
+            style={materialDark}
             showLineNumbers
             customStyle={{
-                fontSize : 18,
+                fontSize: 18,
                 margin: '10px 0px',
                 borderRadius: '10px',
                 boxShadow:

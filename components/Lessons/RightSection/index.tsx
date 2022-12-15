@@ -4,6 +4,7 @@ import Markdown from './Markdown/index'
 import ScrollSpy from 'react-scrollspy'
 import { OutlineI } from '@/interface/Outline'
 import Outline from '@/components/Lessons/RightSection/Outline'
+import ScrollDetect from '../ScrollDetect'
 
 interface Props {
     title: string
@@ -20,17 +21,7 @@ function RightSection({ title, outline, labMD }: Props) {
                 <Footer />
             </div>
 
-            <ScrollSpy
-                className="hidden md:block border-l-2 border-gray-200 h-fit pb-3 pl-2 text-gray-300 text-sm leading-loose sticky top-20"
-                items={outline.map(({ id }) => id)}
-                currentClassName="text-gray-900 font-semibold"
-            >
-                {outline.map(({ id, name }) => (
-                    <li key={id} className="hover:text-gray-500 w-fit">
-                        <a href={`#${id}`}>{name}</a>
-                    </li>
-                ))}
-            </ScrollSpy>
+            <ScrollDetect outline={outline} className="hidden md:block sticky top-20" />
         </div>
     )
 }

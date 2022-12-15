@@ -5,11 +5,7 @@ import { IoClose, IoCheckmark } from 'react-icons/io5'
 function Outline() {
     return (
         <div className="pb-4 break-words">
-            <Badge
-                title="อ่านอย่างเดียว"
-                backgroundColor="#fecaca"
-                color="#ef4444"
-            />
+            <Badge title="อ่านอย่างเดียว" />
             <h4 className="text-lg font-bold my-2">
                 CS Python Lab 01 Input Process Output
             </h4>
