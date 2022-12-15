@@ -13,7 +13,7 @@ function Editor() {
     }
     return (
         <div
-            className="rounded-xl overflow-hidden flex-1 flex flex-col bg-white"
+            className="rounded-xl overflow-hidden flex-1 flex flex-col bg-white dark:bg-[#33373A]"
             style={{ minHeight: 200 }}
         >
             <Header />

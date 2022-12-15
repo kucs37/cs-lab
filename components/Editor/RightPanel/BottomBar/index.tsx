@@ -20,7 +20,7 @@ function Window({ zoneRef }: WindowI) {
     return (
         <>
             <div
-                className="group w-full h-8 bg-gray-100  cursor-row-resize flex items-center justify-center "
+                className="group w-full h-8 bg-gray-100 dark:bg-[#27272A] cursor-row-resize flex items-center justify-center "
                 style={{ minHeight: '2rem' }}
                 onTouchStart={() => setIsDrag(true)}
                 onMouseDown={() => setIsDrag(true)}
@@ -29,7 +29,7 @@ function Window({ zoneRef }: WindowI) {
                 <span className="h-1/6 rounded-full w-10 bg-gray-500 group-hover:w-16 transition-all"></span>
             </div>
             <div
-                className="bg-white w-full flex flex-col rounded-xl"
+                className="bg-white dark:bg-[#33373A] border dark:border-[#6B6B6B] w-full flex flex-col rounded-xl"
                 style={{
                     minHeight: 183,
                     maxHeight: '100%',

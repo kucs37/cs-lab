@@ -18,7 +18,7 @@ const Editor: NextPage<Props> = ({ test }) => {
         <WithNavbar
             navbarChildren={<SideNav />}
             title="09 Find a, b in which a*b=n and (a+b) is the lowest | CS-LAB"
-            className="bg-gray-100 fixed h-screen max-h-screen"
+            className="fixed h-screen max-h-screen"
         >
             {menu.isHistoryOpen && <History />}
             {menu.isSettingsOpen && <Settings />}

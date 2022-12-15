@@ -3,7 +3,7 @@ import useCodemirror from '@/components/Editor/CodeMirror/hooks/useCodemirror'
 import { useAppSelector } from '@/store/hooks'
 import { EditorState } from '@codemirror/state'
 import { ayuLight, dracula, amy } from 'thememirror'
-import { ghcolors, materialDark } from './themes'
+import { ghcolors, materialDark, materialDarkCode } from './themes'
 interface Props {
     initialDoc?: string
     value: string
@@ -37,7 +37,7 @@ function CodeMirror({
         tabSize,
         readonly,
         readOnlyRanges,
-        theme: materialDark,
+        theme: materialDarkCode,
     })
 
     useEffect(() => {
