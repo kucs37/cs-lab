@@ -7,7 +7,18 @@ interface HistoryState {
 }
 
 const initialState: HistoryState = {
-    allHistory: [],
+    allHistory: [
+        {
+            code: '',
+            date: new Date('November 16, 2565 11:12:00').getTime(),
+            status: ['P', 'P', 'P', 'S', 'C', 'P', 'P'],
+        },
+        {
+            code: 'Hello World',
+            date: new Date('November 16, 2565 11:12:01').getTime(),
+            status: ['P', 'P', 'P', 'S', 'C', 'P', 'P'],
+        },
+    ],
     selected: null,
 }
 
@@ -18,7 +29,7 @@ export const historySlice = createSlice({
         setHistory(state, action: PayloadAction<HistoryI[]>) {
             state.allHistory = action.payload
         },
-        setSelected(state, action: PayloadAction<HistoryI>) {
+        setSelected(state, action: PayloadAction<HistoryI | null>) {
             state.selected = action.payload
         },
     },

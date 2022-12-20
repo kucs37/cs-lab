@@ -1,15 +1,19 @@
 import Backto from '@/components/Common/Backto'
 import Badge from '@/components/Common/Badge'
 import { IoClose, IoCheckmark } from 'react-icons/io5'
+import clsx from 'clsx'
 
-function Outline() {
+interface Props {
+    className?: string
+}
+function Outline({ className }: Props) {
     return (
-        <div className="pb-4 break-words">
+        <div className={clsx('pb-4 break-words', className)}>
             <Badge title="อ่านอย่างเดียว" />
-            <h4 className="text-lg font-bold my-2 dark:text-[#E0E2E8]">
+            <h4 className="text-2xl md:text-lg font-bold my-2 dark:text-[#E0E2E8]">
                 CS Python Lab 01 Input Process Output
             </h4>
-            <ul className="leading-relaxed">
+            <ul className="leading-relaxed text-lg md:text-base">
                 <li className="text-gray-900 dark:text-[#E0E2E8] font-bold">
                     01 Find a, b in which a*b=n and (a+b) is the lowest
                     <IoCheckmark className="inline text-lime-500 text-xl ml-2" />

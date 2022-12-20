@@ -11,7 +11,7 @@ function LeftSection({ title, isClosed }: Props) {
     const router = useRouter()
     const backToHref = `/${router.query.class}`
     return (
-        <div className="col-span-3 2xl:col-span-2 hidden md:block relative border-r border-gray-300 dark:border-[#6B6B6B]">
+        <div className="col-span-3 2xl:col-span-2 hidden md:block relative border-r bg-white dark:bg-[#27272A] border-gray-300 dark:border-[#6B6B6B]">
             <div className="sticky top-16 h-[calc(100vh-4rem)] overflow-y-scroll p-4">
                 <div>
                     <Backto

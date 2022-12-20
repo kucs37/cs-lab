@@ -7,6 +7,8 @@ import { useAppSelector } from '@/store/hooks'
 import Settings from '@/components/Editor/Settings'
 import type { NextPageContext, NextPage } from 'next'
 
+import Mobile from '@/components/Editor/Mobile'
+
 interface Props {
     test: string
 }
@@ -30,8 +32,8 @@ const Editor: NextPage<Props> = ({ test }) => {
         </WithNavbar>
     )
 }
-
-export default Editor
+export default Mobile
+// export default Editor
 
 export async function getServerSideProps(context: NextPageContext) {
     return {

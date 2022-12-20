@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import useDrag from '@/hooks/useDrag'
-import Outline from './Outline'
-import Description from './Description'
+import Outline from '../Outline'
+import Description from '../Description'
 
 function LeftPanel() {
     const [windowWidth, setWindowWidth] = useState<number>(320)

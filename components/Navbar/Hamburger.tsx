@@ -18,7 +18,7 @@ function Hamburger({ children }: Props) {
     useOnClickOutside(overlayRef, () => dispatch(toggleHamburger()))
 
     return (
-        <div className="md:hidden">
+        <div className="md:hidden transition duration-1000">
             <button onClick={() => dispatch(toggleHamburger())}>
                 <RxHamburgerMenu size={28} className="dark:text-white" />
             </button>
@@ -27,11 +27,11 @@ function Hamburger({ children }: Props) {
                 <div className="fixed z-50 top-0 left-0  w-full h-full bg-black bg-opacity-40">
                     <div
                         ref={overlayRef}
-                        className="w-9/12 h-full bg-white dark:bg-zinc-900 flex flex-col"
+                        className="w-9/12 h-full bg-white dark:bg-[#27272A] flex flex-col"
                     >
                         <button
                             onClick={() => dispatch(toggleHamburger())}
-                            className="w-full p-4 border-b border-gray-200 dark:border-gray-800 flex justify-end items-center"
+                            className="w-full p-4 border-b border-gray-200 dark:border-[#6B6B6B] flex justify-end items-center"
                         >
                             <IoClose size={26} className="dark:text-white" />
                         </button>

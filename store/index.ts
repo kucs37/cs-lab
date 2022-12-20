@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import menuReducer from './slices/menuSlice'
 import historyReducer from './slices/historySlice'
 import editorReducer from './slices/editorSlice'
+import mobileMenuReducer from './slices/mobileMenuSlice'
 
 export const makeStore = () =>
     configureStore({
@@ -10,6 +11,7 @@ export const makeStore = () =>
             menu: menuReducer,
             history: historyReducer,
             editor: editorReducer,
+            mobileMenu: mobileMenuReducer,
         },
     })
 export type AppStore = ReturnType<typeof makeStore>

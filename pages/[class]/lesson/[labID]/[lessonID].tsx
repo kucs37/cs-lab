@@ -25,7 +25,7 @@ function LabID({ metadata, content, answers, isClosed, title }: Props) {
             hamburgerChild={<Hamburger outline={metadata.outline} />}
             title="CS Python Lab 01 Input Process Output | CS LAB"
         >
-            <div className="grid grid-cols-12 w-full h-full px-6 md:px-2">
+            <div className="grid grid-cols-12 w-full h-full px-6 md:px-0">
                 <LeftSection
                     title="CS Python Lab 01 Input Process Output"
                     isClosed={isClosed}

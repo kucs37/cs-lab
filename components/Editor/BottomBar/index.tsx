@@ -16,7 +16,7 @@ function Window({ zoneRef }: WindowI) {
         setWindowHeight(size + 83)
     }, [size])
 
-    if (!isConsoleOpen) return null
+    // if (!isConsoleOpen) return null
     return (
         <>
             <div

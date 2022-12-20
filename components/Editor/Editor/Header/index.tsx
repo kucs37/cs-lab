@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import SaveStatus from '../../../SaveStatus'
+import SaveStatus from '../../SaveStatus'
 import { useAppDispatch } from '@/store/hooks'
 import { openConsole } from '@/store/slices/menuSlice'
 import { BsCheck2All, BsTerminal } from 'react-icons/bs'
@@ -20,7 +20,7 @@ function Header({}: Props) {
         }
     }, [status])
     return (
-        <div className="border-b py-2 px-4 flex justify-between flex-1">
+        <div className="border-b py-2 px-4 flex justify-between">
             <SaveStatus status={status} />
             <div className="flex items-center gap-2">
                 <button

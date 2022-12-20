@@ -5,6 +5,7 @@ import { format } from 'date-fns'
 import th from 'date-fns/locale/th'
 import { useAppSelector, useAppDispatch } from '@/store/hooks'
 import { setSelected } from '@/store/slices/historySlice'
+import Testcase from '../../Testcase'
 
 function Item(item: HistoryI) {
     const selected = useAppSelector((state) => state.history.selected)
@@ -22,9 +23,9 @@ function Item(item: HistoryI) {
             onClick={handleOnClick}
             className={`border-2 ${
                 isSelected
-                    ? 'border-gray-900 dark:border-[#E0E2E8]'
-                    : 'border-gray-200 dark:border-[#6B6B6B]'
-            } p-2 rounded-lg cursor-pointer dark:text-[#E0E2E8]`}
+                    ? 'md:border-gray-900 md:dark:border-[#E0E2E8]'
+                    : 'md:border-gray-200 dark:border-[#6B6B6B]'
+            } p-2 rounded-lg cursor-pointer dark:text-[#E0E2E8] dark:border-[#6B6B6B]`}
         >
             <div>
                 <h4 className="text-md font-bold">
@@ -40,11 +41,8 @@ function Item(item: HistoryI) {
                     </h4>
                 </div>
             </div>
-            <div className="flex items-center flex-wrap bg-gray-200 dark:bg-[#5C5C5C] text-black dark:text-[#E0E2E8] rounded-lg gap-1 py-1 px-2 w-fit font-bold text-sm mt-2">
-                {item.status.map((s, index) => (
-                    <span key={index}>{s}</span>
-                ))}
-            </div>
+
+            <Testcase status={item.status} />
         </div>
     )
 }

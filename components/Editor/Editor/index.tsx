@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import React from 'react'
-import CodeMirror from '../../CodeMirror'
+import CodeMirror from '../CodeMirror'
 import Header from './Header'
 import { setCode } from '@/store/slices/editorSlice'
 
