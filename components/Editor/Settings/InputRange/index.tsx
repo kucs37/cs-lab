@@ -23,7 +23,7 @@ const InputRange = ({ value, onChange, step = 1 }: Props) => {
         <div className="flex items-center gap-2 my-2 ">
             <button
                 onClick={() => setInputValue((prev) => prev - step)}
-                className="bg-gray-200 dark:bg-[#E0E2E8]/40 hover:bg-gray-300 transition-all duration-50  text-gray-800 dark:text-[#E0E2E8] rounded-full flex items-center justify-center p-1 outline-none"
+                className="bg-gray-200 dark:bg-[#E0E2E8]/40 border border-gray-600 dark:border-[#E0E2E8] hover:bg-gray-300 transition-all duration-50  text-gray-800 dark:text-[#E0E2E8] rounded-full flex items-center justify-center p-1 outline-none"
             >
                 <TiMinus size="1.25rem" />
             </button>
@@ -35,7 +35,7 @@ const InputRange = ({ value, onChange, step = 1 }: Props) => {
             />
             <button
                 onClick={() => setInputValue((prev) => prev + step)}
-                className="bg-gray-200 dark:bg-[#E0E2E8]/40 hover:bg-gray-300 transition-all duration-50  text-gray-800 dark:text-[#E0E2E8] rounded-full flex items-center justify-center p-1 outline-none"
+                className="bg-gray-200 dark:bg-[#E0E2E8]/40 border border-gray-600 dark:border-[#E0E2E8] hover:bg-gray-300 transition-all duration-50  text-gray-800 dark:text-[#E0E2E8] rounded-full flex items-center justify-center p-1 outline-none"
             >
                 <TiPlus size="1.25rem" />
             </button>

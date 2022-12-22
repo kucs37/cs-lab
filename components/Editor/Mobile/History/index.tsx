@@ -5,6 +5,7 @@ import EachHistory from './EachHistory'
 import { useAppSelector, useAppDispatch } from '@/store/hooks'
 import { BsArrowLeft } from 'react-icons/bs'
 import { setSelected } from '@/store/slices/historySlice'
+import CodeMirror from '../../CodeMirror'
 function History() {
     const { selected } = useAppSelector((state) => state.history)
     const dispatch = useAppDispatch()
@@ -22,6 +23,7 @@ function History() {
                 <RiHistoryFill size="1.5rem" />
                 <h3 className="text-xl font-semibold">ประวัติการส่ง</h3>
             </div>
+
             {selected === null ? <ListView /> : <EachHistory />}
         </div>
     )

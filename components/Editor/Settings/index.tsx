@@ -17,7 +17,7 @@ function Settings() {
         <div className="fixed w-full h-full bg-black bg-opacity-25 z-40 flex items-center justify-center">
             <div
                 ref={settingsWindow}
-                className="bg-white dark:bg-[#33373A]  rounded-lg py-4 flex flex-col w-1/3 px-4"
+                className="bg-white dark:bg-[#33373A] border dark:border-[#6B6B6B] rounded-lg py-4 flex flex-col w-1/3 px-4"
             >
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 dark:text-[#E0E2E8]">

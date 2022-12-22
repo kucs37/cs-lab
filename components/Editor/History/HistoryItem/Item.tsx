@@ -21,11 +21,11 @@ function Item(item: HistoryI) {
     return (
         <div
             onClick={handleOnClick}
-            className={`border-2 ${
+            className={`border border-gray-300 bg-white dark:bg-transparent shadow ${
                 isSelected
                     ? 'md:border-gray-900 md:dark:border-[#E0E2E8]'
                     : 'md:border-gray-200 dark:border-[#6B6B6B]'
-            } p-2 rounded-lg cursor-pointer dark:text-[#E0E2E8] dark:border-[#6B6B6B]`}
+            } p-4 md:p-3 rounded-lg cursor-pointer dark:text-[#E0E2E8] dark:border-[#6B6B6B]`}
         >
             <div>
                 <h4 className="text-md font-bold">

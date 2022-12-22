@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import CodeMirror from '@/components/Editor/CodeMirror'
 import { EditorState } from '@codemirror/state'
+import { materialDark } from '@/themes'
 interface Props {
     id: string
     source: string
@@ -31,6 +32,7 @@ function Code({ id, source, readOnlyRanges = [] }: Props) {
     return (
         <div className="rounded-xl overflow-hidden shadow-md border dark:border-transparent border-[#dddd]">
             <CodeMirror
+                theme={materialDark}
                 initialDoc={source}
                 value={value}
                 onChange={(value) => setValue(value)}

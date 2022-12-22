@@ -2,7 +2,7 @@ import { MDXRemote } from 'next-mdx-remote'
 import Badge from '@/components/Common/Badge'
 import MDInput from './MDInput'
 import SyntaxHighlight from './SyntaxHighlight'
-import Code from './Prototype/Code'
+import Code from './Code'
 
 interface Props {
     labMD: any

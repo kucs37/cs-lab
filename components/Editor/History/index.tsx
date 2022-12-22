@@ -11,6 +11,7 @@ import { useAppSelector, useAppDispatch } from '@/store/hooks'
 import { setCode } from '@/store/slices/editorSlice'
 import { toggleHistory } from '@/store/slices/menuSlice'
 import { setHistory, setSelected } from '@/store/slices/historySlice'
+import { materialDarkCode } from '@/themes'
 
 function History() {
     const selected = useAppSelector((state) => state.history.selected)
@@ -34,12 +35,12 @@ function History() {
             setHistory([
                 {
                     code: initialDoc,
-                    date: new Date('November 16, 2565 11:12:00').toString(),
+                    date: new Date('November 16, 2565 11:12:00').getTime(),
                     status: ['P', 'P', 'P', 'S', 'C', 'P', 'P'],
                 },
                 {
                     code: 'Hello World',
-                    date: new Date('November 16, 2565 11:12:01').toString(),
+                    date: new Date('November 16, 2565 11:12:01').getTime(),
                     status: ['P', 'P', 'P', 'S', 'C', 'P', 'P'],
                 },
             ])
@@ -47,7 +48,7 @@ function History() {
         dispatch(
             setSelected({
                 code: initialDoc,
-                date: new Date('November 16, 2565 11:12:00').toString(),
+                date: new Date('November 16, 2565 11:12:00').getTime(),
                 status: ['P', 'P', 'P', 'S', 'C', 'P', 'P'],
             })
         )
@@ -57,9 +58,9 @@ function History() {
         <div className="fixed w-full h-full bg-black bg-opacity-25 z-40 flex items-center justify-center">
             <div
                 ref={historyWindow}
-                className="bg-white dark:bg-[#33373A] w-5/6 h-5/6 rounded-lg overflow-hidden grid grid-cols-8 auto-rows-fr"
+                className="bg-white dark:bg-[#33373A] border dark:border-[#6B6B6B] w-5/6 h-5/6 rounded-lg overflow-hidden grid grid-cols-8 auto-rows-fr"
             >
-                <div className="col-span-2 border-r-2 p-4">
+                <div className="col-span-2 border-r dark:border-[#6B6B6B] p-4">
                     <div className="flex items-center gap-2 dark:text-[#E0E2E8]">
                         <FaHistory />
                         <h4 className="text-xl font-semibold">ประวัติการส่ง</h4>
@@ -78,6 +79,7 @@ function History() {
                     </button>
                     <div className="flex-1 overflow-y-scroll">
                         <CodeMirror
+                            theme={materialDarkCode}
                             value={selected ? selected.code : ''}
                             height="100%"
                             readonly
@@ -85,7 +87,7 @@ function History() {
                     </div>
                     <div
                         ref={bottomRef}
-                        className="bg-gray-50 dark:bg-[#33373A]/70 flex justify-end p-2"
+                        className="bg-gray-50 dark:bg-[#33373A]/70 border-t dark:border-[#6B6B6B] flex justify-end p-2"
                     >
                         <button
                             onClick={handleCopy}

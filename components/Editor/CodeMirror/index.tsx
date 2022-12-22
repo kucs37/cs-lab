@@ -1,12 +1,11 @@
 import { ReactNode, useEffect } from 'react'
 import useCodemirror from '@/components/Editor/CodeMirror/hooks/useCodemirror'
 import { useAppSelector } from '@/store/hooks'
-import { EditorState } from '@codemirror/state'
-import { ayuLight, dracula, amy } from 'thememirror'
-import { ghcolors, materialDark, materialDarkCode } from './themes'
+import { EditorState, Extension } from '@codemirror/state'
+import { ghcolors } from '@/themes'
 interface Props {
     initialDoc?: string
-    value: string
+    value?: string
     onChange?: (code: string) => void
     onKeyDown?: (key: KeyboardEvent) => void
     height: string
@@ -16,10 +15,11 @@ interface Props {
     readOnlyRanges?: (
         targetState: EditorState
     ) => Array<{ from: number | undefined; to: number | undefined }>
+    theme?: Extension
 }
 
 function CodeMirror({
-    initialDoc,
+    initialDoc = '',
     value,
     onChange,
     onKeyDown,
@@ -28,6 +28,7 @@ function CodeMirror({
     children,
     readonly,
     readOnlyRanges,
+    theme = ghcolors,
 }: Props) {
     const { fontSize, tabSize } = useAppSelector((state) => state.editor)
     const { editorRef, editorView } = useCodemirror({
@@ -37,11 +38,11 @@ function CodeMirror({
         tabSize,
         readonly,
         readOnlyRanges,
-        theme: materialDarkCode,
+        theme,
     })
 
     useEffect(() => {
-        if (!editorView) return
+        if (!editorView || value === undefined) return
         const doc = editorView.state.doc.toString()
         if (doc !== value)
             editorView.dispatch(
@@ -59,7 +60,7 @@ function CodeMirror({
                 height,
                 fontSize,
             }}
-            className="rounded-b-xl overflow-hidden"
+            className="overflow-hidden"
         >
             {children}
         </div>

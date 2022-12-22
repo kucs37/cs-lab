@@ -20,7 +20,7 @@ function Header({}: Props) {
         }
     }, [status])
     return (
-        <div className="border-b py-2 px-4 flex justify-between">
+        <div className="border-b dark:border-[#6B6B6B] py-2 px-4 flex justify-between">
             <SaveStatus status={status} />
             <div className="flex items-center gap-2">
                 <button

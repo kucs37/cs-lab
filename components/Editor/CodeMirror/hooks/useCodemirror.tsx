@@ -9,6 +9,7 @@ import { bracketMatching, foldGutter } from '@codemirror/language'
 
 import { indentWithTab, indentWithTabLess } from '../commands/indentWithTab'
 import readOnlyRangesExtension from 'codemirror-readonly-ranges'
+import { ghcolors } from '../../../../themes'
 
 interface Props {
     onChange?: (value: string) => void
@@ -46,7 +47,7 @@ function useCodemirror({
     readonly,
     initialDoc,
     readOnlyRanges,
-    theme,
+    theme = ghcolors,
 }: Props): {
     editorRef: React.RefObject<HTMLDivElement>
     editorView: EditorView | undefined

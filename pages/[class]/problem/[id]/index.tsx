@@ -1,44 +1,32 @@
-import RightPanel from '@/components/Editor/RightPanel'
-import SideNav from '@/components/Editor/SideNav'
-import WithNavbar from '@/HOC/WithNavbar'
-import LeftPanel from '@/components/Editor/LeftPanel'
-import History from '@/components/Editor/History'
-import { useAppSelector } from '@/store/hooks'
-import Settings from '@/components/Editor/Settings'
-import type { NextPageContext, NextPage } from 'next'
+import type { NextPageContext } from 'next'
 
+import NonMobile from '@/components/Editor/NonMobile'
 import Mobile from '@/components/Editor/Mobile'
 
 interface Props {
     test: string
+    isMobile: boolean
 }
 
-const Editor: NextPage<Props> = ({ test }) => {
-    const menu = useAppSelector((state) => state.menu)
-
-    return (
-        <WithNavbar
-            navbarChildren={<SideNav />}
-            title="09 Find a, b in which a*b=n and (a+b) is the lowest | CS-LAB"
-            className="fixed h-screen max-h-screen"
-        >
-            {menu.isHistoryOpen && <History />}
-            {menu.isSettingsOpen && <Settings />}
-
-            <div className="px-4 py-6 shadow-md flex flex-1 h-full overflow-hidden">
-                <LeftPanel />
-                <RightPanel />
-            </div>
-        </WithNavbar>
-    )
+const Device = ({ isMobile }: Props) => {
+    if (isMobile) return <Mobile />
+    return <NonMobile />
 }
-export default Mobile
-// export default Editor
+
+export default Device
 
 export async function getServerSideProps(context: NextPageContext) {
+    const UA = context.req!.headers['user-agent']
+    const isMobile = Boolean(
+        UA!.match(
+            /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
+        )
+    )
+
     return {
         props: {
             test: 'YO!',
+            isMobile,
         },
     }
 }
