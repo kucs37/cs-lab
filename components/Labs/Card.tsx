@@ -20,7 +20,6 @@ function Card({ title, isClosed, problems, id, type }: Props) {
     const hrefTo = isLesson
         ? `${router.asPath}/lesson/${id}/01#77`
         : `${router.asPath}/problem/${id}`
-    console.log(problems)
 
     return (
         <Link href={hrefTo}>

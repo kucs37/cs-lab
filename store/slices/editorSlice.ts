@@ -9,7 +9,7 @@ interface EditorState {
 const initialState: EditorState = {
     code: '',
     fontSize: 16,
-    tabSize: 4,
+    tabSize: 2,
 }
 
 export const editorSlice = createSlice({

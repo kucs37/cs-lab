@@ -9,7 +9,6 @@ import useDarkMode from '@/hooks/useDarkMode'
 function Editor() {
     const { code } = useAppSelector((state) => state.editor)
     const dispatch = useAppDispatch()
-    const isDarkMode = useDarkMode()
 
     const handleOnKeyDown = (key: KeyboardEvent) => {
         // if (!specialKeyCode.includes(key.key)) setstatus('saving')
@@ -23,7 +22,7 @@ function Editor() {
             <Header />
 
             <CodeMirror
-                theme={true ? materialDarkCode : ghcolors}
+                variant="problem"
                 initialDoc={code}
                 value={code}
                 onChange={(value) => dispatch(setCode(value))}

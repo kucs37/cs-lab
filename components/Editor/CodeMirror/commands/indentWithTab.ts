@@ -42,17 +42,13 @@ export const indentWithTab: StateCommand = ({ state, dispatch }) => {
     if (state.selection.ranges.some((r) => !r.empty))
         return indentMore({ state, dispatch })
     dispatch(
-        state.update(
-            state.replaceSelection(indent),
-            { userEvent: 'indent' }
-        )
+        state.update(state.replaceSelection(indent), { userEvent: 'indent' })
     )
     return true
 }
 
 export const indentWithTabLess: StateCommand = ({ state, dispatch }) => {
     if (state.readOnly) return false
-    console.log(state.facet(EditorState.tabSize))
 
     dispatch(
         state.update(

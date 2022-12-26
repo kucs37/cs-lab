@@ -5,11 +5,10 @@ import { EditorView, keymap, lineNumbers } from '@codemirror/view'
 import { python } from '@codemirror/lang-python'
 import { closeBrackets } from '@codemirror/autocomplete'
 import { searchKeymap } from '@codemirror/search'
-import { bracketMatching, foldGutter } from '@codemirror/language'
+import { bracketMatching, foldGutter, indentUnit } from '@codemirror/language'
 
 import { indentWithTab, indentWithTabLess } from '../commands/indentWithTab'
 import readOnlyRangesExtension from 'codemirror-readonly-ranges'
-import { ghcolors } from '../../../../themes'
 
 interface Props {
     onChange?: (value: string) => void
@@ -37,8 +36,10 @@ const baseTheme = EditorView.baseTheme({
 })
 
 const _tabSize = new Compartment(),
+    _indentUnit = new Compartment(),
     _readonly = new Compartment(),
-    _readOnlyRanges = new Compartment()
+    _readOnlyRanges = new Compartment(),
+    _theme = new Compartment()
 
 function useCodemirror({
     onChange,
@@ -47,7 +48,7 @@ function useCodemirror({
     readonly,
     initialDoc,
     readOnlyRanges,
-    theme = ghcolors,
+    theme,
 }: Props): {
     editorRef: React.RefObject<HTMLDivElement>
     editorView: EditorView | undefined
@@ -65,7 +66,6 @@ function useCodemirror({
                 bracketMatching(),
                 foldGutter(),
                 baseTheme,
-                theme,
                 python(),
                 keymap.of([
                     {
@@ -80,6 +80,8 @@ function useCodemirror({
                     },
                     ...searchKeymap,
                 ]),
+                _theme.of(theme),
+                _indentUnit.of(indentUnit.of(' '.repeat(2))),
                 _tabSize.of(EditorState.tabSize.of(4)),
                 _readonly.of(EditorState.readOnly.of(false)),
                 EditorView.updateListener.of((update) => {
@@ -101,15 +103,19 @@ function useCodemirror({
         viewRef.current = view
 
         return () => view.destroy()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [editorRef])
 
     //  Tab Size Change Detect
     useEffect(() => {
         if (!viewRef.current || !tabSize) return
         viewRef.current.dispatch({
-            effects: _tabSize.reconfigure(EditorState.tabSize.of(tabSize)),
+            effects: [
+                _tabSize.reconfigure(EditorState.tabSize.of(tabSize)),
+                _indentUnit.reconfigure(indentUnit.of(' '.repeat(tabSize))),
+            ],
         })
-    }, [viewRef, _tabSize, tabSize])
+    }, [viewRef, tabSize])
 
     //  Readonly Change Detect
     useEffect(() => {
@@ -117,7 +123,7 @@ function useCodemirror({
         viewRef.current.dispatch({
             effects: _readonly.reconfigure(EditorState.readOnly.of(readonly)),
         })
-    }, [viewRef, _readonly, readonly])
+    }, [viewRef, readonly])
 
     //  Readonly Ranges Change Detect
     useEffect(() => {
@@ -127,7 +133,15 @@ function useCodemirror({
                 readOnlyRangesExtension(readOnlyRanges)
             ),
         })
-    }, [viewRef, _readOnlyRanges, readOnlyRanges])
+    }, [viewRef, readOnlyRanges])
+
+    // theme change detect
+    useEffect(() => {
+        if (!viewRef.current || !theme) return
+        viewRef.current.dispatch({
+            effects: _theme.reconfigure(theme),
+        })
+    }, [viewRef, theme])
 
     return { editorRef, editorView: viewRef.current }
 }

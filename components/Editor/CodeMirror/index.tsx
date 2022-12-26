@@ -1,8 +1,9 @@
 import { ReactNode, useEffect } from 'react'
 import useCodemirror from '@/components/Editor/CodeMirror/hooks/useCodemirror'
 import { useAppSelector } from '@/store/hooks'
-import { EditorState, Extension } from '@codemirror/state'
-import { ghcolors } from '@/themes'
+import { EditorState } from '@codemirror/state'
+import { ghcolors, materialDark, materialDarkCode } from '@/themes'
+import useDarkMode from '@/hooks/useDarkMode'
 interface Props {
     initialDoc?: string
     value?: string
@@ -15,7 +16,7 @@ interface Props {
     readOnlyRanges?: (
         targetState: EditorState
     ) => Array<{ from: number | undefined; to: number | undefined }>
-    theme?: Extension
+    variant?: 'problem' | 'lesson'
 }
 
 function CodeMirror({
@@ -28,10 +29,16 @@ function CodeMirror({
     children,
     readonly,
     readOnlyRanges,
-    theme = ghcolors,
+    variant = 'problem',
 }: Props) {
     const { fontSize, tabSize } = useAppSelector((state) => state.editor)
     const { isDarkMode } = useAppSelector((state) => state.theme)
+    // const isDarkMode = useDarkMode()
+    const theme = isDarkMode
+        ? variant === 'problem'
+            ? materialDarkCode
+            : materialDark
+        : ghcolors
     const { editorRef, editorView } = useCodemirror({
         initialDoc,
         onChange,
@@ -55,7 +62,7 @@ function CodeMirror({
 
     return (
         <div
-            ref={isDarkMode ? editorRef : null}
+            ref={editorRef}
             style={{
                 width,
                 height,
