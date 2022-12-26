@@ -7,6 +7,7 @@ import Problem from './Problem'
 import Code from './Code'
 import History from './History'
 import Settings from './Settings'
+import Shortcuts from './Code/Shortcuts'
 
 function Mobile() {
     const menu = useAppSelector((state) => state.mobileMenu)
@@ -24,6 +25,7 @@ function Mobile() {
 
                 <BottomNav />
             </div>
+            {/* <Shortcuts /> */}
         </WithNavbar>
     )
 }

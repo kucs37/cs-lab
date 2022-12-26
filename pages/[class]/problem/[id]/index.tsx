@@ -17,9 +17,11 @@ export default Device
 
 export async function getServerSideProps(context: NextPageContext) {
     const UA = context.req!.headers['user-agent']
+    console.log(UA);
+    
     const isMobile = Boolean(
         UA!.match(
-            /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
+            /Android|BlackBerry|iPhone|iPod|Opera Mini|IEMobile|WPDesktop/i
         )
     )
 

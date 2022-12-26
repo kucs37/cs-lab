@@ -4,10 +4,12 @@ import CodeMirror from '../CodeMirror'
 import Header from './Header'
 import { setCode } from '@/store/slices/editorSlice'
 import { ghcolors, materialDarkCode } from '@/themes'
+import useDarkMode from '@/hooks/useDarkMode'
 
 function Editor() {
     const { code } = useAppSelector((state) => state.editor)
     const dispatch = useAppDispatch()
+    const isDarkMode = useDarkMode()
 
     const handleOnKeyDown = (key: KeyboardEvent) => {
         // if (!specialKeyCode.includes(key.key)) setstatus('saving')

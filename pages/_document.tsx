@@ -21,7 +21,7 @@ export default function Document() {
                     rel="stylesheet"
                 />
             </Head>
-            <body className="dark">
+            <body className='dark'>
                 <Main />
                 <NextScript />
             </body>

@@ -55,7 +55,7 @@ function History() {
     }, [])
 
     return (
-        <div className="fixed w-full h-full bg-black bg-opacity-25 z-40 flex items-center justify-center">
+        <div className="fixed w-full h-full bg-black bg-opacity-25 backdrop-blur-sm z-40 flex items-center justify-center">
             <div
                 ref={historyWindow}
                 className="bg-white dark:bg-[#33373A] border dark:border-[#6B6B6B] w-5/6 h-5/6 rounded-lg overflow-hidden grid grid-cols-8 auto-rows-fr"

@@ -31,6 +31,7 @@ function CodeMirror({
     theme = ghcolors,
 }: Props) {
     const { fontSize, tabSize } = useAppSelector((state) => state.editor)
+    const { isDarkMode } = useAppSelector((state) => state.theme)
     const { editorRef, editorView } = useCodemirror({
         initialDoc,
         onChange,
@@ -54,13 +55,13 @@ function CodeMirror({
 
     return (
         <div
-            ref={editorRef}
+            ref={isDarkMode ? editorRef : null}
             style={{
                 width,
                 height,
                 fontSize,
             }}
-            className="overflow-hidden"
+            className="overflow-hidden bg-white dark:bg-[#33373A]"
         >
             {children}
         </div>

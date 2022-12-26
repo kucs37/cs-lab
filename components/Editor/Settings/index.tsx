@@ -14,7 +14,7 @@ function Settings() {
     useOnClickOutside(settingsWindow, () => dispatch(toggleSettings()))
 
     return (
-        <div className="fixed w-full h-full bg-black bg-opacity-25 z-40 flex items-center justify-center">
+        <div className="fixed w-full h-full bg-black bg-opacity-25 backdrop-blur-sm z-40 flex items-center justify-center">
             <div
                 ref={settingsWindow}
                 className="bg-white dark:bg-[#33373A] border dark:border-[#6B6B6B] rounded-lg py-4 flex flex-col w-1/3 px-4"
