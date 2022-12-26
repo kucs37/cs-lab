@@ -38,13 +38,10 @@ export const materialDark = createTheme({
             color: '#0d7ae7',
         },
         {
-            tag: [
-                t.definition(t.propertyName),
-                t.function(t.variableName),
-                t.keyword,
-            ],
-            color: '#c792ea',
+            tag: [t.definition(t.propertyName), t.function(t.variableName)],
+            color: '#c762ea',
         },
+        { tag: t.keyword, color: '#c792ea' },
         {
             tag: t.operator,
             color: '#89ddff',
