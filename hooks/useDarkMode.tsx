@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react'
 
+interface BodyMutationRecord extends MutationRecord {
+    target: Node & { className?: string }
+}
 function useDarkMode() {
     const [isDarkMode, setIsDarkMode] = useState(true)
 
-    const callback = (mutationList, observer) => {
+    const callback = (
+        mutationList: BodyMutationRecord[],
+        observer: MutationObserver
+    ) => {
         mutationList.forEach(function (mutation) {
+            mutation.target
             if (
                 mutation.type === 'attributes' &&
                 mutation.attributeName === 'class'

@@ -51,7 +51,6 @@ function EachHistory() {
             </div>
             <div className="rounded-md overflow-hidden h-full mb-4 border dark:border-[#6B6B6B]">
                 <CodeMirror
-                    theme={materialDarkCode}
                     readonly
                     height="100%"
                     initialDoc={selected ? selected.code : ''}

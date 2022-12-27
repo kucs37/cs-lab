@@ -79,7 +79,6 @@ function History() {
                     </button>
                     <div className="flex-1 overflow-y-scroll">
                         <CodeMirror
-                            theme={materialDarkCode}
                             value={selected ? selected.code : ''}
                             height="100%"
                             readonly
