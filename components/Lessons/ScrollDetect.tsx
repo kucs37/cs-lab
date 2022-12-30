@@ -11,14 +11,14 @@ function ScrollDetect({ outline, className }: Props) {
     return (
         <ScrollSpy
             className={clsx(
-                'border-l-2 border-gray-200 h-fit pb-3 pl-2 text-gray-300 dark:text-[#E0E2E8]/30 text-sm leading-loose',
+                'border-l-2 border-gray-200 h-fit pb-3 pl-2 text-gray-300 dark:text-ascent-1/30 text-sm leading-loose',
                 className
             )}
             items={outline.map(({ id }) => id)}
-            currentClassName="text-gray-900 dark:text-[#E0E2E8] font-semibold"
+            currentClassName="text-gray-900 dark:text-ascent-1 font-semibold"
         >
             {outline.map(({ id, name }) => (
-                <li key={id} className="hover:text-gray-500 w-fit">
+                <li key={id} className="hover:text-ascent-1/90 w-fit">
                     <a href={`#${id}`}>{name}</a>
                 </li>
             ))}

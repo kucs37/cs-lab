@@ -21,7 +21,7 @@ function EachHistory() {
     }
 
     return (
-        <div className="flex-1 flex flex-col gap-4 dark:text-[#E0E2E8]">
+        <div className="flex-1 flex flex-col gap-4 dark:text-ascent-1">
             <div className="flex justify-between">
                 <div>
                     <div>
@@ -49,7 +49,7 @@ function EachHistory() {
                     คัดลอก
                 </button>
             </div>
-            <div className="rounded-md overflow-hidden h-full mb-4 border dark:border-[#6B6B6B]">
+            <div className="rounded-md overflow-hidden h-full mb-4 border dark:border-secondary-2">
                 <CodeMirror
                     readonly
                     height="100%"

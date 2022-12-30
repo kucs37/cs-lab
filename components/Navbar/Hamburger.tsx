@@ -27,11 +27,11 @@ function Hamburger({ children }: Props) {
                 <div className="fixed z-50 top-0 left-0  w-full h-full bg-black bg-opacity-40">
                     <div
                         ref={overlayRef}
-                        className="w-9/12 h-full bg-white dark:bg-[#27272A] flex flex-col"
+                        className="w-9/12 h-full bg-white dark:bg-primary-1 flex flex-col"
                     >
                         <button
                             onClick={() => dispatch(toggleHamburger())}
-                            className="w-full p-4 border-b border-gray-200 dark:border-[#6B6B6B] flex justify-end items-center"
+                            className="w-full p-4 border-b border-gray-200 dark:border-secondary-2 flex justify-end items-center"
                         >
                             <IoClose size={26} className="dark:text-white" />
                         </button>

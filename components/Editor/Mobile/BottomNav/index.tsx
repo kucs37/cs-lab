@@ -33,7 +33,7 @@ function BottomNav() {
     const { selected } = useAppSelector((state) => state.history)
     const dispatch = useAppDispatch()
     return (
-        <div className="fixed bottom-0 left-0  bg-white dark:bg-[#1E1E1F] w-full dark:text-[#E0E2E8] rounded-t-xl overflow-hidden">
+        <div className="fixed bottom-0 left-0  bg-white dark:bg-[#1E1E1F] w-full dark:text-ascent-1 rounded-t-xl overflow-hidden">
             <div className="grid grid-cols-12 items-center">
                 {menus.map(({ name, icon, id }, index) => {
                     return (
@@ -46,7 +46,7 @@ function BottomNav() {
                             className={clsx(
                                 'col-span-3 flex flex-col items-center p-2 gap-2 ',
                                 menu.selected === id &&
-                                    'bg-[#E0E2E8] dark:bg-[#232324]'
+                                    'bg-ascent-1 dark:bg-[#232324]'
                             )}
                         >
                             {icon}

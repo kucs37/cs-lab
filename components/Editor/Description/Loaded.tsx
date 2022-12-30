@@ -5,7 +5,7 @@ function Loaded() {
     return (
         <>
             <div>
-                <h1 className="text-xl font-bold dark:text-[#E0E2E8]">
+                <h1 className="text-xl font-bold dark:text-ascent-1">
                     09 Find a, b in which a*b=n and (a+b) is the lowest
                 </h1>
 

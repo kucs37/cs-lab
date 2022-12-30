@@ -58,10 +58,10 @@ function History() {
         <div className="fixed w-full h-full bg-black bg-opacity-25 backdrop-blur-sm z-40 flex items-center justify-center">
             <div
                 ref={historyWindow}
-                className="bg-white dark:bg-[#33373A] border dark:border-[#6B6B6B] w-5/6 h-5/6 rounded-lg overflow-hidden grid grid-cols-8 auto-rows-fr"
+                className="bg-white dark:bg-secondary-1 border dark:border-secondary-2 w-5/6 h-5/6 rounded-lg overflow-hidden grid grid-cols-8 auto-rows-fr"
             >
-                <div className="col-span-2 border-r dark:border-[#6B6B6B] p-4">
-                    <div className="flex items-center gap-2 dark:text-[#E0E2E8]">
+                <div className="col-span-2 border-r dark:border-secondary-2 p-4">
+                    <div className="flex items-center gap-2 dark:text-ascent-1">
                         <FaHistory />
                         <h4 className="text-xl font-semibold">ประวัติการส่ง</h4>
                     </div>
@@ -73,7 +73,7 @@ function History() {
                 <div ref={closeBtnRef} className="col-span-6 flex flex-col">
                     <button
                         onClick={() => dispatch(toggleHistory())}
-                        className="self-end p-4 dark:text-[#E0E2E8]"
+                        className="self-end p-4 dark:text-ascent-1"
                     >
                         <IoClose size="1.25rem" />
                     </button>
@@ -86,7 +86,7 @@ function History() {
                     </div>
                     <div
                         ref={bottomRef}
-                        className="bg-gray-50 dark:bg-[#33373A]/70 border-t dark:border-[#6B6B6B] flex justify-end p-2"
+                        className="bg-gray-50 dark:bg-secondary-1/70 border-t dark:border-secondary-2 flex justify-end p-2"
                     >
                         <button
                             onClick={handleCopy}

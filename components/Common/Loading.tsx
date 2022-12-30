@@ -7,14 +7,14 @@ let list_style: any[] = [CoffeeDog1, CoffeeDog2, CoffeeDog3]
 
 function Loading() {
     return (
-        <div className="fixed top-0 left-0 w-screen h-screen min-h-screen bg-white dark:bg-[#27272A] z-50 flex flex-col gap-4 justify-center items-center">
+        <div className="fixed top-0 left-0 w-screen h-screen min-h-screen bg-white dark:bg-primary-1 z-50 flex flex-col gap-4 justify-center items-center">
             <Player
                 autoplay
                 loop
                 src={list_style[Math.floor(Math.random() * 3)]}
                 style={{ height: '200px', width: '200px' }}
             />
-            <p className="text-xl font-bold dark:text-[#E0E2E8]">
+            <p className="text-xl font-bold dark:text-ascent-1">
                 กำลังโหลด...
             </p>
         </div>

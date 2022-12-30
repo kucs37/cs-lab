@@ -13,10 +13,10 @@ const FilterBtn = ({ text, isSelected, onClick }: Props) => {
             onClick={onClick}
             className={clsx(
                 'rounded-full px-4 py-1 border-2',
-                'border-gray-900 dark:border-[#E0E2E8] ',
-                'text-gray-900 dark:text-[#E0E2E8]',
+                'border-gray-900 dark:border-ascent-1 ',
+                'text-gray-900 dark:text-ascent-1',
                 isSelected &&
-                    'bg-gray-900 dark:bg-[#E0E2E8] text-white dark:text-[#171819]'
+                    'bg-gray-900 dark:bg-ascent-1 text-white dark:text-[#171819]'
             )}
         >
             <p>{text}</p>

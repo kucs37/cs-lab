@@ -10,7 +10,7 @@ function History() {
     const { selected } = useAppSelector((state) => state.history)
     const dispatch = useAppDispatch()
     return (
-        <div className="flex flex-col gap-6 h-full dark:text-[#DBDEE5]">
+        <div className="flex flex-col gap-6 h-full dark:text-ascent-1">
             {selected !== null ? (
                 <button
                     onClick={() => dispatch(setSelected(null))}

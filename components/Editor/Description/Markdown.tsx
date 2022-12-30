@@ -8,7 +8,7 @@ import 'katex/dist/katex.min.css'
 
 function Markdown() {
     return (
-        <div className="prose max-w-full dark:prose-headings:text-[#E0E2E8] dark:text-[#E0E2E8] dark:prose-code:text-[#E0E2E8] dark:prose-strong:text-[#E0E2E8]">
+        <div className="prose max-w-full dark:prose-headings:text-ascent-1 dark:text-ascent-1 dark:prose-code:text-ascent-1 dark:prose-strong:text-ascent-1">
             <ReactMarkdown
                 remarkPlugins={[remarkGFM, remarkMath]}
                 rehypePlugins={[rehypeKatex, rehypeRaw]}

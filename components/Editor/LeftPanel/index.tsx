@@ -26,7 +26,7 @@ function LeftPanel() {
                 maxWidth: 'max-content',
             }}
         >
-            <div className="p-4 overflow-y-scroll bg-white dark:bg-[#33373A] border dark:border-[#6B6B6B] rounded-xl overflow-hidden">
+            <div className="p-4 overflow-y-scroll bg-white dark:bg-secondary-1 border dark:border-secondary-2 rounded-xl overflow-hidden">
                 <Outline />
                 <hr className="h-4" />
                 <Description />
@@ -35,7 +35,7 @@ function LeftPanel() {
             {/* Tab Resize */}
 
             <div
-                className="group flex-shrink-0 w-6 h-full bg-gray-100 dark:bg-[#27272A] cursor-col-resize flex items-center justify-center"
+                className="group flex-shrink-0 w-6 h-full bg-gray-100 dark:bg-primary-1 cursor-col-resize flex items-center justify-center"
                 onTouchStart={() => setIsDrag(true)}
                 onMouseDown={() => setIsDrag(true)}
                 onDoubleClick={onDoubleClick}

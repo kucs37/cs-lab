@@ -10,7 +10,7 @@ interface Props {
 }
 function Select({ selected, onSelect }: Props) {
     return (
-        <div className="self-center w-fit flex justify-between gap-2 items-center border border-zinc-500 dark:border-white rounded-full dark:text-[#DBDEE5] mb-4 p-1">
+        <div className="self-center w-fit flex justify-between gap-2 items-center border border-zinc-500 dark:border-white rounded-full dark:text-ascent-1 mb-4 p-1">
             <button
                 onClick={() => onSelect('code')}
                 className={clsx(

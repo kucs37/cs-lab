@@ -23,9 +23,9 @@ function Item(item: HistoryI) {
             onClick={handleOnClick}
             className={`border border-gray-300 bg-white dark:bg-transparent shadow ${
                 isSelected
-                    ? 'md:border-gray-900 md:dark:border-[#E0E2E8]'
-                    : 'md:border-gray-200 dark:border-[#6B6B6B]'
-            } p-4 md:p-3 rounded-lg cursor-pointer dark:text-[#E0E2E8] dark:border-[#6B6B6B]`}
+                    ? 'md:border-gray-900 md:dark:border-ascent-1'
+                    : 'md:border-gray-200 dark:border-secondary-2'
+            } p-4 md:p-3 rounded-lg cursor-pointer dark:text-ascent-1 dark:border-secondary-2`}
         >
             <div>
                 <h4 className="text-md font-bold">

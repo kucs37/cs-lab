@@ -10,13 +10,13 @@ function Problem() {
     const latestHistory = sortByKey(allHistory, 'date', 'desc')[0]
 
     return (
-        <div className="bg-white dark:bg-[#33373A] border dark:border-[#6B6B6B] p-4 rounded-md">
+        <div className="bg-white dark:bg-secondary-1 border dark:border-secondary-2 p-4 rounded-md">
             <Badge title="อ่านอย่างเดียว" />
             <div className="my-4">
                 <h4 className="text-lime-600">
                     CS Python Lab 01 Input Process Output
                 </h4>
-                <h2 className="text-2xl dark:text-[#DBDEE5] font-bold">
+                <h2 className="text-2xl dark:text-ascent-1 font-bold">
                     01 Find a, b in which a*b=n and (a+b) is the lowest
                 </h2>
                 <Testcase status={latestHistory ? latestHistory.status : []} />

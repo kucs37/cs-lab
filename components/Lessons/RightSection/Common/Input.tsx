@@ -25,7 +25,7 @@ function Input({ status, value = '', size, onChange, wFull }: InputProps) {
             </div>
             <input
                 className={clsx(
-                    'rounded-md p-2 bg-white dark:bg-[#6B6B6B]/20 dark:border-[#6B6B6B]/10 border outline-none focus:dark:outline-slate-300',
+                    'rounded-md p-2 bg-white dark:bg-secondary-2/20 dark:border-secondary-2/10 border outline-none focus:dark:outline-slate-300',
                     wFull && 'w-full',
                     status === 'not-attempted' && 'border-gray-200',
                     status === 'success' && 'border-lime-500',

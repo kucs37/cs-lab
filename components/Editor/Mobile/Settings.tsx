@@ -10,13 +10,13 @@ function Settings() {
     return (
         <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 dark:text-[#E0E2E8]">
+                <div className="flex items-center gap-2 dark:text-ascent-1">
                     <IoSettingsOutline size="1.5rem" />
                     <h2 className="text-xl font-semibold">การตั้งค่า</h2>
                 </div>
             </div>
             <div>
-                <h4 className="my-2 dark:text-[#E0E2E8]">ขนาดตัวอักษร</h4>
+                <h4 className="my-2 dark:text-ascent-1">ขนาดตัวอักษร</h4>
                 <InputRange
                     value={fontSize}
                     onChange={(value) => dispatch(setFontSize(value))}
@@ -24,7 +24,7 @@ function Settings() {
                 />
             </div>
             <div>
-                <h4 className="text-md my-2 dark:text-[#E0E2E8]">ขนาด Tab</h4>
+                <h4 className="text-md my-2 dark:text-ascent-1">ขนาด Tab</h4>
                 <InputRange
                     value={tabSize}
                     onChange={(value) => dispatch(setTabSize(value))}

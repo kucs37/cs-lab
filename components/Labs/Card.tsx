@@ -24,13 +24,13 @@ function Card({ title, isClosed, problems, id, type }: Props) {
     return (
         <Link href={hrefTo}>
             <a className="col-span-12 md:col-span-6 xl:col-span-4">
-                <div className="rounded-lg border dark:border-[#6B6B6B] bg-white dark:bg-[#33373A]  w-full h-full px-6 py-4 shadow-lg flex justify-end flex-col gap-3">
+                <div className="rounded-lg border bg-white dark:bg-secondary-1 dark:border-secondary-2  w-full h-full px-6 py-4 shadow-lg flex justify-end flex-col gap-3">
                     <div className="flex flex-wrap items-center gap-2">
                         {isClosed && <Badge title="อ่านอย่างเดียว" />}
                     </div>
 
                     <div className="flex flex-col gap-2">
-                        <h3 className="font-bold text-lg text-gray-900 dark:text-[#E0E2E8]">
+                        <h3 className="font-bold text-lg text-gray-900 dark:text-ascent-1">
                             {smartTitle(title)}
                         </h3>
 

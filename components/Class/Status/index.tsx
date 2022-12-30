@@ -1,6 +1,4 @@
-import Lab from '@/interface/Lab'
 import { LabStatus } from '@/interface/LabStatus'
-import ProblemI from '@/interface/Problem'
 import clsx from 'clsx'
 interface Props {
     items: LabStatus[]
@@ -23,17 +21,17 @@ function Status({ items }: Props) {
                             className={clsx(
                                 'h-2',
                                 status === 'success'
-                                    ? 'bg-lime-500 dark:bg-lime-200'
+                                    ? 'bg-lime-500 dark:bg-green-1'
                                     : status === 'failed'
-                                    ? 'bg-red-500 dark:bg-red-200'
-                                    : 'bg-gray-200 dark:bg-gray-200',
+                                    ? 'bg-red-500 dark:bg-red-1'
+                                    : 'bg-gray-200',
                                 'rounded-full'
                             )}
                         ></div>
                     )
                 })}
             </div>
-            <h6 className="font-bold text-md dark:text-white">
+            <h6 className="font-bold text-md dark:text-ascent-1">
                 {successLab}/{allLab}
             </h6>
         </div>

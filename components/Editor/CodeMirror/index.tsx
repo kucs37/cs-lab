@@ -68,7 +68,7 @@ function CodeMirror({
                 height,
                 fontSize,
             }}
-            className="overflow-hidden bg-white dark:bg-[#33373A]"
+            className="overflow-hidden bg-white dark:bg-secondary-1"
         >
             {children}
         </div>

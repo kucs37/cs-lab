@@ -5,6 +5,7 @@ import Header from './Header'
 import { setCode } from '@/store/slices/editorSlice'
 import { ghcolors, materialDarkCode } from '@/themes'
 import useDarkMode from '@/hooks/useDarkMode'
+import { specialKeyCode } from '@/utils'
 
 function Editor() {
     const { code } = useAppSelector((state) => state.editor)
@@ -16,7 +17,7 @@ function Editor() {
 
     return (
         <div
-            className="rounded-xl overflow-hidden flex-1 flex flex-col bg-white dark:bg-[#33373A] border dark:border-[#6B6B6B]"
+            className="rounded-xl overflow-hidden flex-1 flex flex-col bg-white dark:bg-secondary-1 border dark:border-secondary-2"
             style={{ minHeight: 200 }}
         >
             <Header />
