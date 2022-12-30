@@ -25,7 +25,7 @@ function Header({}: Props) {
             <div className="flex items-center gap-2">
                 <button
                     onClick={handleOnRun}
-                    className="bg-lime-400 dark:[#A7D456] border-b-4 active:border-b-2 transition-all duration-50 border-lime-500 dark:border-[#79A139] text-lime-800 dark:text-[#476021]  py-2 px-4 rounded-lg flex items-center gap-1"
+                    className="bg-lime-400 dark:bg-[#A7D456] border-b-4 active:border-b-2 transition-all duration-50 border-lime-500 dark:border-[#79A139] text-lime-800 dark:text-[#476021]  py-2 px-4 rounded-lg flex items-center gap-1"
                 >
                     <BsTerminal />
                     Run
