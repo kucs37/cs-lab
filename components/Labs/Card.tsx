@@ -23,7 +23,7 @@ function Card({ title, isClosed, problems, id, type }: Props) {
 
     return (
         <Link href={hrefTo}>
-            <a className="col-span-12 md:col-span-6 xl:col-span-4">
+            <a className="col-span-12 md:col-span-6 lg:col-span-4">
                 <div className="rounded-lg border bg-white dark:bg-secondary-1 dark:border-secondary-2  w-full h-full px-6 py-4 shadow-lg flex justify-end flex-col gap-3">
                     <div className="flex flex-wrap items-center gap-2">
                         {isClosed && <Badge title="อ่านอย่างเดียว" />}

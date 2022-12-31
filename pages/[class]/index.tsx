@@ -21,7 +21,7 @@ const Class: React.FC<Props> = ({ data }) => {
 
     return (
         <WithNavbar title="Fundamental Programming Concepts | CS-LAB">
-            <div className="container mx-auto xl:max-w-6xl px-4 pb-10">
+            <div className="container mx-auto max-w-max px-4 pb-10">
                 <div className="px-3 mt-6 pt-24 pb-4 bg-gradient-to-l from-[#28313B] to-[#485461] rounded-xl shadow">
                     <div>
                         <Section

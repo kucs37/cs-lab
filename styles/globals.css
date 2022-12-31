@@ -3,10 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-    a,
     input,
     button {
-        @apply outline-none focus:ring-2 ring-ascent-1/50;
+        @apply outline-none focus:ring-2 focus:ring-ascent-1/50;
     }
 }
 
