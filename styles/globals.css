@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    a,
+    input,
+    button {
+        @apply outline-none focus:ring-2 ring-ascent-1/50;
+    }
+}
+
 body {
     font-family: 'Sarabun', sans-serif;
     margin: 0;
