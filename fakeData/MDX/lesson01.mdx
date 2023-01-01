@@ -45,6 +45,7 @@ days = ['Sunday', 'Monday','Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturd
 score = scores[2]
 
 print(score)`}
+
 </SyntaxHighlight>
 
 <SyntaxHighlight language="python">
@@ -55,6 +56,7 @@ print(score)`}
 score = scores[1] + scores[4]
 
 print(score)`}
+
 </SyntaxHighlight>
 
 <SyntaxHighlight language="python">
@@ -63,12 +65,13 @@ print(score)`}
 # ต้องการค่า วันที่ 3 ของสัปดาห์ จาก List days (วันที่ 3 ตรงกับ Index ที่ 2 เพราะ Index เริ่มต้นที่ 0)
 
 print(days[2]) # ค่าที่ได้มา เป็น string`}
+
 </SyntaxHighlight>
 
 <h2 id="03">วนลูปข้อมูลใน List โดยใช้ index</h2>
 
 <SyntaxHighlight language="python">
-{`days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    {`days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 index = 0
 while index < 6:
     day = days[index]
@@ -87,10 +90,11 @@ while index < 6:
 total = 0
 while :
 
-
-print(total)`}
-readOnlyRanges={[{ line: 3, from: 0, to: -1 },{ line: 4, from: 0, to: 6 },{ line: 4, from: -1, to: 0 },{ line: 7, from: 0, to: -1 }]}
+`}
+readOnlyRanges={[{ line: 3, from: 0, to: -1 },{ line: 4, from: 0, to: 6 },{ line: 4, from: -1, to: 0 }]}
 />
+
+<Code source={`print(total)`} readOnly />
 
 2. กำหนด List `months` และ `days_in_month` เป็น List ของตัวย่อชื่อเดือน และ List ของจำนวนวันในแต่ละเดือนตามลำดับ  
    ให้แสดง 12 บรรทัด ว่าแต่ละเดือนมีกี่วัน โดยใช้ while loop โดยแสดงชื่อเดือนและจำนวนวัน คั่นด้วยช่องว่าง
@@ -110,12 +114,13 @@ while :
         {line : 5 ,from :0 , to : 5 },
         {line : 5 ,from :-1 , to : 0 }
     ]}
+
 />
 
 <h2 id="05"> Index เป็นค่าลบได้</h2>
 
 <SyntaxHighlight language="python">
-{`scores = [60, 70, 85, 66, 70, 0, 15, 9]
+    {`scores = [60, 70, 85, 66, 70, 0, 15, 9]
 days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']`}
 </SyntaxHighlight>
 
@@ -138,6 +143,7 @@ days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Satur
 score = scores[-2]
 
 print(score)`}
+
 </SyntaxHighlight>
 
 <SyntaxHighlight language="python">
@@ -157,12 +163,13 @@ print(score)`}
 # ต้องการค่า วันที่ 3 ของสัปดาห์ จาก List days (วันที่ 3 ตรงกับ Index ที่ -5)
 
 print(days[-5]) # ค่าที่ได้มา เป็น string`}
+
 </SyntaxHighlight>
 
 <h2 id="07">ระวังการเข้าถึงค่า ณ Index ที่ไม่มีใน List</h2>
 
 <SyntaxHighlight language="python">
-{`days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    {`days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 print(days[-8])  # ไม่มี Index ที่ -8`}
 </SyntaxHighlight>
 

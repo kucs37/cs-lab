@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react'
+import { useAppSelector } from '@/store/hooks'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import {
     materialDark,
@@ -10,10 +10,12 @@ interface Props {
     language: string
 }
 function SyntaxHighlight({ children, language }: Props) {
+    const { theme } = useAppSelector((state) => state.userSettings)
+    const isDarkMode = theme === 'dark'
     return (
         <SyntaxHighlighter
             language={language}
-            style={materialDark}
+            style={isDarkMode ? materialDark : ghcolors}
             showLineNumbers
             customStyle={{
                 fontSize: 18,

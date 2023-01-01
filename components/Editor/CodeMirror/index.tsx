@@ -17,6 +17,7 @@ interface Props {
         targetState: EditorState
     ) => Array<{ from: number | undefined; to: number | undefined }>
     variant?: 'problem' | 'lesson'
+    customFontSize?: number
 }
 
 function CodeMirror({
@@ -30,10 +31,13 @@ function CodeMirror({
     readonly,
     readOnlyRanges,
     variant = 'problem',
+    customFontSize,
 }: Props) {
     const { fontSize, tabSize, theme } = useAppSelector(
         (state) => state.userSettings
     )
+
+    const _fontSize = customFontSize ? customFontSize : fontSize
 
     const codeMirrorTheme =
         theme === 'dark'
@@ -69,7 +73,7 @@ function CodeMirror({
             style={{
                 width,
                 height,
-                fontSize,
+                fontSize: _fontSize,
             }}
             className="overflow-hidden bg-white dark:bg-secondary-1"
         >

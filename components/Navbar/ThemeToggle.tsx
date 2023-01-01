@@ -21,7 +21,10 @@ function ThemeToggle() {
         }
     }
     return (
-        <button onClick={handleOnThemeChange} className="hover:light:bg-gray-100 py-3 dark:text-white hover:bg-ascent-1/20 rounded-lg p-2 flex justify-between items-center w-full">
+        <button
+            onClick={handleOnThemeChange}
+            className="hover:light:bg-gray-100 py-3 dark:text-white hover:bg-ascent-1/20 rounded-lg p-2 flex justify-between items-center w-full"
+        >
             <h5>Dark Mode</h5>
             <div className="flex w-12 h-6 rounded-full bg-gray-200 dark:bg-secondary-2 border relative group">
                 <div
