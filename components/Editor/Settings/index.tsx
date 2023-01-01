@@ -4,11 +4,11 @@ import { IoClose, IoSettingsOutline } from 'react-icons/io5'
 import { useAppSelector, useAppDispatch } from '@/store/hooks'
 import { useOnClickOutside } from 'usehooks-ts'
 import { toggleSettings } from '@/store/slices/menuSlice'
-import { setFontSize, setTabSize } from '@/store/slices/editorSlice'
+import { setFontSize, setTabSize } from '@/store/slices/userSettingsSlice'
 
 function Settings() {
     const settingsWindow = useRef<HTMLDivElement>(null)
-    const { fontSize, tabSize } = useAppSelector((state) => state.editor)
+    const { fontSize, tabSize } = useAppSelector((state) => state.userSettings)
     const dispatch = useAppDispatch()
 
     useOnClickOutside(settingsWindow, () => dispatch(toggleSettings()))

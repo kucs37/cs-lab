@@ -21,7 +21,7 @@ function Outline({ className }: Props) {
 
                 <a
                     href="#"
-                    className="no-underline text-gray-500 dark:text-ascent-1"
+                    className="no-underline block text-gray-500 dark:text-ascent-1"
                 >
                     <li>
                         02 Elab Test Case
@@ -30,7 +30,7 @@ function Outline({ className }: Props) {
                 </a>
                 <a
                     href="#"
-                    className="no-underline text-gray-500 dark:text-ascent-1"
+                    className="no-underline block text-gray-500 dark:text-ascent-1"
                 >
                     <li>03 จะบวกแบบไหน</li>
                 </a>

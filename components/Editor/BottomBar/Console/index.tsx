@@ -1,18 +1,22 @@
 import { useRef, useEffect } from 'react'
 import { debounce } from 'lodash'
 import { io } from 'socket.io-client'
+import { useAppSelector } from '@/store/hooks'
 
 function Console() {
     const terminal = useRef<any>(null)
     const xTermRoot = useRef<HTMLDivElement>(null)
     const fitAddon = useRef<any>(null)
+    const { theme } = useAppSelector((state) => state.userSettings)
+    const isDarkMode = theme === 'dark'
 
     const initialXterm = async (initialize: HTMLDivElement) => {
         const { Terminal } = await import('xterm')
         const { FitAddon } = await import('xterm-addon-fit')
         const _terminal = new Terminal({
             theme: {
-                background: '#33373A',
+                background: isDarkMode ? '#33373A' : '#fff',
+                foreground: isDarkMode ? '#fff' : '#000',
             },
         })
         terminal.current = _terminal
@@ -40,8 +44,11 @@ function Console() {
         //handle on xterm resize
         const resize = new ResizeObserver(onResize)
         resize.observe(xTermRoot.current)
-        return () => resize.disconnect()
-    }, [xTermRoot])
+        return () => {
+            terminal.current.dispose()
+            resize.disconnect()
+        }
+    }, [xTermRoot, theme])
 
     return <div ref={xTermRoot} className="h-full m-2"></div>
 }

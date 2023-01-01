@@ -1,16 +1,15 @@
 import { ReactNode } from 'react'
-import { NextPage } from 'next'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { useState, useRef, LegacyRef, forwardRef } from 'react'
 import ProfileImage from './ProfileImage'
 import Logo from '@/public/logo-CS37.png'
 import Image from 'next/image'
-import { IoSettingsOutline } from 'react-icons/io5'
 import { BsDoorOpen } from 'react-icons/bs'
 import { useRouter } from 'next/router'
-import { useOnClickOutside } from 'usehooks-ts'
 import Hamburger from './Hamburger'
+import ThemeToggle from './ThemeToggle'
+import { useOnClickOutside } from 'usehooks-ts'
 
 interface Props {
     children?: ReactNode
@@ -20,22 +19,18 @@ const Navbar = forwardRef(
     ({ children, hamburgerChild }: Props, ref: LegacyRef<HTMLDivElement>) => {
         const { status, data: session } = useSession()
         const [isProfileClick, setIsProfileClick] = useState<boolean>(false)
+        const profileRef = useRef<HTMLDivElement>(null)
+
         const router = useRouter()
-        const settingRef = useRef<HTMLDivElement>(null)
-
+        useOnClickOutside(profileRef, () => setIsProfileClick(false))
         const handleSignOut = () => {
-            signOut()
-        }
-
-        const handleClickSetting = () => {
-            router.push('/settings')
+            router.replace('/login')
+            // signOut()
         }
 
         const handleClickProfile = () => {
             setIsProfileClick(!isProfileClick)
         }
-
-        useOnClickOutside(settingRef, handleClickProfile)
 
         return (
             <div
@@ -45,7 +40,7 @@ const Navbar = forwardRef(
                 <div className="px-6 py-2 flex justify-between items-center">
                     <Hamburger children={hamburgerChild} />
                     <Link href={'/'}>
-                        <a>
+                        <a className="rounded-full w-[40px] h-[40px]">
                             <Image
                                 src={Logo}
                                 layout="fixed"
@@ -56,26 +51,14 @@ const Navbar = forwardRef(
                         </a>
                     </Link>
                     {children}
-
-                    <div>
-                        <div className="flex w-full items-center gap-2 relative ">
+                    <div ref={profileRef} className="">
+                        <button className="flex items-center gap-2 relative rounded-full">
                             <ProfileImage onClick={handleClickProfile} />
                             {isProfileClick && (
-                                <div
-                                    ref={settingRef}
-                                    className="z-40 absolute w-[200px] bg-white dark:bg-zinc-800 rounded-lg shadow-md shadow-gray-100 dark:shadow-md dark:border-zinc-900 border border-gray-50 right-0 top-14 overflow-hidden p-2"
-                                >
-                                    {/* <button
-                                        className="hover:bg-gray-100 rounded-lg p-2 inline-flex items-center justify-between w-full"
-                                        onClick={handleClickSetting}
-                                    >
-                                        <p>การตั้งค่า</p>
-                                        <div className="p-2 rounded-full bg-gray-50">
-                                            <IoSettingsOutline size="1.2rem" />
-                                        </div>
-                                    </button> */}
+                                <div className="z-40 absolute w-[220px] bg-white dark:bg-zinc-800 rounded-lg shadow-md dark:shadow-md border-zinc-200 dark:border-zinc-900 border  right-0 top-12 overflow-hidden p-2">
+                                    <ThemeToggle />
                                     <button
-                                        className="hover:light:bg-gray-100  dark:text-white rounded-lg p-2 inline-flex items-center justify-between w-full"
+                                        className="hover:light:bg-gray-100  dark:text-white hover:bg-ascent-1/20 rounded-lg p-2 flex items-center justify-between w-full"
                                         onClick={handleSignOut}
                                     >
                                         <p>ออกจากระบบ</p>
@@ -85,7 +68,7 @@ const Navbar = forwardRef(
                                     </button>
                                 </div>
                             )}
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>

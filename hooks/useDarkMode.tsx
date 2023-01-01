@@ -23,7 +23,9 @@ function useDarkMode() {
 
     useEffect(() => {
         const observer = new MutationObserver(callback)
-        observer.observe(document.body, { attributes: true })
+        observer.observe(document.querySelector('html')!, {
+            attributes: true,
+        })
         return () => observer.disconnect()
     }, [])
     return isDarkMode

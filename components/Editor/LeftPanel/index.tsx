@@ -35,7 +35,7 @@ function LeftPanel() {
             {/* Tab Resize */}
 
             <div
-                className="group flex-shrink-0 w-6 h-full bg-gray-100 dark:bg-primary-1 cursor-col-resize flex items-center justify-center"
+                className="group flex-shrink-0 w-6 h-full bg-zinc-100 dark:bg-primary-1 cursor-col-resize flex items-center justify-center"
                 onTouchStart={() => setIsDrag(true)}
                 onMouseDown={() => setIsDrag(true)}
                 onDoubleClick={onDoubleClick}

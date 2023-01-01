@@ -10,7 +10,9 @@ function Loaded() {
                 </h1>
 
                 {/* Test case */}
-                <Testcase status={[]} />
+                <div className='my-2'>
+                    <Testcase status={['P', 'P', 'P', '-']} />
+                </div>
                 <Markdown />
             </div>
         </>

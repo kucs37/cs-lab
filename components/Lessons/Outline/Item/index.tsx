@@ -16,7 +16,7 @@ const Item = ({
     return (
         <button
             className={clsx(
-                'w-full grid grid-cols-12 items-center hover:bg-gray-100 dark:hover:bg-[#464646] dark:text-ascent-1 p-2 rounded-xl',
+                'w-full grid grid-cols-12 items-center hover:bg-gray-100 dark:hover:bg-[#464646] dark:text-ascent-1 p-3 rounded-xl',
                 active && 'text-gray-900 dark:text-ascent-1 font-bold'
             )}
         >

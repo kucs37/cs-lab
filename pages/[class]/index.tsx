@@ -21,19 +21,12 @@ const Class: React.FC<Props> = ({ data }) => {
 
     return (
         <WithNavbar title="Fundamental Programming Concepts | CS-LAB">
-            <div className="container mx-auto max-w-max px-4 pb-10">
-                <div className="px-3 mt-6 pt-24 pb-4 bg-gradient-to-l from-[#28313B] to-[#485461] rounded-xl shadow">
-                    <div>
-                        <Section
-                            code={Data?.resData[0].fkSubjectId!}
-                            section={Data?.resData[0].sectionId!}
-                        />
-
-                        <h3 className="font-bold text-3xl my-2 text-white">
-                            Fundamental Programming Concepts
-                        </h3>
-                    </div>
-                </div>
+            <div className="container mx-auto w-full md:max-w-6xl px-4 pb-10">
+                <Backto href="/" className="my-6" />
+                <Banner
+                    code={Data?.resData[0].fkSubjectId!}
+                    section={Data?.resData[0].sectionId!}
+                />
                 <Filter show={show} setShow={setShow} />
 
                 <div
@@ -62,6 +55,7 @@ export default Class
 
 import { fakeLabs } from '@/fakeData'
 import { showType } from '@/interface/LabType'
+import Banner from '@/components/Class/Banner'
 
 export async function getServerSideProps(context: NextPageContext) {
     const res: GetLabs = {

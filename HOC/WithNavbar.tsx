@@ -36,7 +36,6 @@ const WithNavbar: React.FC<Props> = forwardRef(
                     ref={navbarRef}
                     hamburgerChild={hamburgerChild}
                 />
-
                 {children}
             </div>
         </>

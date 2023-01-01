@@ -4,7 +4,7 @@ import menuReducer from './slices/menuSlice'
 import historyReducer from './slices/historySlice'
 import editorReducer from './slices/editorSlice'
 import mobileMenuReducer from './slices/mobileMenuSlice'
-import { themeSlice } from './slices/themeSlice'
+import userSettingsReducer from './slices/userSettingsSlice'
 
 export const makeStore = () =>
     configureStore({
@@ -13,7 +13,7 @@ export const makeStore = () =>
             history: historyReducer,
             editor: editorReducer,
             mobileMenu: mobileMenuReducer,
-            theme: themeSlice.reducer,
+            userSettings: userSettingsReducer,
         },
     })
 export type AppStore = ReturnType<typeof makeStore>

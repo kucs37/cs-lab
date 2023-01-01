@@ -47,7 +47,11 @@ export async function getServerSideProps(ctx: GetServerSideProps) {
     const mdxPath = path.join(process.cwd(), 'fakeData/MDX/lesson01.mdx')
     const file = readFileSync(mdxPath, 'utf8')
     const { metadata, content } = parseMD(file)
-    const mdxSource = await serialize(content)
+    const mdxSource = await serialize(content, {
+        mdxOptions: {
+            development: false,
+        },
+    })
 
     return {
         props: {

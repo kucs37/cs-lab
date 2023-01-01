@@ -1,10 +1,10 @@
 import { IoSettingsOutline } from 'react-icons/io5'
 import InputRange from '../Settings/InputRange'
 import { useAppSelector, useAppDispatch } from '@/store/hooks'
-import { setFontSize, setTabSize } from '@/store/slices/editorSlice'
+import { setFontSize, setTabSize } from '@/store/slices/userSettingsSlice'
 
 function Settings() {
-    const { fontSize, tabSize } = useAppSelector((state) => state.editor)
+    const { fontSize, tabSize } = useAppSelector((state) => state.userSettings)
     const dispatch = useAppDispatch()
 
     return (

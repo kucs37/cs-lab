@@ -4,13 +4,17 @@ import Testcase from '../Testcase'
 import Markdown from '../Description/Markdown'
 import { useAppSelector } from '@/store/hooks'
 import { sortByKey } from '@/utils'
+import Backto from '@/components/Common/Backto'
+import { useRouter } from 'next/router'
 
 function Problem() {
     const { allHistory } = useAppSelector((state) => state.history)
     const latestHistory = sortByKey(allHistory, 'date', 'desc')[0]
-
+    const router = useRouter()
+    const backHref = router.asPath.split('/').slice(0, -2).join('/')
     return (
         <div className="bg-white dark:bg-secondary-1 border dark:border-secondary-2 p-4 rounded-md">
+            <Backto href={backHref} className="mb-4" />
             <Badge title="อ่านอย่างเดียว" />
             <div className="my-4">
                 <h4 className="text-lime-600">
