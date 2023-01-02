@@ -1,10 +1,9 @@
-import { RefObject, useEffect, useState, useRef } from 'react'
+import { RefObject, useEffect, useState } from 'react'
 import useDrag from '@/hooks/useDrag'
-import Console from './Console'
 import { useAppSelector, useAppDispatch } from '@/store/hooks'
 import { toggleConsole } from '@/store/slices/menuSlice'
 import { IoClose } from 'react-icons/io5'
-import useIsResize from '@/hooks/useIsResize'
+import Output from './Output'
 
 interface WindowI {
     zoneRef: RefObject<HTMLDivElement>
@@ -43,7 +42,7 @@ function Window({ zoneRef }: WindowI) {
                 <div className="p-2 cursor-pointer select-none w-fit ">
                     <div className="border-b-2 border-gray-900 dark:border-ascent-1 px-2 flex items-center gap-1">
                         <h4 className="text-sm font-medium uppercase dark:text-ascent-1">
-                            console
+                            output
                         </h4>
                         <button
                             className="h-fit"
@@ -53,7 +52,7 @@ function Window({ zoneRef }: WindowI) {
                         </button>
                     </div>
                 </div>
-                <Console />
+                <Output />
             </div>
         </>
     )

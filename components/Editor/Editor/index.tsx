@@ -3,9 +3,8 @@ import React from 'react'
 import CodeMirror from '../CodeMirror'
 import Header from './Header'
 import { setCode } from '@/store/slices/editorSlice'
-import { ghcolors, materialDarkCode } from '@/themes'
-import useDarkMode from '@/hooks/useDarkMode'
 import { specialKeyCode } from '@/utils'
+import axios from 'axios'
 
 function Editor() {
     const { code } = useAppSelector((state) => state.editor)
@@ -14,6 +13,7 @@ function Editor() {
     const handleOnKeyDown = (key: KeyboardEvent) => {
         // if (!specialKeyCode.includes(key.key)) setstatus('saving')
     }
+    console.log(code)
 
     return (
         <div

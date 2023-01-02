@@ -84,36 +84,39 @@ while index < 6:
 1. ประกาศ List ของจำนวนเฉพาะ ให้ชื่อตัวแปรว่า `primes` โดยมีข้อมูลเป็นจำนวนเฉพาะ 10 จำนวนแรก  
    คำนวณหาผลรวมของจำนวนเฉพาะทั้ง 10 จำนวน โดยใช้ while loop เก็บผลรวมใส่ในตัวแปร `total`
 
-<Code
-    source={`# เพิ่มโค้ดในช่องว่าง
+<CodeBlock
+id="1"
+sources={[    {id : 'e93986a0-5a1e-47b0-a920-796b33fea555',source :`# เพิ่มโค้ดในช่องว่าง
 
 total = 0
 while :
 
-`}
-readOnlyRanges={[{ line: 3, from: 0, to: -1 },{ line: 4, from: 0, to: 6 },{ line: 4, from: -1, to: 0 }]}
-/>
+`, readOnlyRanges : [{ line: 3, from: 0, to: -1 },{ line: 4, from: 0, to: 6 },{ line: 4, from: -1, to: 0 }]} , 
+{id : '3a3d0afa-415b-4dd8-9260-d62f7fd2e214',source :`print(total)` , readOnly : true}]
+}
 
-<Code source={`print(total)`} readOnly />
+/>
 
 2. กำหนด List `months` และ `days_in_month` เป็น List ของตัวย่อชื่อเดือน และ List ของจำนวนวันในแต่ละเดือนตามลำดับ  
    ให้แสดง 12 บรรทัด ว่าแต่ละเดือนมีกี่วัน โดยใช้ while loop โดยแสดงชื่อเดือนและจำนวนวัน คั่นด้วยช่องว่าง
 
-<Code
-    source={`months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+<CodeBlock
+id="2"
+sources={[{id : '2f06c2cc-3900-4afa-bbd4-21c28305f54f' ,source : `months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 index = 0
 while :
 
-    `}
-    readOnlyRanges={[
+    `,
+    readOnlyRanges :[
         { line: 1, from: 0, to: -1 },
         { line: 2, from: 0, to: -1 },
         {line : 4 ,from :0 , to : -1 },
         {line : 5 ,from :0 , to : 5 },
         {line : 5 ,from :-1 , to : 0 }
-    ]}
+    ]}]
+    }
 
 />
 
@@ -182,14 +185,14 @@ while i <= 7:
 
 <h2 id="08">แบบฝึกหัด</h2>
 
-1. ประกาศ List ของจำนวนเฉพาะ ให้ชื่อตัวแปรว่า primes โดยมีข้อมูลเป็นจำนวนเฉพาะ 10 จำนวนแรก
+1. ประกาศ List ของจำนวนเฉพาะ ให้ชื่อตัวแปรว่า `primes` โดยมีข้อมูลเป็นจำนวนเฉพาะ 10 จำนวนแรก
 
-<MDInput type="text" ans="primes = [2,3,5,7,11,13,17,19,23,29]" id="003" />
+<CodeBlock sources={[{ source: '' }]} id="3" />
 
-2. ประกาศ List ของข้อมูลใด ๆ ให้ชื่อตัวแปรว่า data โดยมีข้อมูล 15 ตัว
+2. ประกาศ List ของข้อมูลใด ๆ ให้ชื่อตัวแปรว่า `data` โดยมีข้อมูล 15 ตัว
 
-<MDInput type="text" id="004" />
+<CodeBlock sources={[{ source: '' }]} id="4" />
 
-3. ประกาศ List ของที่เก็บข้อมูลเดือนทั้ง 12 เดือนใน 1 ปี (ตั้งแต่มกราคม ถึง ธันวาคม ตามลำดับ) ให้ชื่อตัวแปรว่า months โดยเก็บชื่อเดือน 3 ตัวแรกของแต่ละเดือนเป็นตัวพิมพ์ใหญ่ทั้งหมด (เช่น JAN สำหรับเดือนมกราคม)
+3. ประกาศ List ของที่เก็บข้อมูลเดือนทั้ง 12 เดือนใน 1 ปี (ตั้งแต่มกราคม ถึง ธันวาคม ตามลำดับ) ให้ชื่อตัวแปรว่า `months` โดยเก็บชื่อเดือน 3 ตัวแรกของแต่ละเดือนเป็นตัวพิมพ์ใหญ่ทั้งหมด (เช่น JAN สำหรับเดือนมกราคม)
 
-<MDInput type="text" id="005" />
+<CodeBlock sources={[{ source: '' }]} id="5" />

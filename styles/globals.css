@@ -17,7 +17,7 @@
         @apply outline-none focus-visible:ring-2 dark:focus:ring-ascent-1/50 focus-visible:ring-zinc-400;
     }
     code {
-        @apply p-1 font-semibold text-gray-900 bg-zinc-200 dark:text-ascent-1 dark:bg-secondary-2;
+        @apply p-1 font-semibold text-gray-900 bg-zinc-200 dark:text-ascent-1 dark:bg-secondary-2 rounded-md;
     }
 }
 

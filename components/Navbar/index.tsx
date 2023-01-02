@@ -52,7 +52,7 @@ const Navbar = forwardRef(
                     </Link>
                     {children}
                     <div ref={profileRef} className="">
-                        <button className="flex items-center gap-2 relative rounded-full">
+                        <div className="flex items-center gap-2 relative rounded-full">
                             <ProfileImage onClick={handleClickProfile} />
                             {isProfileClick && (
                                 <div className="z-40 absolute w-[220px] bg-white dark:bg-zinc-800 rounded-lg shadow-md dark:shadow-md border-zinc-200 dark:border-zinc-900 border  right-0 top-12 overflow-hidden p-2">
@@ -68,7 +68,7 @@ const Navbar = forwardRef(
                                     </button>
                                 </div>
                             )}
-                        </button>
+                        </div>
                     </div>
                 </div>
             </div>
