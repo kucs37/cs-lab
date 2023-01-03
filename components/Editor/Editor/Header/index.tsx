@@ -25,7 +25,7 @@ function Header({}: Props) {
                 'https://api-lab.peerawitp.me/api/v2/execute',
                 {
                     language: 'python',
-                    version: '3.5.10',
+                    version: '3.10.0',
                     files: [
                         {
                             content: code,
