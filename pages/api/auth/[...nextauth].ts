@@ -39,11 +39,12 @@ export default NextAuth({
                     //@ts-ignore
                     profile.email.endsWith('@ku.th')
                 ) {
-                    let checkInResult = await checkIn()
-                    if (checkInResult) {
-                        return true
-                    }
-                    return false
+                    // let checkInResult = await checkIn()
+                    // if (checkInResult) {
+                    //     return true
+                    // }
+                    // return false
+                    return true
                 } else {
                     throw new Error('not-authorize')
                 }
