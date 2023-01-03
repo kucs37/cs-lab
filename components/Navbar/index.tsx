@@ -10,6 +10,7 @@ import { useRouter } from 'next/router'
 import Hamburger from './Hamburger'
 import ThemeToggle from './ThemeToggle'
 import { useOnClickOutside } from 'usehooks-ts'
+import { io } from 'socket.io-client'
 
 interface Props {
     children?: ReactNode
@@ -24,8 +25,20 @@ const Navbar = forwardRef(
         const router = useRouter()
         useOnClickOutside(profileRef, () => setIsProfileClick(false))
         const handleSignOut = () => {
+            checkOut()
             router.replace('/login')
             // signOut()
+        }
+
+        const checkOut = () => {
+            return new Promise((resolve, reject) => {
+                try {
+                    const socket = io('http://10.147.18.161:3000/socket')
+                    socket.disconnect()
+                } catch (e) {
+                    reject(e)
+                }
+            })
         }
 
         const handleClickProfile = () => {

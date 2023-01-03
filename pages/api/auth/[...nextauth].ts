@@ -2,6 +2,21 @@ import axios from 'axios'
 import NextAuth, { Account, NextAuthOptions, Profile } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 import jwt from 'jsonwebtoken'
+import { io } from 'socket.io-client'
+
+const checkIn = () => {
+    return new Promise((resolve, reject) => {
+        try {
+            const socket = io('http://10.147.18.161:3000/socket')
+            socket.on('connect', () => {
+                socket.emit('checkIn', 'test')
+                resolve(true)
+            })
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
 
 export default NextAuth({
     providers: [
@@ -24,7 +39,11 @@ export default NextAuth({
                     //@ts-ignore
                     profile.email.endsWith('@ku.th')
                 ) {
-                    return true
+                    let checkInResult = await checkIn()
+                    if (checkInResult) {
+                        return true
+                    }
+                    return false
                 } else {
                     throw new Error('not-authorize')
                 }
@@ -32,23 +51,23 @@ export default NextAuth({
             throw new Error('Sign in provider not supported')
         },
         async jwt({ token, account, isNewUser, profile, user }) {
-            let ress = await axios.post(
-                process.env.API_BASE_URL! + '/auth/verifyToken',
-                {},
-                {
-                    headers: {
-                        Authorization: `Bearer ${jwt.sign(
-                            {
-                                email: token.email,
-                            },
-                            process.env.NEXTAUTH_SECRET!
-                        )}`,
-                    },
-                }
-            )
+            // let ress = await axios.post(
+            //     process.env.API_BASE_URL! + '/auth/verifyToken',
+            //     {},
+            //     {
+            //         headers: {
+            //             Authorization: `Bearer ${jwt.sign(
+            //                 {
+            //                     email: token.email,
+            //                 },
+            //                 process.env.NEXTAUTH_SECRET!
+            //             )}`,
+            //         },
+            //     }
+            // )
             return {
                 ...token,
-                ...ress.data.resData,
+                // ...ress.data.resData,
             }
         },
         async session({ session, user, token }) {
