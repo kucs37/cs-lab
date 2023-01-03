@@ -1,14 +1,16 @@
 import { useAppSelector } from '@/store/hooks'
-import React from 'react'
+import CodeMirror from '../CodeMirror'
 
 function Output() {
     const { output } = useAppSelector((state) => state.editor)
 
     return (
-        <div className="h-full overflow-y-scroll">
-            <pre className="p-2 text-gray-900 dark:text-ascent-1">{output}</pre>
-            <input type="text" />
-        </div>
+        <CodeMirror
+            height="100%"
+            initialDoc={output ? output : ''}
+            value={output ? output : ''}
+            readonly
+        />
     )
 }
 

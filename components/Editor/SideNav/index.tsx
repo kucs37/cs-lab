@@ -4,7 +4,7 @@ import { AiOutlineHistory } from 'react-icons/ai'
 import { useRouter } from 'next/router'
 import { useAppDispatch } from '@/store/hooks'
 import {
-    toggleConsole,
+    toggleBottomBar,
     toggleHistory,
     toggleSettings,
 } from '@/store/slices/menuSlice'
@@ -26,7 +26,7 @@ function Buttons() {
             <Button
                 tooltip="Console"
                 icon={<BsTerminal size="1.75rem" />}
-                onClick={() => dispatch(toggleConsole())}
+                onClick={() => dispatch(toggleBottomBar())}
             />
 
             <Button

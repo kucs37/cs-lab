@@ -3,15 +3,17 @@ import { createSlice } from '@reduxjs/toolkit'
 interface MenuState {
     isSettingsOpen: boolean
     isHistoryOpen: boolean
-    isConsoleOpen: boolean
     isHamburgerOpen: boolean
+    isBottomBarOpen: boolean
+    bottomBarTab: 'input' | 'output'
 }
 
 const initialState: MenuState = {
     isSettingsOpen: false,
     isHistoryOpen: false,
-    isConsoleOpen: false,
+    isBottomBarOpen: false,
     isHamburgerOpen: false,
+    bottomBarTab: 'input',
 }
 
 export const menuSlice = createSlice({
@@ -24,14 +26,17 @@ export const menuSlice = createSlice({
         toggleHistory: (state) => {
             state.isHistoryOpen = !state.isHistoryOpen
         },
-        openConsole: (state) => {
-            state.isConsoleOpen = true
+        openBottomBar: (state) => {
+            state.isBottomBarOpen = true
         },
-        toggleConsole: (state) => {
-            state.isConsoleOpen = !state.isConsoleOpen
+        toggleBottomBar: (state) => {
+            state.isBottomBarOpen = !state.isBottomBarOpen
         },
         toggleHamburger: (state) => {
             state.isHamburgerOpen = !state.isHamburgerOpen
+        },
+        setBottomBarTab: (state, action) => {
+            state.bottomBarTab = action.payload
         },
     },
 })
@@ -39,8 +44,9 @@ export const menuSlice = createSlice({
 export const {
     toggleSettings,
     toggleHistory,
-    openConsole,
-    toggleConsole,
+    openBottomBar,
+    toggleBottomBar,
     toggleHamburger,
+    setBottomBarTab,
 } = menuSlice.actions
 export default menuSlice.reducer

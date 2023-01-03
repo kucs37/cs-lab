@@ -13,7 +13,6 @@ function Editor() {
     const handleOnKeyDown = (key: KeyboardEvent) => {
         // if (!specialKeyCode.includes(key.key)) setstatus('saving')
     }
-    console.log(code)
 
     return (
         <div

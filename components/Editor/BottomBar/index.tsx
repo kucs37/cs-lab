@@ -1,9 +1,10 @@
 import { RefObject, useEffect, useState } from 'react'
 import useDrag from '@/hooks/useDrag'
 import { useAppSelector, useAppDispatch } from '@/store/hooks'
-import { toggleConsole } from '@/store/slices/menuSlice'
-import { IoClose } from 'react-icons/io5'
+import { setBottomBarTab } from '@/store/slices/menuSlice'
+import Navigation from './Navigation'
 import Output from './Output'
+import Input from './Input'
 
 interface WindowI {
     zoneRef: RefObject<HTMLDivElement>
@@ -12,14 +13,16 @@ interface WindowI {
 function Window({ zoneRef }: WindowI) {
     const [windowHeight, setWindowHeight] = useState<number>(200)
     const { size, setIsDrag } = useDrag(zoneRef, windowHeight, 'height')
-    const { isConsoleOpen } = useAppSelector((state) => state.menu)
+    const { isBottomBarOpen, bottomBarTab } = useAppSelector(
+        (state) => state.menu
+    )
     const dispatch = useAppDispatch()
 
     useEffect(() => {
         setWindowHeight(size + 83)
     }, [size])
 
-    if (!isConsoleOpen) return null
+    if (!isBottomBarOpen) return null
     return (
         <>
             <div
@@ -39,20 +42,12 @@ function Window({ zoneRef }: WindowI) {
                     height: windowHeight,
                 }}
             >
-                <div className="p-2 cursor-pointer select-none w-fit ">
-                    <div className="border-b-2 border-gray-900 dark:border-ascent-1 px-2 flex items-center gap-1">
-                        <h4 className="text-sm font-medium uppercase dark:text-ascent-1">
-                            output
-                        </h4>
-                        <button
-                            className="h-fit"
-                            onClick={() => dispatch(toggleConsole())}
-                        >
-                            <IoClose className="text-md dark:text-ascent-1" />
-                        </button>
-                    </div>
-                </div>
-                <Output />
+                <Navigation
+                    active={bottomBarTab}
+                    onClick={(tab) => dispatch(setBottomBarTab(tab))}
+                />
+                {bottomBarTab === 'input' && <Input />}
+                {bottomBarTab === 'output' && <Output />}
             </div>
         </>
     )

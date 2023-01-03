@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import SaveStatus from '../../SaveStatus'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
-import { openConsole } from '@/store/slices/menuSlice'
+import { openBottomBar, setBottomBarTab } from '@/store/slices/menuSlice'
 import { setOutput } from '@/store/slices/editorSlice'
 import { BsCheck2All, BsTerminal } from 'react-icons/bs'
 import axios from 'axios'
@@ -12,10 +12,12 @@ interface Props {}
 function Header({}: Props) {
     const [saveStatus, setsaveStatus] = useState<'saving' | 'saved'>('saved')
     const [status, setStatus] = useState<'running' | 'error' | 'idle'>('idle')
-    const { code } = useAppSelector((state) => state.editor)
+    const { code, input } = useAppSelector((state) => state.editor)
     const dispatch = useAppDispatch()
     const handleOnRun = async () => {
-        dispatch(openConsole())
+        dispatch(openBottomBar())
+        dispatch(setBottomBarTab('output'))
+        dispatch(setOutput(''))
 
         try {
             setStatus('running')
@@ -29,7 +31,7 @@ function Header({}: Props) {
                             content: code,
                         },
                     ],
-                    stdin: 'chokun\nsornchai',
+                    stdin: input,
                     args: [],
                     compile_timeout: 1000,
                     run_timeout: 3000,

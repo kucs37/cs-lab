@@ -3,7 +3,7 @@ import { RefObject, useEffect, useState, useRef } from 'react'
 import useDrag from '@/hooks/useDrag'
 import Console from './Console'
 import { useAppSelector, useAppDispatch } from '@/store/hooks'
-import { toggleConsole } from '@/store/slices/menuSlice'
+import { toggleBottomBar } from '@/store/slices/menuSlice'
 import { IoClose } from 'react-icons/io5'
 
 interface WindowI {
@@ -13,14 +13,14 @@ interface WindowI {
 function Index({ zoneRef }: WindowI) {
     const [windowHeight, setWindowHeight] = useState<number>(200)
     const { size, setIsDrag } = useDrag(zoneRef, windowHeight, 'height')
-    const { isConsoleOpen } = useAppSelector((state) => state.menu)
+    const { isBottomBarOpen } = useAppSelector((state) => state.menu)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
         setWindowHeight(size + 83)
     }, [size])
 
-    if (!isConsoleOpen) return null
+    if (!isBottomBarOpen) return null
     return (
         <>
             <div
@@ -47,7 +47,7 @@ function Index({ zoneRef }: WindowI) {
                         </h4>
                         <button
                             className="h-fit"
-                            onClick={() => dispatch(toggleConsole())}
+                            onClick={() => dispatch(toggleBottomBar())}
                         >
                             <IoClose className="text-md dark:text-ascent-1" />
                         </button>
