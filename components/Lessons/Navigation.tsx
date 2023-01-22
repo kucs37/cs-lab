@@ -18,7 +18,7 @@ function Navigation({ variant, href, title }: Props) {
             >
                 <h5
                     className={clsx(
-                        'text-slate-500 group-hover:text-slate-700',
+                        'text-slate-500 dark:text-slate-300 dark:group-hover:text-slate-200 group-hover:text-slate-700',
                         variant === 'next' && 'text-end'
                     )}
                 >
@@ -26,7 +26,7 @@ function Navigation({ variant, href, title }: Props) {
                 </h5>
                 <h4
                     className={clsx(
-                        'text-lg md:text-xl font-medium text-slate-700 group-hover:text-slate-900',
+                        'text-lg md:text-xl font-medium text-slate-700 dark:text-slate-300 dark:group-hover:text-slate-200 group-hover:text-slate-900',
                         variant === 'next' && 'text-end'
                     )}
                 >
