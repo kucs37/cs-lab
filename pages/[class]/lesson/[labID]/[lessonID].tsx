@@ -11,12 +11,7 @@ import { useRouter } from 'next/router'
 import { motion, useScroll } from 'framer-motion'
 import Backto from '@/components/Common/Backto'
 import Badge from '@/components/Common/Badge'
-<<<<<<< HEAD
-import Footer from '@/components/Lessons/RightSection/Common/Footer'
-import { useEffect, useState } from 'react'
-=======
 import Footer from '@/components/Lessons/Footer'
->>>>>>> 7d27324 (Refactor : Lesson Folder Structure)
 
 interface Props {
     metadata: {
@@ -30,7 +25,7 @@ interface Props {
 
 function LabID({ metadata, content, answers, isClosed, title }: Props) {
     const router = useRouter()
-    const backHref = router.asPath.split('/').slice(0, -3).join('/')    
+    const backHref = router.asPath.split('/').slice(0, -3).join('/')
 
     return (
         <WithNavbar
