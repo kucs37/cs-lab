@@ -24,7 +24,12 @@ function Navigation({ variant, href, title }: Props) {
                 >
                     {variant === 'next' ? 'ถัดไป' : 'ก่อนหน้า'}
                 </h5>
-                <h4 className="text-xl font-medium text-slate-700 group-hover:text-slate-900">
+                <h4
+                    className={clsx(
+                        'text-lg md:text-xl font-medium text-slate-700 group-hover:text-slate-900',
+                        variant === 'next' && 'text-end'
+                    )}
+                >
                     {title}
                 </h4>
             </a>

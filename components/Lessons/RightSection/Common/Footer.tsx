@@ -19,7 +19,7 @@ function Footer() {
                     ล้างคำตอบ
                 </button>
             </div>
-            <div className="flex justify-between mt-6">
+            <div className="flex justify-between mt-6 gap-2">
                 <Navigation
                     variant="prev"
                     title="02 Elab's Manual Grading"
