@@ -10,6 +10,7 @@ import jwt from 'jsonwebtoken'
 import { GetLabs } from '@/interface/GetLabs'
 import Section from '@/components/Class/Section'
 import Filter from '@/components/Labs/Filter'
+import { AnimatePresence } from "framer-motion"
 
 interface Props {
     data: GetLabs | null
@@ -33,18 +34,27 @@ const Class: React.FC<Props> = ({ data }) => {
                     className="grid grid-cols-12 gap-4 place-items-stretch"
                     style={{ gridAutoRows: '1fr' }}
                 >
-                    {Data?.resData
-                        .filter(({ status }) => status == show || show === 0)
-                        .map(({ labId, name, status, type, problems }, id) => (
-                            <Card
-                                key={id}
-                                type={type}
-                                id={labId}
-                                title={name}
-                                problems={problems}
-                                isClosed={status === 2}
-                            />
-                        ))}
+                    <AnimatePresence key={show}>
+                        {Data?.resData
+                            .filter(
+                                ({ status }) => status == show || show === 0
+                            )
+                            .map(
+                                (
+                                    { labId, name, status, type, problems },
+                                    id
+                                ) => (
+                                    <Card
+                                        key={id}
+                                        type={type}
+                                        id={labId}
+                                        title={name}
+                                        problems={problems}
+                                        isClosed={status === 2}
+                                    />
+                                )
+                            )}
+                    </AnimatePresence>
                 </div>
             </div>
         </WithNavbar>

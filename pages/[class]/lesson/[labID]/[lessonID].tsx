@@ -8,9 +8,11 @@ import { OutlineI } from '@/interface/Outline'
 import Hamburger from '@/components/Lessons/Outline/Hamburger'
 import path from 'path'
 import { useRouter } from 'next/router'
+import { motion, useScroll } from 'framer-motion'
 import Backto from '@/components/Common/Backto'
 import Badge from '@/components/Common/Badge'
 import Footer from '@/components/Lessons/RightSection/Common/Footer'
+import { useEffect, useState } from 'react'
 
 interface Props {
     metadata: {
@@ -24,7 +26,8 @@ interface Props {
 
 function LabID({ metadata, content, answers, isClosed, title }: Props) {
     const router = useRouter()
-    const backHref = router.asPath.split('/').slice(0, -3).join('/')
+    const backHref = router.asPath.split('/').slice(0, -3).join('/')    
+
     return (
         <WithNavbar
             hamburgerChild={<Hamburger outline={metadata.outline} />}

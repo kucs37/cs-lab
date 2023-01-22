@@ -7,6 +7,7 @@ import { getToken } from 'next-auth/jwt'
 import axios from 'axios'
 import jwt from 'jsonwebtoken'
 import { StudentInfo } from '@/interface/StudentInfo'
+import { AnimatePresence } from 'framer-motion'
 
 interface Props {
     data: StudentInfo | null
@@ -17,17 +18,21 @@ const Home: NextPage<Props> = ({ data }) => {
         <WithNavbar title="Class | CS-LAB">
             <div className="py-10 px-4 w-full container mx-auto">
                 <div>
-                    <h2 className="text-2xl font-bold dark:text-white">คลาสเรียน</h2>
+                    <h2 className="text-2xl font-bold dark:text-white">
+                        คลาสเรียน
+                    </h2>
                     <div className="mt-4 grid grid-cols-12 gap-4 w-full">
-                        {data?.resData?.map((item) => (
-                            <Class
-                                key={item.fkSubjectId}
-                                title={item.subject.name}
-                                code={item.fkSubjectId}
-                                section={item.section.sectionId}
-                                labs={fakeLabs as any}
-                            />
-                        ))}
+                        <AnimatePresence>
+                            {data?.resData?.map((item) => (
+                                <Class
+                                    key={item.fkSubjectId}
+                                    title={item.subject.name}
+                                    code={item.fkSubjectId}
+                                    section={item.section.sectionId}
+                                    labs={fakeLabs as any}
+                                />
+                            ))}
+                        </AnimatePresence>
                     </div>
                 </div>
             </div>
