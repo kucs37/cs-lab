@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import React from 'react'
+import { motion } from 'framer-motion'
 
 interface Props {
     text: string
@@ -9,7 +10,9 @@ interface Props {
 
 const FilterBtn = ({ text, isSelected, onClick }: Props) => {
     return (
-        <button
+        <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 1 }}
             onClick={onClick}
             className={clsx(
                 'rounded-full px-4 py-1 border-2',
@@ -21,7 +24,7 @@ const FilterBtn = ({ text, isSelected, onClick }: Props) => {
             )}
         >
             <p>{text}</p>
-        </button>
+        </motion.button>
     )
 }
 

@@ -30,6 +30,7 @@
         "codemirror": "^6.0.1",
         "codemirror-readonly-ranges": "^0.1.0-alpha.1",
         "date-fns": "^2.29.2",
+        "framer-motion": "^8.5.0",
         "highlight.js": "^11.6.0",
         "jsonwebtoken": "^8.5.1",
         "lodash": "^4.17.21",
