@@ -11,7 +11,7 @@ function ScrollDetect({ outline, className }: Props) {
     return (
         <ScrollSpy
             className={clsx(
-                'border-l-2 border-gray-200 h-fit pb-3 pl-2 text-gray-300 dark:text-ascent-1/30 text-sm leading-loose',
+                'fixed right-10 border-l-2 border-gray-200 h-fit pl-2 text-gray-300 dark:text-ascent-1/30 text-sm leading-loose',
                 className
             )}
             items={outline.map(({ id }) => id)}

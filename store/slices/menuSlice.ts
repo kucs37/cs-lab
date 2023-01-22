@@ -11,7 +11,7 @@ interface MenuState {
 const initialState: MenuState = {
     isSettingsOpen: false,
     isHistoryOpen: false,
-    isBottomBarOpen: false,
+    isBottomBarOpen: true,
     isHamburgerOpen: false,
     bottomBarTab: 'input',
 }

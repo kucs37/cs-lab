@@ -26,7 +26,7 @@ function Window({ zoneRef }: WindowI) {
     return (
         <>
             <div
-                className="group w-full h-8 bg-gray-100 dark:bg-primary-1 cursor-row-resize flex items-center justify-center "
+                className="group w-full h-8 dark:bg-primary-1 cursor-row-resize flex items-center justify-center "
                 style={{ minHeight: '2rem' }}
                 onTouchStart={() => setIsDrag(true)}
                 onMouseDown={() => setIsDrag(true)}

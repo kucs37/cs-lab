@@ -155,7 +155,7 @@ function Code({
             </div>
             <div
                 className={clsx(
-                    'flex-1 rounded-xl flex flex-col overflow-hidden shadow-md border-2  bg-white dark:bg-[#2f2f2f]',
+                    'flex-1 rounded-xl flex flex-col overflow-hidden shadow-md border-2 z-20  bg-white dark:bg-[#2f2f2f]',
                     IS_SUCCESS && 'border-lime-500',
                     IS_ERROR && 'border-red-500 dark:border-red-700',
                     IS_NOT_ATTEMPT && 'border-[#dddd] dark:border-transparent'
