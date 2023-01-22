@@ -5,7 +5,6 @@ import ScrollSpy from 'react-scrollspy'
 import { OutlineI } from '@/interface/Outline'
 import { useAppDispatch } from '@/store/hooks'
 import { toggleHamburger } from '@/store/slices/menuSlice'
-import ScrollDetect from '../../ScrollDetect'
 interface Props {
     outline: OutlineI[]
 }
@@ -16,7 +15,6 @@ function Hamburger({ outline }: Props) {
             {fakeLabs[0].problems.map(({ name, status }, index) => (
                 <Fragment key={name}>
                     <Item name={name} status={status} active={index === 0} />
-                    {index === 0 ? <ScrollDetect outline={outline} /> : null}
                 </Fragment>
             ))}
         </div>

@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, useEffect } from 'react'
-import Input from '../Common/Input'
+import Input from '../Input'
 
 interface InputProps {
     type: 'text' | 'number'
