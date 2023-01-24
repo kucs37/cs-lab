@@ -11,6 +11,7 @@ import Hamburger from './Hamburger'
 import ThemeToggle from './ThemeToggle'
 import { useOnClickOutside } from 'usehooks-ts'
 import { io } from 'socket.io-client'
+import { AnimatePresence, motion } from 'framer-motion'
 
 interface Props {
     children?: ReactNode
@@ -67,20 +68,32 @@ const Navbar = forwardRef(
                     <div ref={profileRef} className="">
                         <div className="flex items-center gap-2 relative rounded-full">
                             <ProfileImage onClick={handleClickProfile} />
-                            {isProfileClick && (
-                                <div className="z-40 absolute w-[220px] bg-white dark:bg-zinc-800 rounded-lg shadow-md dark:shadow-md border-zinc-200 dark:border-zinc-900 border  right-0 top-12 overflow-hidden p-2">
-                                    <ThemeToggle />
-                                    <button
-                                        className="hover:light:bg-gray-100  dark:text-white hover:bg-ascent-1/20 rounded-lg p-2 flex items-center justify-between w-full"
-                                        onClick={handleSignOut}
+                            <AnimatePresence>
+                                {isProfileClick && (
+                                    <motion.div
+                                        initial={{
+                                            opacity: 0,
+                                            y: -10,
+                                            scale: 0.9,
+                                        }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: 10, scale: 0.9 }}
+                                        transition={{ duration: 0.05 }}
+                                        className="z-40 absolute w-[220px] bg-white dark:bg-zinc-800 rounded-lg shadow-md dark:shadow-md border-zinc-200 dark:border-zinc-900 border  right-0 top-14 overflow-hidden p-2"
                                     >
-                                        <p>ออกจากระบบ</p>
-                                        <div className="p-2 rounded-full  dark:bg-zinc-800">
-                                            <BsDoorOpen size="1.2rem" />
-                                        </div>
-                                    </button>
-                                </div>
-                            )}
+                                        <ThemeToggle />
+                                        <button
+                                            className="hover:light:bg-gray-100  dark:text-white hover:bg-ascent-1/20 rounded-lg p-2 flex items-center justify-between w-full"
+                                            onClick={handleSignOut}
+                                        >
+                                            <p>ออกจากระบบ</p>
+                                            <div className="p-2 rounded-full  dark:bg-zinc-800">
+                                                <BsDoorOpen size="1.2rem" />
+                                            </div>
+                                        </button>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
                     </div>
                 </div>
