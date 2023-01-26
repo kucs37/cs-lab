@@ -25,7 +25,7 @@ function Class({ title, code, section, labs }: Props) {
     })
 
     return (
-        <Link href={`/${code}`}>
+        <Link href={`/${code}`} legacyBehavior>
             <motion.a
                 initial={{ y: 10, opacity: 0.5 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -42,7 +42,7 @@ function Class({ title, code, section, labs }: Props) {
                 </div>
             </motion.a>
         </Link>
-    )
+    );
 }
 
 export default Class

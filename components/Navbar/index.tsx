@@ -53,16 +53,16 @@ const Navbar = forwardRef(
             >
                 <div className="px-6 py-2 flex justify-between items-center">
                     <Hamburger children={hamburgerChild} />
-                    <Link href={'/'}>
-                        <a className="rounded-full w-[40px] h-[40px]">
-                            <Image
-                                src={Logo}
-                                layout="fixed"
-                                width={40}
-                                height={40}
-                                alt="CS-37 Logo"
-                            />
-                        </a>
+                    <Link href={'/'} className="rounded-full w-[40px] h-[40px]">
+
+                        <Image
+                            src={Logo}
+                            layout="fixed"
+                            width={40}
+                            height={40}
+                            alt="CS-37 Logo"
+                        />
+
                     </Link>
                     {children}
                     <div ref={profileRef} className="">
@@ -98,7 +98,7 @@ const Navbar = forwardRef(
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 )
 

@@ -23,7 +23,7 @@ function Card({ title, isClosed, problems, id, type }: Props) {
         : `${router.asPath}/problem/${id}`
 
     return (
-        <Link href={hrefTo}>
+        <Link href={hrefTo} legacyBehavior>
             <motion.a
                 initial={{ y: 10 ,opacity: 0.5 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -46,7 +46,7 @@ function Card({ title, isClosed, problems, id, type }: Props) {
                 </div>
             </motion.a>
         </Link>
-    )
+    );
 }
 
 export default Card
