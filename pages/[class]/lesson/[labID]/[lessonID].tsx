@@ -59,7 +59,7 @@ export default LabID
 
 export async function getServerSideProps(ctx: GetServerSideProps) {
     const fetchedAns: string[] = []
-    const mdxPath = path.join(process.cwd(), 'fakeData/MDX/lesson01.mdx')
+    const mdxPath = path.join(process.cwd(), '__mock__/MDX/lesson02.mdx')
     const file = readFileSync(mdxPath, 'utf8')
     const { metadata, content } = parseMD(file)
     const mdxSource = await serialize(content, {

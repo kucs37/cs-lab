@@ -19,6 +19,6 @@
             "@/*": ["./*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "fakeData/LessonMD.mdx"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "__mock__/LessonMD.mdx"],
     "exclude": ["node_modules"]
 }

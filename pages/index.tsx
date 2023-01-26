@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NextApiRequest, NextPage, NextPageContext } from 'next'
 import Class from '@/components/Class'
-import { fakeLabs, fakeClass } from '@/fakeData'
+import { fakeLabs, classes } from '@/__mock__'
 import WithNavbar from '@/HOC/WithNavbar'
 import { getToken } from 'next-auth/jwt'
 import axios from 'axios'
@@ -43,7 +43,7 @@ const Home: NextPage<Props> = ({ data }) => {
 export default Home
 
 export async function getServerSideProps(context: NextPageContext) {
-    const res: StudentInfo = { resCode: '200', resData: fakeClass, msg: '' }
+    const res: StudentInfo = { resCode: '200', resData: classes, msg: '' }
     return { props: { data: res } }
     // try {
     //     const { req } = context

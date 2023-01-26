@@ -1,5 +1,5 @@
 import Item from './Item'
-import { fakeLabs } from '@/fakeData'
+import { fakeLabs } from '@/__mock__'
 
 function Outline() {
     return (

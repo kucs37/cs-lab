@@ -3,7 +3,7 @@ import remarkGFM from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import rehypeRaw from 'rehype-raw'
-import { FindAB } from '@/fakeData'
+import { FindAB } from '@/__mock__'
 import 'katex/dist/katex.min.css'
 
 function Markdown() {

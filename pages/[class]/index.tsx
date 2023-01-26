@@ -63,7 +63,7 @@ const Class: React.FC<Props> = ({ data }) => {
 
 export default Class
 
-import { fakeLabs } from '@/fakeData'
+import { fakeLabs } from '@/__mock__'
 import { showType } from '@/interface/LabType'
 import Banner from '@/components/Class/Banner'
 

@@ -1,0 +1,116 @@
+# Repetition: `while`
+
+<center>
+    <img
+        src="/elab_media/supplements/2018/01/06/flow1.png"
+        alt="Flowchart and Code"
+        width="500"
+    />
+</center>
+
+---
+
+## โจทย์ While Loop ที่พบได้บ่อย
+
+-   ทำงานกับทุกจำนวนเต็มตั้งแต่ `a` ถึง `b` เช่น หาผลรวมของ 1 ถึง 100
+-   หาจำนวนเต็มที่เป็นคำตอบหรือเป็นส่วนหนึ่งของคำตอบ โดยหาตั้งแต่ `a` ถึง `b` เช่น หาจำนวนเต็มที่เป็นคำตอบของสมการหนึ่ง
+-   รับข้อมูลจนกว่าจะสิ้นสุด เช่น รับจำนวนเต็มบรรทัดละจำนวนโดยหยุดเมื่อเป็นสตริงว่าง แล้วหาผลรวมของจำนวนที่รับเข้ามา
+-   ทำงานกับเลขโดดแต่ละหลักของจำนวนเต็ม เช่น หาผลบวกของเลขโดดของจำนวนที่รับเข้ามา
+
+---
+
+<u>**Exercise 1**</u>
+เขียน while loop เพื่อพิมพ์จำนวนคู่ตั้งแต่ 1 ถึง 100 จากน้อยไปมาก บรรทัดละจำนวน
+::elab:begincode language="python3"
+::elab:hide --- ex1.py
+
+::elab:endcode
+
+::elab:begintest
+elab-split-files source.txt ---
+python3.6 ex1.py
+::elab:endtest
+
+---
+
+<u>**Exercise 2**</u>
+เขียน while loop เพื่อพิมพ์จำนวนคี่ตั้งแต่ 100 ถึง 50 จากมากไปน้อย บรรทัดละจำนวน
+::elab:begincode language="python3"
+::elab:hide --- ex2.py
+
+::elab:endcode
+
+::elab:begintest
+elab-split-files source.txt ---
+python3.6 ex2.py
+::elab:endtest
+
+---
+
+<u>**Exercise 3**</u>
+รับจำนวนเต็มบวก 1 จำนวน <br/>
+เขียน while loop เพื่อพิมพ์จำนวนที่หารด้วย 3 ลงตัว ตั้งแต่ 0 ถึง จำนวนที่รับเข้ามา จากน้อยไปมาก บรรทัดละจำนวน
+::elab:begincode language="python3"
+::elab:hide --- ex3.py
+
+::elab:endcode
+
+::elab:begintest
+elab-split-files source.txt ---
+python3.6 ex3.py
+69
+::elab:endtest
+
+---
+
+<u>**Exercise 4**</u>
+รับจำนวนเต็มบวก 1 จำนวน <br/>
+เขียน while loop เพื่อนับจำนวนที่หารด้วย 3 ไม่ลงตัว ตั้งแต่ 0 ถึง จำนวนที่รับเข้ามา <br/>
+พิมพ์จำนวนที่นับได้
+::elab:begincode language="python3"
+::elab:hide --- ex4.py
+
+::elab:endcode
+
+::elab:begintest
+elab-split-files source.txt ---
+python3.6 ex4.py
+14569
+::elab:endtest
+
+---
+
+<u>**Exercise 5**</u><br/>
+**Input: ** รับจำนวนเต็มบวก 1 จำนวน แทนด้วย `n` <br/>
+จากนั้นรับจำนวนจริงอีก `n` บรรทัด แทนคะแนนสอบของนักเรียน `n` คน <br/>
+**Process: ** เขียนโปรแกรมเพื่อคำนวณค่าเฉลี่ยของคะแนนสอบจากข้อมูลที่รับเข้ามา และนับจำนวนนักเรียนที่ได้คะแนนสอบมากกว่า 40 ว่ามีกี่คน<br/>
+**Output: ** มีบรรทัดเดียว ประกอบด้วย ค่าเฉลี่ย (ทศนิยม 2 ตำแหน่ง) ของคะแนนสอบของนักเรียน `n` คน  และจำนวนนักเรียนที่ได้คะแนนสอบมากกว่า 40 คะแนน คั่นด้วยเว้นวรรค
+::elab:begincode language="python3"
+::elab:hide --- ex5.py
+
+::elab:endcode
+
+::elab:begintest
+elab-split-files source.txt ---
+python3.6 ex5.py
+9
+40.1
+30.4
+52.1
+35.5
+54.7
+19
+22
+40
+39.9
+::elab:endtest
+
+---
+
+## เรื่องผิดบ่อยที่ควรระวัง
+
+-   Loop ทำจำนวนรอบน้อยไป หรือมากไปกว่าที่ต้องการ โดยมากแล้วจะขาดหรือเกิน 1 รอบ
+-   ลืมปรับค่าที่เป็นเงื่อนไขของ while ทำให้ loop ทำงานไม่สิ้นสุด
+-   ปรับค่าที่เป็นเงื่อนไขของ while ผิด ทำให้ loop ทำงานไม่สิ้นสุด
+-   ตัวแปรที่กำหนดเงื่อนไขของ while ควรกำหนดค่าเริ่มต้นก่อนเข้า loop แต่ไปกำหนดใน loop
+-   ไม่มีเงื่อนไข `break` ใน `while True:`

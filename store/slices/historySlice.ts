@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { HistoryI } from '@/interface/History'
-import { initialDoc } from '@/fakeData/initialDoc'
+import { initialDoc } from '@/__mock__/initialDoc'
 
 interface HistoryState {
     allHistory: HistoryI[]

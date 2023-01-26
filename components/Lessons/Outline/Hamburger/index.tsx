@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { fakeLabs } from '@/fakeData'
+import { fakeLabs } from '@/__mock__'
 import Item from '../Item'
 import ScrollSpy from 'react-scrollspy'
 import { OutlineI } from '@/interface/Outline'
