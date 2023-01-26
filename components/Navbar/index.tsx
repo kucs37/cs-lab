@@ -57,7 +57,6 @@ const Navbar = forwardRef(
 
                         <Image
                             src={Logo}
-                            layout="fixed"
                             width={40}
                             height={40}
                             alt="CS-37 Logo"
