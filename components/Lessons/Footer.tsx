@@ -1,8 +1,16 @@
 import Navigation from './Navigation'
+import { useAppSelector, useAppDispatch } from '@/store/hooks'
+import { clearProblems } from '@/store/slices/lessonSlice'
 function Footer() {
-    const handleSubmitAnswer = () => {}
+    const { problems } = useAppSelector((state) => state.lesson)
+    const dispatch = useAppDispatch()
+    const handleSubmitAnswer = () => {
+        console.log(problems)
+    }
 
-    const clearAnswers = () => {}
+    const clearAnswers = () => {
+        dispatch(clearProblems())
+    }
     return (
         <div>
             <div className="flex justify-between items-center mt-10 h-24">

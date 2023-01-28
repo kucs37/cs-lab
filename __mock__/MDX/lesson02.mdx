@@ -1,14 +1,14 @@
-# Repetition: `while`
+---
+null
+---
 
 <center>
     <img
-        src="/elab_media/supplements/2018/01/06/flow1.png"
+        src="https://elab.cpe.ku.ac.th/elab_media/supplements/2018/01/06/flow1.png"
         alt="Flowchart and Code"
         width="500"
     />
 </center>
-
----
 
 ## โจทย์ While Loop ที่พบได้บ่อย
 
@@ -17,95 +17,80 @@
 -   รับข้อมูลจนกว่าจะสิ้นสุด เช่น รับจำนวนเต็มบรรทัดละจำนวนโดยหยุดเมื่อเป็นสตริงว่าง แล้วหาผลรวมของจำนวนที่รับเข้ามา
 -   ทำงานกับเลขโดดแต่ละหลักของจำนวนเต็ม เช่น หาผลบวกของเลขโดดของจำนวนที่รับเข้ามา
 
----
-
 <u>**Exercise 1**</u>
 เขียน while loop เพื่อพิมพ์จำนวนคู่ตั้งแต่ 1 ถึง 100 จากน้อยไปมาก บรรทัดละจำนวน
-::elab:begincode language="python3"
-::elab:hide --- ex1.py
 
-::elab:endcode
+<CodeBlock
+id="1"
+sources={[  {source : 'i = 1'} ,{source :
+`while             :
 
-::elab:begintest
-elab-split-files source.txt ---
-python3.6 ex1.py
-::elab:endtest
+` ,readOnlyRanges : [{line : 1 , from : 0 , to : 5} , {line : 1 , from : -1 , to : 0}]}]}
 
----
+/>
 
 <u>**Exercise 2**</u>
 เขียน while loop เพื่อพิมพ์จำนวนคี่ตั้งแต่ 100 ถึง 50 จากมากไปน้อย บรรทัดละจำนวน
-::elab:begincode language="python3"
-::elab:hide --- ex2.py
 
-::elab:endcode
+<CodeBlock id="2" sources={[{source : ''},{source : `while :
 
-::elab:begintest
-elab-split-files source.txt ---
-python3.6 ex2.py
-::elab:endtest
-
----
+     `  , readOnlyRanges : [{line : 1 , from : 0 , to : 5} , {line : 1 , from : -1 , to : 0 }]}]} />
 
 <u>**Exercise 3**</u>
-รับจำนวนเต็มบวก 1 จำนวน <br/>
-เขียน while loop เพื่อพิมพ์จำนวนที่หารด้วย 3 ลงตัว ตั้งแต่ 0 ถึง จำนวนที่รับเข้ามา จากน้อยไปมาก บรรทัดละจำนวน
-::elab:begincode language="python3"
-::elab:hide --- ex3.py
+รับจำนวนเต็มบวก 1 จำนวน <br />
+เขียน while loop เพื่อพิมพ์จำนวนที่หารด้วย 3 ลงตัว ตั้งแต่ 0 ถึง
+จำนวนที่รับเข้ามา จากน้อยไปมาก บรรทัดละจำนวน{' '}
 
-::elab:endcode
+<CodeBlock id="3" sources={[{source : `
+`},{source : `while :
 
-::elab:begintest
-elab-split-files source.txt ---
-python3.6 ex3.py
-69
-::elab:endtest
-
----
+     `, readOnlyRanges : [{line : 1 , from : 0 , to : 5} , {line : 1 , from : -1 , to : 0 }]}]} />
 
 <u>**Exercise 4**</u>
-รับจำนวนเต็มบวก 1 จำนวน <br/>
-เขียน while loop เพื่อนับจำนวนที่หารด้วย 3 ไม่ลงตัว ตั้งแต่ 0 ถึง จำนวนที่รับเข้ามา <br/>
+รับจำนวนเต็มบวก 1 จำนวน <br />
+เขียน while loop เพื่อนับจำนวนที่หารด้วย 3 ไม่ลงตัว ตั้งแต่ 0 ถึง
+จำนวนที่รับเข้ามา <br />
 พิมพ์จำนวนที่นับได้
-::elab:begincode language="python3"
-::elab:hide --- ex4.py
 
-::elab:endcode
+<CodeBlock
+    id="4"
+    sources={[
+        {
+            source: `
 
-::elab:begintest
-elab-split-files source.txt ---
-python3.6 ex4.py
-14569
-::elab:endtest
+`,isHasInput : true},
 
----
-
-<u>**Exercise 5**</u><br/>
-**Input: ** รับจำนวนเต็มบวก 1 จำนวน แทนด้วย `n` <br/>
-จากนั้นรับจำนวนจริงอีก `n` บรรทัด แทนคะแนนสอบของนักเรียน `n` คน <br/>
-**Process: ** เขียนโปรแกรมเพื่อคำนวณค่าเฉลี่ยของคะแนนสอบจากข้อมูลที่รับเข้ามา และนับจำนวนนักเรียนที่ได้คะแนนสอบมากกว่า 40 ว่ามีกี่คน<br/>
-**Output: ** มีบรรทัดเดียว ประกอบด้วย ค่าเฉลี่ย (ทศนิยม 2 ตำแหน่ง) ของคะแนนสอบของนักเรียน `n` คน  และจำนวนนักเรียนที่ได้คะแนนสอบมากกว่า 40 คะแนน คั่นด้วยเว้นวรรค
-::elab:begincode language="python3"
-::elab:hide --- ex5.py
-
-::elab:endcode
-
-::elab:begintest
-elab-split-files source.txt ---
-python3.6 ex5.py
-9
-40.1
-30.4
-52.1
-35.5
-54.7
-19
-22
-40
-39.9
-::elab:endtest
+]}
+/>
 
 ---
+
+<u>**Exercise 5**</u>
+<br />
+**Input: ** รับจำนวนเต็มบวก 1 จำนวน แทนด้วย `n` จากนั้นรับจำนวนจริงอีก `n`
+บรรทัด แทนคะแนนสอบของนักเรียน `n` คน{' '}
+
+**Process: **
+เขียนโปรแกรมเพื่อคำนวณค่าเฉลี่ยของคะแนนสอบจากข้อมูลที่รับเข้ามา
+และนับจำนวนนักเรียนที่ได้คะแนนสอบมากกว่า 40 ว่ามีกี่คน
+
+**Output: **
+มีบรรทัดเดียว ประกอบด้วย ค่าเฉลี่ย (ทศนิยม 2 ตำแหน่ง) ของคะแนนสอบของนักเรียน `n`
+คน และจำนวนนักเรียนที่ได้คะแนนสอบมากกว่า 40 คะแนน คั่นด้วยเว้นวรรค{' '}
+
+<CodeBlock
+    id="5"
+    sources={[
+        {source: `
+
+`
+},
+]}
+/>
+
+ตอนเที่ยงคุณอยากกินอะไร ?
+
+<Input id="6" />
 
 ## เรื่องผิดบ่อยที่ควรระวัง
 

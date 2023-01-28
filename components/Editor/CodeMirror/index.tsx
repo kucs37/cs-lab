@@ -5,7 +5,6 @@ import { EditorState } from '@codemirror/state'
 import { ghcolors, materialDark, materialDarkCode } from '@/themes'
 
 interface Props {
-    initialDoc?: string
     value?: string
     onChange?: (code: string) => void
     onKeyDown?: (key: KeyboardEvent) => void
@@ -21,7 +20,6 @@ interface Props {
 }
 
 function CodeMirror({
-    initialDoc = '',
     value,
     onChange,
     onKeyDown,
@@ -47,7 +45,7 @@ function CodeMirror({
             : ghcolors
 
     const { editorRef, editorView } = useCodemirror({
-        initialDoc,
+        initialDoc: value,
         onChange,
         onKeyDown,
         tabSize,

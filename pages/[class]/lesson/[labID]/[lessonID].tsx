@@ -29,22 +29,19 @@ function LabID({ metadata, content, answers, isClosed, title }: Props) {
 
     return (
         <WithNavbar
-            hamburgerChild={<Hamburger outline={metadata.outline} />}
+            hamburgerChild={<Hamburger outline={[]} />}
             title="CS Python Lab 01 Input Process Output | CS LAB"
         >
             <div className="flex justify-center px-4 py-6 md:py-10 gap-10 relative">
                 <div className="w-full md:w-2/3 2xl:w-1/2 md:px-10">
-                    <div className="">
-                        <h4 className=""></h4>
-                    </div>
                     <Backto href={backHref} />
                     <div className="mt-4 mb-6">
                         {isClosed && (
                             <Badge title="อ่านอย่างเดียว" className="my-3" />
                         )}
                         <h4 className="text-lime-600">{title}</h4>
-                        <h2 className="text-2xl md:text-4xl dark:text-ascent-1 font-bold">
-                            List Index และการเข้าถึง (access) ข้อมูลใน List
+                        <h2 className="text-2xl md:text-3xl dark:text-ascent-1 font-bold">
+                            การใช้งาน While loop
                         </h2>
                     </div>
                     <Markdown labMD={content} />
@@ -70,7 +67,7 @@ export async function getServerSideProps(ctx: GetServerSideProps) {
 
     return {
         props: {
-            title: "01 Elab's Automatic Grading",
+            title: 'CS Python Lab 05 While Loop',
             metadata,
             content: mdxSource,
             answers: fetchedAns,

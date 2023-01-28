@@ -1,5 +1,4 @@
 import { LessonQuizI } from '@/interface/LessonQuiz'
-import Problem from '@/interface/Problem'
 import { createSlice } from '@reduxjs/toolkit'
 
 interface LessonState {
@@ -8,11 +7,37 @@ interface LessonState {
 
 const initialState: LessonState = {
     problems: [
-        { id: '1', answer: '', status: 'success' },
-        { id: '2', answer: '', status: 'failed' },
-        { id: '3', answer: '', status: 'not-attempted' },
-        { id: '4', answer: '', status: 'success' },
-        { id: '5', answer: '', status: 'success' },
+        {
+            id: '1',
+            type: 'codeblock',
+            answer: [],
+            status: 'not-attempted',
+        },
+        {
+            id: '2',
+            type: 'codeblock',
+            answer: [],
+            status: 'not-attempted',
+        },
+        {
+            id: '3',
+            type: 'codeblock',
+            answer: [],
+            status: 'not-attempted',
+        },
+        {
+            id: '4',
+            type: 'codeblock',
+            answer: [],
+            status: 'not-attempted',
+        },
+        {
+            id: '5',
+            type: 'codeblock',
+            answer: [],
+            status: 'not-attempted',
+        },
+        { id: '6', type: 'input', answer: 'KFC', status: 'not-attempted' },
     ],
 }
 
@@ -31,8 +56,20 @@ const lessonSlice = createSlice({
             state.problems[index].answer = answer
             state.problems[index].status = 'not-attempted'
         },
+        clearProblems(state) {
+            const allProblems = state.problems.map((problem) => {
+                if (problem.type === 'codeblock') {
+                    problem.answer = []
+                } else {
+                    problem.answer = ''
+                }
+                problem.status = 'not-attempted'
+                return problem
+            })
+            state.problems = allProblems
+        },
     },
 })
 
-export const { setProblems, updateProblem } = lessonSlice.actions
+export const { setProblems, updateProblem, clearProblems } = lessonSlice.actions
 export default lessonSlice.reducer

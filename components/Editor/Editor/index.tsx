@@ -23,7 +23,6 @@ function Editor() {
 
             <CodeMirror
                 variant="problem"
-                initialDoc={code}
                 value={code}
                 onChange={(value) => dispatch(setCode(value))}
                 onKeyDown={handleOnKeyDown}

@@ -1,58 +1,43 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState } from 'react'
 import CodeMirror from '@/components/Editor/CodeMirror'
 import { EditorState } from '@codemirror/state'
 import { BsPlay } from 'react-icons/bs'
 import { BiLoaderCircle } from 'react-icons/bi'
-import axios from 'axios'
 import clsx from 'clsx'
 import { IoCheckmarkSharp, IoClose } from 'react-icons/io5'
 import type { LabStatus } from '@/interface/LabStatus'
+import { getReadOnlyRanges } from './utils'
+import useCodeRun from './hooks/useCodeRun'
 
 interface Props {
     id: string
-    source: string
     readOnlyRanges: Array<{ line: number; from: number; to: number }>
-    readOnly: boolean
+    isReadOnly: boolean
     value: string
     onChange: (value: string) => void
     run: string
     status: LabStatus
-}
-
-const getReadOnlyRanges = (
-    targetState: EditorState,
-    readOnlyRanges: Array<{ line: number; from: number; to: number }>
-): Array<{ from: number; to: number }> => {
-    const ranges = readOnlyRanges.map((range, id) => {
-        const { line, from, to } = range
-
-        const lineStart = targetState.doc.line(line).from
-        const lineEnd = targetState.doc.line(line).to
-
-        return {
-            from: from < 0 ? lineEnd + from : lineStart + from,
-            to: to < 1 ? lineEnd + to : lineStart + to,
-        }
-    })
-
-    return ranges
+    isRunningPoint: boolean
+    isHasInput: boolean
 }
 
 function Code({
     id,
-    source,
     readOnlyRanges = [],
-    readOnly,
+    isReadOnly,
     value,
     onChange,
     run,
     status,
+    isRunningPoint,
+    isHasInput,
 }: Props) {
-    const [runningStatus, setRunningStatus] = useState<
-        'running' | 'error' | 'idle' | 'success'
-    >('idle')
-    const [isError, setIsError] = useState(false)
-    const [output, setOutput] = useState<string>('')
+    const [input, setInput] = useState<string>('')
+    const { handleRun, isError, output, runningStatus } = useCodeRun({
+        code: run,
+        input,
+        isRunningPoint,
+    })
     const IS_SUCCESS = status === 'success'
     const IS_FAILED = status === 'failed'
     const IS_ERROR = status === 'failed' || isError
@@ -60,53 +45,7 @@ function Code({
     const IS_IDLING = runningStatus === 'idle'
     const IS_NOT_ATTEMPT = status === 'not-attempted'
     const IS_HAS_OUTPUT = output.length > 0
-
-    const handleRun = useCallback(async () => {
-        try {
-            setRunningStatus('running')
-
-            const { data } = await axios.post(
-                'https://api-lab.peerawitp.me/api/v2/execute',
-                {
-                    language: 'python',
-                    version: '3.5.10',
-                    files: [
-                        {
-                            content: run,
-                        },
-                    ],
-                    // stdin: 'chokun',
-                    args: [],
-                    compile_timeout: 1000,
-                    run_timeout: 3000,
-                    compile_memory_limit: -1,
-                    run_memory_limit: -1,
-                }
-            )
-            if (data.run.code === 1) setIsError(true)
-
-            setRunningStatus('idle')
-            setOutput(data.run.output)
-        } catch (err) {}
-    }, [run])
-
-    const handleShortcut = useCallback(
-        (e: KeyboardEvent) => {
-            if (e.key === 'Enter' && e.ctrlKey) {
-                console.log(id)
-                handleRun()
-            }
-        },
-        [handleRun, id]
-    )
-
-    useEffect(() => {
-        const block = document.getElementById(id)
-        if (block) {
-            block.addEventListener('keydown', handleShortcut)
-        }
-        return () => block?.removeEventListener('keydown', handleShortcut)
-    }, [handleShortcut, id])
+    const IS_NEED_INPUT = isHasInput
 
     return (
         <div className="flex items-start gap-2 w-full my-2" id={id}>
@@ -131,7 +70,8 @@ function Code({
                         IS_RUNNING &&
                             'bg-yellow-400 dark:bg-yellow-700 border-yellow-700 dark:border-yellow-700',
                         IS_ERROR &&
-                            'bg-red-400 dark:bg-red-700 border-red-700 dark:border-red-700'
+                            'bg-red-400 dark:bg-red-700 border-red-700 dark:border-red-700',
+                        isRunningPoint ? 'visible' : 'invisible'
                     )}
                 >
                     {IS_RUNNING && (
@@ -164,11 +104,10 @@ function Code({
                 <CodeMirror
                     customFontSize={18}
                     variant="lesson"
-                    initialDoc={source}
                     value={value}
                     onChange={onChange}
                     height="100%"
-                    readonly={readOnly}
+                    readonly={isReadOnly}
                     readOnlyRanges={(targetState: EditorState) =>
                         getReadOnlyRanges(targetState, readOnlyRanges)
                     }
@@ -176,6 +115,19 @@ function Code({
                 {IS_HAS_OUTPUT && (
                     <div className="w-full h-fit mt-2 min-h-[2rem] not-prose border-t dark:border-zinc-500 p-2 text-gray-900 dark:text-ascent-1">
                         <pre>{output}</pre>
+                    </div>
+                )}
+
+                {IS_NEED_INPUT && (
+                    <div className="border-t p-2 not-prose">
+                        <h4 className="uppercase">Input</h4>
+                        <CodeMirror
+                            customFontSize={18}
+                            value={input}
+                            variant="lesson"
+                            onChange={(v) => setInput(v)}
+                            height="100%"
+                        />
                     </div>
                 )}
             </div>

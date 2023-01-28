@@ -9,7 +9,6 @@ function Input() {
     return (
         <CodeMirror
             height="100%"
-            initialDoc={input ? input : ''}
             value={input ? input : ''}
             onChange={(value) => dispatch(setInput(value))}
         />

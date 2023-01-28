@@ -6,7 +6,6 @@ import { python } from '@codemirror/lang-python'
 import { closeBrackets } from '@codemirror/autocomplete'
 import { searchKeymap } from '@codemirror/search'
 import { bracketMatching, foldGutter, indentUnit } from '@codemirror/language'
-
 import { indentWithTab, indentWithTabLess } from '../commands/indentWithTab'
 import readOnlyRangesExtension from 'codemirror-readonly-ranges'
 

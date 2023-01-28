@@ -53,7 +53,7 @@ function EachHistory() {
                 <CodeMirror
                     readonly
                     height="100%"
-                    initialDoc={selected ? selected.code : ''}
+                    value={selected ? selected.code : ''}
                 />
             </div>
         </div>

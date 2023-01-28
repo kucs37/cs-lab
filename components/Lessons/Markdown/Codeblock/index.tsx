@@ -3,21 +3,20 @@ import { useState } from 'react'
 import { useAppSelector } from '@/store/hooks'
 import { useAppDispatch } from '@/store/hooks'
 import { updateProblem } from '@/store/slices/lessonSlice'
-
 import type { LessonQuizI } from '@/interface/LessonQuiz'
 interface EachCodeBlock {
     id: string
     source: string
     readOnlyRanges: Array<{ line: number; from: number; to: number }>
     readOnly: boolean
+    canRun: boolean
+    isHasInput: boolean
 }
 interface Props {
     id: string
     sources: EachCodeBlock[]
 }
 function CodeBlock({ id, sources }: Props) {
-    const [allCode, setAllCode] = useState<EachCodeBlock[]>(sources)
-    const answer = sources.map((source) => source.source).join('\n')
     const dispatch = useAppDispatch()
     const { problems } = useAppSelector((state) => state.lesson)
 
@@ -25,37 +24,46 @@ function CodeBlock({ id, sources }: Props) {
         (problem: LessonQuizI) => problem.id === id
     )
 
+    const allCode =
+        findProblem?.answer.length === sources.length
+            ? (findProblem.answer as EachCodeBlock[])
+            : sources
+
     const handleOnRun = (index: number) => {
-        return allCode
-            .slice(0, index + 1)
-            .map((code) => code.source)
-            .join('\n')
+        if (index != allCode.length - 1) return ''
+
+        return allCode.map((code) => code.source).join('\n')
     }
 
     const handleOnChange = (value: string, index: number) => {
-        const newAllCode = [...allCode]
-        newAllCode[index].source = value
-        setAllCode(newAllCode)
-        dispatch(updateProblem({ id, answer: value }))
+        const newAllSourceCode = allCode.map(({ source }) => ({
+            source,
+        }))
+        newAllSourceCode[index].source = value
+
+        dispatch(updateProblem({ id, answer: newAllSourceCode }))
     }
 
     return (
         <div>
-            {sources.map(({ source, readOnlyRanges, readOnly, id }, index) => {
-                return (
+            {sources.map(
+                ({ readOnlyRanges = [], readOnly = false, id, isHasInput }, index) => (
                     <Code
                         key={index}
                         id={id}
-                        value={allCode[index].source}
-                        onChange={(value) => handleOnChange(value, index)}
-                        source={source}
+                        isReadOnly={readOnly}
                         readOnlyRanges={readOnlyRanges}
-                        readOnly={readOnly}
+                        value={allCode[index] ? allCode[index].source : ''}
+                        onChange={(value) => handleOnChange(value, index)}
+                        isRunningPoint={index == allCode.length - 1}
                         run={handleOnRun(index)}
-                        status={findProblem!.status}
+                        status={
+                            findProblem ? findProblem.status : 'not-attempted'
+                        }
+                        isHasInput={isHasInput}
                     />
                 )
-            })}
+            )}
         </div>
     )
 }
