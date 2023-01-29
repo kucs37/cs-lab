@@ -12,7 +12,7 @@ import {
 import { BsTerminal } from 'react-icons/bs'
 function Buttons() {
     const router = useRouter()
-    const backHref = router.asPath.split('/').slice(0, -2).join('/')
+    const backHref = router.asPath.split('/').slice(0, -1).join('/')
 
     const dispatch = useAppDispatch()
     return (

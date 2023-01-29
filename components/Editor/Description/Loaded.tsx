@@ -1,5 +1,6 @@
 import Testcase from '../Testcase'
 import Markdown from './Markdown'
+import BottomBar from '@/components/Common/Navigation/BottomBar'
 
 function Loaded() {
     return (
@@ -10,7 +11,7 @@ function Loaded() {
                 </h1>
 
                 {/* Test case */}
-                <div className='my-2'>
+                <div className="my-2">
                     <Testcase status={['P', 'P', 'P', '-']} />
                 </div>
                 <Markdown />

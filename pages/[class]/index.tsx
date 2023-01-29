@@ -8,9 +8,8 @@ import { NextPageContext, NextApiRequest } from 'next'
 import { getToken } from 'next-auth/jwt'
 import jwt from 'jsonwebtoken'
 import { GetLabs } from '@/interface/GetLabs'
-import Section from '@/components/Class/Section'
 import Filter from '@/components/Labs/Filter'
-import { AnimatePresence } from "framer-motion"
+import { AnimatePresence } from 'framer-motion'
 
 interface Props {
     data: GetLabs | null
@@ -25,6 +24,7 @@ const Class: React.FC<Props> = ({ data }) => {
             <div className="container mx-auto w-full md:max-w-6xl px-4 pb-10">
                 <Backto href="/" className="my-6" />
                 <Banner
+                    title="Fundamental Programming Concepts"
                     code={Data?.resData[0].fkSubjectId!}
                     section={Data?.resData[0].sectionId!}
                 />

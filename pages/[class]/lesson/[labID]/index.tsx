@@ -41,7 +41,7 @@ const InLesson: React.FC<Props> = ({ data }) => {
                             <th>สถานะ</th>
                         </tr>
                     </thead>
-                    <tbody className="">
+                    <tbody>
                         {fakeLabs[0].problems.map(({ name, status, id }) => {
                             const href = `${currentPath}/${id}`
                             return (
