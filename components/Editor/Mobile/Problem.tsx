@@ -4,7 +4,7 @@ import Testcase from '../Testcase'
 import Markdown from '../Description/Markdown'
 import { useAppSelector } from '@/store/hooks'
 import { sortByKey } from '@/utils'
-import Backto from '@/components/Common/Backto'
+import BackArrow from '@/components/Common/BackArrow'
 import { useRouter } from 'next/router'
 
 function Problem() {
@@ -14,7 +14,7 @@ function Problem() {
     const backHref = router.asPath.split('/').slice(0, -2).join('/')
     return (
         <div className="bg-white dark:bg-secondary-1 border dark:border-secondary-2 p-4 rounded-md">
-            <Backto href={backHref} className="mb-4" />
+            <BackArrow className="mb-4" />
             <Badge title="อ่านอย่างเดียว" />
             <div className="my-4">
                 <h4 className="text-lime-600">

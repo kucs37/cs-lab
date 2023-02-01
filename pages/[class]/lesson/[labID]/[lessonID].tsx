@@ -9,7 +9,7 @@ import Hamburger from '@/components/Lessons/Outline/Hamburger'
 import path from 'path'
 import { useRouter } from 'next/router'
 import { motion, useScroll } from 'framer-motion'
-import Backto from '@/components/Common/Backto'
+import BackArrow from '@/components/Common/BackArrow'
 import Badge from '@/components/Common/Badge'
 import Footer from '@/components/Lessons/Footer'
 
@@ -34,7 +34,8 @@ function LabID({ metadata, content, answers, isClosed, title }: Props) {
         >
             <div className="flex justify-center px-4 py-6 md:py-10 gap-10 relative">
                 <div className="w-full md:w-2/3 2xl:w-1/2 md:px-10">
-                    <Backto href={backHref} />
+                    <BackArrow />
+
                     <div className="mt-4 mb-6">
                         {isClosed && (
                             <Badge title="อ่านอย่างเดียว" className="my-3" />

@@ -1,4 +1,4 @@
-import Backto from '@/components/Common/Backto'
+import Backto from '@/components/Common/BackArrow'
 import Badge from '@/components/Common/Badge'
 import { IoClose, IoCheckmark } from 'react-icons/io5'
 import clsx from 'clsx'

@@ -7,7 +7,7 @@ import clsx from 'clsx'
 import { IoCheckmarkSharp, IoClose } from 'react-icons/io5'
 import type { LabStatus } from '@/interface/LabStatus'
 import { getReadOnlyRanges } from './utils'
-import useCodeRun from './hooks/useCodeRun'
+import useCodeRun from '@/hooks/useCodeRun'
 
 interface Props {
     id: string
@@ -36,7 +36,6 @@ function Code({
     const { handleRun, isError, output, runningStatus } = useCodeRun({
         code: run,
         input,
-        isRunningPoint,
     })
     const IS_SUCCESS = status === 'success'
     const IS_FAILED = status === 'failed'
@@ -60,38 +59,41 @@ function Code({
                     {IS_SUCCESS && <IoCheckmarkSharp />}
                     {IS_FAILED && <IoClose />}
                 </span>
-
-                <button
-                    onClick={handleRun}
-                    className={clsx(
-                        'rounded-full w-8 h-8 flex justify-center items-center  border-b-2 active:border-b transition-all duration-50 ',
-                        IS_IDLING &&
-                            'bg-lime-400 dark:bg-lime-700 border-lime-700 dark:border-lime-700',
-                        IS_RUNNING &&
-                            'bg-yellow-400 dark:bg-yellow-700 border-yellow-700 dark:border-yellow-700',
-                        IS_ERROR &&
-                            'bg-red-400 dark:bg-red-700 border-red-700 dark:border-red-700',
-                        isRunningPoint ? 'visible' : 'invisible'
-                    )}
-                >
-                    {IS_RUNNING && (
-                        <BiLoaderCircle
-                            size="1.25rem"
-                            className={clsx(
-                                'animate-spin duration-500 text-yellow-800 dark:text-yellow-400'
-                            )}
-                        />
-                    )}
-                    {IS_IDLING && (
-                        <BsPlay
-                            size="1.25rem"
-                            className={clsx(
-                                IS_IDLING && 'text-lime-800 dark:text-lime-400',
-                                IS_ERROR && 'text-red-800 dark:text-red-400'
-                            )}
-                        />
-                    )}
-                </button>
+                {isRunningPoint ? (
+                    <button
+                        onClick={handleRun}
+                        className={clsx(
+                            'rounded-full w-8 h-8 flex justify-center items-center  border-b-2 active:border-b transition-all duration-50 ',
+                            IS_IDLING &&
+                                'bg-lime-400 dark:bg-lime-700 border-lime-700 dark:border-lime-700',
+                            IS_RUNNING &&
+                                'bg-yellow-400 dark:bg-yellow-700 border-yellow-700 dark:border-yellow-700',
+                            IS_ERROR &&
+                                'bg-red-400 dark:bg-red-700 border-red-700 dark:border-red-700'
+                        )}
+                    >
+                        {IS_RUNNING && (
+                            <BiLoaderCircle
+                                size="1.25rem"
+                                className={clsx(
+                                    'animate-spin duration-500 text-yellow-800 dark:text-yellow-400'
+                                )}
+                            />
+                        )}
+                        {IS_IDLING && (
+                            <BsPlay
+                                size="1.25rem"
+                                className={clsx(
+                                    IS_IDLING &&
+                                        'text-lime-800 dark:text-lime-400',
+                                    IS_ERROR && 'text-red-800 dark:text-red-400'
+                                )}
+                            />
+                        )}
+                    </button>
+                ) : (
+                    <span className="ml-8"></span>
+                )}
             </div>
             <div
                 className={clsx(

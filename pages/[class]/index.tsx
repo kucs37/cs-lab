@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Card from '@/components/Labs/Card'
-import Backto from '@/components/Common/Backto'
+import BackArrow from '@/components/Common/BackArrow'
 import WithNavbar from '@/HOC/WithNavbar'
 import { StudentInfo } from '@/interface/StudentInfo'
 import axios from 'axios'
@@ -23,7 +23,7 @@ const Class: React.FC<Props> = ({ data }) => {
     return (
         <WithNavbar title="Fundamental Programming Concepts | CS-LAB">
             <div className="container mx-auto w-full md:max-w-6xl px-4 pb-10">
-                <Backto href="/" className="my-6" />
+                <BackArrow className="my-6" />
                 <Banner
                     code={Data?.resData[0].fkSubjectId!}
                     section={Data?.resData[0].sectionId!}

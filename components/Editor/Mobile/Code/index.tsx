@@ -15,7 +15,7 @@ function Code() {
                 onSelect={(selected) => setSelected(selected)}
             />
             {selected === 'code' ? <Editor /> : null}
-            {/* {selected === 'console' ? <Console /> : null} */}
+            {selected === 'console' ? <Console /> : null}
         </div>
     )
 }

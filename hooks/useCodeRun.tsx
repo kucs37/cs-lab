@@ -3,11 +3,10 @@ import axios from 'axios'
 
 interface Props {
     code: string
-    isRunningPoint: boolean
     input?: string
 }
 
-function useCodeRun({ code, isRunningPoint, input = '' }: Props) {
+function useCodeRun({ code, input = '' }: Props) {
     const [runningStatus, setRunningStatus] = useState<
         'running' | 'error' | 'idle' | 'success'
     >('idle')
@@ -15,7 +14,6 @@ function useCodeRun({ code, isRunningPoint, input = '' }: Props) {
     const [output, setOutput] = useState<string>('')
 
     const handleRun = useCallback(async () => {
-        if (!isRunningPoint) return
         try {
             setRunningStatus('running')
 
@@ -43,7 +41,7 @@ function useCodeRun({ code, isRunningPoint, input = '' }: Props) {
             setRunningStatus('idle')
             setOutput(data.run.output)
         } catch (err) {}
-    }, [code, isRunningPoint, input])
+    }, [code, input])
 
     return { handleRun, runningStatus, isError, output }
 }
