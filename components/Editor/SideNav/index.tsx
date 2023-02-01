@@ -11,16 +11,14 @@ import {
 
 import { BsTerminal } from 'react-icons/bs'
 function Buttons() {
-    const router = useRouter()
-    const backHref = router.asPath.split('/').slice(0, -2).join('/')
-
+    const { back } = useRouter()
     const dispatch = useAppDispatch()
     return (
         <div className="flex items-center gap-2">
             <Button
                 tooltip="ย้อนกลับ"
                 icon={<IoArrowBackOutline size="1.75rem" />}
-                onClick={() => router.push(backHref)}
+                onClick={back}
             />
 
             <Button

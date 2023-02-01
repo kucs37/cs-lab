@@ -7,7 +7,6 @@ import { NextPageContext, NextApiRequest } from 'next'
 import { getToken } from 'next-auth/jwt'
 import jwt from 'jsonwebtoken'
 import { GetLabs } from '@/interface/GetLabs'
-import { AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { fakeLabs } from '@/__mock__'
 import Banner from '@/components/Class/Banner'
@@ -21,7 +20,7 @@ interface Props {
 const InLesson: React.FC<Props> = ({ data }) => {
     const [Data, setData] = useState<GetLabs | null>(data)
     const router = useRouter()
-    const backHref = router.asPath.split('/').slice(0, -2).join('/')
+
     const currentPath = router.asPath
 
     return (

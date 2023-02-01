@@ -7,8 +7,6 @@ import Problem from './Problem'
 import Code from './Code'
 import History from './History'
 import Settings from './Settings'
-import { useRouter } from 'next/router'
-import Backto from '@/components/Common/BackArrow'
 
 function Mobile() {
     const menu = useAppSelector((state) => state.mobileMenu)

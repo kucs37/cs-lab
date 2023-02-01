@@ -7,7 +7,6 @@ import parseMD from 'parse-md'
 import { OutlineI } from '@/interface/Outline'
 import Hamburger from '@/components/Lessons/Outline/Hamburger'
 import path from 'path'
-import { useRouter } from 'next/router'
 import BackArrow from '@/components/Common/BackArrow'
 import Badge from '@/components/Common/Badge'
 import Footer from '@/components/Lessons/Footer'
@@ -24,9 +23,6 @@ interface Props {
 }
 
 function LabID({ metadata, content, answers, isClosed, title }: Props) {
-    const router = useRouter()
-    const backHref = router.asPath.split('/').slice(0, -3).join('/')
-
     return (
         <WithNavbar
             hamburgerChild={<Hamburger outline={[]} />}
