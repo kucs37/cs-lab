@@ -12,7 +12,7 @@ function Footer() {
         dispatch(clearProblems())
     }
     return (
-        <div>
+        <div className="mb-4">
             <div className="flex justify-between items-center mt-10 h-24">
                 <button
                     className="bg-gray-800 border-b-4 active:border-b-2 transition-all duration-50 border-gray-700 text-white   w-1/4 py-2 rounded-lg shadow-md"

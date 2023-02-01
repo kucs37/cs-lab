@@ -16,13 +16,11 @@ const Item = ({
     return (
         <button
             className={clsx(
-                'w-full grid grid-cols-12 items-center hover:bg-gray-100 dark:hover:bg-[#464646] dark:text-ascent-1 p-3 rounded-xl',
-                active && 'text-gray-900 dark:text-ascent-1 font-bold'
+                'w-full grid grid-cols-12 border mb-2 items-center hover:bg-gray-100 dark:hover:bg-[#464646] dark:text-ascent-1 p-2 rounded-xl',
+                active && 'bg-gray-100 dark:bg-[#464646]'
             )}
         >
-            <h4 className="col-span-11 text-start text-lg md:text-md">
-                {name}
-            </h4>
+            <h4 className="col-span-11 text-start">{name}</h4>
             {status === 'success' ? (
                 <IoCheckmark className="col-span-1 text-lime-500 dark:text-green-1 text-2xl" />
             ) : null}

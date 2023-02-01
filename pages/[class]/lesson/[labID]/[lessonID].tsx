@@ -8,10 +8,10 @@ import { OutlineI } from '@/interface/Outline'
 import Hamburger from '@/components/Lessons/Outline/Hamburger'
 import path from 'path'
 import { useRouter } from 'next/router'
-import { motion, useScroll } from 'framer-motion'
 import BackArrow from '@/components/Common/BackArrow'
 import Badge from '@/components/Common/Badge'
 import Footer from '@/components/Lessons/Footer'
+import Sidebar from '@/components/Lessons/Outline/Sidebar'
 
 interface Props {
     metadata: {
@@ -32,8 +32,9 @@ function LabID({ metadata, content, answers, isClosed, title }: Props) {
             hamburgerChild={<Hamburger outline={[]} />}
             title="CS Python Lab 01 Input Process Output | CS LAB"
         >
-            <div className="flex justify-center px-4 py-6 md:py-10 gap-10 relative">
-                <div className="w-full md:w-2/3 2xl:w-1/2 md:px-10">
+            <Sidebar />
+            <div className="flex justify-center gap-10">
+                <div className="w-full md:w-2/3 2xl:w-1/2 md:px-10 mt-10">
                     <BackArrow />
 
                     <div className="mt-4 mb-6">
