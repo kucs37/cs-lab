@@ -13,7 +13,7 @@ function Mobile() {
 
     return (
         <WithNavbar
-            hamburgerChild={<Outline className="p-4" />}
+            // hamburgerChild={<Outline className="p-4" />}
             title="09 Find a, b in which a*b=n and (a+b) is the lowest | CS-LAB"
             className="fixed h-screen max-h-screen"
         >
