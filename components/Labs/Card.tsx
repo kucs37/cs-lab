@@ -19,13 +19,13 @@ function Card({ title, isClosed, problems, id, type }: Props) {
     const success = problems.filter(({ status }) => status == 'success').length
     const isLesson = type === 'LS'
     const hrefTo = isLesson
-        ? `${router.asPath}/lesson/${id}/01#77`
+        ? `${router.asPath}/lesson/${id}/01`
         : `${router.asPath}/problem/${id}`
 
     return (
         <Link href={hrefTo} legacyBehavior>
             <motion.a
-                initial={{ y: 10 ,opacity: 0.5 }}
+                initial={{ y: 10, opacity: 0.5 }}
                 animate={{ y: 0, opacity: 1 }}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 1 }}
@@ -46,7 +46,7 @@ function Card({ title, isClosed, problems, id, type }: Props) {
                 </div>
             </motion.a>
         </Link>
-    );
+    )
 }
 
 export default Card
