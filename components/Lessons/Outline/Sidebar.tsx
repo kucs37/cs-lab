@@ -10,12 +10,12 @@ function Sidebar() {
         <motion.div
             animate={{ left: isOpen ? 0 : -345 }}
             transition={{ duration: 0.4 }}
-            className="mt-16 left-0 fixed bg-white border-r h-full z-30"
+            className="mt-16 left-0 fixed bg-white dark:bg-primary-1 dark:border-secondary-1 border-r h-full z-30"
         >
             <div className="relative h-full">
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="absolute bg-white border-r border-t border-b rounded-r-full bottom-24 -right-[2.3rem] p-2 text-xl"
+                    className="absolute bg-white dark:bg-primary-1 dark:border-secondary-1 border-r border-t border-b rounded-r-full bottom-24 -right-[2.3rem] p-2 text-xl dark:text-ascent-1"
                 >
                     {isOpen ? <BsArrowBarLeft /> : <BsArrowBarRight />}
                 </button>

@@ -21,11 +21,7 @@ function Navigation() {
                     animate={{ display: isOpen ? 'block' : 'none' }}
                     transition={{ delay: isOpen ? 0.3 : 0 }}
                 >
-                    {new Array(
-                        ...fakeLabs[0].problems,
-                        ...fakeLabs[0].problems,
-                        ...fakeLabs[0].problems
-                    ).map(({ name, status }, i) => (
+                    {fakeLabs[0].problems.map(({ name, status }, i) => (
                         <Item
                             key={name}
                             name={name}
