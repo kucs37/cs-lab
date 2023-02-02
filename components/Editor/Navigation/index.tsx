@@ -38,12 +38,12 @@ function Navigation() {
                 animate={{
                     justifyContent: isOpen ? 'end' : 'center',
                 }}
-                className="border-t w-full flex p-2"
+                className="border-t dark:border-secondary-2 w-full flex p-2"
             >
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className={clsx(
-                        'text-xl border p-2 rounded-xl dark:text-ascent-1'
+                        'text-xl border dark:border-secondary-2 p-2 rounded-xl dark:text-ascent-1'
                     )}
                 >
                     {isOpen ? <BsArrowBarLeft /> : <BsArrowBarRight />}
