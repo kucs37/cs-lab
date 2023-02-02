@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import useDrag from '@/hooks/useDrag'
-import Outline from '../Outline'
 import Description from '../Description'
+import Outline from '../Outline'
 
 function LeftPanel() {
     const [windowWidth, setWindowWidth] = useState<number>(320)
@@ -27,8 +27,7 @@ function LeftPanel() {
             }}
         >
             <div className="p-4 overflow-y-scroll bg-white dark:bg-secondary-1 border dark:border-secondary-2 rounded-xl overflow-hidden">
-                <Outline />
-                <hr className="h-4" />
+                <Outline title="CS Python Lab 01 Problems" />
                 <Description />
             </div>
 

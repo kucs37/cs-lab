@@ -6,6 +6,7 @@ import Settings from '../Settings'
 import { useAppSelector } from '@/store/hooks'
 import LeftPanel from '../LeftPanel'
 import RightPanel from '../RightPanel'
+import Navigation from '../Navigation'
 
 function NonMobile() {
     const menu = useAppSelector((state) => state.menu)
@@ -20,6 +21,7 @@ function NonMobile() {
             {menu.isSettingsOpen && <Settings />}
 
             <div className="px-4 py-6 shadow-md flex flex-1 h-full overflow-hidden">
+                <Navigation />
                 <LeftPanel />
                 <RightPanel />
             </div>
