@@ -11,10 +11,11 @@ function Navigation() {
     return (
         <motion.div
             animate={{ width: isOpen ? 300 : 50 }}
+            transition={{ duration: 0.3 }}
             className="mr-4 h-full bg-white dark:bg-secondary-1 border dark:border-secondary-2 rounded-xl overflow-hidden relative"
         >
             <motion.div
-                transition={{ delay: isOpen ? 0.3 : 0 , duration : 0.3 }}
+                transition={{ delay: isOpen ? 0.3 : 0, duration: 0.1 }}
                 animate={{
                     display: isOpen ? 'block' : 'none',
                     opacity: isOpen ? 1 : 0,
