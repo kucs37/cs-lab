@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import SaveStatus from '../../SaveStatus'
+import SaveStatus from './SaveStatus'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import { openBottomBar, setBottomBarTab } from '@/store/slices/menuSlice'
 import { setOutput } from '@/store/slices/editorSlice'

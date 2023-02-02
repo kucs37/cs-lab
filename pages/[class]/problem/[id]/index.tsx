@@ -16,7 +16,7 @@ const Device = ({ isMobile }: Props) => {
     const isDarkMode = useDarkMode()
     useEffect(() => {
         dispatch(setTheme(isDarkMode))
-    }, [isDarkMode])
+    }, [isDarkMode, dispatch])
     if (isMobile) return <Mobile />
     return <NonMobile />
 }

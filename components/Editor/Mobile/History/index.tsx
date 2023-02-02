@@ -5,7 +5,7 @@ import EachHistory from './EachHistory'
 import { useAppSelector, useAppDispatch } from '@/store/hooks'
 import { BsArrowLeft } from 'react-icons/bs'
 import { setSelected } from '@/store/slices/historySlice'
-import CodeMirror from '../../CodeMirror'
+import CodeMirror from '../../../Common/CodeMirror'
 function History() {
     const { selected } = useAppSelector((state) => state.history)
     const dispatch = useAppDispatch()

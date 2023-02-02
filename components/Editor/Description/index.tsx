@@ -1,11 +1,22 @@
-import Loading from './Loading'
-import Loaded from './Loaded'
-import { useState } from 'react'
-function Description() {
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+import Testcase from '../Testcase'
+import Markdown from './Markdown'
 
-    if (isLoading) return <Loading />
-    return <Loaded />
+function Loaded() {
+    return (
+        <>
+            <div>
+                <h1 className="text-xl font-bold dark:text-ascent-1">
+                    09 Find a, b in which a*b=n and (a+b) is the lowest
+                </h1>
+
+                {/* Test case */}
+                <div className='my-2'>
+                    <Testcase status={['P', 'P', 'P', '-']} />
+                </div>
+                <Markdown />
+            </div>
+        </>
+    )
 }
 
-export default Description
+export default Loaded

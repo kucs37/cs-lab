@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Item from '@/components/Lessons/Outline/Item'
 import { fakeLabs } from '@/__mock__'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs'
 import clsx from 'clsx'
 

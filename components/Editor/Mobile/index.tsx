@@ -1,6 +1,5 @@
 import WithNavbar from '@/HOC/WithNavbar'
 import React from 'react'
-import Outline from '../Outline'
 import BottomNav from './BottomNav'
 import { useAppSelector } from '@/store/hooks'
 import Problem from './Problem'

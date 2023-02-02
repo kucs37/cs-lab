@@ -1,11 +1,11 @@
 import WithNavbar from '@/HOC/WithNavbar'
 import React from 'react'
-import SideNav from '../SideNav'
+import SideNav from '../Navigation/SideNav'
 import History from '../History'
-import Settings from '../Settings'
+import Settings from './Settings'
 import { useAppSelector } from '@/store/hooks'
-import LeftPanel from '../LeftPanel'
-import RightPanel from '../RightPanel'
+import LeftPanel from './LeftPanel'
+import RightPanel from './RightPanel'
 import Navigation from '../Navigation'
 
 function NonMobile() {

@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import Editor from '../../Editor'
+import Editor from '../../NonMobile/Editor'
 import Select from './Select'
 import Console from './Console'
 function Code() {

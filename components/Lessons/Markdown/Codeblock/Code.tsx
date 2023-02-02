@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import CodeMirror from '@/components/Editor/CodeMirror'
+import CodeMirror from '@/components/Common/CodeMirror'
 import { EditorState } from '@codemirror/state'
 import { BsPlay } from 'react-icons/bs'
 import { BiLoaderCircle } from 'react-icons/bi'

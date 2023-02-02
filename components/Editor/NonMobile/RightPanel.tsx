@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import BottomBar from '../BottomBar'
-import Editor from '../Editor'
+import Editor from './Editor'
 
 function RightPanel() {
     const zoneRef = useRef<HTMLDivElement>(null)

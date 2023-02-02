@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import useDrag from '@/hooks/useDrag'
 import Description from '../Description'
-import Outline from '../Outline'
+import Badge from '@/components/Common/Badge'
 
 function LeftPanel() {
     const [windowWidth, setWindowWidth] = useState<number>(320)
@@ -27,7 +27,12 @@ function LeftPanel() {
             }}
         >
             <div className="p-4 overflow-y-scroll bg-white dark:bg-secondary-1 border dark:border-secondary-2 rounded-xl overflow-hidden">
-                <Outline title="CS Python Lab 01 Problems" />
+                <div className="break-words">
+                    <Badge title="อ่านอย่างเดียว" />
+                    <h4 className="text-lime-600 mt-2">
+                        CS Python Lab 01 Problems
+                    </h4>
+                </div>
                 <Description />
             </div>
 
