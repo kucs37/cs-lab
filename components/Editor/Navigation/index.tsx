@@ -6,45 +6,53 @@ import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs'
 import clsx from 'clsx'
 
 function Navigation() {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(true)
 
     return (
         <motion.div
-            animate={{ width: isOpen ? 300 : 50 }}
+            animate={{
+                width: isOpen ? 300 : 50,
+            }}
             transition={{ duration: 0.3 }}
-            className="mr-4 h-full bg-white dark:bg-secondary-1 border dark:border-secondary-2 rounded-xl overflow-hidden relative"
+            className="mr-4 w-[300px] h-full bg-white dark:bg-secondary-1 border dark:border-secondary-2 rounded-xl overflow-hidden flex flex-col justify-between"
         >
+            <div className="p-2 h-full overflow-y-auto">
+                <motion.div
+                    animate={{ display: isOpen ? 'block' : 'none' }}
+                    transition={{ delay: isOpen ? 0.3 : 0 }}
+                >
+                    {new Array(
+                        ...fakeLabs[0].problems,
+                        ...fakeLabs[0].problems,
+                        ...fakeLabs[0].problems
+                    ).map(({ name, status }, i) => (
+                        <Item
+                            key={name}
+                            name={name}
+                            status={status}
+                            active={i === 0}
+                        />
+                    ))}
+                </motion.div>
+            </div>
+
             <motion.div
-                transition={{ delay: isOpen ? 0.3 : 0, duration: 0.1 }}
+                layout
+                transition={{ delay: isOpen ? 0 : 0.3 }}
                 animate={{
-                    display: isOpen ? 'block' : 'none',
-                    opacity: isOpen ? 1 : 0,
+                    justifyContent: isOpen ? 'end' : 'center',
                 }}
-                className="p-2"
-            >
-                {fakeLabs[0].problems.map(({ name, status }, i) => (
-                    <Item
-                        key={name}
-                        name={name}
-                        status={status}
-                        active={i === 0}
-                    />
-                ))}
-            </motion.div>
-            <div
-                className={clsx(
-                    'absolute bottom-2  border-t w-full flex  px-2 pt-2',
-                    isOpen && 'justify-end',
-                    !isOpen && 'justify-center'
-                )}
+                className="border-t w-full flex p-2"
             >
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className={clsx('text-xl border p-2 rounded-xl')}
+                    className={clsx(
+                        'text-xl border p-2 rounded-xl dark:text-ascent-1'
+                    )}
                 >
                     {isOpen ? <BsArrowBarLeft /> : <BsArrowBarRight />}
                 </button>
-            </div>
+            </motion.div>
         </motion.div>
     )
 }
