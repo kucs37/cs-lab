@@ -1,21 +1,22 @@
 import { useState, useRef } from 'react'
-import Editor from '../../NonMobile/Editor'
+import Editor from '../../TextEditor'
 import Select from './Select'
-import Console from './Console'
+import Input from '@/components/Editor/BottomBar/Input'
+import Output from '@/components/Editor/BottomBar/Output'
 function Code() {
-    const [selected, setSelected] = useState<'code' | 'console'>('code')
+    const [selected, setSelected] = useState<'code' | 'input' | 'output'>(
+        'code'
+    )
     const zoneRef = useRef<HTMLDivElement>(null)
     return (
-        <div
-            ref={zoneRef}
-            className="flex flex-col h-full rounded-md overflow-hidden relative"
-        >
+        <div ref={zoneRef} className="flex flex-col h-full rounded-md relative">
             <Select
                 selected={selected}
                 onSelect={(selected) => setSelected(selected)}
             />
-            {selected === 'code' ? <Editor /> : null}
-            {selected === 'console' ? <Console /> : null}
+            {selected === 'code' && <Editor />}
+            {selected === 'input' && <Input />}
+            {selected === 'output' && <Output />}
         </div>
     )
 }

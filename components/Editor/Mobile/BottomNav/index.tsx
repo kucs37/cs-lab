@@ -44,13 +44,13 @@ function BottomNav() {
                             }}
                             key={name}
                             className={clsx(
-                                'col-span-3 flex flex-col items-center p-2 gap-2 ',
+                                'col-span-3 flex flex-col items-center pt-2 gap-2',
                                 menu.selected === id &&
                                     'bg-ascent-1 dark:bg-[#232324]'
                             )}
                         >
                             {icon}
-                            <h4>{name}</h4>
+                            <h4 className='pb-1 text-sm'>{name}</h4>
                         </button>
                     )
                 })}

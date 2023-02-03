@@ -3,6 +3,7 @@ import useCodemirror from '@/components/Common/CodeMirror/hooks/useCodemirror'
 import { useAppSelector } from '@/store/hooks'
 import { EditorState } from '@codemirror/state'
 import { ghcolors, materialDark, materialDarkCode } from '@/themes'
+import clsx from 'clsx'
 
 interface Props {
     value?: string
@@ -17,6 +18,7 @@ interface Props {
     ) => Array<{ from: number | undefined; to: number | undefined }>
     variant?: 'problem' | 'lesson'
     customFontSize?: number
+    className?: string
 }
 
 function CodeMirror({
@@ -30,6 +32,7 @@ function CodeMirror({
     readOnlyRanges,
     variant = 'problem',
     customFontSize,
+    className,
 }: Props) {
     const { fontSize, tabSize, theme } = useAppSelector(
         (state) => state.userSettings
@@ -73,7 +76,7 @@ function CodeMirror({
                 height,
                 fontSize: _fontSize,
             }}
-            className="overflow-hidden bg-white dark:bg-secondary-1"
+            className={clsx('bg-white dark:bg-secondary-1', className)}
         >
             {children}
         </div>

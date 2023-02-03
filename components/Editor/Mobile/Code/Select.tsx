@@ -1,9 +1,8 @@
-import { useState } from 'react'
 import clsx from 'clsx'
 import { HiOutlineCommandLine } from 'react-icons/hi2'
-import { BiCodeCurly } from 'react-icons/bi'
+import { BsInputCursor, BsCardText } from 'react-icons/bs'
 
-type Selected = 'code' | 'console'
+type Selected = 'code' | 'input' | 'output'
 interface Props {
     selected: Selected
     onSelect: (selected: Selected) => void
@@ -23,15 +22,26 @@ function Select({ selected, onSelect }: Props) {
                 Code
             </button>
             <button
-                onClick={() => onSelect('console')}
+                onClick={() => onSelect('input')}
                 className={clsx(
                     'px-4 py-1 rounded-full flex items-center gap-2',
-                    selected === 'console' &&
+                    selected === 'input' &&
                         'bg-zinc-800 text-white dark:bg-gray-200 dark:text-gray-900'
                 )}
             >
-                <BiCodeCurly />
-                Console
+                <BsInputCursor />
+                Input
+            </button>
+            <button
+                onClick={() => onSelect('output')}
+                className={clsx(
+                    'px-4 py-1 rounded-full flex items-center gap-2',
+                    selected === 'output' &&
+                        'bg-zinc-800 text-white dark:bg-gray-200 dark:text-gray-900'
+                )}
+            >
+                <BsCardText />
+                Output
             </button>
         </div>
     )

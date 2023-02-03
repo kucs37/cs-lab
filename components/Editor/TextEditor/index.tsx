@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import React from 'react'
-import CodeMirror from '../../../Common/CodeMirror'
+import CodeMirror from '../../Common/CodeMirror'
 import Header from './Header'
 import { setCode } from '@/store/slices/editorSlice'
 import { specialKeyCode } from '@/utils'
@@ -16,7 +16,7 @@ function Editor() {
 
     return (
         <div
-            className="rounded-xl overflow-hidden flex-1 flex flex-col bg-white dark:bg-secondary-1 border dark:border-secondary-2"
+            className="rounded-xl flex-1 flex flex-col overflow-hidden bg-white dark:bg-secondary-1 border dark:border-secondary-2"
             style={{ minHeight: 200 }}
         >
             <Header />

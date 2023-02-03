@@ -26,7 +26,7 @@ function Button({ icon, onClick, tooltip }: Props) {
 
             <button
                 data-tip={tooltip}
-                className="m-2 px-10 py-2 rounded-lg border-gray-200 dark:border-[#706E6E] hover:bg-secondary-1 transition-all duration-50 text-gray-800 dark:text-ascent-1"
+                className="m-2 px-10 py-2 rounded-lg border-gray-200 dark:border-[#706E6E] hover:bg-zinc-100 dark:hover:bg-secondary-1 transition-all duration-50 text-gray-800 dark:text-ascent-1"
                 onClick={onClick}
             >
                 {icon}

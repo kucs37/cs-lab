@@ -1,12 +1,12 @@
 import WithNavbar from '@/HOC/WithNavbar'
 import React from 'react'
-import SideNav from '../Navigation/SideNav'
+import SideNav from './Navigation/SideNav'
 import History from '../History'
 import Settings from './Settings'
 import { useAppSelector } from '@/store/hooks'
 import LeftPanel from './LeftPanel'
 import RightPanel from './RightPanel'
-import Navigation from '../Navigation'
+import Navigation from './Navigation'
 
 function NonMobile() {
     const menu = useAppSelector((state) => state.menu)

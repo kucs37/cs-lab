@@ -52,7 +52,7 @@ const Navbar = forwardRef(
                 className="w-full border-b bg-white dark:bg-[#212122] border-gray-200 dark:border-[#424A53]  sticky top-0 z-40"
             >
                 <div className="px-6 py-2 flex justify-between items-center">
-                    <Hamburger children={hamburgerChild} />
+                    {/* <Hamburger children={hamburgerChild} /> */}
                     <Link href={'/'} className="rounded-full w-[40px] h-[40px]">
 
                         <Image

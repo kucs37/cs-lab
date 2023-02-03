@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import InputRange from './Editor/InputRange'
+import InputRange from '../TextEditor/InputRange'
 import { IoClose, IoSettingsOutline } from 'react-icons/io5'
 import { useAppSelector, useAppDispatch } from '@/store/hooks'
 import { useOnClickOutside } from 'usehooks-ts'

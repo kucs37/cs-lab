@@ -1,5 +1,5 @@
 import { IoSettingsOutline } from 'react-icons/io5'
-import InputRange from '../NonMobile/Editor/InputRange'
+import InputRange from '../TextEditor/InputRange'
 import { useAppSelector, useAppDispatch } from '@/store/hooks'
 import { setFontSize, setTabSize } from '@/store/slices/userSettingsSlice'
 
