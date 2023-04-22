@@ -1,7 +1,7 @@
 import { Player } from '@lottiefiles/react-lottie-player'
-import CoffeeDog1 from '@/public/lottie/coffee-dog1.json'
-import CoffeeDog2 from '@/public/lottie/coffee-dog2.json'
-import CoffeeDog3 from '@/public/lottie/coffee-dog3.json'
+import CoffeeDog1 from '@public/lottie/coffee-dog1.json'
+import CoffeeDog2 from '@public/lottie/coffee-dog2.json'
+import CoffeeDog3 from '@public/lottie/coffee-dog3.json'
 
 let list_style: any[] = [CoffeeDog1, CoffeeDog2, CoffeeDog3]
 

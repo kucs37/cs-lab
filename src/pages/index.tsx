@@ -8,20 +8,23 @@ import axios from 'axios'
 import jwt from 'jsonwebtoken'
 import { StudentInfo } from '@/interface/StudentInfo'
 import { AnimatePresence } from 'framer-motion'
+import { trpc } from '@/utils/trpc'
 
 interface Props {
     data: StudentInfo | null
 }
 
 const Home: NextPage<Props> = ({ data }) => {
+    const hello = trpc.hello.useQuery()
+
     return (
         <WithNavbar title="Class | CS-LAB">
-            <div className="py-10 px-4 w-full container mx-auto">
+            <div className="container w-full px-4 py-10 mx-auto">
                 <div>
                     <h2 className="text-2xl font-bold dark:text-white">
                         คลาสเรียน
                     </h2>
-                    <div className="mt-4 grid grid-cols-12 gap-4 w-full">
+                    <div className="grid w-full grid-cols-12 gap-4 mt-4">
                         <AnimatePresence>
                             {data?.resData?.map((item) => (
                                 <Class

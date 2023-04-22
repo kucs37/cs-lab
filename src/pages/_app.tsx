@@ -9,6 +9,7 @@ import { Provider } from 'react-redux'
 import { wrapper } from '@/store'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { trpc } from '../utils/trpc'
 
 const MyApp: React.FC<AppProps> = ({ Component, ...rest }) => {
     const [isStart, setIsStart] = useState<boolean>(false)
@@ -40,4 +41,4 @@ const MyApp: React.FC<AppProps> = ({ Component, ...rest }) => {
     )
 }
 
-export default MyApp
+export default trpc.withTRPC(MyApp)
