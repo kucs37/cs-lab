@@ -13,15 +13,15 @@ const Login: NextPage = () => {
                 <title>Login | CS-LAB</title>
             </Head>
             <div className="fixed w-screen bg-white dark:bg-primary-1">
-                <div className="flex justify-center items-center h-screen">
-                    <div className="w-full flex flex-col items-center p-4 max-w-md">
+                <div className="flex items-center justify-center h-screen">
+                    <div className="flex flex-col items-center w-full max-w-md p-4">
                         <Header />
-                        <div className="w-full flex flex-col items-center mt-6 gap-6">
+                        <div className="flex flex-col items-center w-full gap-6 mt-6">
                             <WithGoogle />
                             <Divider />
                             <WithUsernamePassword />
                         </div>
-                        <Github />
+                        {/* <Github /> */}
                     </div>
                 </div>
             </div>
