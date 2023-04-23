@@ -5,7 +5,6 @@ function useDrag(
     defaultWidth: number = 0,
     dimension: 'width' | 'height' = 'width'
 ) {
-    const [windowSize, setWindowSize] = useState<number>(0)
     const [isDrag, setIsDrag] = useState<boolean>(false)
     const [size, setSize] = useState<number>(defaultWidth)
     const parentSize =
@@ -43,13 +42,7 @@ function useDrag(
         }
     }, [onMouseDrag, touchDragging, isDrag])
 
-    useEffect(() => {
-        if (window) {
-            setWindowSize(window.innerWidth)
-        }
-    }, [])
-
-    return { size, setIsDrag, windowSize }
+    return { size, setIsDrag }
 }
 
 export default useDrag
