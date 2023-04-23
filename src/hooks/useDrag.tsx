@@ -5,6 +5,7 @@ function useDrag(
     defaultWidth: number = 0,
     dimension: 'width' | 'height' = 'width'
 ) {
+    const [windowSize, setWindowSize] = useState<number>(0)
     const [isDrag, setIsDrag] = useState<boolean>(false)
     const [size, setSize] = useState<number>(defaultWidth)
     const parentSize =
@@ -32,8 +33,8 @@ function useDrag(
             document.addEventListener('mousemove', onMouseDrag)
             document.addEventListener('touchend', onUp)
             document.addEventListener('touchmove', touchDragging)
+            document.addEventListener('mouseup', onUp)
         }
-        document.addEventListener('mouseup', onUp)
         return () => {
             document.removeEventListener('mousemove', onMouseDrag)
             document.removeEventListener('touchend', onUp)
@@ -41,7 +42,14 @@ function useDrag(
             document.removeEventListener('touchmove', touchDragging)
         }
     }, [onMouseDrag, touchDragging, isDrag])
-    return { size, setIsDrag }
+
+    useEffect(() => {
+        if (window) {
+            setWindowSize(window.innerWidth)
+        }
+    }, [])
+
+    return { size, setIsDrag, windowSize }
 }
 
 export default useDrag

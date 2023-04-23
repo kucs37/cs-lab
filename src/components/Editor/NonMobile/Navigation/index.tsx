@@ -14,9 +14,9 @@ function Navigation() {
                 width: isOpen ? 300 : 50,
             }}
             transition={{ duration: 0.3 }}
-            className="mr-4 w-[300px] h-full bg-white dark:bg-secondary-1 border dark:border-secondary-2 rounded-xl overflow-hidden flex flex-col justify-between"
+            className="mr-4 min-w-[300px] w-[300px] h-full bg-white dark:bg-secondary-1 border dark:border-secondary-2 rounded-xl overflow-hidden flex flex-col justify-between"
         >
-            <div className="p-2 h-full overflow-y-auto">
+            <div className="h-full p-2 overflow-y-auto">
                 <motion.div
                     animate={{ display: isOpen ? 'block' : 'none' }}
                     transition={{ delay: isOpen ? 0.3 : 0 }}
@@ -38,7 +38,7 @@ function Navigation() {
                 animate={{
                     justifyContent: isOpen ? 'end' : 'center',
                 }}
-                className="border-t dark:border-secondary-2 w-full flex p-2"
+                className="flex w-full p-2 border-t dark:border-secondary-2"
             >
                 <button
                     onClick={() => setIsOpen(!isOpen)}

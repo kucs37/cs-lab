@@ -1,16 +1,21 @@
 import { fakeLabs } from '@/__mock__'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs'
 import Item from './Item'
+import { useOnClickOutside } from 'usehooks-ts'
 
 function Sidebar() {
     const [isOpen, setIsOpen] = useState(true)
+    const sidebarRef = useRef<HTMLDivElement>(null)
+
+    useOnClickOutside(sidebarRef, () => setIsOpen(false))
     return (
         <motion.div
+            ref={sidebarRef}
             animate={{ left: isOpen ? 0 : -345 }}
             transition={{ duration: 0.4 }}
-            className="mt-16 left-0 fixed bg-white dark:bg-primary-1 dark:border-secondary-1 border-r h-full z-30"
+            className="fixed left-0 z-30 h-full mt-16 bg-white border-r dark:bg-primary-1 dark:border-secondary-1"
         >
             <div className="relative h-full">
                 <button

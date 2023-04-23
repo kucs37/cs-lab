@@ -26,10 +26,10 @@ function LeftPanel() {
                 maxWidth: 'max-content',
             }}
         >
-            <div className="p-4 overflow-y-scroll bg-white dark:bg-secondary-1 border dark:border-secondary-2 rounded-xl overflow-hidden">
+            <div className="w-full p-4 overflow-hidden overflow-y-scroll bg-white border dark:bg-secondary-1 dark:border-secondary-2 rounded-xl">
                 <div className="break-words">
                     <Badge title="อ่านอย่างเดียว" />
-                    <h4 className="text-lime-600 mt-2">
+                    <h4 className="mt-2 text-lime-600">
                         CS Python Lab 01 Problems
                     </h4>
                 </div>
@@ -39,12 +39,12 @@ function LeftPanel() {
             {/* Tab Resize */}
 
             <div
-                className="group flex-shrink-0 w-6 h-full dark:bg-primary-1 cursor-col-resize flex items-center justify-center"
+                className="flex items-center justify-center flex-shrink-0 w-6 h-full group dark:bg-primary-1 cursor-col-resize"
                 onTouchStart={() => setIsDrag(true)}
                 onMouseDown={() => setIsDrag(true)}
                 onDoubleClick={onDoubleClick}
             >
-                <span className="h-10 rounded-full w-1/5 bg-gray-500 group-hover:h-16 transition-all"></span>
+                <span className="w-1/5 h-10 transition-all bg-gray-500 rounded-full group-hover:h-16"></span>
             </div>
         </div>
     )
